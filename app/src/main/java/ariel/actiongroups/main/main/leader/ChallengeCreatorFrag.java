@@ -12,7 +12,7 @@ import ariel.actiongroups.R;
 /**
  * Created by home on 11/11/2016.
  */
-public class ChallengeCreatorFrag extends Fragment {
+public class ChallengeCreatorFrag extends android.support.v4.app.Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -22,7 +22,7 @@ public class ChallengeCreatorFrag extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View layout = inflater.inflate(R.layout.activity_challenges_creator, container, false);
+        View layout = inflater.inflate(R.layout.frag_challenge_creator, container, false);
         return layout;
     }
 }
