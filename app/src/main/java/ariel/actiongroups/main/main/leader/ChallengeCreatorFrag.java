@@ -22,7 +22,6 @@ public class ChallengeCreatorFrag extends android.support.v4.app.Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View layout = inflater.inflate(R.layout.frag_challenge_creator, container, false);
-        return layout;
+        return inflater.inflate(R.layout.frag_challenge_creator, container, false);
     }
 }
