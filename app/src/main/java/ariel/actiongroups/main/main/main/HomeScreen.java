@@ -41,7 +41,5 @@ public class HomeScreen extends AppCompatActivity {
         adapter.addFragment(new ChallengeTabFrag(), "Challenge");
         viewPager.setAdapter(adapter);
     }
-
-
 }
 
