@@ -7,29 +7,29 @@ import android.graphics.Bitmap;
  */
 public class GroupRow {
 
-    private String addressedUserName;
-    private String profileImagePath;
+    private String name;
+    private String image;
     private String lastMessageDate;
     private String lastMessageAsText; //This may be text message or sent image path
     private Bitmap imageBitmap = null;
 
-    public GroupRow(String addressedUserName, String profileImage, String lastMessageDate, String lastTextMessage) {
-        this.addressedUserName = addressedUserName;
-        this.profileImagePath = profileImage;
+    public GroupRow(String name, String image, String lastMessageDate, String lastTextMessage) {
+        this.name = name;
+        this.image = image;
         this.lastMessageDate = lastMessageDate;
         this.lastMessageAsText = lastTextMessage;
     }
 
-    public String getProfileImagePath() {
-        return profileImagePath;
+    public String getImage() {
+        return image;
     }
 
     public String getLastMessageDate() {
         return lastMessageDate;
     }
 
-    public String getAddressedUserName() {
-        return addressedUserName;
+    public String getName() {
+        return name;
     }
 
     public String getLastMessageAsText() {
@@ -46,7 +46,7 @@ public class GroupRow {
 
     @Override
     public String toString() {
-        return "Name: " + addressedUserName + " Image is null: " + (imageBitmap == null) +
+        return "Name: " + name + " Image is null: " + (imageBitmap == null) +
                 " Last message: " + lastMessageAsText + " last message date" + getLastMessageDate();
     }
 }

@@ -17,11 +17,11 @@ public class GroupsScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_contacted_users);
+        setContentView(R.layout.activity_groups);
         //ToolbarFrag toolbar = (ToolbarFrag) getSupportFragmentManager().findFragmentById(R.id.toolbarFragInContactedUsers);
         //toolbar.createDrawer();
         FragmentBuilder builder = new FragmentBuilder(this);
-        builder.buildFrag(R.id.contactedUsersInnerRelativeLayout, new GroupsPresenterFrag(), "Groups Presenter");
+        builder.buildFrag(R.id.groupsInnerRelativeLayout, new GroupsPresenterFrag(), "Groups Presenter");
     }
 }
 

@@ -9,9 +9,9 @@ import ariel.actiongroups.main.main.main.groups.model.GroupRow;
  */
 public class OnContactedUsersLoadedEvent {
 
-    public List<GroupRow> groupRows;
+    public GroupRow[] groupRows;
 
-    public OnContactedUsersLoadedEvent(List<GroupRow> contactedUsersRows) {
-        this.groupRows = contactedUsersRows;
+    public OnContactedUsersLoadedEvent(GroupRow[] groupRows) {
+        this.groupRows = groupRows;
     }
 }

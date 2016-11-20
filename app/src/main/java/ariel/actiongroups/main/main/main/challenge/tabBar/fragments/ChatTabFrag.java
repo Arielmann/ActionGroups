@@ -1,4 +1,4 @@
-package ariel.actiongroups.main.main.main.tabBar.fragments;
+package ariel.actiongroups.main.main.main.challenge.tabBar.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

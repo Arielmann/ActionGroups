@@ -18,10 +18,10 @@ import ariel.actiongroups.main.main.main.utils.GenericViewHolder;
  */
 public class GroupsAdapter extends RecyclerView.Adapter<GenericViewHolder> {
 
-    private List<GroupRow> dataSet;
+    private GroupRow[] dataSet;
     private Context context;
 
-    public GroupsAdapter(Context context, List dataSet) {
+    public GroupsAdapter(Context context, GroupRow[] dataSet) {
         this.context = context;
         this.dataSet = dataSet;
     }
@@ -35,16 +35,13 @@ public class GroupsAdapter extends RecyclerView.Adapter<GenericViewHolder> {
     @Override
     public void onBindViewHolder(GenericViewHolder holder, int position) {
         holder.setUIDataOnView(position);
-        OnContactedUserClicked onConversationClicked = new OnContactedUserClicked(context, new String[]{dataSet.get(position).getAddressedUserName()});
+        OnGroupClicked onConversationClicked = new OnGroupClicked(context, new String[]{dataSet[position].getName()});
         holder.setCustomClickListener(holder.itemView, onConversationClicked);
     }
 
     @Override
     public int getItemCount() {
-        return dataSet.size();
+        return dataSet.length;
     }
 
-    public List<GroupRow> getDataSet() {
-        return dataSet;
-    }
 }

@@ -1,4 +1,4 @@
-package ariel.actiongroups.main.main.main.results;
+package ariel.actiongroups.main.main.main.challenge.results;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

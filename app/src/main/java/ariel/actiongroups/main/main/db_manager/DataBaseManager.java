@@ -15,7 +15,7 @@ public class DataBaseManager {
         public static final String DB_NAME = "mmbdata_db.sqlite";
 
         //FILES CONTRACT
-        public static final String CONTACTED_STYLISTS_TABLE = "contacted_stylists";
+        public static final String GROUPS_TABLE = "contacted_stylists";
         public static final String CHAT_ITEMS_TABLE = "chat_items";
         public static final String FILE_ID = "entryid";
         public static final String FILE_PATH = "file_path";

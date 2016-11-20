@@ -7,12 +7,12 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.os.AsyncTask;
 
 import ariel.actiongroups.main.main.db_manager.DataBaseManager;
-import ariel.actiongroups.main.main.main.groups.ActionGroup;
+import ariel.actiongroups.main.main.main.groups.model.ActionGroup;
 
 /**
  * Created by home on 7/26/2016.
  */
-public class ContactedStylistTableWriter extends SQLiteOpenHelper {
+public class GroupsTableWriter extends SQLiteOpenHelper {
 
     /*
     * The Writer is called when a the user sends
@@ -24,7 +24,7 @@ public class ContactedStylistTableWriter extends SQLiteOpenHelper {
     * sends any kind of message)
     * */
 
-    private static final String CONTACTED_STYLISTS_TABLE = DataBaseManager.FeedEntry.CONTACTED_STYLISTS_TABLE;
+    private static final String GROUPS_TABLE = DataBaseManager.FeedEntry.GROUPS_TABLE;
     private static final String KEY_ID = "id";
     private static final String KEY_NAME = "name";
     private static final String KEY_LOCATION = "location";
@@ -34,7 +34,7 @@ public class ContactedStylistTableWriter extends SQLiteOpenHelper {
     private static final String KEY_WEBSITE = "website";
     private static final String KEY_TOKEN = "gcm_token";
 
-    public ContactedStylistTableWriter(Context context, int version) {
+    public GroupsTableWriter(Context context, int version) {
         super(context, DataBaseManager.FeedEntry.DB_NAME, null, version);
     }
 
@@ -47,13 +47,13 @@ public class ContactedStylistTableWriter extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + CONTACTED_STYLISTS_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + GROUPS_TABLE);
         onCreate(db);
     }
 
     private void getTable(SQLiteDatabase db) {
-        // db.execSQL("DROP TABLE IF EXISTS " + CONTACTED_STYLISTS_TABLE);
-        db.execSQL("CREATE TABLE IF NOT EXISTS " + CONTACTED_STYLISTS_TABLE + //TODO: SHOULD BE CALLED IN ONCREATE()!
+        // db.execSQL("DROP TABLE IF EXISTS " + GROUPS_TABLE);
+        db.execSQL("CREATE TABLE IF NOT EXISTS " + GROUPS_TABLE + //TODO: SHOULD BE CALLED IN ONCREATE()!
                 "(id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "name TEXT_LEFT NOT NULL, " +
                 "location TEXT_LEFT, " +
@@ -71,7 +71,7 @@ public class ContactedStylistTableWriter extends SQLiteOpenHelper {
             @Override
             protected ActionGroup doInBackground(ActionGroup... groupInArray) {
                 SQLiteDatabase db = getWritableDatabase(); //TODO: DO WITH AsyncTask
-                db.execSQL("CREATE TABLE IF NOT EXISTS " + CONTACTED_STYLISTS_TABLE + //TODO: SHOULD BE CALLED IN ONCREATE()!
+                db.execSQL("CREATE TABLE IF NOT EXISTS " + GROUPS_TABLE + //TODO: SHOULD BE CALLED IN ONCREATE()!
                         "(id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                         "name TEXT_LEFT NOT NULL, " +
                         "location TEXT_LEFT, " +
@@ -96,12 +96,12 @@ public class ContactedStylistTableWriter extends SQLiteOpenHelper {
                         groupInArray[0].getName());
 
                 values.put(KEY_LOCATION, groupInArray[0].getLocation());
-                values.put(KEY_IMAGE_PATH, groupInArray[0].getProfileImagePath());
+                values.put(KEY_IMAGE_PATH, groupInArray[0].getImage());
                 values.put(KEY_DESCRIPTION, groupInArray[0].getDescription());
                 values.put(KEY_COMPANY, groupInArray[0].getCompany());
                 values.put(KEY_WEBSITE, groupInArray[0].getWebsite());
                 values.put(KEY_TOKEN, groupInArray[0].getGcmToken());
-                db.insert(CONTACTED_STYLISTS_TABLE, null, values);
+                db.insert(GROUPS_TABLE, null, values);
                 EventBus.getDefault().postSticky(db);*/
                 return groupInArray[0];
             }
@@ -110,7 +110,7 @@ public class ContactedStylistTableWriter extends SQLiteOpenHelper {
             protected void onPostExecute(ActionGroup group) {
                 /*//add contact row for ContactedUsesHashMap
                 GroupsModel model = GroupsModel.getInstance(context);
-                GroupRow gropudRow = new GroupRow(group.getName(), group.getProfileImagePath(), lastMessageDate, lastMessage);
+                GroupRow gropudRow = new GroupRow(group.getName(), group.getImage(), lastMessageDate, lastMessage);
                 gropudRow.setBitmap(group.getUserImageBitmap()); // bitmap is already defined
                 ContactedUsersRowsHashMap.getInstance().getHashMap().put(group.getName(), gropudRow);
                 model.getDataSet().add(gropudRow);

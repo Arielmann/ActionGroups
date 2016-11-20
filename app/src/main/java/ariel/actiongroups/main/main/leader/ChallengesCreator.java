@@ -8,7 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
 import ariel.actiongroups.R;
-import ariel.actiongroups.main.main.main.tabBar.ViewPagerAdapter;
+import ariel.actiongroups.main.main.main.challenge.tabBar.ViewPagerAdapter;
 
 public class ChallengesCreator extends AppCompatActivity {
 

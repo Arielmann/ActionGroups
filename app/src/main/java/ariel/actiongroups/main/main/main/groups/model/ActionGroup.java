@@ -1,4 +1,4 @@
-package ariel.actiongroups.main.main.main.groups;
+package ariel.actiongroups.main.main.main.groups.model;
 
 /**
  * Created by home on 11/18/2016.

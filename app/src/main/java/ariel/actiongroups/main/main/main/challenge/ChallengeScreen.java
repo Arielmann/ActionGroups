@@ -1,4 +1,4 @@
-package ariel.actiongroups.main.main.main;
+package ariel.actiongroups.main.main.main.challenge;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -7,12 +7,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 import ariel.actiongroups.R;
-import ariel.actiongroups.main.main.main.results.ResultsTabFrag;
-import ariel.actiongroups.main.main.main.tabBar.fragments.ChallengeTabFrag;
-import ariel.actiongroups.main.main.main.tabBar.fragments.ChatTabFrag;
-import ariel.actiongroups.main.main.main.tabBar.ViewPagerAdapter;
+import ariel.actiongroups.main.main.main.challenge.results.ResultsTabFrag;
+import ariel.actiongroups.main.main.main.challenge.tabBar.fragments.ChallengeTabFrag;
+import ariel.actiongroups.main.main.main.challenge.tabBar.fragments.ChatTabFrag;
+import ariel.actiongroups.main.main.main.challenge.tabBar.ViewPagerAdapter;
 
-public class HomeScreen extends AppCompatActivity {
+public class ChallengeScreen extends AppCompatActivity {
 
     private Toolbar toolbar;
     private TabLayout tabLayout;

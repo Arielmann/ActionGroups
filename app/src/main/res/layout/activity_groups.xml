@@ -7,7 +7,7 @@
     tools:context=".main.main.main.groups.GroupsScreen">
 
     <RelativeLayout
-        android:id="@+id/contactedUsersInnerRelativeLayout"
+        android:id="@+id/groupsInnerRelativeLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentLeft="true"

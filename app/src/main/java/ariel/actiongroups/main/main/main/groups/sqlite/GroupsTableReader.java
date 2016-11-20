@@ -4,18 +4,15 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
-
-import java.util.List;
 
 import ariel.actiongroups.main.main.db_manager.DataBaseManager;
-import ariel.actiongroups.main.main.main.groups.ActionGroup;
+import ariel.actiongroups.main.main.main.groups.model.ActionGroup;
 import ariel.actiongroups.main.main.main.groups.model.GroupRow;
 
 /**
  * Created by home on 7/26/2016.
  */
-public class ContactedStylistTableReader extends SQLiteOpenHelper {
+public class GroupsTableReader extends SQLiteOpenHelper {
 
     /*
     * Reader class is used throughout various scenarios
@@ -32,7 +29,7 @@ public class ContactedStylistTableReader extends SQLiteOpenHelper {
     * in the past
     * */
 
-    public ContactedStylistTableReader(Context context, int version) {
+    public GroupsTableReader(Context context, int version) {
         super(context, DataBaseManager.FeedEntry.DB_NAME, null, version);
     }
 
@@ -50,7 +47,7 @@ public class ContactedStylistTableReader extends SQLiteOpenHelper {
     }
 
     // Contacts table name
-    private static final String CONTACTED_STYLISTS_TABLE = DataBaseManager.FeedEntry.CONTACTED_STYLISTS_TABLE;
+    private static final String CONTACTED_STYLISTS_TABLE = DataBaseManager.FeedEntry.GROUPS_TABLE;
     private static final String CHAT_ITEMS_TABLE = DataBaseManager.FeedEntry.CHAT_ITEMS_TABLE;
 
     // Contacts Table Columns names
@@ -66,7 +63,7 @@ public class ContactedStylistTableReader extends SQLiteOpenHelper {
 
     //***************************************************************************************************//
     private void getTable(SQLiteDatabase db) {
-        //db.execSQL("DROP TABLE IF EXISTS " + CONTACTED_STYLISTS_TABLE);
+        //db.execSQL("DROP TABLE IF EXISTS " + GROUPS_TABLE);
         String CREATE_MESSAGES_TABLE = "CREATE TABLE IF NOT EXISTS " + CONTACTED_STYLISTS_TABLE +
                 " (" + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 KEY_NAME + " TEXT_LEFT NOT NULL, " +

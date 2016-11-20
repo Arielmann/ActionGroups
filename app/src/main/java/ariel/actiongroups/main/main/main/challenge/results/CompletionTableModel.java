@@ -1,4 +1,4 @@
-package ariel.actiongroups.main.main.main.results;
+package ariel.actiongroups.main.main.main.challenge.results;
 
 import android.content.Context;
 import android.support.v7.widget.GridLayoutManager;

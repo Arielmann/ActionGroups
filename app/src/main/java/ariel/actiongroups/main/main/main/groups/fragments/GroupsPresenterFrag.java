@@ -12,8 +12,6 @@ import android.widget.TextView;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
-import java.util.List;
-
 import ariel.actiongroups.R;
 import ariel.actiongroups.main.main.main.groups.events.OnContactedUsersLoadedEvent;
 import ariel.actiongroups.main.main.main.groups.model.GroupRow;
@@ -24,7 +22,8 @@ import ariel.actiongroups.main.main.main.groups.model.GroupsModel;
  */
 public class GroupsPresenterFrag extends Fragment {
     private RecyclerView recyclerView;
-    private TextView noContactedUsersMessage;
+    private TextView noGroupsMessage;
+    private String GROUP_PRESENTER_TAG = "Group presenter frag";
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -60,8 +59,9 @@ public class GroupsPresenterFrag extends Fragment {
         recyclerView.setHasFixedSize(true);
         GroupsModel model = GroupsModel.getInstance(getContext());
         recyclerView.setLayoutManager(model.getLayoutManager());
+        model.setAdapter();
         recyclerView.setAdapter(model.getAdapter());
-        noContactedUsersMessage = (TextView) recyclerViewLayout.findViewById(R.id.noContactedUsersTextViewInRecyclerView);
+        noGroupsMessage = (TextView) recyclerViewLayout.findViewById(R.id.noGroupsTextViewInRecyclerView);
         return recyclerViewLayout;
     }
 
@@ -70,11 +70,11 @@ public class GroupsPresenterFrag extends Fragment {
         initNoMessagesTextViewState(event.groupRows);
     }
 
-    private void initNoMessagesTextViewState(List<GroupRow> contactedUsersRows) {
-        if (contactedUsersRows.size() == 0) {
-            noContactedUsersMessage.setVisibility(View.VISIBLE);
+    private void initNoMessagesTextViewState(GroupRow[] groupRows) {
+        if (groupRows.length == 0) {
+            noGroupsMessage.setVisibility(View.VISIBLE);
         } else {
-            noContactedUsersMessage.setVisibility(View.GONE);
+            noGroupsMessage.setVisibility(View.GONE);
         }
     }
 }

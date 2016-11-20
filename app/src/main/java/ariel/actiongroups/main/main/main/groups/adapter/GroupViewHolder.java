@@ -9,6 +9,7 @@ import android.widget.TextView;
 import java.io.File;
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.HashMap;
 import java.util.List;
 
 import ariel.actiongroups.R;
@@ -32,21 +33,21 @@ public class GroupViewHolder extends GenericViewHolder {
     */
 
     private final View view;
-    private final CircleImageView conversationImageView;
-    private final TextView addressedUserTextView;
+    private final CircleImageView groupdImageView;
+    private final TextView nameTextView;
     private final TextView lastMessageTextView;
     private final TextView lastMessageDateTextView;
-    private List<GroupRow> dataSet;
+    private GroupRow[] dataSet;
     private int targetImageHeight;
     private int targetImageWidth;
     private Context context;
 
-    protected GroupViewHolder(Context context, View itemView, List<GroupRow> dataSet) {
+    protected GroupViewHolder(Context context, View itemView, GroupRow[] dataSet) {
         super(itemView);
         this.context = context;
         this.view = itemView;
-        this.conversationImageView = (CircleImageView) view.findViewById(R.id.conversationImage);
-        this.addressedUserTextView = (TextView) view.findViewById(R.id.addressedUser);
+        this.groupdImageView = (CircleImageView) view.findViewById(R.id.conversationImage);
+        this.nameTextView = (TextView) view.findViewById(R.id.addressedUser);
         this.lastMessageTextView = (TextView) view.findViewById(R.id.lastTextMessage);
         this.lastMessageDateTextView = (TextView) view.findViewById(R.id.lastMessageDate);
         this.dataSet = dataSet;
@@ -58,14 +59,14 @@ public class GroupViewHolder extends GenericViewHolder {
 
     public void setUIDataOnView(int position) {
         try {
-            final String imagePath = dataSet.get(position).getProfileImagePath();
-            final String message = dataSet.get(position).getLastMessageAsText();
-            final String addressedUserName = dataSet.get(position).getAddressedUserName();
-            String lastMessageDate = dataSet.get(position).getLastMessageDate();
+            final String imagePath = dataSet[position].getImage();
+            final String message =  dataSet[position].getLastMessageAsText();
+            final String name =  dataSet[position].getName();
+            String lastMessageDate =  dataSet[position].getLastMessageDate();
 
-            if (imagePath != null && message != null && addressedUserName != null && lastMessageDate != null) {
+            if (imagePath != null && message != null && name != null && lastMessageDate != null) {
 
-                this.addressedUserTextView.setText(addressedUserName);
+                this.nameTextView.setText(name);
                 this.lastMessageTextView.setText(message);
                 lastMessageDate = lastMessageDate.replace("_", ""); //remove the "_" char to prevent parse error
                 long lastMessageDateAsLong = Long.parseLong(lastMessageDate);
@@ -73,19 +74,19 @@ public class GroupViewHolder extends GenericViewHolder {
                 Date date = new Date(stampOfLastMessage.getTime());
                 this.lastMessageDateTextView.setText(date.toString());
 
-                if (dataSet.get(position).getImageBitmap() != null) {
-                    //this.conversationImageView.setImageBitmap(dataSet.get(position).getImageBitmap());
-                    Log.d("Contacted users VH", dataSet.get(position).getAddressedUserName() +
-                            " profile image set from inside user data. Path: " + dataSet.get(position).getProfileImagePath());
+                if ( dataSet[position].getImageBitmap() != null) {
+                    //this.groupdImageView.setImageBitmap(dataSet.get(position).getImageBitmap());
+                    Log.d("Contacted users VH",  dataSet[position].getName() +
+                            " profile image set from inside user data. Path: " +  dataSet[position].getImage());
                     return;
                 }
 
                 Storage storage = SimpleStorage.getExternalStorage();
-                File profileImageFile = storage.getFile("Make Me Beautiful", "Contact Image: " + addressedUserName);
+                File profileImageFile = storage.getFile("Make Me Beautiful", "Contact Image: " + name);
                 if (profileImageFile != null) {
                     //ImageUtils.createBitmapFromImageSource("" + position, context, this, Uri.fromFile(profileImageFile), targetImageHeight, targetImageWidth); //create the image from the filepath.
-                    Log.d("Contacted users VH", dataSet.get(position).getAddressedUserName() +
-                            " profile image created from file. Path: " + dataSet.get(position).getProfileImagePath());
+                    Log.d("Contacted users VH",  dataSet[position].getName() +
+                            " profile image created from file. Path: " +  dataSet[position].getImage());
                 }
 
 
@@ -97,17 +98,17 @@ public class GroupViewHolder extends GenericViewHolder {
 /*
     @Override
     public void onImageLoaded(String senderName, Bitmap scaledBitmap, ChatItem.ItemType itemType, Uri imageUri) {
-        this.conversationImageView.setImageBitmap(scaledBitmap);
+        this.groupdImageView.setImageBitmap(scaledBitmap);
         dataSet.get(Integer.parseInt(senderName)).setBitmap(scaledBitmap);
-        Log.d("Contacted users VH", "image was loaded from interface and attached to " +  dataSet.get(Integer.parseInt(senderName)).getAddressedUserName());
+        Log.d("Contacted users VH", "image was loaded from interface and attached to " +  dataSet.get(Integer.parseInt(senderName)).getName());
     }
 
 
     @Override
     public void onImageLoadingError() {
-        Glide.with(context).load(R.drawable.female_icon).override(targetImageHeight, targetImageHeight).into(conversationImageView);
-        conversationImageView.setBorderColor(Color.WHITE);
-        conversationImageView.setBorderWidth(2);
+        Glide.with(context).load(R.drawable.female_icon).override(targetImageHeight, targetImageHeight).into(groupdImageView);
+        groupdImageView.setBorderColor(Color.WHITE);
+        groupdImageView.setBorderWidth(2);
         Log.d("Loading Error", "image should be loaded from setDataOnUIView");
     }*/
 }

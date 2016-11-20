@@ -8,10 +8,10 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".main.main.main.HomeScreen">
+        <activity android:name=".main.main.main.challenge.ChallengeScreen"></activity>
+        <activity android:name=".main.main.leader.ChallengesCreator"></activity>
 
-        </activity>
-        <activity android:name=".main.main.leader.ChallengesCreator">
+        <activity android:name=".main.main.main.groups.GroupsScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
