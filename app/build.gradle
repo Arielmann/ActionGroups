@@ -34,4 +34,7 @@ dependencies {
     compile 'org.greenrobot:eventbus:3.0.0'
     compile 'de.hdodenhof:circleimageview:2.1.0'
     compile 'com.sromku:simple-storage:1.2.0'
+    compile 'com.davemorrissey.labs:subsampling-scale-image-view:3.5.0'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.squareup.picasso:picasso:2.5.2'
 }

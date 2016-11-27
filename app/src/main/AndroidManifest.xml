@@ -8,16 +8,18 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".main.main.main.challenge.ChallengeScreen"></activity>
-        <activity android:name=".main.main.leader.ChallengesCreator"></activity>
-
-        <activity android:name=".main.main.main.groups.GroupsScreen">
+        <activity android:name=".main.common.challenge_navigator.SingleChallengeNavigationScreen" />
+        <activity android:name=".main.leader.groups.challenge_creator.ChallengesCreator" />
+        <activity android:name=".main.client.groups.groups_presenter.GroupsListScreen" />
+        <activity android:name=".main.leader.groups.groups_creator.GroupCreatorScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity android:name=".main.leader.groups.LeaderGroupMainScreen"></activity>
     </application>
 
 </manifest>

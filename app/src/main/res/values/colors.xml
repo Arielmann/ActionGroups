@@ -283,5 +283,6 @@
     <color name="textColorPrimary">#FFFFFF</color>
     <color name="windowBackground">#FFFFFF</color>
     <color name="navigationBarColor">#000000</color>
+    <color name="hintColor">#939393</color>
 
 </resources>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="September lions"
+            android:id="@+id/groupName"
+            android:layout_gravity="center_horizontal"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="completed challenges : 7"
+            android:id="@+id/completedChallengesTV"
+            android:layout_marginTop="60dp"
+            android:layout_below="@+id/currentChallengeTV"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="failed challengess : 4"
+            android:id="@+id/failedChallengesTV"
+            android:layout_below="@+id/completedChallengesTV"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Current challenge : do 100 push ups"
+            android:id="@+id/currentChallengeTV"
+            android:gravity="center_vertical|center_horizontal"
+            android:layout_below="@+id/groupName"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="75dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Group Members"
+            android:id="@+id/groupMembersTV"
+            android:layout_below="@+id/failedChallengesTV"
+            android:layout_alignRight="@+id/failedChallengesTV"
+            android:layout_alignEnd="@+id/failedChallengesTV"
+            android:layout_marginTop="71dp"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Challenge!"
+            android:id="@+id/addNewChallenge"
+            android:layout_alignParentBottom="true"
+            android:layout_alignLeft="@+id/currentChallengeTV"
+            android:layout_alignStart="@+id/currentChallengeTV"
+            android:layout_marginBottom="66dp" />
+
+    </RelativeLayout>
+
+</RelativeLayout>
