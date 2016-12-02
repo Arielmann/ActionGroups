@@ -14,7 +14,7 @@
         android:text="test test this is my unique test don&apos;t stop me know cuz i&apos;m testing my app time"
         android:gravity="center_horizontal" />
 
-    <Button
+<!--    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add Challenge"
@@ -22,5 +22,5 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:visibility="gone"/>
+        android:visibility="gone"/>-->
 </RelativeLayout>

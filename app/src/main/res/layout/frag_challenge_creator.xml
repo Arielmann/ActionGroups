@@ -3,11 +3,6 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/challengeCreatorRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </android.support.v7.widget.RecyclerView>
 
     <TextView
         android:layout_width="wrap_content"
@@ -38,7 +33,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/explenationText"
-        android:text="push ups are tone of the basics simplest drills for the trained person. don&apos;t give pu!"
+        android:text="Push ups is a basic, yet challenging exercise for the trained person. Don't you give up on them!"
         android:layout_below="@+id/challengeText"
         android:layout_alignLeft="@+id/challengeText"
         android:layout_alignStart="@+id/challengeText"
@@ -54,11 +49,11 @@
         android:layout_alignStart="@+id/challengeText" />
 
     <Button
+        android:id="@+id/goToPreview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Done!"
-        android:id="@+id/goToPreview"
-        android:layout_alignBottom="@+id/addExplanationImage"
+        android:layout_alignTop="@+id/addExplanationImage"
         android:layout_centerHorizontal="true" />
 
     <ImageButton

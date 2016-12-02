@@ -6,8 +6,8 @@ import android.util.Log;
 
 import java.util.concurrent.ExecutionException;
 
-import ariel.actiongroups.main.common.challenge_navigator.chat.ChatItem;
-import ariel.actiongroups.main.client.groups.groups_presenter.model.ActionGroup;
+import ariel.actiongroups.main.common.groups.challenge_navigator.chat.ChatItem;
+import ariel.actiongroups.main.common.groups.groups_list.model.ActionGroup;
 
 /**
  * Created by home on 9/30/2016.

@@ -13,7 +13,8 @@ import android.widget.TextView;
 import java.util.UUID;
 
 import ariel.actiongroups.R;
-import ariel.actiongroups.main.common.challenge_navigator.SingleChallengeNavigationScreen;
+import ariel.actiongroups.main.common.groups.challenge_navigator.SingleChallengeNavigationScreen;
+import ariel.actiongroups.main.common.groups.group_main.GroupInfoScreen;
 import ariel.actiongroups.main.common.utils.GoToScreen;
 
 /**
@@ -32,10 +33,8 @@ public class GroupCreatorFrag extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.frag_group_creator, container, false);
-        Button codeGenerator = (Button) layout.findViewById(R.id.generateGroupCode);
         Button createGroup = (Button) layout.findViewById(R.id.createGroupButton);
-        GoToScreen goToSingleChallengeNavigatorScreen = new GoToScreen(getActivity(), SingleChallengeNavigationScreen.class);
-        createGroup.setOnClickListener(goToSingleChallengeNavigatorScreen);
+        GoToScreen.setGoToScreenOnClickListener(createGroup, getActivity(), GroupInfoScreen.class);
         TextView codeTV= (TextView) layout.findViewById(R.id.groupCodeTV);
         String groupCode = "Leader Name /" + UUID.randomUUID().toString(); //TODO: compare code with all other codes of specific leader to prevent cloning
         codeTV.setText(groupCode);

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".main.client.groups.groups_presenter.GroupsListScreen">
+    tools:context=".main.common.groups.groups_list.GroupsListScreen">
 
     <RelativeLayout
         android:id="@+id/groupsInnerRelativeLayout"

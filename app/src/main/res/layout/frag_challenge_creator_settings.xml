@@ -41,11 +41,11 @@
         android:enabled="true" />
 
     <TextView
+        android:id="@+id/groupInfo_GroupNameTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Group Name: September Lions"
-        android:id="@+id/groupNameTV"
         android:layout_gravity="center_horizontal" />
 
 </LinearLayout>

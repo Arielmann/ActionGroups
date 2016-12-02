@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.view.View;
+import android.widget.Button;
 
 import ariel.actiongroups.R;
 
@@ -55,4 +56,9 @@ public class GoToScreen implements View.OnClickListener {
                     }, 2000);
         }
     };
+
+    public static void setGoToScreenOnClickListener(Button listnerButton, Activity activity, Class targetScreen){
+        GoToScreen goToScreen = new GoToScreen(activity, targetScreen);
+        listnerButton.setOnClickListener(goToScreen);
+    }
 }
