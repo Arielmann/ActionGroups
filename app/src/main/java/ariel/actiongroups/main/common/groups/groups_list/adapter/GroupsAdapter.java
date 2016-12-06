@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
+import java.util.List;
+
 import ariel.actiongroups.R;
 import ariel.actiongroups.main.common.groups.groups_list.model.GroupRow;
 import ariel.actiongroups.main.common.utils.GenericViewHolder;
@@ -16,10 +18,10 @@ import ariel.actiongroups.main.common.utils.GenericViewHolder;
  */
 public class GroupsAdapter extends RecyclerView.Adapter<GenericViewHolder> {
 
-    private GroupRow[] dataSet;
+    private List<GroupRow> dataSet;
     private Context context;
 
-    public GroupsAdapter(Context context, GroupRow[] dataSet) {
+    public GroupsAdapter(Context context, List dataSet) {
         this.context = context;
         this.dataSet = dataSet;
     }
@@ -32,14 +34,13 @@ public class GroupsAdapter extends RecyclerView.Adapter<GenericViewHolder> {
 
     @Override
     public void onBindViewHolder(GenericViewHolder holder, int position) {
+        holder.itemView.setOnClickListener((View.OnClickListener) holder);
         holder.setUIDataOnView(position);
-        OnGroupClicked onConversationClicked = new OnGroupClicked(context, new String[]{dataSet[position].getName()});
-        holder.setCustomClickListener(holder.itemView, onConversationClicked);
     }
 
     @Override
     public int getItemCount() {
-        return dataSet.length;
+        return dataSet.size();
     }
 
 }

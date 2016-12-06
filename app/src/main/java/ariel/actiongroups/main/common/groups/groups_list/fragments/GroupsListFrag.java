@@ -12,6 +12,8 @@ import android.widget.TextView;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
+import java.util.List;
+
 import ariel.actiongroups.R;
 import ariel.actiongroups.main.common.groups.groups_list.events.OnContactedUsersLoadedEvent;
 import ariel.actiongroups.main.common.groups.groups_list.model.GroupRow;
@@ -71,8 +73,8 @@ public class GroupsListFrag extends Fragment {
         initNoMessagesTextViewState(event.groupRows);
     }
 
-    private void initNoMessagesTextViewState(GroupRow[] groupRows) {
-        if (groupRows.length == 0) {
+    private void initNoMessagesTextViewState(List<GroupRow> groupRows) {
+        if (groupRows.size() == 0) {
             noGroupsMessage.setVisibility(View.VISIBLE);
         } else {
             noGroupsMessage.setVisibility(View.GONE);

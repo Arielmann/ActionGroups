@@ -5,7 +5,7 @@ import android.graphics.Bitmap;
 /**
  * Created by home on 11/18/2016.
  */
-public class ActionGroup {
+public class AGroup { //A for Action
     private String name;
     private Bitmap groupImageBitmap;
     private String profileImagePath;

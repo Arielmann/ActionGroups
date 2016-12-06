@@ -1,5 +1,7 @@
 package ariel.actiongroups.main.common.groups.groups_list.events;
 
+import java.util.List;
+
 import ariel.actiongroups.main.common.groups.groups_list.model.GroupRow;
 
 /**
@@ -7,9 +9,9 @@ import ariel.actiongroups.main.common.groups.groups_list.model.GroupRow;
  */
 public class OnContactedUsersLoadedEvent {
 
-    public GroupRow[] groupRows;
+    public List groupRows;
 
-    public OnContactedUsersLoadedEvent(GroupRow[] groupRows) {
+    public OnContactedUsersLoadedEvent(List groupRows) {
         this.groupRows = groupRows;
     }
 }

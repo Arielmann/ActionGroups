@@ -7,7 +7,7 @@ import android.util.Log;
 import java.util.concurrent.ExecutionException;
 
 import ariel.actiongroups.main.common.groups.challenge_navigator.chat.ChatItem;
-import ariel.actiongroups.main.common.groups.groups_list.model.ActionGroup;
+import ariel.actiongroups.main.common.groups.groups_list.model.AGroup;
 
 /**
  * Created by home on 9/30/2016.
@@ -21,14 +21,14 @@ public abstract class PicassoLoadedBitmapHandler {
     * */
 
     private ImageLoader loader;
-    private ActionGroup group;
+    private AGroup group;
     private Context context;
     private String url;
     private String senderName;
     private final String TAG = "Picasso Bitmap Handler";
 
     //Load profile image
-    public PicassoLoadedBitmapHandler(Context context, ImageLoader interfaceHolder, ActionGroup group, String url) {
+    public PicassoLoadedBitmapHandler(Context context, ImageLoader interfaceHolder, AGroup group, String url) {
         this.context = context;
         this.group = group;
         this.loader = interfaceHolder;
@@ -82,7 +82,7 @@ public abstract class PicassoLoadedBitmapHandler {
         return loader;
     }
 
-    public ActionGroup getGroup() {
+    public AGroup getGroup() {
         return group;
     }
 

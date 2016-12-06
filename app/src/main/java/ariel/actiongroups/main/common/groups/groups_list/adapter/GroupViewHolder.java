@@ -1,6 +1,7 @@
 package ariel.actiongroups.main.common.groups.groups_list.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -9,8 +10,11 @@ import android.widget.TextView;
 import java.io.File;
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.List;
 
 import ariel.actiongroups.R;
+import ariel.actiongroups.main.common.groups.challenge_navigator.SingleChallengeNavigationScreen;
+import ariel.actiongroups.main.common.groups.groups_list.model.AGroup;
 import ariel.actiongroups.main.common.groups.groups_list.model.GroupRow;
 import ariel.actiongroups.main.common.utils.GenericViewHolder;
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -18,10 +22,12 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import com.sromku.simple.storage.SimpleStorage;
 import com.sromku.simple.storage.Storage;
 
+import org.greenrobot.eventbus.EventBus;
+
 /**
  * Created by home on 7/2/2016.
  */
-public class GroupViewHolder extends GenericViewHolder {
+public class GroupViewHolder extends GenericViewHolder implements View.OnClickListener {
 
     /*
     * This ViewHolder creates ContactedUserRows shown on the
@@ -31,21 +37,21 @@ public class GroupViewHolder extends GenericViewHolder {
     */
 
     private final View view;
-    private final CircleImageView groupdImageView;
+    private final CircleImageView groupImageView;
     private final TextView nameTextView;
     private final TextView lastMessageTextView;
     private final TextView lastMessageDateTextView;
-    private GroupRow[] dataSet;
+    private List<GroupRow> dataSet;
     private int targetImageHeight;
     private int targetImageWidth;
     private Context context;
 
-    protected GroupViewHolder(Context context, View itemView, GroupRow[] dataSet) {
+    protected GroupViewHolder(Context context, View itemView, List dataSet) {
         super(itemView);
         this.context = context;
         this.view = itemView;
-        this.groupdImageView = (CircleImageView) view.findViewById(R.id.conversationImage);
-        this.nameTextView = (TextView) view.findViewById(R.id.addressedUser);
+        this.groupImageView = (CircleImageView) view.findViewById(R.id.groupRowImageView);
+        this.nameTextView = (TextView) view.findViewById(R.id.groupRowName);
         this.lastMessageTextView = (TextView) view.findViewById(R.id.lastTextMessage);
         this.lastMessageDateTextView = (TextView) view.findViewById(R.id.lastMessageDate);
         this.dataSet = dataSet;
@@ -57,25 +63,26 @@ public class GroupViewHolder extends GenericViewHolder {
 
     public void setUIDataOnView(int position) {
         try {
-            final String imagePath = dataSet[position].getImage();
-            final String message =  dataSet[position].getLastMessageAsText();
-            final String name =  dataSet[position].getName();
-            String lastMessageDate =  dataSet[position].getLastMessageDate();
+            final String imagePath = dataSet.get(position).getImage();
+            final String message = dataSet.get(position).getLastMessageAsText();
+            final String name = dataSet.get(position).getName();
+            String lastMessageDate = dataSet.get(position).getLastMessageDate();
 
             if (imagePath != null && message != null && name != null && lastMessageDate != null) {
 
                 this.nameTextView.setText(name);
                 this.lastMessageTextView.setText(message);
                 lastMessageDate = lastMessageDate.replace("_", ""); //remove the "_" char to prevent parse error
-                long lastMessageDateAsLong = Long.parseLong(lastMessageDate);
-                Timestamp stampOfLastMessage = new Timestamp(lastMessageDateAsLong);
-                Date date = new Date(stampOfLastMessage.getTime());
-                this.lastMessageDateTextView.setText(date.toString());
+                //long lastMessageDateAsLong = Long.parseLong(lastMessageDate);
+               // Timestamp stampOfLastMessage = new Timestamp(lastMessageDateAsLong);
+              // Date date = new Date(stampOfLastMessage.getTime());
+              //  this.lastMessageDateTextView.setText(date.toString());
+                this.groupImageView.setImageResource(R.drawable.running_lions);
 
-                if ( dataSet[position].getImageBitmap() != null) {
-                    //this.groupdImageView.setImageBitmap(dataSet.get(position).getImageBitmap());
-                    Log.d("Contacted users VH",  dataSet[position].getName() +
-                            " profile image set from inside user data. Path: " +  dataSet[position].getImage());
+                if (dataSet.get(position).getImageBitmap() != null) {
+                    //this.groupImageView.setImageBitmap(dataSet.get(position).getImageBitmap());
+                    Log.d("Contacted users VH", dataSet.get(position).getName() +
+                            " profile image set from inside user data. Path: " + dataSet.get(position).getImage());
                     return;
                 }
 
@@ -83,8 +90,8 @@ public class GroupViewHolder extends GenericViewHolder {
                 File profileImageFile = storage.getFile("Make Me Beautiful", "Contact Image: " + name);
                 if (profileImageFile != null) {
                     //ImageUtils.createBitmapFromImageSource("" + position, context, this, Uri.fromFile(profileImageFile), targetImageHeight, targetImageWidth); //create the image from the filepath.
-                    Log.d("Contacted users VH",  dataSet[position].getName() +
-                            " profile image created from file. Path: " +  dataSet[position].getImage());
+                    Log.d("Contacted users VH", dataSet.get(position).getName() +
+                            " profile image created from file. Path: " + dataSet.get(position).getImage());
                 }
 
 
@@ -93,10 +100,19 @@ public class GroupViewHolder extends GenericViewHolder {
             new Error("Custom Error: " + e.getMessage());
         }
     }
+
+    @Override
+    public void onClick(View view) {
+        Intent singleChallengeScreen = new Intent(context, SingleChallengeNavigationScreen.class);
+        singleChallengeScreen.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        AGroup group = new AGroup();
+        EventBus.getDefault().postSticky(group); //send data on this group
+        context.startActivity(singleChallengeScreen); //TODO: disable click after first time, else it search database twice
+    }
 /*
     @Override
     public void onImageLoaded(String senderName, Bitmap scaledBitmap, ChatItem.ItemType itemType, Uri imageUri) {
-        this.groupdImageView.setImageBitmap(scaledBitmap);
+        this.groupImageView.setImageBitmap(scaledBitmap);
         dataSet.get(Integer.parseInt(senderName)).setBitmap(scaledBitmap);
         Log.d("Contacted users VH", "image was loaded from interface and attached to " +  dataSet.get(Integer.parseInt(senderName)).getName());
     }
@@ -104,9 +120,9 @@ public class GroupViewHolder extends GenericViewHolder {
 
     @Override
     public void onImageLoadingError() {
-        Glide.with(context).load(R.drawable.female_icon).override(targetImageHeight, targetImageHeight).into(groupdImageView);
-        groupdImageView.setBorderColor(Color.WHITE);
-        groupdImageView.setBorderWidth(2);
+        Glide.with(context).load(R.drawable.female_icon).override(targetImageHeight, targetImageHeight).into(groupImageView);
+        groupImageView.setBorderColor(Color.WHITE);
+        groupImageView.setBorderWidth(2);
         Log.d("Loading Error", "image should be loaded from setDataOnUIView");
     }*/
 }

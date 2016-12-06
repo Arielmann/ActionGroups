@@ -23,7 +23,7 @@ import java.util.concurrent.ExecutionException;
 
 import ariel.actiongroups.R;
 import ariel.actiongroups.main.common.groups.challenge_navigator.chat.ChatItem;
-import ariel.actiongroups.main.common.groups.groups_list.model.ActionGroup;
+import ariel.actiongroups.main.common.groups.groups_list.model.AGroup;
 import ariel.actiongroups.main.common.groups.groups_list.model.GroupRow;
 import ariel.actiongroups.main.common.utils.GenericViewHolder;
 import ariel.actiongroups.main.common.utils.SharedPrefrences.SharedPrefManager;
@@ -117,7 +117,7 @@ public class ImageUtils {
     }
 
     //Activity is used as interface, context for downloading (activity is null when downloading from ReadStylistsFromServer thread)
-    public static void downloadProfileImage(Context context, final ImageLoader loader, ActionGroup group, String url) {
+    public static void downloadProfileImage(Context context, final ImageLoader loader, AGroup group, String url) {
         Log.d(TAG, "entered imageUtils download profile image method method for " +  group.getName() + "'s profile image");
         picassoProfileImageTarget = new PicassoProfileImageTarget(context, loader, group, url);
         Picasso.with(context).load(url).into(picassoProfileImageTarget);
@@ -132,7 +132,7 @@ public class ImageUtils {
 
     public static void initLoadedStylistsImageBitmaps(Context context, List<GroupRow> groups, int targetImageHeight, int targetImageWidth) {
         for (final GroupRow groupRow : groups) {
-            Glide.with(context).load(groupRow.getProfileImagePath()).asBitmap().into(new SimpleTarget<Bitmap>(targetImageHeight, targetImageWidth) {
+            Glide.with(context).load(groupRow.getImagePath()).asBitmap().into(new SimpleTarget<Bitmap>(targetImageHeight, targetImageWidth) {
                 @Override
                 public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
                     groupRow.setBitmap(resource);
@@ -185,7 +185,7 @@ public class ImageUtils {
         return imageFile;
     }
 
-    public static void setUserImageFile(Context context, ActionGroup group, Bitmap profileImage, String senderName) {
+    public static void setUserImageFile(Context context, AGroup group, Bitmap profileImage, String senderName) {
         String fileDirName = Environment.getExternalStorageDirectory().toString() + SharedPrefManager.getInstance(context).getProfileImagesDir();
         String fileNameWithSpace = "Contact_" + senderName + ".jpg";
         String finalFileName = fileNameWithSpace.replace(' ', '_');

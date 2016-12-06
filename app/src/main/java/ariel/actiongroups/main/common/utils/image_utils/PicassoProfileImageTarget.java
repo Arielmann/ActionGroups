@@ -9,7 +9,7 @@ import android.util.Log;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 
-import ariel.actiongroups.main.common.groups.groups_list.model.ActionGroup;
+import ariel.actiongroups.main.common.groups.groups_list.model.AGroup;
 
 /**
  * Created by home on 8/24/2016.
@@ -19,7 +19,7 @@ public class PicassoProfileImageTarget extends PicassoLoadedBitmapHandler implem
     private int counter;
     private final String TAG = "Picasso profile target";
 
-    public PicassoProfileImageTarget(Context context, ImageLoader interfaceHolder, ActionGroup group, String url) {
+    public PicassoProfileImageTarget(Context context, ImageLoader interfaceHolder, AGroup group, String url) {
         super(context, interfaceHolder, group, url);
     }
 

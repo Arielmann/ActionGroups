@@ -13,8 +13,7 @@ import android.widget.TextView;
 import java.util.UUID;
 
 import ariel.actiongroups.R;
-import ariel.actiongroups.main.common.groups.challenge_navigator.SingleChallengeNavigationScreen;
-import ariel.actiongroups.main.common.groups.group_main.GroupInfoScreen;
+import ariel.actiongroups.main.common.groups.group_info.GroupInfoScreen;
 import ariel.actiongroups.main.common.utils.GoToScreen;
 
 /**

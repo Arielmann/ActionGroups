@@ -29,7 +29,7 @@
         <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="75dp"
             android:layout_height="75dp"
-            android:id="@+id/conversationImage"
+            android:id="@+id/groupRowImageView"
             android:layout_gravity="left|center_horizontal"
             android:scaleType="centerCrop"
             app:civ_border_color="@color/md_white_1000"
@@ -43,7 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Addressed User"
-            android:id="@+id/addressedUser"
+            android:id="@+id/groupRowName"
             android:focusableInTouchMode="false"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_gravity="left"
@@ -56,9 +56,9 @@
             android:text="This is the last message"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:layout_gravity="left"
-            android:layout_below="@+id/conversationImage"
-            android:layout_toRightOf="@+id/conversationImage"
-            android:layout_toEndOf="@+id/conversationImage"
+            android:layout_below="@+id/groupRowImageView"
+            android:layout_toRightOf="@+id/groupRowImageView"
+            android:layout_toEndOf="@+id/groupRowImageView"
             android:textColor="@color/md_grey_700" />
     </LinearLayout>
 

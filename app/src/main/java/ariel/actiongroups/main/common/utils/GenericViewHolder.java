@@ -13,8 +13,5 @@ public abstract class GenericViewHolder extends RecyclerView.ViewHolder {
 
     public abstract void setUIDataOnView(int position);
 
-    public void setCustomClickListener(View view, View.OnClickListener onClickListener) {
-        view.setOnClickListener(onClickListener);
-    }
 }
 

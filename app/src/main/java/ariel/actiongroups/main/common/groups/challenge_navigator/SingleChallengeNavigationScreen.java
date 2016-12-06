@@ -8,32 +8,20 @@ import android.support.v7.widget.Toolbar;
 import android.widget.Button;
 
 import ariel.actiongroups.R;
+import ariel.actiongroups.main.ViewPagerActivity;
 import ariel.actiongroups.main.common.groups.challenge_navigator.challenge.ChallengeTabFrag;
 import ariel.actiongroups.main.common.groups.challenge_navigator.chat.ChatTabFrag;
 import ariel.actiongroups.main.common.groups.challenge_navigator.results.ResultsTabFrag;
-import ariel.actiongroups.main.common.groups.group_main.GroupInfoScreen;
+import ariel.actiongroups.main.common.groups.group_info.GroupInfoScreen;
 import ariel.actiongroups.main.common.utils.GoToScreen;
 import ariel.actiongroups.main.common.utils.ViewPagerAdapter;
 
-public class SingleChallengeNavigationScreen extends AppCompatActivity {
-
-    private Toolbar toolbar;
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
+public class SingleChallengeNavigationScreen extends ViewPagerActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_single_challenge_navigator);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        viewPager = (ViewPager) findViewById(R.id.viewpager);
-        setupViewPager(viewPager);
-        tabLayout = (TabLayout) findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(viewPager);
-        Button goToGroupInfoScreen = (Button) findViewById(R.id.goToGroupInfo);
-        GoToScreen.setGoToScreenOnClickListener(goToGroupInfoScreen, this, GroupInfoScreen.class);
+        setupViewPager(super.getViewPager());
     }
 
     private void setupViewPager(ViewPager viewPager) {

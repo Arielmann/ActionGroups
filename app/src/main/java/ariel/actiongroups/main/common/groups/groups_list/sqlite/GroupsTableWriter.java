@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.AsyncTask;
 
-import ariel.actiongroups.main.common.groups.groups_list.model.ActionGroup;
+import ariel.actiongroups.main.common.groups.groups_list.model.AGroup;
 import ariel.actiongroups.main.common.db_manager.DataBaseManager;
 
 /**
@@ -64,12 +64,12 @@ public class GroupsTableWriter extends SQLiteOpenHelper {
                 "token TEXT_LEFT NOT NULL)");
     }
 
-    public void addContactToTable(final Context context, final ActionGroup[] groups, final String lastMessageDate, final String lastMessage) {
+    public void addContactToTable(final Context context, final AGroup[] groups, final String lastMessageDate, final String lastMessage) {
 
-        new AsyncTask<ActionGroup, Void, ActionGroup>() {
+        new AsyncTask<AGroup, Void, AGroup>() {
 
             @Override
-            protected ActionGroup doInBackground(ActionGroup... groupInArray) {
+            protected AGroup doInBackground(AGroup... groupInArray) {
                 SQLiteDatabase db = getWritableDatabase(); //TODO: DO WITH AsyncTask
                 db.execSQL("CREATE TABLE IF NOT EXISTS " + GROUPS_TABLE + //TODO: SHOULD BE CALLED IN ONCREATE()!
                         "(id INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -107,7 +107,7 @@ public class GroupsTableWriter extends SQLiteOpenHelper {
             }
 
             @Override
-            protected void onPostExecute(ActionGroup group) {
+            protected void onPostExecute(AGroup group) {
                 /*//add contact row for ContactedUsesHashMap
                 GroupsModel model = GroupsModel.getInstance(context);
                 GroupRow gropudRow = new GroupRow(group.getName(), group.getImage(), lastMessageDate, lastMessage);

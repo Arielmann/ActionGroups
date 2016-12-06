@@ -5,7 +5,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import ariel.actiongroups.main.common.groups.groups_list.model.ActionGroup;
+import java.util.UUID;
+
+import ariel.actiongroups.main.common.groups.groups_list.model.AGroup;
 import ariel.actiongroups.main.common.groups.groups_list.model.GroupRow;
 import ariel.actiongroups.main.common.db_manager.DataBaseManager;
 
@@ -89,7 +91,7 @@ public class GroupsTableReader extends SQLiteOpenHelper {
         GroupRow contactedUserConversationRow;
         try {
             String ContactImagePath = cursor.getString(0);
-            contactedUserConversationRow = new GroupRow(name,
+            contactedUserConversationRow = new GroupRow(UUID.randomUUID().toString(), name,
                     ContactImagePath, "Yesterday", "Last message");
         } catch (Exception e) {
             e.printStackTrace();
@@ -146,7 +148,7 @@ public class GroupsTableReader extends SQLiteOpenHelper {
 
     //***************************************************************************************************//
 
-    public ActionGroup getStylist(String name) {
+    public AGroup getStylist(String name) {
         SQLiteDatabase db = getReadableDatabase();
         getTable(db);
         Cursor cursor = db.query(CONTACTED_STYLISTS_TABLE, new String[]{KEY_ID, KEY_NAME,
@@ -157,7 +159,7 @@ public class GroupsTableReader extends SQLiteOpenHelper {
         if (cursor != null)
             cursor.moveToFirst();
 
-        ActionGroup group = new ActionGroup();
+        AGroup group = new AGroup();
 
 /*        ActionGroup group = new ActionGroup(Integer.parseInt(cursor.getString(0)), cursor.getString(1),
                 cursor.getString(2),

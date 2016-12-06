@@ -26,10 +26,10 @@ public class ChallengesCreator extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        viewPager = (ViewPager) findViewById(R.id.viewpager);
+        viewPager = (ViewPager) findViewById(R.id.SingleChallengeViewpager);
         setupViewPager(viewPager);
 
-        tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout = (TabLayout) findViewById(R.id.singleChallengeTabs);
         tabLayout.setupWithViewPager(viewPager);
         Log.d(CHALLENGE_CREATOR, "Challenge Creator created");
     }
