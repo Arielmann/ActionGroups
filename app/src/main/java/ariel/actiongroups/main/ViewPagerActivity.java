@@ -27,8 +27,6 @@ public abstract class ViewPagerActivity extends AppCompatActivity {
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         tabLayout = (TabLayout) findViewById(R.id.viewPagerTabs);
         tabLayout.setupWithViewPager(viewPager);
-        Button goToGroupInfoScreen = (Button) findViewById(R.id.goToGroupInfo);
-        GoToScreen.setGoToScreenOnClickListener(goToGroupInfoScreen, this, GroupInfoScreen.class);
     }
 
     public ViewPager getViewPager() {

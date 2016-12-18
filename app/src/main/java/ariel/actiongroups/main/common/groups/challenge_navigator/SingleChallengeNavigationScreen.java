@@ -21,7 +21,10 @@ public class SingleChallengeNavigationScreen extends ViewPagerActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //set content view is defined in super class
         setupViewPager(super.getViewPager());
+        Button goToGroupInfo = (Button) findViewById(R.id.goToGroupInfo);
+        GoToScreen.setGoToScreenOnClickListener(goToGroupInfo, this, GroupInfoScreen.class);
     }
 
     private void setupViewPager(ViewPager viewPager) {
