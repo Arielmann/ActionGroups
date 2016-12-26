@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import ariel.actiongroups.R;
-import ariel.actiongroups.main.common.groups.challenge_navigator.chat.ChatItem;
+import ariel.actiongroups.main.common.challenges.challenge_navigator.chat.ChatItem;
 import ariel.actiongroups.main.common.groups.groups_list.model.AGroup;
 import ariel.actiongroups.main.common.groups.groups_list.model.GroupRow;
 import ariel.actiongroups.main.common.utils.GenericViewHolder;

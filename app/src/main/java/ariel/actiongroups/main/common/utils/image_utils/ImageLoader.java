@@ -5,7 +5,7 @@ import android.net.Uri;
 
 import java.util.concurrent.ExecutionException;
 
-import ariel.actiongroups.main.common.groups.challenge_navigator.chat.ChatItem;
+import ariel.actiongroups.main.common.challenges.challenge_navigator.chat.ChatItem;
 
 /**
  * Created by home on 6/25/2016.

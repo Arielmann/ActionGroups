@@ -3,14 +3,15 @@ package ariel.actiongroups.main.common.utils;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.support.v4.util.Pair;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.HashMap;
+import java.util.List;
+
 import ariel.actiongroups.R;
 
-/**
- * Created by home on 4/13/2016.
- */
 public class GoToScreen implements View.OnClickListener {
 
     public Intent getIntent() {
@@ -26,7 +27,6 @@ public class GoToScreen implements View.OnClickListener {
         this.goToScreen = new Intent(activity, screen);
         this.dialogMessage = dialogMessage;
     }
-
 
     public GoToScreen(Activity activity, Class screen) {
         this.activity = activity;
@@ -57,8 +57,8 @@ public class GoToScreen implements View.OnClickListener {
         }
     };
 
-    public static void setGoToScreenOnClickListener(Button listnerButton, Activity activity, Class targetScreen){
+    public static void setGoToScreenOnClickListener(Button listenerButton, Activity activity, Class targetScreen){
         GoToScreen goToScreen = new GoToScreen(activity, targetScreen);
-        listnerButton.setOnClickListener(goToScreen);
+        listenerButton.setOnClickListener(goToScreen);
     }
 }

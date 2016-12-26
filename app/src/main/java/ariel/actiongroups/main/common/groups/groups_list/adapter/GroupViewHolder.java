@@ -8,12 +8,10 @@ import android.widget.TextView;
 
 
 import java.io.File;
-import java.sql.Date;
-import java.sql.Timestamp;
 import java.util.List;
 
 import ariel.actiongroups.R;
-import ariel.actiongroups.main.common.groups.challenge_navigator.SingleChallengeNavigationScreen;
+import ariel.actiongroups.main.common.challenges.challenge_navigator.SingleChallengeNavigationScreen;
 import ariel.actiongroups.main.common.groups.groups_list.model.AGroup;
 import ariel.actiongroups.main.common.groups.groups_list.model.GroupRow;
 import ariel.actiongroups.main.common.utils.GenericViewHolder;

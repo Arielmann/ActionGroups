@@ -2,18 +2,21 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ariel.actiongroups">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".main.common.groups.challenge_navigator.SingleChallengeNavigationScreen" />
-        <activity android:name=".main.leader.groups.challenge_creator.ChallengesCreator" />
+        <activity android:name=".main.common.challenges.challenge_navigator.SingleChallengeNavigationScreen" />
+        <activity android:name=".main.leader.challenges.challengecreator.views.ChallengesCreatorActivity" />
         <activity android:name=".main.common.groups.groups_list.GroupsListScreen" />
-        <activity android:name=".main.leader.groups.groups_creator.GroupCreatorScreen"></activity>
-        <activity android:name=".main.leader.groups.LeaderGroupMainScreen" />
-        <activity android:name=".main.common.groups.group_info.GroupInfoScreen" />
+        <activity android:name=".main.leader.groups.creation.GroupCreatorActivity"></activity>
+        <activity android:name=".main.leader.groups.LeaderGroupMainActivity" />
+        <activity android:name=".main.common.groups.group_info.GroupInfoActivity" />
         <activity android:name=".main.common.home_page.HomePage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,7 +25,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".main.ViewPagerActivity"></activity>
+        <activity android:name=".main.common.utils.ViewPagerActivity"></activity>
     </application>
 
 </manifest>

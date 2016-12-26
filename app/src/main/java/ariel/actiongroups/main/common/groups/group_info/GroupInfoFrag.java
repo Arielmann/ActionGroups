@@ -10,7 +10,7 @@ import android.widget.Button;
 
 import ariel.actiongroups.R;
 import ariel.actiongroups.main.common.utils.GoToScreen;
-import ariel.actiongroups.main.leader.groups.challenge_creator.ChallengesCreator;
+import ariel.actiongroups.main.leader.challenges.challengecreator.views.ChallengesCreatorActivity;
 
 /**
  * Created by home on 11/29/2016.
@@ -27,7 +27,7 @@ public class GroupInfoFrag extends Fragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View groupMainLayout = inflater.inflate(R.layout.frag_group_info, null);
         Button createChallenge = (Button) groupMainLayout.findViewById(R.id.createChallengeButton);
-        GoToScreen.setGoToScreenOnClickListener(createChallenge, getActivity(), ChallengesCreator.class);
+        GoToScreen.setGoToScreenOnClickListener(createChallenge, getActivity(), ChallengesCreatorActivity.class);
         return groupMainLayout;
     }
 }

@@ -1,15 +1,13 @@
-package ariel.actiongroups.main.common.utils.SharedPrefrences;
+package ariel.actiongroups.main.common.profiles.sharedprefrences;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 
 
 import java.util.HashMap;
 
-import ariel.actiongroups.R;
 import ariel.actiongroups.main.common.utils.image_utils.ImageUtils;
 
 /**
@@ -35,25 +33,23 @@ public class SharedPrefManager {
     * */
 
     // private static ImageArray sharedPrefs = new ImageArray();
-    private static SharedPrefManager sharedPrefs;
-    private static Resources res;
+    private static SharedPrefManager instance;
     private SharedPreferences insideSharedPref;
     private int notificationsCounter;
     private Bitmap userImageBitmap = ImageUtils.defaultProfileImage;
-    private String ACCOUNT_INFO = "Account info";
 
     //creates the only instance
-    private SharedPrefManager(Context context) {
-        insideSharedPref = context.getSharedPreferences(ACCOUNT_INFO, Context.MODE_PRIVATE);
+    private SharedPrefManager(SharedPreferences sharedPreferences) {
+        insideSharedPref = sharedPreferences;
     }
 
     // prevents creating of instances
     public static SharedPrefManager getInstance(Context context) { // create a static common database
-        if (sharedPrefs == null) {
-            sharedPrefs = new SharedPrefManager(context);
-            res = context.getResources();
+        if (instance == null) {
+            SharedPreferences sharedPreferences = context.getSharedPreferences("Account info", Context.MODE_PRIVATE);
+            instance = new SharedPrefManager(sharedPreferences);
         }
-        return sharedPrefs;
+        return instance;
     }
 
     public SharedPreferences getSharedPrefs() {
@@ -69,11 +65,7 @@ public class SharedPrefManager {
     }
 
     public String getUserPassword() {
-        return insideSharedPref.getString("password", null);
-    }
-
-    public String getUserEmail() {
-        return insideSharedPref.getString(res.getString(R.string.email), null);
+        return insideSharedPref.getString("password", "password error");
     }
 
     public String getUserLocation() {

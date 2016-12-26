@@ -1,68 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".main.leader.challenges.challengecreator.views.ChallengesCreatorFrag">
 
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Create Challenge"
-        android:id="@+id/textView"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center_horizontal" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/challengeText"
-        android:layout_marginTop="75dp"
-        android:textSize="@dimen/largeChallengeText"
-        android:text="Do 100 push-ups before dinner"
-        android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true" />
-
-    <View
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@android:color/darker_gray"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/explenationText"
-        android:text="Push ups is a basic, yet challenging exercise for the trained person. Don't you give up on them!"
-        android:layout_below="@+id/challengeText"
-        android:layout_alignLeft="@+id/challengeText"
-        android:layout_alignStart="@+id/challengeText"
-        android:layout_marginTop="133dp" />
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:text="Create Challenge"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/addMissionToChallangeIcon"
-        android:src="@drawable/ic_plus_one_black_36dp"
-        android:layout_below="@+id/challengeText"
-        android:layout_alignLeft="@+id/challengeText"
-        android:layout_alignStart="@+id/challengeText" />
+        <EditText
+            android:id="@+id/challengeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="75dp"
+            android:text="Do 100 push-ups before dinner"
+            android:textSize="@dimen/largeChallengeText" />
 
-    <Button
-        android:id="@+id/goToPreview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Done!"
-        android:layout_alignTop="@+id/addExplanationImage"
-        android:layout_centerHorizontal="true" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray" />
 
-    <ImageButton
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:id="@+id/addExplanationImage"
-        android:src="@drawable/plus_icon"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        <EditText
+            android:id="@+id/explenationText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/challengeText"
+            android:layout_alignStart="@+id/challengeText"
+            android:layout_below="@+id/challengeText"
+            android:layout_marginTop="133dp"
+            android:text="Push ups is a basic, yet challenging exercise for the trained person. Don't you give up on them!" />
 
-</RelativeLayout>
+        <ImageButton
+            android:id="@+id/addMissionToChallangeIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/challengeText"
+            android:layout_alignStart="@+id/challengeText"
+            android:layout_below="@+id/challengeText"
+            android:src="@drawable/ic_plus_one_black_36dp" />
+
+        <Button
+            android:id="@+id/goToPreview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/addExplanationImage"
+            android:layout_centerHorizontal="true"
+            android:text="Done!" />
+
+        <ImageButton
+            android:id="@+id/addExplanationImage"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/plus_icon" />
+    </RelativeLayout>
+</layout>

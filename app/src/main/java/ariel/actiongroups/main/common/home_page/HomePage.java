@@ -1,20 +1,13 @@
 package ariel.actiongroups.main.common.home_page;
 
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
+import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
-import android.widget.Button;
+import android.support.v4.view.ViewPager;
 
 import ariel.actiongroups.R;
-import ariel.actiongroups.main.ViewPagerActivity;
-import ariel.actiongroups.main.common.groups.challenge_navigator.challenge.ChallengeTabFrag;
-import ariel.actiongroups.main.common.groups.challenge_navigator.chat.ChatTabFrag;
-import ariel.actiongroups.main.common.groups.challenge_navigator.results.ResultsTabFrag;
-import ariel.actiongroups.main.common.groups.group_info.GroupInfoScreen;
+import ariel.actiongroups.main.common.appinit.AppInit;
 import ariel.actiongroups.main.common.groups.groups_list.fragments.GroupsListFrag;
-import ariel.actiongroups.main.common.utils.GoToScreen;
+import ariel.actiongroups.main.common.utils.ViewPagerActivity;
 import ariel.actiongroups.main.common.utils.ViewPagerAdapter;
 
 public class HomePage extends ViewPagerActivity {
@@ -23,12 +16,15 @@ public class HomePage extends ViewPagerActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setupViewPager(super.getViewPager());
+        AppInit.InitApp(this);
+       //RegisterLeaderInServer.registerLeaderToBackendLessServer();
     }
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new GroupsListFrag(), "Hot Groups");
-        adapter.addFragment(new GroupsListFrag(), "My Groups");
+        Resources res = getResources();
+        adapter.addFragment(new GroupsListFrag(), res.getString(R.string.hot_groups));
+        adapter.addFragment(new GroupsListFrag(), res.getString(R.string.my_groups));
         viewPager.setAdapter(adapter);
     }
 }
