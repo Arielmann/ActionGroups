@@ -3,12 +3,9 @@ package ariel.actiongroups.main.common.utils;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.support.v4.util.Pair;
+import android.os.Parcelable;
 import android.view.View;
 import android.widget.Button;
-
-import java.util.HashMap;
-import java.util.List;
 
 import ariel.actiongroups.R;
 
@@ -22,15 +19,21 @@ public class GoToScreen implements View.OnClickListener {
     private Intent goToScreen;
     private String dialogMessage;
 
-    public GoToScreen(Activity activity, Class screen, String dialogMessage) {
+    private GoToScreen(Activity activity, Class screen, String dialogMessage) {
         this.activity = activity;
         this.goToScreen = new Intent(activity, screen);
         this.dialogMessage = dialogMessage;
     }
 
-    public GoToScreen(Activity activity, Class screen) {
+    private GoToScreen(Activity activity, Class screen) {
         this.activity = activity;
         this.goToScreen = new Intent(activity, screen);
+    }
+
+    private GoToScreen(Activity activity, Class screen, String key, Object data) {
+        this.activity = activity;
+        this.goToScreen = new Intent(activity, screen);
+        this.goToScreen.putExtra(key, (Parcelable) data);
     }
 
     @Override
@@ -57,8 +60,19 @@ public class GoToScreen implements View.OnClickListener {
         }
     };
 
-    public static void setGoToScreenOnClickListener(Button listenerButton, Activity activity, Class targetScreen){
+    public static void setGoToScreenOnClickListener(Button button, Activity activity, Class targetScreen) {
         GoToScreen goToScreen = new GoToScreen(activity, targetScreen);
-        listenerButton.setOnClickListener(goToScreen);
+        button.setOnClickListener(goToScreen);
     }
+
+    public static void goToNextScreen(Activity activity, Class targetScreen) {
+        GoToScreen goToScreen = new GoToScreen(activity, targetScreen);
+        goToScreen.onClick(null);
+    }
+
+   /* public static void goToNextScreenWithDataIntent(Activity activity, Class targetClass, String key, Object value) {
+        Parcels.wrap(value);
+        GoToScreen goToScreen = new GoToScreen(activity, targetClass, key, value);
+        goToScreen.onClick(null);
+    }*/
 }

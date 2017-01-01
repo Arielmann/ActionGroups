@@ -1,4 +1,4 @@
-package ariel.actiongroups.main.common.utils.SharedPrefrences;
+package ariel.actiongroups.main.common.utils.sharedprefrences;
 
 import android.content.Context;
 import android.content.SharedPreferences;

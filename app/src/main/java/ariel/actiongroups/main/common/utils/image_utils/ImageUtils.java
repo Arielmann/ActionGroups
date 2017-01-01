@@ -22,11 +22,11 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import ariel.actiongroups.R;
-import ariel.actiongroups.main.common.challenges.challenge_navigator.chat.ChatItem;
+import ariel.actiongroups.main.common.challenges.challenge_navigator.tabs.chat.ChatItem;
 import ariel.actiongroups.main.common.groups.groups_list.model.AGroup;
 import ariel.actiongroups.main.common.groups.groups_list.model.GroupRow;
-import ariel.actiongroups.main.common.utils.GenericViewHolder;
-import ariel.actiongroups.main.common.utils.SharedPrefrences.SharedPrefManager;
+import ariel.actiongroups.main.common.utils.abstractions.GenericViewHolder;
+import ariel.actiongroups.main.common.utils.sharedprefrences.SharedPrefManager;
 
 /**
  * Created by home on 6/29/2016.

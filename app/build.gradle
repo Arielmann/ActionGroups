@@ -43,4 +43,5 @@ dependencies {
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'net.danlew:android.joda:2.9.5.1'
     compile 'com.backendless:backendless:3.0.24'
+    compile 'org.parceler:parceler-api:1.1.6'
 }

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import ariel.actiongroups.main.common.challenges.model.Challenge;
+import ariel.actiongroups.main.common.challenges.Challenge;
 import ariel.actiongroups.main.common.profiles.models.Leader;
 import ariel.actiongroups.main.common.profiles.models.User;
 
@@ -20,7 +20,7 @@ public class ActionGroup {
     //Convenience Constructor
     public ActionGroup() {
         this.id = UUID.randomUUID().toString();
-        this.name = "Group name for group Id: " + id;
+        this.name = "Group name by id: " + this.id;
         this.description = "This is a great group!";
         this.users = new ArrayList<>();
         while(users.size() < 4){

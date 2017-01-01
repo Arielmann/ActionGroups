@@ -11,11 +11,8 @@ import java.util.List;
 
 import ariel.actiongroups.R;
 import ariel.actiongroups.main.common.groups.groups_list.model.GroupRow;
-import ariel.actiongroups.main.common.utils.GenericViewHolder;
+import ariel.actiongroups.main.common.utils.abstractions.GenericViewHolder;
 
-/**
- * Created by home on 7/2/2016.
- */
 public class GroupsAdapter extends RecyclerView.Adapter<GenericViewHolder> {
 
     private List<GroupRow> dataSet;

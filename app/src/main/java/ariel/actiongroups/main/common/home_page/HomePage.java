@@ -7,7 +7,7 @@ import android.support.v4.view.ViewPager;
 import ariel.actiongroups.R;
 import ariel.actiongroups.main.common.appinit.AppInit;
 import ariel.actiongroups.main.common.groups.groups_list.fragments.GroupsListFrag;
-import ariel.actiongroups.main.common.utils.ViewPagerActivity;
+import ariel.actiongroups.main.common.utils.abstractions.ViewPagerActivity;
 import ariel.actiongroups.main.common.utils.ViewPagerAdapter;
 
 public class HomePage extends ViewPagerActivity {

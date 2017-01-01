@@ -11,10 +11,10 @@ import java.io.File;
 import java.util.List;
 
 import ariel.actiongroups.R;
-import ariel.actiongroups.main.common.challenges.challenge_navigator.SingleChallengeNavigationScreen;
+import ariel.actiongroups.main.common.challenges.challenge_navigator.view.ChallengeNavigationActivity;
 import ariel.actiongroups.main.common.groups.groups_list.model.AGroup;
 import ariel.actiongroups.main.common.groups.groups_list.model.GroupRow;
-import ariel.actiongroups.main.common.utils.GenericViewHolder;
+import ariel.actiongroups.main.common.utils.abstractions.GenericViewHolder;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 import com.sromku.simple.storage.SimpleStorage;
@@ -101,7 +101,7 @@ public class GroupViewHolder extends GenericViewHolder implements View.OnClickLi
 
     @Override
     public void onClick(View view) {
-        Intent singleChallengeScreen = new Intent(context, SingleChallengeNavigationScreen.class);
+        Intent singleChallengeScreen = new Intent(context, ChallengeNavigationActivity.class);
         singleChallengeScreen.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         AGroup group = new AGroup();
         EventBus.getDefault().postSticky(group); //send data on this group

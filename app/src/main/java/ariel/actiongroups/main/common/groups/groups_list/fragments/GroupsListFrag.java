@@ -19,9 +19,6 @@ import ariel.actiongroups.main.common.groups.groups_list.events.OnContactedUsers
 import ariel.actiongroups.main.common.groups.groups_list.model.GroupRow;
 import ariel.actiongroups.main.common.groups.groups_list.model.GroupsModel;
 
-/**
- * Created by home on 6/19/2016.
- */
 public class GroupsListFrag extends Fragment {
 
     private RecyclerView recyclerView;

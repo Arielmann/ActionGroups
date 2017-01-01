@@ -1,19 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".main.common.groups.group_info.GroupInfoActivity">
 
-    <fragment
-        android:id="@+id/groupCreatorFrag"
-        android:name="ariel.actiongroups.main.common.groups.group_info.GroupInfoFrag"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-</RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/groupImageViewLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true">
+
+            <ImageView
+                android:id="@+id/groupImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="200dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/running_lions" />
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/groupInfo_GroupNameTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/groupImageViewLayout"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:text="September Lions"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:id="@+id/currentChallengeTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/groupInfo_GroupNameTV"
+            android:layout_centerVertical="true"
+            android:gravity="center_horizontal"
+            android:text="Current Challenge: Do 100 push ups before dinner"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/numberOfPeopleLeftForCompletionTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/currentChallengeTV"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="28dp"
+            android:gravity="center_horizontal"
+            android:text="Waiting for 10 more people for completion"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/nextChallengeTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/numberOfPeopleLeftForCompletionTV"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="29dp"
+            android:gravity="center_horizontal"
+            android:text="Next Challenge: do 150 chest lifts before going to work"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <!-- <android.support.v7.widget.RecyclerView
+             android:id="@+id/groupMainScreenRecyclerView"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content">
+         </android.support.v7.widget.RecyclerView>-->
+
+        <Button
+            android:id="@+id/createChallengeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/nextChallengeTV"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="35dp"
+            android:text="Add new Challenge" />
+    </RelativeLayout>
+</layout>
