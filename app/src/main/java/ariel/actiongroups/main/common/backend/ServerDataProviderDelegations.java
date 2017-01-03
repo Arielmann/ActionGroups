@@ -16,9 +16,11 @@ public abstract class ServerDataProviderDelegations {
 
     public interface RegisterGroupDelegate {
         void registerNewGroup(Context context, ActionGroup group);
+        void registerToPushNotificationsCustomChannel(String channel);
     }
 
     public interface RegisterUserDelegate {
+        void registerToPushNotificationsDefaultChannel();
         void registerNewUser(BackendlessUser user);
     }
 

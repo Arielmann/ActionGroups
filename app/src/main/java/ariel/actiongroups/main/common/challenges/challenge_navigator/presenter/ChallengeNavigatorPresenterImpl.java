@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 
-import org.greenrobot.eventbus.EventBus;
-
 import ariel.actiongroups.main.common.challenges.Challenge;
 import ariel.actiongroups.main.common.challenges.challenge_navigator.model.ChallengeNavigatorModel;
 import ariel.actiongroups.main.common.challenges.challenge_navigator.model.ChallengeNavigatorModelDelegations;
@@ -43,7 +41,11 @@ public class ChallengeNavigatorPresenterImpl implements ChallengeNavigatorPresen
 
     @Override
     public void updateChallengeData(Challenge challenge) {
-        model.setChallenge(challenge);
+        if(challenge != null) {
+            model.setChallenge(challenge);
+        }else { //TODO: debug purposes only, remove when done!!
+            model.setChallenge(new Challenge());
+        }
     }
 }
 

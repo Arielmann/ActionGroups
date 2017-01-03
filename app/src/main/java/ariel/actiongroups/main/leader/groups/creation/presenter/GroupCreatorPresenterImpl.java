@@ -8,6 +8,8 @@ import ariel.actiongroups.main.common.groups.model.ActionGroup;
 
 public class GroupCreatorPresenterImpl implements GroupCreatorPresenter{
 
+    private static final String DEFAULT_CUSTOM_CHANNEL = "Default custom channel";
+
     @Override
     public void saveGroupToDataBases(Context context, ActionGroup group) {
         saveGroupToServer(context, group);
@@ -21,6 +23,8 @@ public class GroupCreatorPresenterImpl implements GroupCreatorPresenter{
     private void saveGroupToServer(Context context, ActionGroup group) {
         ServerDataProviderDelegations.RegisterGroupDelegate groupSaver = ServerCommunicator.getInstance();
         groupSaver.registerNewGroup(context, group);
+        //TODO: remove hard coding for saving channel for each group
+        groupSaver.registerToPushNotificationsCustomChannel(DEFAULT_CUSTOM_CHANNEL);
     }
 
     private void saveGroupToLocalDB(){}

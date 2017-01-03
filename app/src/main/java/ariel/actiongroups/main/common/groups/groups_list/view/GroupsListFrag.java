@@ -1,4 +1,4 @@
-package ariel.actiongroups.main.common.groups.groups_list.fragments;
+package ariel.actiongroups.main.common.groups.groups_list.view;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -15,15 +15,17 @@ import org.greenrobot.eventbus.Subscribe;
 import java.util.List;
 
 import ariel.actiongroups.R;
-import ariel.actiongroups.main.common.groups.groups_list.events.OnContactedUsersLoadedEvent;
+import ariel.actiongroups.main.common.groups.groups_list.events.OnGroupRowsLoadedEvent;
 import ariel.actiongroups.main.common.groups.groups_list.model.GroupRow;
-import ariel.actiongroups.main.common.groups.groups_list.model.GroupsModel;
+import ariel.actiongroups.main.common.groups.groups_list.model.GroupListModel;
+import ariel.actiongroups.main.common.groups.groups_list.presenter.GroupListPresenterImpl;
+import ariel.actiongroups.main.common.groups.groups_list.presenter.GroupListPresenter;
 
-public class GroupsListFrag extends Fragment {
+public class GroupsListFrag extends Fragment implements GroupListViewInterface {
 
     private RecyclerView recyclerView;
     private TextView noGroupsMessage;
-    private String GROUP_PRESENTER_TAG = "Group presenter frag";
+    private String TAG = "Group presenter frag";
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -45,7 +47,7 @@ public class GroupsListFrag extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        GroupsModel contactedUsersModel = GroupsModel.getInstance(getContext());
+        GroupListModel contactedUsersModel = GroupListModel.getInstance(getContext());
         initNoMessagesTextViewState(contactedUsersModel.getDataSet());
     }
 
@@ -54,19 +56,14 @@ public class GroupsListFrag extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View recyclerViewLayout = inflater.inflate(R.layout.frag_recycler_view, null);
         recyclerView = (RecyclerView) recyclerViewLayout.findViewById(R.id.recyclerView);
-        // use this setting to improve performance if you know that changes
-        // in content do not change the layout size of the RecyclerView
-        recyclerView.setHasFixedSize(true);
-        GroupsModel model = GroupsModel.getInstance(getContext());
-        recyclerView.setLayoutManager(model.getLayoutManager());
-        model.setAdapter();
-        recyclerView.setAdapter(model.getAdapter());
+        GroupListPresenter presenter = new GroupListPresenterImpl(getContext(), this);
+        presenter.configureRecyclerViewWithGroupRowsFromServer((recyclerView));
         noGroupsMessage = (TextView) recyclerViewLayout.findViewById(R.id.noGroupsTextViewInRecyclerView);
         return recyclerViewLayout;
     }
 
     @Subscribe
-    public void onContactedUsersLoadedEvent(OnContactedUsersLoadedEvent event) {
+    public void onContactedUsersLoadedEvent(OnGroupRowsLoadedEvent event) {
         initNoMessagesTextViewState(event.groupRows);
     }
 

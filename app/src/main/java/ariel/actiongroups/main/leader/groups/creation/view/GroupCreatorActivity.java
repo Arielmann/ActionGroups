@@ -13,7 +13,7 @@ import java.util.UUID;
 
 import ariel.actiongroups.R;
 import ariel.actiongroups.main.common.appinit.AppInit;
-import ariel.actiongroups.main.common.groups.group_info.GroupInfoActivity;
+import ariel.actiongroups.main.common.groups.groups_list.view.GroupListActivity;
 import ariel.actiongroups.main.common.groups.model.ActionGroup;
 import ariel.actiongroups.main.common.utils.GoToScreen;
 import ariel.actiongroups.main.leader.groups.creation.presenter.GroupCreatorPresenter;
@@ -28,7 +28,7 @@ public class GroupCreatorActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_group_creator);
-        AppInit.InitApp(this);
+        AppInit.InitApp(this); //TODO: Not need to call it here. delete when feature is ready
         presenter = new GroupCreatorPresenterImpl();
         Button createGroup = (Button) findViewById(R.id.createGroupButton);
         createGroup.setOnClickListener(createGroupOnClick);
@@ -44,12 +44,12 @@ public class GroupCreatorActivity extends AppCompatActivity {
             ActionGroup group = new ActionGroup();
             EventBus.getDefault().postSticky(group);
             presenter.saveGroupToDataBases(getApplicationContext(), group);
-            goToGroupInfoScreen();
+            goToGroupListScreen();
         }
     };
 
-    private void goToGroupInfoScreen(){
-        GoToScreen.goToNextScreen(this, GroupInfoActivity.class);
+    private void goToGroupListScreen(){
+        GoToScreen.goToNextScreen(this, GroupListActivity.class);
     }
 
     @Override

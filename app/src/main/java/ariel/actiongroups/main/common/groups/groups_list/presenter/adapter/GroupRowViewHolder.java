@@ -1,4 +1,4 @@
-package ariel.actiongroups.main.common.groups.groups_list.adapter;
+package ariel.actiongroups.main.common.groups.groups_list.presenter.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,8 +12,8 @@ import java.util.List;
 
 import ariel.actiongroups.R;
 import ariel.actiongroups.main.common.challenges.challenge_navigator.view.ChallengeNavigationActivity;
-import ariel.actiongroups.main.common.groups.groups_list.model.AGroup;
 import ariel.actiongroups.main.common.groups.groups_list.model.GroupRow;
+import ariel.actiongroups.main.common.groups.model.ActionGroup;
 import ariel.actiongroups.main.common.utils.abstractions.GenericViewHolder;
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -25,7 +25,7 @@ import org.greenrobot.eventbus.EventBus;
 /**
  * Created by home on 7/2/2016.
  */
-public class GroupViewHolder extends GenericViewHolder implements View.OnClickListener {
+public class GroupRowViewHolder extends GenericViewHolder implements View.OnClickListener {
 
     /*
     * This ViewHolder creates ContactedUserRows shown on the
@@ -44,7 +44,7 @@ public class GroupViewHolder extends GenericViewHolder implements View.OnClickLi
     private int targetImageWidth;
     private Context context;
 
-    protected GroupViewHolder(Context context, View itemView, List dataSet) {
+    protected GroupRowViewHolder(Context context, View itemView, List dataSet) {
         super(itemView);
         this.context = context;
         this.view = itemView;
@@ -103,7 +103,7 @@ public class GroupViewHolder extends GenericViewHolder implements View.OnClickLi
     public void onClick(View view) {
         Intent singleChallengeScreen = new Intent(context, ChallengeNavigationActivity.class);
         singleChallengeScreen.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        AGroup group = new AGroup();
+        ActionGroup group = new ActionGroup();
         EventBus.getDefault().postSticky(group); //send data on this group
         context.startActivity(singleChallengeScreen); //TODO: disable click after first time, else it search database twice
     }

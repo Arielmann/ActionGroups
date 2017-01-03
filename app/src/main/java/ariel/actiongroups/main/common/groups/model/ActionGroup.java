@@ -1,5 +1,7 @@
 package ariel.actiongroups.main.common.groups.model;
 
+import android.graphics.Bitmap;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -16,6 +18,8 @@ public class ActionGroup {
     private List<Leader> leaders;
     private List<User> users;
     private List<Challenge> challenges;
+    private Bitmap groupImageBitmap;
+    private String groupImagePath;
 
     //Convenience Constructor
     public ActionGroup() {
@@ -28,6 +32,10 @@ public class ActionGroup {
         }
         this.leaders = new ArrayList<>();
         leaders.add(new Leader());
+    }
+
+    public String getId() {
+        return id;
     }
 
     public String getName() {
@@ -48,5 +56,25 @@ public class ActionGroup {
 
     public String getDescription() {
         return description;
+    }
+
+    public void setGroupImageBitmap(Bitmap groupImageBitmap) {
+        this.groupImageBitmap = groupImageBitmap;
+    }
+
+    public Bitmap getGroupImageBitmap() {
+        return groupImageBitmap;
+    }
+
+    public void setProfileImagePath(String profileImagePath) {
+        this.groupImagePath = profileImagePath;
+    }
+
+    public String getGroupImagePath() {
+        return groupImagePath;
+    }
+
+    public void setGroupImagePath(String groupImagePath) {
+        this.groupImagePath = groupImagePath;
     }
 }

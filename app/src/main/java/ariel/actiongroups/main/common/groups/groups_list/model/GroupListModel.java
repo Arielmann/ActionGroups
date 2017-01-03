@@ -12,14 +12,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-import ariel.actiongroups.main.common.groups.groups_list.adapter.GroupsAdapter;
-import ariel.actiongroups.main.common.groups.groups_list.events.OnContactedUsersLoadedEvent;
+import ariel.actiongroups.main.common.groups.groups_list.presenter.adapter.GroupListAdapter;
+import ariel.actiongroups.main.common.groups.groups_list.events.OnGroupRowsLoadedEvent;
 
 
 /**
  * Created by home on 7/22/2016.
  */
-public class GroupsModel {
+public class GroupListModel {
 
     /*
     * This singleton model manages the loading of
@@ -30,17 +30,17 @@ public class GroupsModel {
     * the will directly set it.
     */
 
-    private static GroupsAdapter adapter;
+    private static GroupListAdapter adapter;
     private static LinearLayoutManager layoutManager;
-    private static GroupsModel groupsModel;
+    private static GroupListModel groupsModel;
     private static List dataSet = new ArrayList();
     private static Map<String, GroupRow> groupsMap;
     private static Context context;
 
-    public static GroupsModel getInstance(Context insideMethodContext) {
+    public static GroupListModel getInstance(Context insideMethodContext) {
         if (groupsModel == null) {
             context = insideMethodContext;
-            groupsModel = new GroupsModel(context);
+            groupsModel = new GroupListModel(context);
             groupsMap = new LinkedHashMap<>();
 
         }
@@ -48,22 +48,25 @@ public class GroupsModel {
         return groupsModel;
     }
 
-    private GroupsModel(Context context) {
+    private GroupListModel(Context context) {
         layoutManager = (new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
+    }
+
+    public void setDataSet(List<GroupRow> dataSet) {
+        GroupListModel.dataSet = dataSet;
     }
 
     public RecyclerView.LayoutManager getLayoutManager() {
         return layoutManager;
     }
 
-    public GroupsAdapter getAdapter() {
+    public GroupListAdapter getAdapter() {
         return adapter;
     }
 
-    public void setAdapter() {
+    public void setAdapter(List<GroupRow> dataSet) {
         if(adapter == null) {
-            initDataSet();
-            adapter = new GroupsAdapter(context, dataSet);
+            adapter = new GroupListAdapter(context, dataSet);
         }
     }
 
@@ -74,7 +77,7 @@ public class GroupsModel {
         dataSet.add(new GroupRow( UUID.randomUUID().toString(), "December Lions", "no image",  "20.11.16", "Do 400 pushups before dinner"));
         dataSet.add(new GroupRow( UUID.randomUUID().toString(), "January Lions", "no image",  "20.11.16", "Do 500 pushups before dinner"));
 
-        EventBus.getDefault().post(new OnContactedUsersLoadedEvent(dataSet));
+        EventBus.getDefault().post(new OnGroupRowsLoadedEvent(dataSet));
         return dataSet;
     }
 

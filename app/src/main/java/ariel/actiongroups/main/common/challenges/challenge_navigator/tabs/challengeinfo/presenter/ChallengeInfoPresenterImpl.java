@@ -7,8 +7,8 @@ import ariel.actiongroups.main.common.challenges.challenge_navigator.tabs.challe
 
 public class ChallengeInfoPresenterImpl implements ChallengeInfoPresenter {
 
-    ChallengeNavigatorModelDelegations.ChallengeInfoDelegate model;
-    ChallengeInfoTabView view;
+    private ChallengeNavigatorModelDelegations.ChallengeInfoDelegate model;
+    private ChallengeInfoTabView view;
 
     public ChallengeInfoPresenterImpl(ChallengeInfoTabViewImpl challengeInfoTabView) {
         this.model = ChallengeNavigatorModel.getInstance();

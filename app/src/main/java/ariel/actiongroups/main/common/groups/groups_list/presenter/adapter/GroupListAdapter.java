@@ -1,4 +1,4 @@
-package ariel.actiongroups.main.common.groups.groups_list.adapter;
+package ariel.actiongroups.main.common.groups.groups_list.presenter.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -13,12 +13,12 @@ import ariel.actiongroups.R;
 import ariel.actiongroups.main.common.groups.groups_list.model.GroupRow;
 import ariel.actiongroups.main.common.utils.abstractions.GenericViewHolder;
 
-public class GroupsAdapter extends RecyclerView.Adapter<GenericViewHolder> {
+public class GroupListAdapter extends RecyclerView.Adapter<GenericViewHolder> {
 
     private List<GroupRow> dataSet;
     private Context context;
 
-    public GroupsAdapter(Context context, List dataSet) {
+    public GroupListAdapter(Context context, List dataSet) {
         this.context = context;
         this.dataSet = dataSet;
     }
@@ -26,7 +26,7 @@ public class GroupsAdapter extends RecyclerView.Adapter<GenericViewHolder> {
     @Override
     public GenericViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         final View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.compo_group_row, parent, false);
-        return new GroupViewHolder(context, view, dataSet);
+        return new GroupRowViewHolder(context, view, dataSet);
     }
 
     @Override

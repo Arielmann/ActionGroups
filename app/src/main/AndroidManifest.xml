@@ -2,7 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ariel.actiongroups">
 
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
+    <uses-permission android:name="ariel.actiongroups.permission.C2D_MESSAGE"/>
+    <permission android:name="ariel.actiongroups.permission.C2D_MESSAGE"
+        android:protectionLevel="signature"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
@@ -13,7 +18,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".main.common.challenges.challenge_navigator.view.ChallengeNavigationActivity" />
         <activity android:name=".main.leader.challenges.challengecreator.view.ChallengesCreatorActivity" />
-        <activity android:name=".main.common.groups.groups_list.GroupsListActivity" />
+        <activity android:name=".main.common.groups.groups_list.view.GroupListActivity" />
         <activity android:name=".main.common.home_page.HomePage"/>
         <activity android:name=".main.common.groups.group_info.GroupInfoActivity" />
         <activity android:name=".main.leader.groups.creation.view.GroupCreatorActivity">
@@ -26,6 +31,25 @@
         </activity>
 
         <activity android:name=".main.common.utils.abstractions.ViewPagerActivity" />
+
+        <receiver android:name=".main.common.backend.PushNotificationReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION"/>
+                <category android:name="ariel.actiongroups"/>
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".main.common.backend.PushNotificationService"
+            android:exported="false"
+            >
+
+        <intent-filter>
+            <category android:name="android.intent.category.DEFAULT" />
+        </intent-filter>
+        </service>
     </application>
 
 </manifest>

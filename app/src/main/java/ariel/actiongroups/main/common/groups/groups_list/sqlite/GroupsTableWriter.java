@@ -6,8 +6,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.AsyncTask;
 
-import ariel.actiongroups.main.common.groups.groups_list.model.AGroup;
 import ariel.actiongroups.main.common.db_manager.DataBaseManager;
+import ariel.actiongroups.main.common.groups.model.ActionGroup;
 
 /**
  * Created by home on 7/26/2016.
@@ -64,12 +64,12 @@ public class GroupsTableWriter extends SQLiteOpenHelper {
                 "token TEXT_LEFT NOT NULL)");
     }
 
-    public void addContactToTable(final Context context, final AGroup[] groups, final String lastMessageDate, final String lastMessage) {
+    public void addContactToTable(final Context context, final ActionGroup[] groups, final String lastMessageDate, final String lastMessage) {
 
-        new AsyncTask<AGroup, Void, AGroup>() {
+        new AsyncTask<ActionGroup, Void, ActionGroup>() {
 
             @Override
-            protected AGroup doInBackground(AGroup... groupInArray) {
+            protected ActionGroup doInBackground(ActionGroup... groupInArray) {
                 SQLiteDatabase db = getWritableDatabase(); //TODO: DO WITH AsyncTask
                 db.execSQL("CREATE TABLE IF NOT EXISTS " + GROUPS_TABLE + //TODO: SHOULD BE CALLED IN ONCREATE()!
                         "(id INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -92,7 +92,7 @@ public class GroupsTableWriter extends SQLiteOpenHelper {
                 //Create the profile image file on device, based on stylist bitmap
                 ImageUtils.setUserImageFile(context,
                         groupInArray[0],
-                        groupInArray[0].getUserImageBitmap(),
+                        groupInArray[0].getGroupImageBitmap(),
                         groupInArray[0].getName());
 
                 values.put(KEY_LOCATION, groupInArray[0].getLocation());
@@ -107,11 +107,11 @@ public class GroupsTableWriter extends SQLiteOpenHelper {
             }
 
             @Override
-            protected void onPostExecute(AGroup group) {
+            protected void onPostExecute(ActionGroup group) {
                 /*//add contact row for ContactedUsesHashMap
                 GroupsModel model = GroupsModel.getInstance(context);
                 GroupRow gropudRow = new GroupRow(group.getName(), group.getImage(), lastMessageDate, lastMessage);
-                gropudRow.setBitmap(group.getUserImageBitmap()); // bitmap is already defined
+                gropudRow.setBitmap(group.getGroupImageBitmap()); // bitmap is already defined
                 ContactedUsersRowsHashMap.getInstance().getHashMap().put(group.getName(), gropudRow);
                 model.getDataSet().add(gropudRow);
                 EventBus.getDefault().post(new OnContactedUsersLoadedEvent(model.getDataSet()));

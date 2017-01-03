@@ -9,6 +9,7 @@ import com.backendless.BackendlessUser;
 import com.backendless.async.callback.AsyncCallback;
 import com.backendless.async.callback.BackendlessCallback;
 import com.backendless.exceptions.BackendlessFault;
+import com.backendless.services.messaging.MessageStatus;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,9 +20,13 @@ import ariel.actiongroups.main.common.groups.model.ActionGroup;
 import ariel.actiongroups.main.common.profiles.models.User;
 import ariel.actiongroups.main.common.profiles.sharedprefrences.SharedPrefManager;
 
+//AIzaSyAgxWka8IK74yM2nnloWmo-7tF4ysUMXDA - Server API key
+// 675632393175 - Sender ID
+
 public class ServerCommunicator implements ServerDataProviderDelegations.RegisterChallengeDelegate, ServerDataProviderDelegations.RegisterGroupDelegate, ServerDataProviderDelegations.RegisterUserDelegate, ServerDataProviderDelegations.RegisterLeaderDelegate {
     private static ServerCommunicator dataSaver;
     private String TAG = ServerCommunicator.class.getName();
+    private String SENDER_ID = "675632393175";
 
     public static ServerCommunicator getInstance() {
         if (dataSaver == null) {
@@ -51,6 +56,26 @@ public class ServerCommunicator implements ServerDataProviderDelegations.Registe
         groupMap.put(res.getString(R.string.description), group.getDescription());
         String groupsTableName = res.getString(R.string.groups);
         saveMapToServer(groupsTableName, groupMap);
+    }
+
+    @Override
+    public void registerToPushNotificationsDefaultChannel() {
+        Backendless.Messaging.registerDevice(SENDER_ID);
+    }
+
+    @Override
+    public void registerToPushNotificationsCustomChannel(final String channel) {
+        new Thread(new Runnable() {
+            public void run() {
+                // synchronous backendless API call here:
+                Backendless.Messaging.registerDevice(SENDER_ID, channel);
+                MessageStatus status = Backendless.Messaging.publish(channel, "I have registered to group channel");
+            }
+        }).start();
+    }
+
+    private void registerDeviceToPushNotifications(){
+
     }
 
     @Override

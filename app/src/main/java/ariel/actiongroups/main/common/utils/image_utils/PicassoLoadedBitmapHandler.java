@@ -7,7 +7,7 @@ import android.util.Log;
 import java.util.concurrent.ExecutionException;
 
 import ariel.actiongroups.main.common.challenges.challenge_navigator.tabs.chat.ChatItem;
-import ariel.actiongroups.main.common.groups.groups_list.model.AGroup;
+import ariel.actiongroups.main.common.groups.model.ActionGroup;
 
 /**
  * Created by home on 9/30/2016.
@@ -21,14 +21,14 @@ public abstract class PicassoLoadedBitmapHandler {
     * */
 
     private ImageLoader loader;
-    private AGroup group;
+    private ActionGroup group;
     private Context context;
     private String url;
     private String senderName;
     private final String TAG = "Picasso Bitmap Handler";
 
     //Load profile image
-    public PicassoLoadedBitmapHandler(Context context, ImageLoader interfaceHolder, AGroup group, String url) {
+    public PicassoLoadedBitmapHandler(Context context, ImageLoader interfaceHolder, ActionGroup group, String url) {
         this.context = context;
         this.group = group;
         this.loader = interfaceHolder;
@@ -71,7 +71,7 @@ public abstract class PicassoLoadedBitmapHandler {
             Log.d(TAG, "Interface is null, image is downloaded from ReadingStylists AsyncTask");
         }
         try {
-            group.setUserImageBitmap(finalBitmap);
+            group.setGroupImageBitmap(finalBitmap);
             Log.d(TAG, group.getName() + "'s downloaded image is set as her bitmap property");
         } catch (NullPointerException e) {
             Log.e(TAG, "group is null, chat item is handled. no need to set profile image");
@@ -82,7 +82,7 @@ public abstract class PicassoLoadedBitmapHandler {
         return loader;
     }
 
-    public AGroup getGroup() {
+    public ActionGroup getGroup() {
         return group;
     }
 

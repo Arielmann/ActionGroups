@@ -1,13 +1,12 @@
-package ariel.actiongroups.main.common.groups.groups_list;
+package ariel.actiongroups.main.common.groups.groups_list.view;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import ariel.actiongroups.R;
-import ariel.actiongroups.main.common.groups.groups_list.fragments.GroupsListFrag;
 import ariel.actiongroups.main.common.utils.FragmentBuilder;
 
-public class GroupsListActivity extends AppCompatActivity {
+public class GroupListActivity extends AppCompatActivity {
 
     /*
     * will manage the whole process of

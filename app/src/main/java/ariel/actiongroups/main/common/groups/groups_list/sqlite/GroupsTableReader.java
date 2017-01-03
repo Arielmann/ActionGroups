@@ -7,9 +7,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.UUID;
 
-import ariel.actiongroups.main.common.groups.groups_list.model.AGroup;
 import ariel.actiongroups.main.common.groups.groups_list.model.GroupRow;
 import ariel.actiongroups.main.common.db_manager.DataBaseManager;
+import ariel.actiongroups.main.common.groups.model.ActionGroup;
 
 /**
  * Created by home on 7/26/2016.
@@ -148,7 +148,7 @@ public class GroupsTableReader extends SQLiteOpenHelper {
 
     //***************************************************************************************************//
 
-    public AGroup getStylist(String name) {
+    public ActionGroup getStylist(String name) {
         SQLiteDatabase db = getReadableDatabase();
         getTable(db);
         Cursor cursor = db.query(CONTACTED_STYLISTS_TABLE, new String[]{KEY_ID, KEY_NAME,
@@ -159,7 +159,7 @@ public class GroupsTableReader extends SQLiteOpenHelper {
         if (cursor != null)
             cursor.moveToFirst();
 
-        AGroup group = new AGroup();
+        ActionGroup group = new ActionGroup();
 
 /*        ActionGroup group = new ActionGroup(Integer.parseInt(cursor.getString(0)), cursor.getString(1),
                 cursor.getString(2),
