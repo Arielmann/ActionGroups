@@ -10,7 +10,7 @@ import android.widget.Button;
 
 import ariel.actiongroups.R;
 import ariel.actiongroups.main.common.utils.GoToScreen;
-import ariel.actiongroups.main.leader.challenges.challengecreator.view.CreateChallengeActivity;
+import ariel.actiongroups.main.leader.challenges.creator.view.CreateChallengeActivity;
 
 /**
  * Created by home on 11/29/2016.

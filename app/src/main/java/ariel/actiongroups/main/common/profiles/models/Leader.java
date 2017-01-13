@@ -1,14 +1,13 @@
 package ariel.actiongroups.main.common.profiles.models;
 
+import ariel.actiongroups.main.common.utils.AppStrings;
+
 public class Leader extends User {
-    public static final String NAME = "Name";
-    public static final String LOCATION = "Location";
-    public static final String URL = "Url";
     private String company;
     private String website;
 
-    public Leader(String id, String name, String company, String location, String profileImageUrl, String description, String website, String token) {
-        super(id, name, location, profileImageUrl, description, token);
+    public Leader(String name, String company, String location, String profileImageUrl, String description, String website, String token) {
+        super(name, location, profileImageUrl, description, token);
         this.company = company;
         this.website = website;
     }
@@ -34,10 +33,9 @@ public class Leader extends User {
 
     @Override
     public String toString() {
-        String leaderObjectDetails = NAME + ": " + getName() +
-                " " + LOCATION  + ": " + getLocation() + " " +
-                URL + ": " + getProfileImageUrl();
-        return leaderObjectDetails;
+        return AppStrings.NAME + ": " + getName() +
+                " " + AppStrings.LOCATION  + ": " + getLocation() + " " +
+                AppStrings.URL + ": " + getProfileImageUrl();
     }
 }
 

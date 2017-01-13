@@ -9,7 +9,7 @@ import android.util.Log;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 
-import ariel.actiongroups.main.common.groups.model.ActionGroup;
+import ariel.actiongroups.main.common.groups.ActionGroup;
 
 /**
  * Created by home on 8/24/2016.

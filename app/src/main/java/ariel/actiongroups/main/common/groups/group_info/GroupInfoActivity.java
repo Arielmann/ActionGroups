@@ -8,9 +8,9 @@ import org.greenrobot.eventbus.EventBus;
 
 import ariel.actiongroups.R;
 import ariel.actiongroups.databinding.ActivityGroupInfoScreenBinding;
-import ariel.actiongroups.main.common.groups.model.ActionGroup;
+import ariel.actiongroups.main.common.groups.ActionGroup;
 import ariel.actiongroups.main.common.utils.GoToScreen;
-import ariel.actiongroups.main.leader.challenges.challengecreator.view.CreateChallengeActivity;
+import ariel.actiongroups.main.leader.challenges.creator.view.CreateChallengeActivity;
 
 public class GroupInfoActivity extends AppCompatActivity {
 

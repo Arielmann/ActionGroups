@@ -24,7 +24,7 @@ import java.util.concurrent.ExecutionException;
 import ariel.actiongroups.R;
 import ariel.actiongroups.main.common.challenges.challenge_navigator.tabs.chat.ChatItem;
 import ariel.actiongroups.main.common.groups.groups_list.model.GroupRow;
-import ariel.actiongroups.main.common.groups.model.ActionGroup;
+import ariel.actiongroups.main.common.groups.ActionGroup;
 import ariel.actiongroups.main.common.utils.abstractions.GenericViewHolder;
 import ariel.actiongroups.main.common.utils.sharedprefrences.SharedPrefManager;
 

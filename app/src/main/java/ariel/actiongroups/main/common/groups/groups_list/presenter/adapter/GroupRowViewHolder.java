@@ -17,7 +17,7 @@ import java.util.List;
 import ariel.actiongroups.R;
 import ariel.actiongroups.main.common.challenges.challenge_navigator.view.ChallengeNavigationActivity;
 import ariel.actiongroups.main.common.groups.groups_list.model.GroupRow;
-import ariel.actiongroups.main.common.groups.model.ActionGroup;
+import ariel.actiongroups.main.common.groups.ActionGroup;
 import ariel.actiongroups.main.common.utils.abstractions.GenericViewHolder;
 import de.hdodenhof.circleimageview.CircleImageView;
 

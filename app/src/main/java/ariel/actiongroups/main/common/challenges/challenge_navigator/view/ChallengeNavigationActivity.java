@@ -11,7 +11,7 @@ import ariel.actiongroups.main.common.challenges.Challenge;
 import ariel.actiongroups.main.common.challenges.challenge_navigator.presenter.ChallengeNavigatorPresenter;
 import ariel.actiongroups.main.common.challenges.challenge_navigator.presenter.ChallengeNavigatorPresenterImpl;
 import ariel.actiongroups.main.common.groups.group_info.GroupInfoActivity;
-import ariel.actiongroups.main.common.groups.model.ActionGroup;
+import ariel.actiongroups.main.common.groups.ActionGroup;
 import ariel.actiongroups.main.common.utils.GoToScreen;
 import ariel.actiongroups.main.common.utils.ViewPagerAdapter;
 import ariel.actiongroups.main.common.utils.abstractions.ViewPagerActivity;

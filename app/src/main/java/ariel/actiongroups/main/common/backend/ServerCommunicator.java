@@ -18,7 +18,7 @@ import java.util.Map;
 
 import ariel.actiongroups.R;
 import ariel.actiongroups.main.common.challenges.Challenge;
-import ariel.actiongroups.main.common.groups.model.ActionGroup;
+import ariel.actiongroups.main.common.groups.ActionGroup;
 import ariel.actiongroups.main.common.profiles.models.User;
 import ariel.actiongroups.main.common.profiles.sharedprefrences.SharedPrefManager;
 import ariel.actiongroups.main.common.utils.image_utils.ImageUtils;

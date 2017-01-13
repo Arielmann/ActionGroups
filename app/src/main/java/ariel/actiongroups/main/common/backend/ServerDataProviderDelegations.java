@@ -6,7 +6,7 @@ import android.graphics.Bitmap;
 import com.backendless.BackendlessUser;
 
 import ariel.actiongroups.main.common.challenges.Challenge;
-import ariel.actiongroups.main.common.groups.model.ActionGroup;
+import ariel.actiongroups.main.common.groups.ActionGroup;
 import ariel.actiongroups.main.common.profiles.models.User;
 
 public abstract class ServerDataProviderDelegations {

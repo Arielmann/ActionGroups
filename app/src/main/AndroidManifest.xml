@@ -20,24 +20,25 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <!---Main activity-->
-        <activity android:name=".main.leader.course.view.CourseDetailsActivity">
+        <!-- -Main activity -->
+        <activity android:name=".main.leader.course.creator.view.CourseCreationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
 
-        <!--Other activities-->
+        <!-- Other activities -->
         <activity android:name=".main.common.challenges.challenge_navigator.view.ChallengeNavigationActivity" />
-        <activity android:name=".main.leader.challenges.challengecreator.view.CreateChallengeActivity" />
+        <activity android:name=".main.leader.challenges.creator.view.CreateChallengeActivity" />
         <activity android:name=".main.common.groups.groups_list.view.GroupListActivity" />
         <activity android:name=".main.common.home_page.HomePage" />
         <activity android:name=".main.common.groups.group_info.GroupInfoActivity" />
-        <activity android:name=".main.leader.groups.creation.view.GroupCreatorActivity" />
+        <activity android:name=".main.leader.groups.creator.view.GroupCreatorActivity" />
         <activity android:name=".main.common.utils.abstractions.ViewPagerActivity" />
-        <activity android:name=".main.leader.course.view.CourseOverviewActivity" />
+        <activity android:name=".main.leader.course.creator.view.CourseOverviewActivity" />
 
         <receiver
             android:name=".main.common.backend.PushNotificationReceiver"
@@ -58,6 +59,8 @@
             </intent-filter>
         </service>
 
+        <activity android:name=".main.leader.course.manager.all_courses_overview.AllCoursesOverviewActivity" />
+        <activity android:name=".main.leader.course.manager.single_course_details.view.SingleCourseDetails"></activity>
     </application>
 
 </manifest>
