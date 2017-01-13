@@ -6,16 +6,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-
 import java.util.List;
 
 import ariel.actiongroups.R;
-import ariel.actiongroups.main.common.groups.groups_list.model.GroupRow;
 import ariel.actiongroups.main.common.utils.abstractions.GenericViewHolder;
 
 public class GroupListAdapter extends RecyclerView.Adapter<GenericViewHolder> {
 
-    private List<GroupRow> dataSet;
+    private List dataSet;
     private Context context;
 
     public GroupListAdapter(Context context, List dataSet) {

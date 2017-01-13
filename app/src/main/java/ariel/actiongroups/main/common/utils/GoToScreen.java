@@ -2,6 +2,7 @@ package ariel.actiongroups.main.common.utils;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Parcelable;
 import android.view.View;
@@ -15,36 +16,36 @@ public class GoToScreen implements View.OnClickListener {
         return goToScreen;
     }
 
-    private Activity activity;
+    private Context context;
     private Intent goToScreen;
     private String dialogMessage;
 
     private GoToScreen(Activity activity, Class screen, String dialogMessage) {
-        this.activity = activity;
+        this.context = activity;
         this.goToScreen = new Intent(activity, screen);
         this.dialogMessage = dialogMessage;
     }
 
-    private GoToScreen(Activity activity, Class screen) {
-        this.activity = activity;
-        this.goToScreen = new Intent(activity, screen);
+    private GoToScreen(Context context, Class screen) {
+        this.context = context;
+        this.goToScreen = new Intent(context, screen);
     }
 
-    private GoToScreen(Activity activity, Class screen, String key, Object data) {
-        this.activity = activity;
-        this.goToScreen = new Intent(activity, screen);
+    private GoToScreen(Context context, Class screen, String key, Object data) {
+        this.context = context;
+        this.goToScreen = new Intent(context, screen);
         this.goToScreen.putExtra(key, (Parcelable) data);
     }
 
     @Override
     public void onClick(View v) {
-        activity.startActivity(goToScreen);
+        context.startActivity(goToScreen);
     }
 
     public View.OnClickListener goToScreenWithProgressDialog = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            final ProgressDialog progressDialog = new ProgressDialog(activity,
+            final ProgressDialog progressDialog = new ProgressDialog(context,
                     R.style.AppTheme);
             progressDialog.setIndeterminate(true);
             progressDialog.setMessage(dialogMessage);
@@ -54,25 +55,25 @@ public class GoToScreen implements View.OnClickListener {
                     new Runnable() {
                         public void run() {
                             progressDialog.dismiss();
-                            activity.startActivity(goToScreen);
+                            context.startActivity(goToScreen);
                         }
                     }, 2000);
         }
     };
 
-    public static void setGoToScreenOnClickListener(Button button, Activity activity, Class targetScreen) {
-        GoToScreen goToScreen = new GoToScreen(activity, targetScreen);
+    public static void setGoToScreenOnClickListener(Button button, Context context, Class targetScreen) {
+        GoToScreen goToScreen = new GoToScreen(context, targetScreen);
         button.setOnClickListener(goToScreen);
     }
 
-    public static void goToNextScreen(Activity activity, Class targetScreen) {
-        GoToScreen goToScreen = new GoToScreen(activity, targetScreen);
+    public static void goToNextScreen(Context context, Class targetScreen) {
+        GoToScreen goToScreen = new GoToScreen(context, targetScreen);
         goToScreen.onClick(null);
     }
 
-   /* public static void goToNextScreenWithDataIntent(Activity activity, Class targetClass, String key, Object value) {
+   /* public static void goToNextScreenWithDataIntent(Activity context, Class targetClass, String key, Object value) {
         Parcels.wrap(value);
-        GoToScreen goToScreen = new GoToScreen(activity, targetClass, key, value);
+        GoToScreen goToScreen = new GoToScreen(context, targetClass, key, value);
         goToScreen.onClick(null);
     }*/
 }

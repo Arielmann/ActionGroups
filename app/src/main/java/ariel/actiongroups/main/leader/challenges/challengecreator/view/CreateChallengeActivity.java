@@ -7,15 +7,15 @@ import android.util.Log;
 import net.danlew.android.joda.JodaTimeAndroid;
 
 import ariel.actiongroups.main.common.utils.AppStrings;
-import ariel.actiongroups.main.common.utils.abstractions.ViewPagerActivity;
 import ariel.actiongroups.main.common.utils.ViewPagerAdapter;
+import ariel.actiongroups.main.common.utils.abstractions.ViewPagerActivity;
 import ariel.actiongroups.main.leader.challenges.challengecreator.presenters.CreateChallengePresenterImpl;
-import ariel.actiongroups.main.leader.challenges.challengecreator.view.tabs.ChallengeCreatorFrag;
-import ariel.actiongroups.main.leader.challenges.challengecreator.view.tabs.ChallengeSettingsFrag;
+import ariel.actiongroups.main.leader.challenges.challengecreator.view.tabs.CreateChallengeFragment;
+import ariel.actiongroups.main.leader.challenges.challengecreator.view.tabs.ChallengeSettingsFragment;
 
-public class ChallengesCreatorActivity extends ViewPagerActivity {
+public class CreateChallengeActivity extends ViewPagerActivity {
 
-    private static final String TAG = ChallengesCreatorActivity.class.getName();
+    private static final String TAG = CreateChallengeActivity.class.getName();
     private CreateChallengePresenterImpl presenter;
 
     @Override
@@ -29,8 +29,8 @@ public class ChallengesCreatorActivity extends ViewPagerActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new ChallengeCreatorFrag(), AppStrings.CHALLENGE);
-        adapter.addFragment(new ChallengeSettingsFrag(),  AppStrings.SETTINGS);
+        adapter.addFragment(new CreateChallengeFragment(), AppStrings.CHALLENGE);
+        adapter.addFragment(new ChallengeSettingsFragment(),  AppStrings.SETTINGS);
         viewPager.setAdapter(adapter);
     }
 

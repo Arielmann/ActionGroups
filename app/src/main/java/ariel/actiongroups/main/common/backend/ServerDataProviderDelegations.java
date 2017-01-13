@@ -1,6 +1,7 @@
 package ariel.actiongroups.main.common.backend;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 
 import com.backendless.BackendlessUser;
 
@@ -30,5 +31,9 @@ public abstract class ServerDataProviderDelegations {
 
     public interface RegisterObjectDelegate {
         void registerNewObject(String tableName);
+    }
+
+    public interface FileUploadDelegate{
+        void uploadImage(Context context, Bitmap image);
     }
 }

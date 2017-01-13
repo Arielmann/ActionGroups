@@ -2,6 +2,8 @@ package ariel.actiongroups.main.common.backend;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.Log;
 
 import com.backendless.Backendless;
@@ -9,7 +11,7 @@ import com.backendless.BackendlessUser;
 import com.backendless.async.callback.AsyncCallback;
 import com.backendless.async.callback.BackendlessCallback;
 import com.backendless.exceptions.BackendlessFault;
-import com.backendless.services.messaging.MessageStatus;
+import com.backendless.files.BackendlessFile;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,11 +21,12 @@ import ariel.actiongroups.main.common.challenges.Challenge;
 import ariel.actiongroups.main.common.groups.model.ActionGroup;
 import ariel.actiongroups.main.common.profiles.models.User;
 import ariel.actiongroups.main.common.profiles.sharedprefrences.SharedPrefManager;
+import ariel.actiongroups.main.common.utils.image_utils.ImageUtils;
 
 //AIzaSyAgxWka8IK74yM2nnloWmo-7tF4ysUMXDA - Server API key
 // 675632393175 - Sender ID
 
-public class ServerCommunicator implements ServerDataProviderDelegations.RegisterChallengeDelegate, ServerDataProviderDelegations.RegisterGroupDelegate, ServerDataProviderDelegations.RegisterUserDelegate, ServerDataProviderDelegations.RegisterLeaderDelegate {
+public class ServerCommunicator implements ServerDataProviderDelegations.RegisterChallengeDelegate, ServerDataProviderDelegations.RegisterGroupDelegate, ServerDataProviderDelegations.RegisterUserDelegate, ServerDataProviderDelegations.RegisterLeaderDelegate, ServerDataProviderDelegations.FileUploadDelegate {
     private static ServerCommunicator dataSaver;
     private String TAG = ServerCommunicator.class.getName();
     private String SENDER_ID = "675632393175";
@@ -56,6 +59,9 @@ public class ServerCommunicator implements ServerDataProviderDelegations.Registe
         groupMap.put(res.getString(R.string.description), group.getDescription());
         String groupsTableName = res.getString(R.string.groups);
         saveMapToServer(groupsTableName, groupMap);
+        Bitmap image = BitmapFactory.decodeResource(context.getResources(),
+                R.drawable.female_icon);
+        uploadImage(context, image);
     }
 
     @Override
@@ -69,7 +75,7 @@ public class ServerCommunicator implements ServerDataProviderDelegations.Registe
             public void run() {
                 // synchronous backendless API call here:
                 Backendless.Messaging.registerDevice(SENDER_ID, channel);
-                MessageStatus status = Backendless.Messaging.publish(channel, "I have registered to group channel");
+               // MessageStatus status = Backendless.Messaging.publish(channel, "I have registered to group channel");
             }
         }).start();
     }
@@ -114,6 +120,28 @@ public class ServerCommunicator implements ServerDataProviderDelegations.Registe
                 // an error has occurred, the error code can be retrieved with fault.getCode()
             }
         });
+    }
+
+    @Override
+    public void uploadImage(final Context context, Bitmap image) {
+
+        Backendless.Files.Android.upload( image, Bitmap.CompressFormat.PNG, 100, "myphoto.png", "mypics", true,
+                new AsyncCallback<BackendlessFile>()
+                {
+                    @Override
+                    public void handleResponse( final BackendlessFile backendlessFile )
+                    {
+                        Log.d(TAG, "Upload successful, image url: " + backendlessFile.getFileURL());
+                        ImageUtils.downloadChatImage(context, null, "me", backendlessFile.getFileURL());
+                    }
+
+                    @Override
+                    public void handleFault( BackendlessFault backendlessFault )
+                    {
+                        Log.e(TAG, "Image upload failed. Error: " + backendlessFault.toString());
+                        //Toast.makeText( UploadingActivity.this, backendlessFault.toString(), Toast.LENGTH_SHORT ).show();
+                    }
+                });
     }
 }
 

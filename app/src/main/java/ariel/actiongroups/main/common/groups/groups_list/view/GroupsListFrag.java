@@ -23,7 +23,6 @@ import ariel.actiongroups.main.common.groups.groups_list.presenter.GroupListPres
 
 public class GroupsListFrag extends Fragment implements GroupListViewInterface {
 
-    private RecyclerView recyclerView;
     private TextView noGroupsMessage;
     private String TAG = "Group presenter frag";
 
@@ -54,8 +53,8 @@ public class GroupsListFrag extends Fragment implements GroupListViewInterface {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View recyclerViewLayout = inflater.inflate(R.layout.frag_recycler_view, null);
-        recyclerView = (RecyclerView) recyclerViewLayout.findViewById(R.id.recyclerView);
+        View recyclerViewLayout = inflater.inflate(R.layout.compo_recycler_view, null);
+        RecyclerView recyclerView = (RecyclerView) recyclerViewLayout.findViewById(R.id.recyclerView);
         GroupListPresenter presenter = new GroupListPresenterImpl(getContext(), this);
         presenter.configureRecyclerViewWithGroupRowsFromServer((recyclerView));
         noGroupsMessage = (TextView) recyclerViewLayout.findViewById(R.id.noGroupsTextViewInRecyclerView);

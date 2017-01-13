@@ -10,7 +10,7 @@ import ariel.actiongroups.R;
 import ariel.actiongroups.databinding.ActivityGroupInfoScreenBinding;
 import ariel.actiongroups.main.common.groups.model.ActionGroup;
 import ariel.actiongroups.main.common.utils.GoToScreen;
-import ariel.actiongroups.main.leader.challenges.challengecreator.view.ChallengesCreatorActivity;
+import ariel.actiongroups.main.leader.challenges.challengecreator.view.CreateChallengeActivity;
 
 public class GroupInfoActivity extends AppCompatActivity {
 
@@ -22,7 +22,7 @@ public class GroupInfoActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_group_info_screen);
         ActionGroup group = EventBus.getDefault().removeStickyEvent(ActionGroup.class);
         binding.groupInfoGroupNameTV.setText(group.getName());
-        GoToScreen.setGoToScreenOnClickListener(binding.createChallengeButton, this, ChallengesCreatorActivity.class);
+        GoToScreen.setGoToScreenOnClickListener(binding.createChallengeButton, this, CreateChallengeActivity.class);
     }
 
     @Override

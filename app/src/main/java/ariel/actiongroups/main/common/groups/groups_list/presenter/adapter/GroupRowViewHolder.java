@@ -6,6 +6,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.sromku.simple.storage.SimpleStorage;
+import com.sromku.simple.storage.Storage;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.io.File;
 import java.util.List;
@@ -16,11 +20,6 @@ import ariel.actiongroups.main.common.groups.groups_list.model.GroupRow;
 import ariel.actiongroups.main.common.groups.model.ActionGroup;
 import ariel.actiongroups.main.common.utils.abstractions.GenericViewHolder;
 import de.hdodenhof.circleimageview.CircleImageView;
-
-import com.sromku.simple.storage.SimpleStorage;
-import com.sromku.simple.storage.Storage;
-
-import org.greenrobot.eventbus.EventBus;
 
 /**
  * Created by home on 7/2/2016.
@@ -34,24 +33,21 @@ public class GroupRowViewHolder extends GenericViewHolder implements View.OnClic
     * by the contact, there will be a default Image.
     */
 
-    private final View view;
+    private static final String TAG = GroupRowViewHolder.class.getName();
     private final CircleImageView groupImageView;
     private final TextView nameTextView;
     private final TextView lastMessageTextView;
-    private final TextView lastMessageDateTextView;
     private List<GroupRow> dataSet;
     private int targetImageHeight;
     private int targetImageWidth;
     private Context context;
 
-    protected GroupRowViewHolder(Context context, View itemView, List dataSet) {
+    GroupRowViewHolder(Context context, View itemView, List dataSet) {
         super(itemView);
         this.context = context;
-        this.view = itemView;
-        this.groupImageView = (CircleImageView) view.findViewById(R.id.groupRowImageView);
-        this.nameTextView = (TextView) view.findViewById(R.id.groupRowName);
-        this.lastMessageTextView = (TextView) view.findViewById(R.id.lastTextMessage);
-        this.lastMessageDateTextView = (TextView) view.findViewById(R.id.lastMessageDate);
+        this.groupImageView = (CircleImageView) itemView.findViewById(R.id.groupRowImageView);
+        this.nameTextView = (TextView) itemView.findViewById(R.id.groupRowName);
+        this.lastMessageTextView = (TextView) itemView.findViewById(R.id.lastTextMessage);
         this.dataSet = dataSet;
         //int[] imageSizes = ImageUtils.chooseImageSizes(context, 13, 13);
         //this.targetImageHeight = imageSizes[0];
@@ -60,42 +56,36 @@ public class GroupRowViewHolder extends GenericViewHolder implements View.OnClic
     }
 
     public void setUIDataOnView(int position) {
-        try {
-            final String imagePath = dataSet.get(position).getImage();
-            final String message = dataSet.get(position).getLastMessageAsText();
-            final String name = dataSet.get(position).getName();
-            String lastMessageDate = dataSet.get(position).getLastMessageDate();
+        final String imagePath = dataSet.get(position).getImage();
+        final String message = dataSet.get(position).getLastMessageAsText();
+        final String name = dataSet.get(position).getName();
+        String lastMessageDate = dataSet.get(position).getLastMessageDate();
 
-            if (imagePath != null && message != null && name != null && lastMessageDate != null) {
+        if (imagePath != null && message != null && name != null && lastMessageDate != null) {
 
-                this.nameTextView.setText(name);
-                this.lastMessageTextView.setText(message);
-                lastMessageDate = lastMessageDate.replace("_", ""); //remove the "_" char to prevent parse error
-                //long lastMessageDateAsLong = Long.parseLong(lastMessageDate);
-               // Timestamp stampOfLastMessage = new Timestamp(lastMessageDateAsLong);
-              // Date date = new Date(stampOfLastMessage.getTime());
-              //  this.lastMessageDateTextView.setText(date.toString());
-                this.groupImageView.setImageResource(R.drawable.running_lions);
+            this.nameTextView.setText(name);
+            this.lastMessageTextView.setText(message);
+            lastMessageDate = lastMessageDate.replace("_", ""); //remove the "_" char to prevent parse error
+            //long lastMessageDateAsLong = Long.parseLong(lastMessageDate);
+            // Timestamp stampOfLastMessage = new Timestamp(lastMessageDateAsLong);
+            // Date date = new Date(stampOfLastMessage.getTime());
+            //  this.lastMessageDateTextView.setText(date.toString());
+            this.groupImageView.setImageResource(R.drawable.running_lions);
 
-                if (dataSet.get(position).getImageBitmap() != null) {
-                    //this.groupImageView.setImageBitmap(dataSet.get(position).getImageBitmap());
-                    Log.d("Contacted users VH", dataSet.get(position).getName() +
-                            " profile image set from inside user data. Path: " + dataSet.get(position).getImage());
-                    return;
-                }
-
-                Storage storage = SimpleStorage.getExternalStorage();
-                File profileImageFile = storage.getFile("Make Me Beautiful", "Contact Image: " + name);
-                if (profileImageFile != null) {
-                    //ImageUtils.createBitmapFromImageSource("" + position, context, this, Uri.fromFile(profileImageFile), targetImageHeight, targetImageWidth); //create the image from the filepath.
-                    Log.d("Contacted users VH", dataSet.get(position).getName() +
-                            " profile image created from file. Path: " + dataSet.get(position).getImage());
-                }
-
-
+            if (dataSet.get(position).getImageBitmap() != null) {
+                //this.groupImageView.setImageBitmap(dataSet.get(position).getImageBitmap());
+                Log.d(TAG, dataSet.get(position).getName() +
+                        " profile image set from inside user data. Path: " + dataSet.get(position).getImage());
+                return;
             }
-        } catch (Exception e) {
-            new Error("Custom Error: " + e.getMessage());
+
+            Storage storage = SimpleStorage.getExternalStorage();
+            File profileImageFile = storage.getFile("Make Me Beautiful", "Contact Image: " + name);
+            if (profileImageFile != null) {
+                //ImageUtils.createBitmapFromImageSource("" + position, context, this, Uri.fromFile(profileImageFile), targetImageHeight, targetImageWidth); //create the image from the filepath.
+                Log.d(TAG, dataSet.get(position).getName() +
+                        " profile image created from file. Path: " + dataSet.get(position).getImage());
+            }
         }
     }
 

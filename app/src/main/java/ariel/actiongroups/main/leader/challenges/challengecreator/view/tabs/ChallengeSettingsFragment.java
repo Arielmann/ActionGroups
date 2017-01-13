@@ -18,7 +18,7 @@ import java.util.Calendar;
 
 import ariel.actiongroups.R;
 
-public class ChallengeSettingsFrag extends Fragment {
+public class ChallengeSettingsFragment extends Fragment {
 
     private static final String CHALLENGE_SETTINGS_FRAG = "Challenge settings frag";
     private TextView challengeDate;

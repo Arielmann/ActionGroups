@@ -13,14 +13,12 @@ import org.greenrobot.eventbus.EventBus;
 import ariel.actiongroups.R;
 import ariel.actiongroups.databinding.FragChallengeCreatorBinding;
 import ariel.actiongroups.main.common.challenges.Challenge;
-import ariel.actiongroups.main.common.challenges.challenge_navigator.view.ChallengeNavigationActivity;
-import ariel.actiongroups.main.common.utils.GoToScreen;
 import ariel.actiongroups.main.leader.challenges.challengecreator.presenters.CreateChallengePresenter;
 import ariel.actiongroups.main.leader.challenges.challengecreator.presenters.CreateChallengePresenterImpl;
 
-public class ChallengeCreatorFrag extends android.support.v4.app.Fragment {
+public class CreateChallengeFragment extends android.support.v4.app.Fragment {
 
-    public static final String TAG = ChallengeCreatorFrag.class.getName();
+    public static final String TAG = CreateChallengeFragment.class.getName();
     private FragChallengeCreatorBinding binding;
     private CreateChallengePresenter presenter;
 
@@ -46,7 +44,9 @@ public class ChallengeCreatorFrag extends android.support.v4.app.Fragment {
             Challenge challenge = new Challenge();
             presenter.saveChallengeDataBases(getContext(), challenge);
             EventBus.getDefault().postSticky(challenge); //Use it in ChallengeNavigationScreen
-            GoToScreen.goToNextScreen(getActivity(), ChallengeNavigationActivity.class);
+            //GoToScreen.goToNextScreen(getActivity(), CourseOverviewActivity.class);
+            getActivity().setResult(-1);
+            getActivity().finish();
             Log.d(TAG, "Moving to challenge preview activity. challenge text: " + binding.challengeText.getText());
         }
     };
