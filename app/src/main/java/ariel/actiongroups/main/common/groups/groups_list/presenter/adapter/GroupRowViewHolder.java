@@ -1,7 +1,6 @@
 package ariel.actiongroups.main.common.groups.groups_list.presenter.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -9,42 +8,42 @@ import android.widget.TextView;
 import com.sromku.simple.storage.SimpleStorage;
 import com.sromku.simple.storage.Storage;
 
-import org.greenrobot.eventbus.EventBus;
-
 import java.io.File;
 import java.util.List;
 
 import ariel.actiongroups.R;
-import ariel.actiongroups.main.common.challenges.challenge_navigator.view.ChallengeNavigationActivity;
-import ariel.actiongroups.main.common.groups.groups_list.model.GroupRow;
 import ariel.actiongroups.main.common.groups.ActionGroup;
-import ariel.actiongroups.main.common.utils.abstractions.GenericViewHolder;
+import ariel.actiongroups.main.common.groups.groups_list.view.OnGroupClicked;
+import ariel.actiongroups.main.common.utils.abstractutils.GenericViewHolder;
 import de.hdodenhof.circleimageview.CircleImageView;
 
-/**
- * Created by home on 7/2/2016.
- */
-public class GroupRowViewHolder extends GenericViewHolder implements View.OnClickListener {
+class GroupRowViewHolder extends GenericViewHolder implements View.OnClickListener{
 
     /*
-    * This ViewHolder creates ContactedUserRows shown on the
-    * ContactedUsersScreen. unlike ChatItems, all
-    * ContactedUserRows MUST have images if image is not provided
-    * by the contact, there will be a default Image.
+    * This ViewHolder creates GroupRows shown on the
+    * GroupListActivity. unlike ChatItems, all
+    * GroupRows MUST have images. if image is not provided
+    * by the ActionGroup creator, there will be a default Image.
     */
 
     private static final String TAG = GroupRowViewHolder.class.getName();
+
+    private Context context;
+    private OnGroupClicked groupClickListener;
     private final CircleImageView groupImageView;
     private final TextView nameTextView;
     private final TextView lastMessageTextView;
-    private List<GroupRow> dataSet;
+    private final List<ActionGroup> dataSet;
     private int targetImageHeight;
     private int targetImageWidth;
-    private Context context;
 
-    GroupRowViewHolder(Context context, View itemView, List dataSet) {
+    GroupRowViewHolder(Context context, OnGroupClicked onGroupClicked, View itemView, List dataSet) {
+       /* Distinction is made between context and
+         groupClickListener interface for better
+        */
         super(itemView);
         this.context = context;
+        this.groupClickListener = onGroupClicked;
         this.groupImageView = (CircleImageView) itemView.findViewById(R.id.groupRowImageView);
         this.nameTextView = (TextView) itemView.findViewById(R.id.groupRowName);
         this.lastMessageTextView = (TextView) itemView.findViewById(R.id.lastTextMessage);
@@ -56,10 +55,10 @@ public class GroupRowViewHolder extends GenericViewHolder implements View.OnClic
     }
 
     public void setUIDataOnView(int position) {
-        final String imagePath = dataSet.get(position).getImage();
-        final String message = dataSet.get(position).getLastMessageAsText();
+        final String imagePath = dataSet.get(position).getImageLocalPath();
+        final String message = dataSet.get(position).getDescription();
         final String name = dataSet.get(position).getName();
-        String lastMessageDate = dataSet.get(position).getLastMessageDate();
+        String lastMessageDate = dataSet.get(position).getCreationDate();
 
         if (imagePath != null && message != null && name != null && lastMessageDate != null) {
 
@@ -72,7 +71,7 @@ public class GroupRowViewHolder extends GenericViewHolder implements View.OnClic
             //  this.lastMessageDateTextView.setText(date.toString());
             this.groupImageView.setImageResource(R.drawable.running_lions);
 
-            if (dataSet.get(position).getImageBitmap() != null) {
+            if (dataSet.get(position).getImage() != null) {
                 //this.groupImageView.setImageBitmap(dataSet.get(position).getImageBitmap());
                 Log.d(TAG, dataSet.get(position).getName() +
                         " profile image set from inside user data. Path: " + dataSet.get(position).getImage());
@@ -91,11 +90,12 @@ public class GroupRowViewHolder extends GenericViewHolder implements View.OnClic
 
     @Override
     public void onClick(View view) {
-        Intent singleChallengeScreen = new Intent(context, ChallengeNavigationActivity.class);
+        groupClickListener.onGroupClicked(null);
+       /* Intent singleChallengeScreen = new Intent(context, ChallengeNavigationActivity.class);
         singleChallengeScreen.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         ActionGroup group = new ActionGroup();
         EventBus.getDefault().postSticky(group); //send data on this group
-        context.startActivity(singleChallengeScreen); //TODO: disable click after first time, else it search database twice
+        context.startActivity(singleChallengeScreen); //TODO: disable click after first time, else it search database twice*/
     }
 /*
     @Override

@@ -2,11 +2,6 @@ package ariel.actiongroups.main.common.groups.groups_list.model;
 
 import android.graphics.Bitmap;
 
-import java.util.UUID;
-
-/**
- * Created by home on 7/2/2016.
- */
 public class GroupRow {
 
     private String id;

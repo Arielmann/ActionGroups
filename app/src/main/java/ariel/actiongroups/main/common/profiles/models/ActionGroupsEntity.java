@@ -12,14 +12,14 @@ public abstract class ActionGroupsEntity {
     private String name;
     private String description;
     private String creationDate;
-    private Bitmap imageBitmap;
+    private Bitmap image;
     private String imageLocalPath;
     private String imageUrl;
 
-    public ActionGroupsEntity() { //Convenience Constructor
+    public ActionGroupsEntity(String name, String description) { //Convenience Constructor
         this.id = UUID.randomUUID().toString();
-        this.name = "Entitiy's name";
-        this.description = "Entity's Description";
+        this.name = name;
+        this.description = description;
         this.imageLocalPath = "Entity's Local Image Path";
         this.imageUrl = "Entity's Local Image Url";
         this.creationDate = String.valueOf(LocalDateTime.now().toLocalDate());
@@ -41,6 +41,21 @@ public abstract class ActionGroupsEntity {
         this.creationDate = creationDate;
     }
 
+
+    void saveToDataBases() {
+    }
+
+    @Override
+    public String toString() {
+        return "Id: " + id +
+                " Name: " + name +
+                " Description: " + description +
+                " Creation Date: " + creationDate +
+                " Profile image local file path:" + imageLocalPath +
+                " Profile image url:" + imageUrl;
+    }
+
+    //**Getters**//
     public String getId() {
         return id;
     }
@@ -57,11 +72,17 @@ public abstract class ActionGroupsEntity {
         return creationDate;
     }
 
-    void saveToDataBases() {
+    public String getImageLocalPath() {
+        return imageLocalPath;
     }
 
-    public void setImageBitmap(Bitmap entityImageBitmap) {
-        this.imageBitmap = entityImageBitmap;
+    public Bitmap getImage() {
+        return image;
+    }
+
+    //**Setters**//
+    public void setImage(Bitmap entityImageBitmap) {
+        this.image = entityImageBitmap;
     }
 
     public void setImageLocalPath(String entityImageLocalPath) {
@@ -80,13 +101,4 @@ public abstract class ActionGroupsEntity {
         this.description = description;
     }
 
-    @Override
-    public String toString() {
-        return "Id: " + id +
-                " Name: " + name +
-                " Description: " + description +
-                " Creation Date: " + creationDate +
-                " Profile image local file path:" + imageLocalPath +
-                " Profile image url:" + imageUrl;
-    }
 }

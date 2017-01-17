@@ -18,24 +18,19 @@ import java.util.UUID;
 import ariel.actiongroups.main.common.groups.groups_list.events.OnGroupRowsLoadedEvent;
 import ariel.actiongroups.main.common.groups.groups_list.model.GroupListModel;
 import ariel.actiongroups.main.common.groups.groups_list.model.GroupRow;
-import ariel.actiongroups.main.common.groups.groups_list.presenter.adapter.GroupListAdapter;
-import ariel.actiongroups.main.common.groups.groups_list.view.GroupListViewInterface;
-import ariel.actiongroups.main.common.utils.AppStrings;
+import ariel.actiongroups.main.common.resources.AppStrings;
 
 public class GroupListPresenterImpl implements GroupListPresenter {
 
-    private GroupListViewInterface view;
     private GroupListModel model;
-    private GroupListAdapter adapter;
 
-    public GroupListPresenterImpl(Context context, GroupListViewInterface view) {
-        this.view = view;
+    public GroupListPresenterImpl(Context context) {
         this.model = GroupListModel.getInstance(context);
     }
 
     @Override
     public void onDestroy() {
-        view = null;
+
     }
 
     @Override
@@ -46,7 +41,6 @@ public class GroupListPresenterImpl implements GroupListPresenter {
             public void handleResponse(BackendlessCollection<Map> loadedGroups) {
                 dataSet[0] = createDataSetWithDataFromServer(loadedGroups.getData());
                 model.setDataSet(dataSet[0]);
-                model.setAdapter(dataSet[0]);
                 // use this setting to improve performance if you know that changes
                 // in content do not change the layout size of the RecyclerView
                 recyclerView.setHasFixedSize(true);

@@ -10,11 +10,11 @@ import ariel.actiongroups.R;
 import ariel.actiongroups.main.common.challenges.Challenge;
 import ariel.actiongroups.main.common.challenges.challenge_navigator.presenter.ChallengeNavigatorPresenter;
 import ariel.actiongroups.main.common.challenges.challenge_navigator.presenter.ChallengeNavigatorPresenterImpl;
-import ariel.actiongroups.main.common.groups.group_info.GroupInfoActivity;
+import ariel.actiongroups.main.common.groups.group_info.GroupDetailsActivity;
 import ariel.actiongroups.main.common.groups.ActionGroup;
-import ariel.actiongroups.main.common.utils.GoToScreen;
+import ariel.actiongroups.main.common.utils.ActivityStarter;
 import ariel.actiongroups.main.common.utils.ViewPagerAdapter;
-import ariel.actiongroups.main.common.utils.abstractions.ViewPagerActivity;
+import ariel.actiongroups.main.common.utils.abstractutils.ViewPagerActivity;
 
 public class ChallengeNavigationActivity extends ViewPagerActivity implements ChallengeNavigationView {
 
@@ -40,7 +40,7 @@ public class ChallengeNavigationActivity extends ViewPagerActivity implements Ch
     };
 
     private void goToGroupInfo(){
-        GoToScreen.goToNextScreen(this, GroupInfoActivity.class);
+        ActivityStarter.startActivity(this, GroupDetailsActivity.class);
     }
     @Override
     public void setViewPagerAdapter(ViewPagerAdapter adapter) {

@@ -21,7 +21,7 @@ import ariel.actiongroups.main.common.challenges.Challenge;
 import ariel.actiongroups.main.common.groups.ActionGroup;
 import ariel.actiongroups.main.common.profiles.models.User;
 import ariel.actiongroups.main.common.profiles.sharedprefrences.SharedPrefManager;
-import ariel.actiongroups.main.common.utils.image_utils.ImageUtils;
+import ariel.actiongroups.main.common.utils.imageutils.ImageUtils;
 
 //AIzaSyAgxWka8IK74yM2nnloWmo-7tF4ysUMXDA - Server API key
 // 675632393175 - Sender ID

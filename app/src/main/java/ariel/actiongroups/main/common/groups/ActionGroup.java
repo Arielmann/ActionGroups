@@ -17,9 +17,7 @@ public class ActionGroup extends ActionGroupsEntity {
 
     //Convenience Constructor
     public ActionGroup() {
-        super();
-        setName("Group Name");
-        setDescription("This is a great group");
+        super("Group Name", "This is a great group");
         this.users = new ArrayList<>();
         while(users.size() < 4){
         users.add(new User());

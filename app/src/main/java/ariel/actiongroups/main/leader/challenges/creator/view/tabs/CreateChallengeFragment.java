@@ -44,7 +44,7 @@ public class CreateChallengeFragment extends android.support.v4.app.Fragment {
             Challenge challenge = new Challenge();
             presenter.saveChallengeDataBases(getContext(), challenge);
             EventBus.getDefault().postSticky(challenge); //Use it in ChallengeNavigationScreen
-            //GoToScreen.goToNextScreen(getActivity(), CourseOverviewActivity.class);
+            //GoToScreen.startActivity(getActivity(), CourseOverviewActivity.class);
             getActivity().setResult(-1);
             getActivity().finish();
             Log.d(TAG, "Moving to challenge preview activity. challenge text: " + binding.challengeText.getText());

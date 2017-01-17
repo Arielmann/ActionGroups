@@ -8,11 +8,8 @@ import android.os.AsyncTask;
 
 import java.util.HashMap;
 
-import ariel.actiongroups.main.common.utils.image_utils.ImageUtils;
+import ariel.actiongroups.main.common.utils.imageutils.ImageUtils;
 
-/**
- * Created by home on 5/21/2016.
- */
 public class SharedPrefManager {
 
     /*

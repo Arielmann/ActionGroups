@@ -6,9 +6,9 @@ import android.util.Log;
 
 import net.danlew.android.joda.JodaTimeAndroid;
 
-import ariel.actiongroups.main.common.utils.AppStrings;
+import ariel.actiongroups.main.common.resources.AppStrings;
 import ariel.actiongroups.main.common.utils.ViewPagerAdapter;
-import ariel.actiongroups.main.common.utils.abstractions.ViewPagerActivity;
+import ariel.actiongroups.main.common.utils.abstractutils.ViewPagerActivity;
 import ariel.actiongroups.main.leader.challenges.creator.presenter.CreateChallengePresenterImpl;
 import ariel.actiongroups.main.leader.challenges.creator.view.tabs.CreateChallengeFragment;
 import ariel.actiongroups.main.leader.challenges.creator.view.tabs.ChallengeSettingsFragment;

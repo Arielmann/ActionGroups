@@ -21,10 +21,10 @@ import ariel.actiongroups.main.common.groups.groups_list.model.GroupListModel;
 import ariel.actiongroups.main.common.groups.groups_list.presenter.GroupListPresenterImpl;
 import ariel.actiongroups.main.common.groups.groups_list.presenter.GroupListPresenter;
 
-public class GroupsListFrag extends Fragment implements GroupListViewInterface {
+public class GroupsListFrag extends Fragment {
 
     private TextView noGroupsMessage;
-    private String TAG = "Group presenter frag";
+    private String TAG = GroupsListFrag.class.getName();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,8 +46,8 @@ public class GroupsListFrag extends Fragment implements GroupListViewInterface {
     @Override
     public void onResume() {
         super.onResume();
-        GroupListModel contactedUsersModel = GroupListModel.getInstance(getContext());
-        initNoMessagesTextViewState(contactedUsersModel.getDataSet());
+        GroupListModel groupListModel = GroupListModel.getInstance(getContext());
+        initNoMessagesTextViewState(groupListModel.getDataSet());
     }
 
     @Nullable
@@ -55,7 +55,7 @@ public class GroupsListFrag extends Fragment implements GroupListViewInterface {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View recyclerViewLayout = inflater.inflate(R.layout.compo_recycler_view, null);
         RecyclerView recyclerView = (RecyclerView) recyclerViewLayout.findViewById(R.id.recyclerView);
-        GroupListPresenter presenter = new GroupListPresenterImpl(getContext(), this);
+        GroupListPresenter presenter = new GroupListPresenterImpl(getContext(), getActivity(), this);
         presenter.configureRecyclerViewWithGroupRowsFromServer((recyclerView));
         noGroupsMessage = (TextView) recyclerViewLayout.findViewById(R.id.noGroupsTextViewInRecyclerView);
         return recyclerViewLayout;

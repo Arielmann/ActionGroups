@@ -13,9 +13,9 @@ import java.util.UUID;
 
 import ariel.actiongroups.R;
 import ariel.actiongroups.main.common.appinit.AppInit;
-import ariel.actiongroups.main.common.groups.groups_list.view.GroupListActivity;
 import ariel.actiongroups.main.common.groups.ActionGroup;
-import ariel.actiongroups.main.common.utils.GoToScreen;
+import ariel.actiongroups.main.common.groups.groups_list.view.GroupListActivity;
+import ariel.actiongroups.main.common.utils.ActivityStarter;
 import ariel.actiongroups.main.leader.groups.creator.presenter.GroupCreatorPresenter;
 import ariel.actiongroups.main.leader.groups.creator.presenter.GroupCreatorPresenterImpl;
 
@@ -43,14 +43,10 @@ public class GroupCreatorActivity extends AppCompatActivity {
         public void onClick(View view) {
             ActionGroup group = new ActionGroup();
             EventBus.getDefault().postSticky(group);
-            presenter.saveGroupToDataBases(getApplicationContext(), group);
-            goToGroupListScreen();
+            presenter.saveGroupToDataBases(view.getContext(), group);
+            ActivityStarter.startActivity(view.getContext(), GroupListActivity.class);
         }
     };
-
-    private void goToGroupListScreen(){
-        GoToScreen.goToNextScreen(this, GroupListActivity.class);
-    }
 
     @Override
     protected void onDestroy() {

@@ -66,7 +66,7 @@ public class GroupListModel {
 
     public void setAdapter(List<GroupRow> dataSet) {
         if(adapter == null) {
-            adapter = new GroupListAdapter(context, dataSet);
+            //adapter = new GroupListAdapter(context, dataSet);
         }
     }
 

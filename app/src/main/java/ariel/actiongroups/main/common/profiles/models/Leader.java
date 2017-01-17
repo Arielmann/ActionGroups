@@ -1,13 +1,12 @@
 package ariel.actiongroups.main.common.profiles.models;
 
-import ariel.actiongroups.main.common.utils.AppStrings;
-
 public class Leader extends User {
+
     private String company;
     private String website;
 
-    public Leader(String name, String company, String location, String profileImageUrl, String description, String website, String token) {
-        super(name, location, profileImageUrl, description, token);
+    public Leader(String id, String name, String company, String location, String profileImageUrl, String description, String website, String token) {
+        super(id, name, location, profileImageUrl, description, token);
         this.company = company;
         this.website = website;
     }
@@ -15,6 +14,8 @@ public class Leader extends User {
     //Convenience Constructor from super class
     public Leader(){}
 
+
+    //**Getters**//
     public java.lang.String getCompany() {
         return company;
     }
@@ -27,15 +28,13 @@ public class Leader extends User {
         return website;
     }
 
+    //**Setters**//
     public void setWebsite(java.lang.String website) {
         this.website = website;
     }
 
     @Override
     public String toString() {
-        return AppStrings.NAME + ": " + getName() +
-                " " + AppStrings.LOCATION  + ": " + getLocation() + " " +
-                AppStrings.URL + ": " + getProfileImageUrl();
+        return super.toString() + " Company: " + company + " Website: " + website;
     }
 }
-
