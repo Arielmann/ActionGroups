@@ -33,9 +33,9 @@
         <!-- Other activities -->
         <activity android:name=".main.common.challenges.challenge_navigator.view.ChallengeNavigationActivity" />
         <activity android:name=".main.leader.challenges.creator.view.CreateChallengeActivity" />
-        <activity android:name=".main.common.groups.groups_list.view.GroupListActivity" />
+        <activity android:name=".main.common.groups.groupslist.view.GroupListActivity" />
         <activity android:name=".main.common.home_page.HomePage" />
-        <activity android:name=".main.common.groups.group_info.GroupDetailsActivity" />
+        <activity android:name=".main.common.groups.groupdetails.GroupDetailsActivity" />
         <activity android:name=".main.leader.groups.creator.view.GroupCreatorActivity" />
         <activity android:name=".main.common.utils.abstractutils.ViewPagerActivity" />
         <activity android:name=".main.leader.courses.manager.singlecourse.view.CourseManagerActivity" />
@@ -60,7 +60,9 @@
         </service>
 
         <activity android:name=".main.common.courses.manager.allcoursesoverview.view.AllCoursesOverviewActivity" />
-        <activity android:name=".main.common.courses.manager.singlecoursedetails.view.SingleCourseDetailsActivity"></activity>
+        <activity android:name=".main.common.courses.manager.coursedetails.view.CourseDetailsActivity" />
+        <activity android:name=".main.common.groups.groupslist.view.GenericGroupListActivity" />
+        <activity android:name=".main.common.groups.groupslist.view.GroupListActivityForResult"></activity>
     </application>
 
 </manifest>

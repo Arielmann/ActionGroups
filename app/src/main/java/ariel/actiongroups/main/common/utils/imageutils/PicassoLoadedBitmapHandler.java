@@ -67,7 +67,7 @@ abstract class PicassoLoadedBitmapHandler {
             Log.d(TAG, "Interface is null, image is downloaded from ReadingStylists AsyncTask");
         }
         try {
-            group.setGroupImageBitmap(finalBitmap);
+            group.setImage(finalBitmap);
             Log.d(TAG, group.getName() + "'s downloaded image is set as her bitmap property");
         } catch (NullPointerException e) {
             Log.e(TAG, "group is null, chat item is handled. no need to set profile image");

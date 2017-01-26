@@ -4,16 +4,13 @@ import org.joda.time.LocalDateTime;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 import ariel.actiongroups.main.common.groups.ActionGroup;
+import ariel.actiongroups.main.common.profiles.models.ActionGroupsEntity;
 
-public class Challenge {
+public class Challenge extends ActionGroupsEntity{
 
-    private String challengeId;
     private List<ActionGroup> targetGroups;
-    private String challengeName;
-    private String description;
     private String endTime;
     private String startTime;
     private String endDate;
@@ -21,11 +18,10 @@ public class Challenge {
 
     //Convenience Constructor
     public Challenge() {
-        this.challengeId = UUID.randomUUID().toString();
-        this.challengeName = "challenge name for challenge Id: " + challengeId;
+        super("", "Run 3 times around your building", "Image");
+        super.setName("challenge name for challenge Id: " + super.getId()) ;
         this.targetGroups = new ArrayList<>();
-        targetGroups.add(new ActionGroup());
-        this.description = "Run 3 times around your building";
+        this.targetGroups.add(new ActionGroup());
         this.startDate = String.valueOf(LocalDateTime.now().toLocalDate());
         this.endDate = String.valueOf(LocalDateTime.now().toLocalDate());
         this.startTime = String.valueOf(LocalDateTime.now().toLocalTime());
@@ -33,9 +29,9 @@ public class Challenge {
     }
 
     public Challenge(List<ActionGroup> targetGroups, String challengeName, String description, String endTime, String startTime, String endDate, String startDate) {
+        super(challengeName, description, "Image");
         this.targetGroups = targetGroups;
-        this.challengeName = challengeName;
-        this.description = description;
+        super.setName(challengeName);
         this.endTime = endTime;
         this.startTime = startTime;
         this.endDate = endDate;
@@ -44,13 +40,7 @@ public class Challenge {
 
     //************Setters****************//
 
-    public void setChallengeName(String challengeName) {
-        this.challengeName = challengeName;
-    }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
 
     public void setEndTime(String endTime) {
         this.endTime = endTime;
@@ -74,20 +64,8 @@ public class Challenge {
 
     //*************Getters*******************//
 
-    public String getChallengeId() {
-        return challengeId;
-    }
-
     public List<ActionGroup> getTargetGroups() {
         return targetGroups;
-    }
-
-    public String getChallengeName() {
-        return challengeName;
-    }
-
-    public String getDescription() {
-        return description;
     }
 
     public String getEndTime() {

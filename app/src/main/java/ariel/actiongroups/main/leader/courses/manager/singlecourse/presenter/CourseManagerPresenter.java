@@ -6,9 +6,4 @@ public interface CourseManagerPresenter {
 
     void removeCard(Challenge challenge);
     void addCard(Challenge challenge);
-    void onDestroy();
-
-    interface CourseManagerView {
-        void refresh();
-    }
 }

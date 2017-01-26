@@ -1,33 +1,28 @@
 package ariel.actiongroups.main.leader.courses.manager.singlecourse.presenter;
 
+import java.util.List;
+
 import ariel.actiongroups.main.common.challenges.Challenge;
-import ariel.actiongroups.main.leader.courses.manager.singlecourse.presenter.adapter.presenter.ChallengeCardsAdapterPresenter;
-import ariel.actiongroups.main.leader.courses.manager.singlecourse.presenter.adapter.view.ChallengeAdapterView;
+import ariel.actiongroups.main.common.utils.abstractutils.GenericRecyclerViewInterface;
+import ariel.actiongroups.main.leader.courses.manager.singlecourse.model.CourseManagerModel;
 
 public class CourseManagerPresenterImpl implements CourseManagerPresenter {
 
-    private ChallengeCardsAdapterPresenter adapterPresenter;
-    private ChallengeAdapterView adapterView;
+    private GenericRecyclerViewInterface recyclerView;
 
-    public CourseManagerPresenterImpl(ChallengeCardsAdapterPresenter presenter, ChallengeAdapterView view) {
-        this.adapterPresenter = presenter;
-        this.adapterView = view;
+    public CourseManagerPresenterImpl(GenericRecyclerViewInterface recyclerView) {
+        this.recyclerView = recyclerView;
     }
 
     @Override
     public void removeCard(Challenge challenge) {
-
+        recyclerView.refreshAdapter();
     }
 
     @Override
     public void addCard(Challenge challenge) {
-        adapterPresenter.add(challenge);
-        adapterView.refresh();
-    }
-
-    @Override
-    public void onDestroy() {
-        adapterView = null;
-        adapterPresenter = null;
+        List<Challenge> dataSet = CourseManagerModel.getInstance().getChallenges();
+        dataSet.add(challenge);
+        recyclerView.refreshAdapter();
     }
 }

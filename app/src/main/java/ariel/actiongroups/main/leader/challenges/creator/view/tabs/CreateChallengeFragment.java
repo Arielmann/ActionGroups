@@ -1,5 +1,6 @@
 package ariel.actiongroups.main.leader.challenges.creator.view.tabs;
 
+import android.app.Activity;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -43,9 +44,9 @@ public class CreateChallengeFragment extends android.support.v4.app.Fragment {
         public void onClick(View view) { //TODO: crate preview activity prior to saving
             Challenge challenge = new Challenge();
             presenter.saveChallengeDataBases(getContext(), challenge);
-            EventBus.getDefault().postSticky(challenge); //Use it in ChallengeNavigationScreen
+            EventBus.getDefault().postSticky(challenge);
             //GoToScreen.startActivity(getActivity(), CourseOverviewActivity.class);
-            getActivity().setResult(-1);
+            getActivity().setResult(Activity.RESULT_OK);
             getActivity().finish();
             Log.d(TAG, "Moving to challenge preview activity. challenge text: " + binding.challengeText.getText());
         }

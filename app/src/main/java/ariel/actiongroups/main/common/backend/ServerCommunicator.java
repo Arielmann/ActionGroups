@@ -26,6 +26,7 @@ import ariel.actiongroups.main.common.utils.imageutils.ImageUtils;
 //AIzaSyAgxWka8IK74yM2nnloWmo-7tF4ysUMXDA - Server API key
 // 675632393175 - Sender ID
 
+//TODO: make abstract, remove singleton and Seperate to different classes
 public class ServerCommunicator implements ServerDataProviderDelegations.RegisterChallengeDelegate, ServerDataProviderDelegations.RegisterGroupDelegate, ServerDataProviderDelegations.RegisterUserDelegate, ServerDataProviderDelegations.RegisterLeaderDelegate, ServerDataProviderDelegations.FileUploadDelegate {
     private static ServerCommunicator dataSaver;
     private String TAG = ServerCommunicator.class.getName();
@@ -46,7 +47,7 @@ public class ServerCommunicator implements ServerDataProviderDelegations.Registe
         Resources res = context.getResources();
         String challengesTableName = res.getString(R.string.challenges);
         Map<String, Object> challengeMap = new HashMap();
-        challengeMap.put(res.getString(R.string.name), challenge.getChallengeName());
+        challengeMap.put(res.getString(R.string.name), challenge.getName());
         challengeMap.put(res.getString(R.string.description), challenge.getDescription());
         saveMapToServer(challengesTableName, challengeMap);
     }

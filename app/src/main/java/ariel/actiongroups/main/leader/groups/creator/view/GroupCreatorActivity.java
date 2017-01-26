@@ -14,7 +14,7 @@ import java.util.UUID;
 import ariel.actiongroups.R;
 import ariel.actiongroups.main.common.appinit.AppInit;
 import ariel.actiongroups.main.common.groups.ActionGroup;
-import ariel.actiongroups.main.common.groups.groups_list.view.GroupListActivity;
+import ariel.actiongroups.main.common.groups.groupslist.view.GroupListActivity;
 import ariel.actiongroups.main.common.utils.ActivityStarter;
 import ariel.actiongroups.main.leader.groups.creator.presenter.GroupCreatorPresenter;
 import ariel.actiongroups.main.leader.groups.creator.presenter.GroupCreatorPresenterImpl;

@@ -10,7 +10,7 @@ import ariel.actiongroups.R;
 import ariel.actiongroups.main.common.challenges.Challenge;
 import ariel.actiongroups.main.common.challenges.challenge_navigator.presenter.ChallengeNavigatorPresenter;
 import ariel.actiongroups.main.common.challenges.challenge_navigator.presenter.ChallengeNavigatorPresenterImpl;
-import ariel.actiongroups.main.common.groups.group_info.GroupDetailsActivity;
+import ariel.actiongroups.main.common.groups.groupdetails.GroupDetailsActivity;
 import ariel.actiongroups.main.common.groups.ActionGroup;
 import ariel.actiongroups.main.common.utils.ActivityStarter;
 import ariel.actiongroups.main.common.utils.ViewPagerAdapter;

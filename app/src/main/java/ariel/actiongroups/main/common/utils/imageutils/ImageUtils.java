@@ -23,10 +23,9 @@ import java.util.concurrent.ExecutionException;
 
 import ariel.actiongroups.R;
 import ariel.actiongroups.main.common.challenges.challenge_navigator.tabs.chat.ChatItem;
-import ariel.actiongroups.main.common.groups.groups_list.model.GroupRow;
 import ariel.actiongroups.main.common.groups.ActionGroup;
-import ariel.actiongroups.main.common.utils.abstractutils.GenericViewHolder;
 import ariel.actiongroups.main.common.profiles.sharedprefrences.SharedPrefManager;
+import ariel.actiongroups.main.common.utils.abstractutils.GenericViewHolder;
 
 /**
  * Created by home on 6/29/2016.
@@ -130,12 +129,12 @@ public class ImageUtils {
                 .into(picassoChatImageTarget);
     }
 
-    public static void initLoadedStylistsImageBitmaps(Context context, List<GroupRow> groups, int targetImageHeight, int targetImageWidth) {
-        for (final GroupRow groupRow : groups) {
-            Glide.with(context).load(groupRow.getImagePath()).asBitmap().into(new SimpleTarget<Bitmap>(targetImageHeight, targetImageWidth) {
+    public static void initLoadedStylistsImageBitmaps(Context context, List<ActionGroup> groups, int targetImageHeight, int targetImageWidth) {
+        for (final ActionGroup group : groups) {
+            Glide.with(context).load(group.getImageLocalPath()).asBitmap().into(new SimpleTarget<Bitmap>(targetImageHeight, targetImageWidth) {
                 @Override
                 public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
-                    groupRow.setBitmap(resource);
+                    group.setImage(resource);
                 }
             });
         }
@@ -190,7 +189,7 @@ public class ImageUtils {
         String fileNameWithSpace = "Contact_" + senderName + ".jpg";
         String finalFileName = fileNameWithSpace.replace(' ', '_');
         File newProfileImageFile = ImageUtils.writeBitmapToFile(profileImage, fileDirName, finalFileName);
-        group.setProfileImagePath(newProfileImageFile.getAbsolutePath());
+        group.setImageLocalPath(newProfileImageFile.getAbsolutePath());
     }
 
 
