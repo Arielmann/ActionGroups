@@ -1,4 +1,4 @@
-package ariel.actiongroups.main.common.courses.manager.coursedetails.view;
+package ariel.actiongroups.main.common.courses.coursedetails.view;
 
 import android.app.Activity;
 import android.content.Intent;

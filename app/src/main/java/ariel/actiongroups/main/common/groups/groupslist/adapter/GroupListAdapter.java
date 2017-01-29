@@ -34,7 +34,7 @@ public class GroupListAdapter extends RecyclerView.Adapter<GenericViewHolder> im
 
     @Override
     public GenericViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        final View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.compo_group_row, parent, false);
+        final View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.vh_group_row, parent, false);
         return new GroupRowViewHolder(context, view, dataSet, onGroupClicked);
     }
 

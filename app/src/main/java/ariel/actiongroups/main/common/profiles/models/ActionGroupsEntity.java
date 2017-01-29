@@ -6,7 +6,24 @@ import org.joda.time.LocalDateTime;
 
 import java.util.UUID;
 
+import ariel.actiongroups.R;
+
 public abstract class ActionGroupsEntity {
+
+    public enum EntityType{
+
+        GROUP(R.layout.vh_group_row),
+        CHALLENGE(R.layout.vh_group_row),
+        COURSE(R.layout.vh_group_row),
+        USER(R.layout.vh_group_row),
+        LEADER(R.layout.vh_group_row);
+
+        private int viewValue;
+
+        EntityType(int viewValue) {
+            this.viewValue = viewValue;
+        }
+    }
 
     private String id;
     private String name;
@@ -15,6 +32,7 @@ public abstract class ActionGroupsEntity {
     private Bitmap image;
     private String imageLocalPath;
     private String imageUrl;
+    private boolean isSilenced = false;
 
     public ActionGroupsEntity(String name, String description) { //Convenience Constructor
         this.id = UUID.randomUUID().toString();
@@ -100,5 +118,14 @@ public abstract class ActionGroupsEntity {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public void setSilenced(boolean silenced) {
+        isSilenced = silenced;
+    }
+
+    public boolean getSilenced() {
+        return isSilenced;
+    }
+
 
 }

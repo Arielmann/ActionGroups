@@ -25,7 +25,7 @@ public class ChallengeCardsAdapter extends RecyclerView.Adapter<GenericViewHolde
 
     @Override
     public GenericViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        final View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.compo_challenge_card, parent, false);
+        final View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.vh_challenge_card, parent, false);
         return new ChallengeCardViewHolder(context, view, dataSet);
     }
 

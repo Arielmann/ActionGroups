@@ -23,7 +23,7 @@ public class CompletionTableAdapter extends RecyclerView.Adapter<CompletionTable
     @Override
     public CompletionTableViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.compo_user_completed_challenge, parent, false);
+                .inflate(R.layout.vh_users_completed_challenge, parent, false);
 
         return new CompletionTableViewHolder(itemView);
     }

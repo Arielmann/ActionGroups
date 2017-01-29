@@ -59,8 +59,8 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".main.common.courses.manager.allcoursesoverview.view.AllCoursesOverviewActivity" />
-        <activity android:name=".main.common.courses.manager.coursedetails.view.CourseDetailsActivity" />
+        <activity android:name=".main.common.courses.allcoursesoverview.view.AllCoursesOverviewActivity" />
+        <activity android:name=".main.common.courses.coursedetails.view.CourseDetailsActivity" />
         <activity android:name=".main.common.groups.groupslist.view.GenericGroupListActivity" />
         <activity android:name=".main.common.groups.groupslist.view.GroupListActivityForResult"></activity>
     </application>

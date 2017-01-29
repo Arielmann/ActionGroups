@@ -12,7 +12,7 @@ import org.greenrobot.eventbus.EventBus;
 import ariel.actiongroups.R;
 import ariel.actiongroups.databinding.ActivityCourseOverviewBinding;
 import ariel.actiongroups.main.common.challenges.Challenge;
-import ariel.actiongroups.main.common.courses.manager.coursedetails.view.CourseDetailsActivity;
+import ariel.actiongroups.main.common.courses.coursedetails.view.CourseDetailsActivity;
 import ariel.actiongroups.main.common.utils.ActivityStarter;
 import ariel.actiongroups.main.common.utils.abstractutils.GenericRecyclerViewInterface;
 import ariel.actiongroups.main.leader.challenges.creator.view.CreateChallengeActivity;

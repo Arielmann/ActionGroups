@@ -1,8 +1,8 @@
-package ariel.actiongroups.main.common.courses.manager.coursedetails.presenter;
+package ariel.actiongroups.main.common.courses.coursedetails.presenter;
 
 import java.util.List;
 
-import ariel.actiongroups.main.common.courses.manager.coursedetails.model.CourseDetailsModel;
+import ariel.actiongroups.main.common.courses.coursedetails.model.CourseDetailsModel;
 import ariel.actiongroups.main.common.groups.ActionGroup;
 import ariel.actiongroups.main.common.utils.abstractutils.GenericRecyclerViewInterface;
 

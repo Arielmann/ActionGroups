@@ -7,4 +7,5 @@
     <dimen name="tab_label">14sp</dimen>
     <dimen name="custom_tab_layout_height">72dp</dimen>
     <dimen name="largeChallengeText">25sp</dimen>
+    <dimen name="boundary_height">1dp</dimen>
 </resources>

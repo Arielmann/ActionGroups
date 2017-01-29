@@ -1,4 +1,4 @@
-package ariel.actiongroups.main.common.courses.manager.allcoursesoverview.view;
+package ariel.actiongroups.main.common.courses.allcoursesoverview.view;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
