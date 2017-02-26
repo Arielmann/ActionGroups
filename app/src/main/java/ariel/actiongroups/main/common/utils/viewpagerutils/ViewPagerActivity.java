@@ -1,4 +1,4 @@
-package ariel.actiongroups.main.common.utils.abstractutils;
+package ariel.actiongroups.main.common.utils.viewpagerutils;
 
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -11,7 +11,6 @@ import ariel.actiongroups.R;
 public abstract class ViewPagerActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
-    private TabLayout tabLayout;
     private ViewPager viewPager;
 
     @Override
@@ -22,7 +21,7 @@ public abstract class ViewPagerActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         viewPager = (ViewPager) findViewById(R.id.viewpager);
-        tabLayout = (TabLayout) findViewById(R.id.viewPagerTabs);
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.viewPagerTabs);
         tabLayout.setupWithViewPager(viewPager);
     }
 

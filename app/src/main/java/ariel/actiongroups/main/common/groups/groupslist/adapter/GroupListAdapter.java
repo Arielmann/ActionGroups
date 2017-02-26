@@ -10,23 +10,17 @@ import java.util.List;
 
 import ariel.actiongroups.R;
 import ariel.actiongroups.main.common.groups.ActionGroup;
-import ariel.actiongroups.main.common.groups.groupslist.view.GroupListViewInterface;
-import ariel.actiongroups.main.common.utils.abstractutils.GenericRecyclerViewInterface;
-import ariel.actiongroups.main.common.utils.abstractutils.GenericViewHolder;
+import ariel.actiongroups.main.common.groups.groupslist.view.OnActionGroupClicked;
+import ariel.actiongroups.main.common.utils.listutils.GenericRecyclerViewInterface;
+import ariel.actiongroups.main.common.utils.listutils.vh.GenericViewHolder;
 
 public class GroupListAdapter extends RecyclerView.Adapter<GenericViewHolder> implements GenericRecyclerViewInterface {
 
-    /*
-    * Since adapter maintains views AND logic of component, in MVP it
-    * implements both view and presenter interfaces
-    * in order to communicate with outside views and presenters
-    */
-
     private List<ActionGroup> dataSet;
     private Context context;
-    private GroupListViewInterface onGroupClicked;
+    private OnActionGroupClicked onGroupClicked;
 
-    public GroupListAdapter(Context context, List<ActionGroup> dataSet, GroupListViewInterface onGroupClicked) {
+    public GroupListAdapter(Context context, List<ActionGroup> dataSet, OnActionGroupClicked onGroupClicked) {
         this.context = context;
         this.dataSet = dataSet;
         this.onGroupClicked = onGroupClicked;

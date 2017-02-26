@@ -8,4 +8,10 @@
     <dimen name="custom_tab_layout_height">72dp</dimen>
     <dimen name="largeChallengeText">25sp</dimen>
     <dimen name="boundary_height">1dp</dimen>
+    <dimen name="sections_separator">10dp</dimen>
+    <dimen name="entity_quick_details">12sp</dimen>
+    <dimen name="static_vh_text_left_margin">11dp</dimen>
+    <dimen name="static_vh_text_top_margin">14dp</dimen>
+    <dimen name="static_vh_switch_Right_margin">19dp</dimen>
+    <dimen name="element_min_margin_end">15dp</dimen>
 </resources>

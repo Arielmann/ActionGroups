@@ -1,4 +1,4 @@
-package ariel.actiongroups.main.common.utils;
+package ariel.actiongroups.main.common.utils.viewpagerutils;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,9 +8,6 @@ import android.support.v4.app.FragmentPagerAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by home on 11/7/2016.
- */
 public class ViewPagerAdapter extends FragmentPagerAdapter {
     private final List<Fragment> mFragmentList = new ArrayList<>();
     private final List<String> mFragmentTitleList = new ArrayList<>();

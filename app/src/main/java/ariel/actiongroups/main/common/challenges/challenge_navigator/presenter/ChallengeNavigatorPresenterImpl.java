@@ -3,6 +3,7 @@ package ariel.actiongroups.main.common.challenges.challenge_navigator.presenter;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 
 import ariel.actiongroups.main.common.challenges.Challenge;
 import ariel.actiongroups.main.common.challenges.challenge_navigator.model.ChallengeNavigatorModel;
@@ -11,10 +12,13 @@ import ariel.actiongroups.main.common.challenges.challenge_navigator.tabs.challe
 import ariel.actiongroups.main.common.challenges.challenge_navigator.tabs.chat.ChatTabFrag;
 import ariel.actiongroups.main.common.challenges.challenge_navigator.tabs.results.ResultsTabFrag;
 import ariel.actiongroups.main.common.challenges.challenge_navigator.view.ChallengeNavigationView;
-import ariel.actiongroups.main.common.utils.ViewPagerAdapter;
+import ariel.actiongroups.main.common.courses.Course;
+import ariel.actiongroups.main.common.resources.AppStrings;
+import ariel.actiongroups.main.common.utils.viewpagerutils.ViewPagerAdapter;
 
 public class ChallengeNavigatorPresenterImpl implements ChallengeNavigatorPresenter {
 
+    private String TAG = ChallengeNavigatorPresenterImpl.class.getSimpleName();
     private ChallengeNavigationView view;
     private ChallengeNavigatorModelDelegations.AllModelsDelegate model = ChallengeNavigatorModel.getInstance();
 
@@ -25,12 +29,9 @@ public class ChallengeNavigatorPresenterImpl implements ChallengeNavigatorPresen
     @Override
     public void createViewPagerAdapter(FragmentActivity activity, ViewPager viewPager, Intent intent) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(activity.getSupportFragmentManager());
-        String CHALLENGE = "Challenge";
-        String CHAT = "Chat";
-        String RESULTS = "Results";
-        adapter.addFragment(new ResultsTabFrag(), RESULTS);
-        adapter.addFragment(new ChatTabFrag(), CHAT);
-        adapter.addFragment(new ChallengeInfoTabViewImpl(), CHALLENGE);
+        adapter.addFragment(new ResultsTabFrag(), AppStrings.RESULTS);
+        adapter.addFragment(new ChatTabFrag(), AppStrings.CHAT);
+        adapter.addFragment(new ChallengeInfoTabViewImpl(), AppStrings.CHALLENGE);
         view.setViewPagerAdapter(adapter);
     }
 
@@ -40,11 +41,13 @@ public class ChallengeNavigatorPresenterImpl implements ChallengeNavigatorPresen
     }
 
     @Override
-    public void updateChallengeData(Challenge challenge) {
-        if(challenge != null) {
-            model.setChallenge(challenge);
-        }else { //TODO: debug purposes only, remove when done!!
+    public void updateChallengeData(Course course) {
+        if (course.getCurrentChallenge() != null) {
+            model.setChallenge(course.getCurrentChallenge());
+        } else { //TODO: debug purposes only, remove when done!!
+            Challenge challenge = new Challenge();
             model.setChallenge(new Challenge());
+            Log.wtf(TAG, "No challenge found in group");
         }
     }
 }

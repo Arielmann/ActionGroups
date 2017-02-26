@@ -15,16 +15,16 @@ import ariel.actiongroups.main.common.groups.ActionGroup;
 import ariel.actiongroups.main.common.groups.groupslist.events.OnGroupRowsLoadedEvent;
 import ariel.actiongroups.main.common.groups.groupslist.model.GroupListModel;
 import ariel.actiongroups.main.common.resources.AppStrings;
-import ariel.actiongroups.main.common.utils.abstractutils.GenericRecyclerViewInterface;
+import ariel.actiongroups.main.common.utils.listutils.GenericRecyclerViewInterface;
 
 public class GroupListPresenterImpl implements GroupListPresenter {
 
     private GroupListModel model;
-    private GenericRecyclerViewInterface adapterView;
+    private GenericRecyclerViewInterface iRecyclerView;
 
-    public GroupListPresenterImpl(GenericRecyclerViewInterface adapterView) {
+    public GroupListPresenterImpl(GenericRecyclerViewInterface iRecyclerView) {
         this.model = GroupListModel.getInstance();
-        this.adapterView = adapterView;
+        this.iRecyclerView = iRecyclerView;
     }
 
     @Override
@@ -57,7 +57,7 @@ public class GroupListPresenterImpl implements GroupListPresenter {
         groupRows.add(new ActionGroup());
         groupRows.add(new ActionGroup());
         model.setDataSet(groupRows);
-        adapterView.refreshAdapter();
+        iRecyclerView.refreshAdapter();
         EventBus.getDefault().post(new OnGroupRowsLoadedEvent(groupRows));
         return groupRows;
     }

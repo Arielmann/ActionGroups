@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/courseDetailsHeaderLayout">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/topImage"
+            layout="@layout/static_vh_top_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <include
+            android:id="@+id/silenceNotificationsVH"
+            layout="@layout/static_vh_silence_notifications_switch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/topImage"
+            android:layout_marginTop="@dimen/static_vh_text_top_margin" />
+
+        <include
+            android:id="@+id/sectionBoundaryLine"
+            layout="@layout/compo_boundary_line"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/sections_separator"
+            android:layout_below="@+id/silenceNotificationsVH" />
+
+        <include
+            android:id="@+id/addMemberVHLayout"
+            layout="@layout/static_vh_add_member"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/sectionBoundaryLine" />
+
+    </RelativeLayout>
+</layout>

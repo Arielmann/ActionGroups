@@ -4,10 +4,10 @@ import org.greenrobot.eventbus.EventBus;
 
 import ariel.actiongroups.main.common.groups.ActionGroup;
 
-public class GroupListActivityForResult extends GenericGroupListActivity implements GroupListViewInterface {
+public class GroupListActivityForResult extends GenericGroupListActivity implements OnActionGroupClicked {
 
     @Override
-    public void onGroupClicked(ActionGroup group) {
+    public void onActionGroupClicked(ActionGroup group) {
         EventBus.getDefault().postSticky(group);
         setResult(RESULT_OK);
         finish();

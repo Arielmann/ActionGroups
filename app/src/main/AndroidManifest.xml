@@ -37,7 +37,7 @@
         <activity android:name=".main.common.home_page.HomePage" />
         <activity android:name=".main.common.groups.groupdetails.GroupDetailsActivity" />
         <activity android:name=".main.leader.groups.creator.view.GroupCreatorActivity" />
-        <activity android:name=".main.common.utils.abstractutils.ViewPagerActivity" />
+        <activity android:name=".main.common.utils.viewpagerutils.ViewPagerActivity" />
         <activity android:name=".main.leader.courses.manager.singlecourse.view.CourseManagerActivity" />
 
         <receiver
@@ -62,7 +62,12 @@
         <activity android:name=".main.common.courses.allcoursesoverview.view.AllCoursesOverviewActivity" />
         <activity android:name=".main.common.courses.coursedetails.view.CourseDetailsActivity" />
         <activity android:name=".main.common.groups.groupslist.view.GenericGroupListActivity" />
-        <activity android:name=".main.common.groups.groupslist.view.GroupListActivityForResult"></activity>
+        <activity android:name=".main.common.groups.groupslist.view.GroupListActivityForResult" />
+
+        <service
+            android:name=".main.common.utils.services.ServiceExample"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>

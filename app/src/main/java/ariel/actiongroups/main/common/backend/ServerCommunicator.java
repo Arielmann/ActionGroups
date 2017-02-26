@@ -5,6 +5,7 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.backendless.Backendless;
 import com.backendless.BackendlessUser;
@@ -21,6 +22,7 @@ import ariel.actiongroups.main.common.challenges.Challenge;
 import ariel.actiongroups.main.common.groups.ActionGroup;
 import ariel.actiongroups.main.common.profiles.models.User;
 import ariel.actiongroups.main.common.profiles.sharedprefrences.SharedPrefManager;
+import ariel.actiongroups.main.common.utils.networkutils.NetworkHelper;
 import ariel.actiongroups.main.common.utils.imageutils.ImageUtils;
 
 //AIzaSyAgxWka8IK74yM2nnloWmo-7tF4ysUMXDA - Server API key
@@ -44,12 +46,16 @@ public class ServerCommunicator implements ServerDataProviderDelegations.Registe
 
     @Override
     public void registerNewChallenge(Context context, Challenge challenge) {
-        Resources res = context.getResources();
-        String challengesTableName = res.getString(R.string.challenges);
-        Map<String, Object> challengeMap = new HashMap();
-        challengeMap.put(res.getString(R.string.name), challenge.getName());
-        challengeMap.put(res.getString(R.string.description), challenge.getDescription());
-        saveMapToServer(challengesTableName, challengeMap);
+        if(NetworkHelper.hasNetworkAccess(context)) {
+            Resources res = context.getResources();
+            String challengesTableName = res.getString(R.string.challenges);
+            Map<String, Object> challengeMap = new HashMap();
+            challengeMap.put(res.getString(R.string.name), challenge.getName());
+            challengeMap.put(res.getString(R.string.description), challenge.getDescription());
+            saveMapToServer(challengesTableName, challengeMap);
+        }else{
+            Toast.makeText(context, NetworkHelper.NO_NETWORK_MSG, Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override

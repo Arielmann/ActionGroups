@@ -1,4 +1,4 @@
-package ariel.actiongroups.main.common.utils.abstractutils;
+package ariel.actiongroups.main.common.utils.listutils.vh;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;

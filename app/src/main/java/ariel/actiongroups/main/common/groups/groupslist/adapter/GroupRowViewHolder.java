@@ -13,8 +13,8 @@ import java.util.List;
 
 import ariel.actiongroups.R;
 import ariel.actiongroups.main.common.groups.ActionGroup;
-import ariel.actiongroups.main.common.groups.groupslist.view.GroupListViewInterface;
-import ariel.actiongroups.main.common.utils.abstractutils.GenericViewHolder;
+import ariel.actiongroups.main.common.groups.groupslist.view.OnActionGroupClicked;
+import ariel.actiongroups.main.common.utils.listutils.vh.GenericViewHolder;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class GroupRowViewHolder extends GenericViewHolder implements View.OnClickListener{
@@ -26,9 +26,9 @@ public class GroupRowViewHolder extends GenericViewHolder implements View.OnClic
     * by the ActionGroup creator, there will be a default Image.
     */
 
-    private static final String TAG = GroupRowViewHolder.class.getName();
+    private static final String TAG = GroupRowViewHolder.class.getSimpleName();
 
-    private final GroupListViewInterface onGroupClicked;
+    private final OnActionGroupClicked onGroupClicked;
     private Context context;
     private final CircleImageView groupImageView;
     private final TextView nameTextView;
@@ -37,7 +37,7 @@ public class GroupRowViewHolder extends GenericViewHolder implements View.OnClic
     private int targetImageHeight;
     private int targetImageWidth;
 
-    public GroupRowViewHolder(Context context, View itemView, List dataSet, GroupListViewInterface onGroupClicked) {
+    public GroupRowViewHolder(Context context, View itemView, List dataSet, OnActionGroupClicked onGroupClicked) {
        /* Distinction is made between context and
          groupClickListener interface for better
         */
@@ -90,7 +90,8 @@ public class GroupRowViewHolder extends GenericViewHolder implements View.OnClic
 
     @Override
     public void onClick(View view) {
-        onGroupClicked.onGroupClicked(dataSet.get(this.getLayoutPosition()));
+        int position = this.getLayoutPosition();
+        onGroupClicked.onActionGroupClicked(dataSet.get(position));
        /* Intent singleChallengeScreen = new Intent(context, ChallengeNavigationActivity.class);
         singleChallengeScreen.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         ActionGroup group = new ActionGroup();

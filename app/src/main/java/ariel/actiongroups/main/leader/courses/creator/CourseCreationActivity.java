@@ -14,7 +14,7 @@ public class CourseCreationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course_creator);
-        Button createChallenge = (Button) findViewById(R.id.CreateChallengeInCourseCreatorButton);
+        Button createChallenge = (Button) findViewById(R.id.createCourseButton);
         ActivityStarter.setStartActivityOnClickListener(createChallenge, this, CourseManagerActivity.class);
     }
 }

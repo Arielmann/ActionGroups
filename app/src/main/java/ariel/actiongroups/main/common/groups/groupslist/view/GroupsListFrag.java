@@ -21,7 +21,7 @@ import ariel.actiongroups.main.common.groups.groupslist.events.OnGroupRowsLoaded
 import ariel.actiongroups.main.common.groups.groupslist.model.GroupListModel;
 import ariel.actiongroups.main.common.groups.groupslist.presenter.GroupListPresenter;
 import ariel.actiongroups.main.common.groups.groupslist.presenter.GroupListPresenterImpl;
-import ariel.actiongroups.main.common.utils.abstractutils.GenericRecyclerViewInterface;
+import ariel.actiongroups.main.common.utils.listutils.GenericRecyclerViewInterface;
 
 public class GroupsListFrag extends Fragment implements GenericRecyclerViewInterface{
 
@@ -51,7 +51,7 @@ public class GroupsListFrag extends Fragment implements GenericRecyclerViewInter
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         GroupListModel.getInstance().initDataSet();
         List dataSet = GroupListModel.getInstance().getDataSet();
-        adapter = new GroupListAdapter(getContext(), dataSet, (GroupListViewInterface) getActivity());
+        adapter = new GroupListAdapter(getContext(), dataSet, (OnActionGroupClicked) getActivity());
         View recyclerViewLayout = inflater.inflate(R.layout.compo_recycler_view, null); //// TODO: 1/19/2017 : Remove null
         RecyclerView recyclerView = (RecyclerView) recyclerViewLayout.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -59,7 +59,7 @@ public class GroupsListFrag extends Fragment implements GenericRecyclerViewInter
         recyclerView.setHasFixedSize(true);
         GroupListPresenter presenter = new GroupListPresenterImpl(adapter);
         presenter.configureRecyclerViewWithGroupRowsFromServer();
-        noGroupsMessage = (TextView) recyclerViewLayout.findViewById(R.id.noGroupsTextViewInRecyclerView);
+        noGroupsMessage = (TextView) recyclerViewLayout.findViewById(R.id.emptyDataSetTV);
         return recyclerViewLayout;
     }
 

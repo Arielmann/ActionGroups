@@ -5,7 +5,7 @@ import android.os.Bundle;
 import ariel.actiongroups.R;
 import ariel.actiongroups.main.common.groups.ActionGroup;
 
-public class GroupListActivity extends GenericGroupListActivity implements GroupListViewInterface {
+public class GroupListActivity extends GenericGroupListActivity implements OnActionGroupClicked {
 
     /*
     * will manage the whole process of
@@ -21,7 +21,7 @@ public class GroupListActivity extends GenericGroupListActivity implements Group
     }
 
     @Override
-    public void onGroupClicked(ActionGroup group) {
+    public void onActionGroupClicked(ActionGroup group) {
         //TODO: pop options view here
     }
 }

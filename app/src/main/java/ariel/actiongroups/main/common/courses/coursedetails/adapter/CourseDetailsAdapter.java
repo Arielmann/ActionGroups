@@ -1,63 +1,67 @@
 package ariel.actiongroups.main.common.courses.coursedetails.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.karumi.headerrecyclerview.HeaderRecyclerViewAdapter;
+
 import java.util.List;
 
 import ariel.actiongroups.R;
-import ariel.actiongroups.main.common.courses.coursedetails.model.CourseDetailsModel;
+import ariel.actiongroups.main.common.courses.Course;
+import ariel.actiongroups.main.common.groups.ActionGroup;
+import ariel.actiongroups.main.common.utils.listutils.OnAddEntityVHClicked;
 import ariel.actiongroups.main.common.groups.groupslist.adapter.GroupRowViewHolder;
-import ariel.actiongroups.main.common.groups.groupslist.view.GroupListViewInterface;
-import ariel.actiongroups.main.common.utils.abstractutils.GenericViewHolder;
+import ariel.actiongroups.main.common.groups.groupslist.view.OnActionGroupClicked;
+import ariel.actiongroups.main.common.utils.listutils.GenericRecyclerViewInterface;
+import ariel.actiongroups.main.common.utils.listutils.vh.GenericViewHolder;
 
-public class CourseDetailsAdapter extends RecyclerView.Adapter<GenericViewHolder> {
+public class CourseDetailsAdapter extends HeaderRecyclerViewAdapter<GenericViewHolder, Course, ActionGroup, CourseDetailsHeader> implements GenericRecyclerViewInterface{
 
-    private List dataSet;
+    private List<ActionGroup> dataSet;
     private Context context;
-    private GroupListViewInterface onGroupClicked;
+    private OnActionGroupClicked onGroupClicked;
+    private OnAddEntityVHClicked onAddGroupVHClicked;
 
-    public CourseDetailsAdapter(Context context, GroupListViewInterface onGroupClicked) {
+    public CourseDetailsAdapter(Context context, List<ActionGroup> dataSet, OnAddEntityVHClicked onAddGroupVHClicked, OnActionGroupClicked onGroupClicked) {
         this.context = context;
-        this.dataSet = CourseDetailsModel.getInstance().getGroups();
+        this.dataSet = dataSet;
         this.onGroupClicked = onGroupClicked;
+        this.onAddGroupVHClicked = onAddGroupVHClicked;
     }
 
     @Override
-    public GenericViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        switch (viewType) {
-            case 100:
-                final View headerView = LayoutInflater.from(parent.getContext()).inflate(R.layout.vh_group_row, parent, false);
-                return new GroupRowViewHolder(context, headerView, dataSet, onGroupClicked);
-
-            case 101:
-                final View silenceView = LayoutInflater.from(parent.getContext()).inflate(R.layout.vh_silence_notifications_with_switch, parent, false);
-                return new SilenceEntityWithSwitchVH(context, silenceView, CourseDetailsModel.getInstance().getCourse());
-
-            default:
-                final View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.vh_group_row, parent, false);
-                return new GroupRowViewHolder(context, view, dataSet, onGroupClicked);
-        }
+    protected GenericViewHolder onCreateHeaderViewHolder(ViewGroup parent, int viewType) {
+        final View headerView = getLayoutInflater(parent).inflate(R.layout.header_course_details, parent, false);
+        return new CourseDetailsHeader(headerView, getHeader(), onAddGroupVHClicked);
     }
 
     @Override
-    public void onBindViewHolder(GenericViewHolder holder, int position) {
-        if(holder instanceof View.OnClickListener) {
-            holder.itemView.setOnClickListener((View.OnClickListener) holder);
-        }
-        holder.setUIDataOnView(position);
+    public GenericViewHolder onCreateItemViewHolder(ViewGroup parent, int viewType) {
+        final View view = getLayoutInflater(parent).inflate(R.layout.vh_group_row, parent, false);
+        return new GroupRowViewHolder(context, view, dataSet, onGroupClicked);
     }
 
     @Override
-    public int getItemViewType(int position) {
-        return position + 100;
+    public void onBindItemViewHolder(GenericViewHolder holder, int position) {
+        holder.itemView.setOnClickListener((View.OnClickListener) holder);
+        holder.setUIDataOnView(position - 1); //-1 for header
     }
 
     @Override
-    public int getItemCount() {
-        return dataSet.size();
+    protected void onBindHeaderViewHolder(GenericViewHolder holder, int position) {
+        holder.setUIDataOnView(0);
+    }
+
+    private LayoutInflater getLayoutInflater(ViewGroup parent) {
+        return LayoutInflater.from(parent.getContext());
+    }
+
+    @Override
+    public void refreshAdapter() {
+        notifyDataSetChanged();
     }
 }
+

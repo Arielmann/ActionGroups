@@ -25,11 +25,8 @@ import ariel.actiongroups.R;
 import ariel.actiongroups.main.common.challenges.challenge_navigator.tabs.chat.ChatItem;
 import ariel.actiongroups.main.common.groups.ActionGroup;
 import ariel.actiongroups.main.common.profiles.sharedprefrences.SharedPrefManager;
-import ariel.actiongroups.main.common.utils.abstractutils.GenericViewHolder;
+import ariel.actiongroups.main.common.utils.listutils.vh.GenericViewHolder;
 
-/**
- * Created by home on 6/29/2016.
- */
 public class ImageUtils {
 
     private static final String TAG = "ImageUtils";
@@ -122,6 +119,7 @@ public class ImageUtils {
         Picasso.with(context).load(url).into(picassoProfileImageTarget);
     }
 
+    //TODO: Use ImageCacheManager gor persistent data saving directly to device cache
     public static void downloadChatImage(final Context context, ImageLoader loader, String senderName, final String url) {
         picassoChatImageTarget = new PicassoChatImageTarget(context, senderName, loader, url);
         Picasso.with(context)
@@ -143,7 +141,7 @@ public class ImageUtils {
     public static void initDefaultProfileImage(Context context) {
         defaultProfileImage = BitmapFactory.decodeResource(context.getResources(),
                 R.drawable.female_icon);
-        SharedPrefManager.getInstance(null).setUserImageBitmap(defaultProfileImage);
+        SharedPrefManager.getInstance(context).setUserImageBitmap(defaultProfileImage);
     }
 
    /* public static void createImageFromResource(Context context, int res, Bitmap imageTarget, int targetImageHeight, int targetImageWidth) {

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/silenceEntityTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/md_black_1000"
+            android:layout_alignBaseline="@+id/silenceEntitySwitch"
+            android:layout_alignBottom="@+id/silenceEntitySwitch"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="@dimen/static_vh_text_left_margin"
+            android:layout_marginTop="@dimen/static_vh_text_top_margin"
+            android:text="Silence Entity" />
+
+        <Switch
+            android:id="@+id/silenceEntitySwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="@dimen/static_vh_switch_Right_margin"
+            android:layout_marginRight="@dimen/static_vh_switch_Right_margin"/>
+
+        <include
+            android:id="@+id/silenceBoundaryLine"
+            layout="@layout/compo_boundary_line"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/boundary_height"
+            android:layout_below="@+id/silenceEntitySwitch" />
+
+    </RelativeLayout>
+</layout>
