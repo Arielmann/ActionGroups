@@ -32,7 +32,7 @@
 
         <!-- Other activities -->
         <activity android:name=".main.common.challenges.challenge_navigator.view.ChallengeNavigationActivity" />
-        <activity android:name=".main.leader.challenges.creator.view.CreateChallengeActivity" />
+        <activity android:name=".main.leader.challenges.manager.view.ChallengeManagerActivity" />
         <activity android:name=".main.common.groups.groupslist.view.GroupListActivity" />
         <activity android:name=".main.common.home_page.HomePage" />
         <activity android:name=".main.common.groups.groupdetails.GroupDetailsActivity" />

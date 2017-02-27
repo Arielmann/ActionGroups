@@ -1,4 +1,4 @@
-package ariel.actiongroups.main.leader.challenges.creator.models;
+package ariel.actiongroups.main.leader.challenges.manager.models;
 
 import android.graphics.Bitmap;
 

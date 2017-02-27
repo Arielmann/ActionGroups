@@ -1,4 +1,4 @@
-package ariel.actiongroups.main.leader.challenges.creator.view.tabs;
+package ariel.actiongroups.main.leader.challenges.manager.view.tabs;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;

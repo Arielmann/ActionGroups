@@ -1,4 +1,4 @@
-package ariel.actiongroups.main.leader.challenges.creator.view;
+package ariel.actiongroups.main.leader.challenges.manager.view;
 
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
@@ -9,32 +9,32 @@ import net.danlew.android.joda.JodaTimeAndroid;
 import ariel.actiongroups.main.common.resources.AppStrings;
 import ariel.actiongroups.main.common.utils.viewpagerutils.ViewPagerAdapter;
 import ariel.actiongroups.main.common.utils.viewpagerutils.ViewPagerActivity;
-import ariel.actiongroups.main.leader.challenges.creator.presenter.CreateChallengePresenterImpl;
-import ariel.actiongroups.main.leader.challenges.creator.view.tabs.CreateChallengeFragment;
-import ariel.actiongroups.main.leader.challenges.creator.view.tabs.ChallengeSettingsFragment;
+import ariel.actiongroups.main.leader.challenges.manager.presenter.ChallengeManagerPresenterImpl;
+import ariel.actiongroups.main.leader.challenges.manager.view.tabs.ChallengeManagerFragment;
+import ariel.actiongroups.main.leader.challenges.manager.view.tabs.ChallengeSettingsFragment;
 
-public class CreateChallengeActivity extends ViewPagerActivity {
+public class ChallengeManagerActivity extends ViewPagerActivity {
 
-    private static final String TAG = CreateChallengeActivity.class.getName();
-    private CreateChallengePresenterImpl presenter;
+    private static final String TAG = ChallengeManagerActivity.class.getName();
+    private ChallengeManagerPresenterImpl presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         JodaTimeAndroid.init(this);
         setupViewPager(super.getViewPager());
-        presenter = new CreateChallengePresenterImpl();
-        Log.d(TAG, TAG + " created");
+        presenter = new ChallengeManagerPresenterImpl();
+        Log.d(TAG, "Activity created");
     }
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new CreateChallengeFragment(), AppStrings.CHALLENGE);
+        adapter.addFragment(new ChallengeManagerFragment(), AppStrings.CHALLENGE);
         adapter.addFragment(new ChallengeSettingsFragment(),  AppStrings.SETTINGS);
         viewPager.setAdapter(adapter);
     }
 
-    public CreateChallengePresenterImpl getPresenter() {
+    public ChallengeManagerPresenterImpl getPresenter() {
         return presenter;
     }
 

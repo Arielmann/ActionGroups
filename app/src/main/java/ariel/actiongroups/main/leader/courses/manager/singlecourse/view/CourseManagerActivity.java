@@ -19,7 +19,7 @@ import ariel.actiongroups.main.common.utils.ActivityStarter;
 import ariel.actiongroups.main.common.utils.listutils.GenericRecyclerViewInterface;
 import ariel.actiongroups.main.common.utils.listutils.gridview.GridViewLayoutWithHeaderAndFooter;
 import ariel.actiongroups.main.common.utils.listutils.gridview.SpanSizeLookUpForHeaderAndFooter;
-import ariel.actiongroups.main.leader.challenges.creator.view.CreateChallengeActivity;
+import ariel.actiongroups.main.leader.challenges.manager.view.ChallengeManagerActivity;
 import ariel.actiongroups.main.leader.courses.manager.singlecourse.adapter.CourseManagerAdapter;
 import ariel.actiongroups.main.leader.courses.manager.singlecourse.model.CourseManagerModel;
 import ariel.actiongroups.main.leader.courses.manager.singlecourse.presenter.CourseManagerPresenter;
@@ -35,7 +35,7 @@ public class CourseManagerActivity extends AppCompatActivity implements GenericR
         super.onCreate(savedInstanceState);
         ActivityCourseManagerBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_course_manager);
         ActivityStarter.setStartActivityOnClickListener(binding.saveCourse, this, CourseDetailsActivity.class);
-        ActivityStarter.setStartActivityOnClickListener(binding.addChallenge, this, CreateChallengeActivity.class);
+        ActivityStarter.setStartActivityForResultOnClickListener(binding.addChallenge, this, ChallengeManagerActivity.class);
 
         List<Challenge> challenges = new ArrayList<>();
         for (int i = 0; i < 40; i++) {

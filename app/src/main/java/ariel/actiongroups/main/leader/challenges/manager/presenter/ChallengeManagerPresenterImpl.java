@@ -1,18 +1,18 @@
-package ariel.actiongroups.main.leader.challenges.creator.presenter;
+package ariel.actiongroups.main.leader.challenges.manager.presenter;
 
 import android.content.Context;
 
 import ariel.actiongroups.main.common.backend.ServerCommunicator;
 import ariel.actiongroups.main.common.backend.ServerDataProviderDelegations;
 import ariel.actiongroups.main.common.challenges.Challenge;
-import ariel.actiongroups.main.leader.challenges.creator.models.ChallengeSettingsModel;
+import ariel.actiongroups.main.leader.challenges.manager.models.ChallengeSettingsModel;
 
-public class CreateChallengePresenterImpl implements CreateChallengePresenter {
+public class ChallengeManagerPresenterImpl implements ChallengeManagerPresenter {
 
-    private static final String TAG = CreateChallengePresenterImpl.class.getName();
+    private static final String TAG = ChallengeManagerPresenterImpl.class.getName();
     private ChallengeSettingsModel model;
 
-    public CreateChallengePresenterImpl() {
+    public ChallengeManagerPresenterImpl() {
         this.model = new ChallengeSettingsModel("September Lions");
     }
 

@@ -10,7 +10,7 @@ import ariel.actiongroups.R;
 import ariel.actiongroups.main.common.challenges.Challenge;
 import ariel.actiongroups.main.common.utils.ActivityStarter;
 import ariel.actiongroups.main.common.utils.listutils.vh.GenericViewHolder;
-import ariel.actiongroups.main.leader.challenges.creator.view.CreateChallengeActivity;
+import ariel.actiongroups.main.leader.challenges.manager.view.ChallengeManagerActivity;
 
 class ChallengeCardVH extends GenericViewHolder implements View.OnClickListener {
 
@@ -33,7 +33,7 @@ class ChallengeCardVH extends GenericViewHolder implements View.OnClickListener 
             final String name = dataSet.get(position).getName();
 
             if (name != null && description != null) {
-                this.challengeNumberTV.setText(position);
+                this.challengeNumberTV.setText(String.valueOf(position));
                 this.challengeDescriptionTV.setText(description);
                 //this.groupImageView.setImageResource(R.drawable.running_lions);
             }
@@ -41,6 +41,6 @@ class ChallengeCardVH extends GenericViewHolder implements View.OnClickListener 
 
     @Override
     public void onClick(View view) {
-        ActivityStarter.startActivity(context, CreateChallengeActivity.class);
+        ActivityStarter.startActivity(context, ChallengeManagerActivity.class);
     }
 }

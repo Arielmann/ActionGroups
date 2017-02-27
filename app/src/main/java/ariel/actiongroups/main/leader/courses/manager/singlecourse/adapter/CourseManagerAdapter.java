@@ -37,8 +37,8 @@ public class CourseManagerAdapter extends HeaderRecyclerViewAdapter<GenericViewH
 
     @Override
     protected GenericViewHolder onCreateItemViewHolder(ViewGroup parent, int viewType) {
-        final View header = LayoutInflater.from(parent.getContext()).inflate(R.layout.vh_challenge_card, parent, false);
-        return new ChallengeCardVH(context, header, dataSet);
+        final View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.vh_challenge_card, parent, false);
+        return new ChallengeCardVH(context, itemView, dataSet);
     }
 
     @Override
