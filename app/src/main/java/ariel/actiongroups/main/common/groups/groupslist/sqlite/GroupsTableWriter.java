@@ -113,8 +113,8 @@ public class GroupsTableWriter extends SQLiteOpenHelper {
                 GroupRow gropudRow = new GroupRow(group.getName(), group.getImage(), lastMessageDate, lastMessage);
                 gropudRow.setBitmap(group.getGroupImageBitmap()); // bitmap is already defined
                 ContactedUsersRowsHashMap.getInstance().getHashMap().put(group.getName(), gropudRow);
-                model.getChallenges().add(gropudRow);
-                EventBus.getDefault().post(new OnContactedUsersLoadedEvent(model.getChallenges()));
+                model.getChallenge().add(gropudRow);
+                EventBus.getDefault().post(new OnContactedUsersLoadedEvent(model.getChallenge()));
                 GroupsModel.getInstance(context).getAdapter().notifyDataSetChanged();
                 //TODO: find a way to close the db without crashing*/
             }

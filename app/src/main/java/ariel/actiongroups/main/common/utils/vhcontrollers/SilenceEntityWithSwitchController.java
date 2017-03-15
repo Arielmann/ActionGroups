@@ -5,7 +5,7 @@ import android.widget.CompoundButton;
 import android.widget.Switch;
 
 import ariel.actiongroups.main.common.profiles.models.ActionGroupsEntity;
-import ariel.actiongroups.main.common.utils.listutils.vhcontrollers.SilenceNotificationsController;
+import ariel.actiongroups.main.common.utils.listutils.vh.vhcontrollers.SilenceNotificationsController;
 
 public class SilenceEntityWithSwitchController extends SilenceNotificationsController implements CompoundButton.OnCheckedChangeListener {
 

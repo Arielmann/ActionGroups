@@ -91,7 +91,7 @@ public class GroupRowViewHolder extends GenericViewHolder implements View.OnClic
     @Override
     public void onClick(View view) {
         int position = this.getLayoutPosition();
-        onGroupClicked.onActionGroupClicked(dataSet.get(position));
+        onGroupClicked.onActionGroupClicked(dataSet.get(position - 1));
        /* Intent singleChallengeScreen = new Intent(context, ChallengeNavigationActivity.class);
         singleChallengeScreen.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         ActionGroup group = new ActionGroup();

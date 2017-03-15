@@ -2,7 +2,7 @@ package ariel.actiongroups.main.common.utils.vhcontrollers;
 
 import android.view.View;
 
-import ariel.actiongroups.main.common.utils.listutils.OnAddEntityVHClicked;
+import ariel.actiongroups.main.common.utils.listutils.vh.OnAddEntityVHClicked;
 
 public class AddGroupToCourseController implements View.OnClickListener {
 

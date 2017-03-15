@@ -1,26 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/holo_orange_dark" >
 
     <TextView
-        android:id="@+id/tvFragFirst"
+        android:id="@+id/challengeDescriptionTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:textSize="26dp"
-        android:text="test test this is my unique test don&apos;t stop me know cuz i&apos;m testing my app time"
+        android:textSize="@dimen/Challenge_Text_Size"
         android:gravity="center_horizontal" />
 
-<!--    <Button
+    <Button
+        android:id="@+id/doneButton"
+        android:text="Done"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add Challenge"
-        android:id="@+id/addChallengeButton"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:visibility="gone"/>-->
-</RelativeLayout>
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="75dp"
+        />
+
+    <!--    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Challenge"
+            android:id="@+id/addChallengeButton"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:visibility="gone"/>-->
+
+    </RelativeLayout>
+</layout>

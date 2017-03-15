@@ -43,6 +43,7 @@ public class CourseManagerAdapter extends HeaderRecyclerViewAdapter<GenericViewH
 
     @Override
     protected void onBindItemViewHolder(GenericViewHolder holder, int position) {
+        holder.setTag(position); //enable tracking the specified challenge within ChallengeCardVH class
         holder.itemView.setOnClickListener((View.OnClickListener) holder);
         holder.setUIDataOnView(position);
     }

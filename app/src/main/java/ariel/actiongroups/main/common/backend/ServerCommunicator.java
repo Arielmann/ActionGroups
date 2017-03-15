@@ -22,6 +22,7 @@ import ariel.actiongroups.main.common.challenges.Challenge;
 import ariel.actiongroups.main.common.groups.ActionGroup;
 import ariel.actiongroups.main.common.profiles.models.User;
 import ariel.actiongroups.main.common.profiles.sharedprefrences.SharedPrefManager;
+import ariel.actiongroups.main.common.resources.AppStrings;
 import ariel.actiongroups.main.common.utils.networkutils.NetworkHelper;
 import ariel.actiongroups.main.common.utils.imageutils.ImageUtils;
 
@@ -47,11 +48,10 @@ public class ServerCommunicator implements ServerDataProviderDelegations.Registe
     @Override
     public void registerNewChallenge(Context context, Challenge challenge) {
         if(NetworkHelper.hasNetworkAccess(context)) {
-            Resources res = context.getResources();
-            String challengesTableName = res.getString(R.string.challenges);
+            String challengesTableName = AppStrings.CHALLENGES;
             Map<String, Object> challengeMap = new HashMap();
-            challengeMap.put(res.getString(R.string.name), challenge.getName());
-            challengeMap.put(res.getString(R.string.description), challenge.getDescription());
+            challengeMap.put(AppStrings.NAME, challenge.getName());
+            challengeMap.put(AppStrings.DESCRIPTION, challenge.getDescription());
             saveMapToServer(challengesTableName, challengeMap);
         }else{
             Toast.makeText(context, NetworkHelper.NO_NETWORK_MSG, Toast.LENGTH_SHORT).show();

@@ -15,7 +15,7 @@ import ariel.actiongroups.main.common.groups.ActionGroup;
 import ariel.actiongroups.main.common.groups.groupslist.events.OnGroupRowsLoadedEvent;
 import ariel.actiongroups.main.common.groups.groupslist.model.GroupListModel;
 import ariel.actiongroups.main.common.resources.AppStrings;
-import ariel.actiongroups.main.common.utils.listutils.GenericRecyclerViewInterface;
+import ariel.actiongroups.main.common.utils.listutils.vh.GenericRecyclerViewInterface;
 
 public class GroupListPresenterImpl implements GroupListPresenter {
 

@@ -41,7 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="31dp"
-        android:text="completed challenges : 7"
+        android:text="completed challenge : 7"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_below="@+id/currentChallengeTV"
         android:layout_centerHorizontal="true" />

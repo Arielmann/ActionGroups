@@ -12,5 +12,7 @@ public interface ChallengeManagerPresenter {
 
     void onDestroy();
 
+    void changeChallengePositionInArray(int oldPosition, int newPosition);
+
     //void saveChallengeDataBases(Context context, Challenge challenge);
 }

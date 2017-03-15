@@ -12,10 +12,10 @@ import java.util.List;
 import ariel.actiongroups.R;
 import ariel.actiongroups.main.common.courses.Course;
 import ariel.actiongroups.main.common.groups.ActionGroup;
-import ariel.actiongroups.main.common.utils.listutils.OnAddEntityVHClicked;
+import ariel.actiongroups.main.common.utils.listutils.vh.OnAddEntityVHClicked;
 import ariel.actiongroups.main.common.groups.groupslist.adapter.GroupRowViewHolder;
 import ariel.actiongroups.main.common.groups.groupslist.view.OnActionGroupClicked;
-import ariel.actiongroups.main.common.utils.listutils.GenericRecyclerViewInterface;
+import ariel.actiongroups.main.common.utils.listutils.vh.GenericRecyclerViewInterface;
 import ariel.actiongroups.main.common.utils.listutils.vh.GenericViewHolder;
 
 public class CourseDetailsAdapter extends HeaderRecyclerViewAdapter<GenericViewHolder, Course, ActionGroup, CourseDetailsHeader> implements GenericRecyclerViewInterface{

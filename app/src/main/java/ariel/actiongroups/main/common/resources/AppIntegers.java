@@ -8,4 +8,6 @@ public class AppIntegers {
     public static final int HEADER_VH = 100; //same value like HUNDREDS_DISTINCTER for better readability
     public static final int SILENCE_SWITCH_VH = 101;
     public static final int COURSE_DETAILS_FIXED_HOLDERS_LIMIT = 101;
+    public static final int ONE = 1;
+    public static int ZERO = 0;
 }

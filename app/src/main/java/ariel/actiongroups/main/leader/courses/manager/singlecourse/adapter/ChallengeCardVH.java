@@ -4,15 +4,17 @@ import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.List;
 
 import ariel.actiongroups.R;
 import ariel.actiongroups.main.common.challenges.Challenge;
 import ariel.actiongroups.main.common.utils.ActivityStarter;
 import ariel.actiongroups.main.common.utils.listutils.vh.GenericViewHolder;
-import ariel.actiongroups.main.leader.challenges.manager.view.ChallengeManagerActivity;
+import ariel.actiongroups.main.leader.challenges.manager.view.ChallengeEditorActivity;
 
-class ChallengeCardVH extends GenericViewHolder implements View.OnClickListener {
+class ChallengeCardVH extends GenericViewHolder implements View.OnClickListener{
 
     private final TextView challengeNumberTV;
     private final TextView challengeDescriptionTV;
@@ -29,18 +31,18 @@ class ChallengeCardVH extends GenericViewHolder implements View.OnClickListener 
 
     @Override
     public void setUIDataOnView(int position) {
-            final String description = dataSet.get(position).getDescription();
-            final String name = dataSet.get(position).getName();
+            final String challengeName = dataSet.get(position).getName();
 
-            if (name != null && description != null) {
+            if (challengeName != null) {
                 this.challengeNumberTV.setText(String.valueOf(position));
-                this.challengeDescriptionTV.setText(description);
+                this.challengeDescriptionTV.setText(challengeName);
                 //this.groupImageView.setImageResource(R.drawable.running_lions);
             }
         }
 
     @Override
     public void onClick(View view) {
-        ActivityStarter.startActivity(context, ChallengeManagerActivity.class);
+        EventBus.getDefault().postSticky(dataSet.get(getTag()));
+        ActivityStarter.startActivity(context, ChallengeEditorActivity.class);
     }
 }

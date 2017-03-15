@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import ariel.actiongroups.main.common.courses.coursedetails.model.CourseDetailsModel;
 import ariel.actiongroups.main.common.groups.ActionGroup;
-import ariel.actiongroups.main.common.utils.listutils.GenericRecyclerViewInterface;
+import ariel.actiongroups.main.common.utils.listutils.vh.GenericRecyclerViewInterface;
 
 import static org.mockito.Mockito.mock;
 
@@ -17,7 +17,7 @@ public class CourseDetailsPresenterImplTest {
     @BeforeClass
     public static void setUp(){
         GenericRecyclerViewInterface iRecyclerView = mock(GenericRecyclerViewInterface.class);
-        presenter = new CourseDetailsPresenterImpl(iRecyclerView);
+        presenter = new CourseDetailsPresenterImpl(iRecyclerView, course);
     }
 
     @Test

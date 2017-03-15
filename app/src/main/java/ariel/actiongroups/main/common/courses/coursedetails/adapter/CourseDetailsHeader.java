@@ -5,7 +5,7 @@ import android.view.View;
 import android.widget.Switch;
 
 import ariel.actiongroups.R;
-import ariel.actiongroups.main.common.utils.listutils.OnAddEntityVHClicked;
+import ariel.actiongroups.main.common.utils.listutils.vh.OnAddEntityVHClicked;
 import ariel.actiongroups.main.common.profiles.models.ActionGroupsEntity;
 import ariel.actiongroups.main.common.utils.listutils.vh.GenericViewHolder;
 import ariel.actiongroups.main.common.utils.vhcontrollers.AddGroupToCourseController;

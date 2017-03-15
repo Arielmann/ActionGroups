@@ -12,7 +12,6 @@ import org.greenrobot.eventbus.EventBus;
 
 import ariel.actiongroups.R;
 import ariel.actiongroups.databinding.CompoRecyclerViewBinding;
-import ariel.actiongroups.main.common.challenges.challenge_navigator.view.ChallengeNavigationActivity;
 import ariel.actiongroups.main.common.courses.Course;
 import ariel.actiongroups.main.common.courses.coursedetails.adapter.CourseDetailsAdapter;
 import ariel.actiongroups.main.common.courses.coursedetails.model.CourseDetailsModel;
@@ -23,7 +22,7 @@ import ariel.actiongroups.main.common.groups.groupslist.view.GroupListActivityFo
 import ariel.actiongroups.main.common.groups.groupslist.view.OnActionGroupClicked;
 import ariel.actiongroups.main.common.utils.ActivityStarter;
 import ariel.actiongroups.main.common.utils.imageutils.ImageUtils;
-import ariel.actiongroups.main.common.utils.listutils.OnAddEntityVHClicked;
+import ariel.actiongroups.main.common.utils.listutils.vh.OnAddEntityVHClicked;
 
 public class CourseDetailsActivity extends AppCompatActivity implements OnActionGroupClicked, OnAddEntityVHClicked {
 
@@ -41,23 +40,21 @@ public class CourseDetailsActivity extends AppCompatActivity implements OnAction
 
     private static final String TAG = CourseDetailsActivity.class.getSimpleName();
     private CourseDetailsAdapter adapter;
-    private CourseDetailsModel model;
     private CourseDetailsPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         CompoRecyclerViewBinding binding = DataBindingUtil.setContentView(this, R.layout.compo_recycler_view);
-        model = CourseDetailsModel.getInstance();
-        model.setCourse(new Course());
-        model.initDummyDataSet();
+        Course course = EventBus.getDefault().removeStickyEvent(Course.class);
+        presenter = new CourseDetailsPresenterImpl(adapter, course); //adapter provides GenericRecyclerViewInterface for this presenter
+        presenter.updateModelData();
         initCourseDetailsRecyclerView(binding);
-        presenter = new CourseDetailsPresenterImpl(adapter); //adapter provides GenericRecyclerViewInterface for this presenter
         super.onCreate(savedInstanceState);
         ImageUtils.initDefaultProfileImage(this); //TODO: remove. for debugging purposes only
     }
 
     private void initCourseDetailsRecyclerView(CompoRecyclerViewBinding binding) {
-        adapter = new CourseDetailsAdapter(this, model.getGroups(), this, this); //activity is both context and interfaces passed to adapter
+        adapter = new CourseDetailsAdapter(this, presenter.getCourseGroups(), this, this); //activity is both context and interfaces passed to adapter
         adapter.setHeader(CourseDetailsModel.getInstance().getCourse()); //Course data is passed to header
         adapter.setItems(CourseDetailsModel.getInstance().getGroups());
         binding.recyclerView.setAdapter(adapter);
@@ -71,7 +68,7 @@ public class CourseDetailsActivity extends AppCompatActivity implements OnAction
         if (requestCode == 1 && resultCode == Activity.RESULT_OK) {
             ActionGroup group = EventBus.getDefault().removeStickyEvent(ActionGroup.class);
             presenter.addGroupToCourseGroupsList(group);
-            presenter.addCourseToGroupCourses(group, model.getCourse());
+            presenter.addCourseToGroupCourses(group);
             Log.d(TAG, "Group selected: " + group.toString());
         }
     }
@@ -79,9 +76,10 @@ public class CourseDetailsActivity extends AppCompatActivity implements OnAction
     @Override
     public void onActionGroupClicked(ActionGroup group) {
         EventBus.getDefault().postSticky(group);
-        String courseId = model.getCourse().getId();
+        String courseId = presenter.getCourseId();
         EventBus.getDefault().postSticky(group.getCourses().get(courseId)); //Put course in event bus
-        ActivityStarter.startActivity(this, ChallengeNavigationActivity.class);
+        Class courseStateActivity = group.getCourses().get(courseId).getCourseStateActivity().getActivityClass();
+        ActivityStarter.startActivity(this, courseStateActivity);
     }
 
     @Override

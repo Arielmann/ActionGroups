@@ -21,13 +21,13 @@ import ariel.actiongroups.main.common.groups.groupslist.events.OnGroupRowsLoaded
 import ariel.actiongroups.main.common.groups.groupslist.model.GroupListModel;
 import ariel.actiongroups.main.common.groups.groupslist.presenter.GroupListPresenter;
 import ariel.actiongroups.main.common.groups.groupslist.presenter.GroupListPresenterImpl;
-import ariel.actiongroups.main.common.utils.listutils.GenericRecyclerViewInterface;
+import ariel.actiongroups.main.common.utils.listutils.vh.GenericRecyclerViewInterface;
 
 public class GroupsListFrag extends Fragment implements GenericRecyclerViewInterface{
 
     private TextView noGroupsMessage;
     GroupListAdapter adapter;
-    private String TAG = GroupsListFrag.class.getName();
+    private String TAG = GroupsListFrag.class.getSimpleName();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

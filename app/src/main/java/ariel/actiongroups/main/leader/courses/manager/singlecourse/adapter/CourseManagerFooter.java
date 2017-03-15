@@ -9,7 +9,7 @@ import ariel.actiongroups.R;
 import ariel.actiongroups.main.common.courses.coursedetails.view.CourseDetailsActivity;
 import ariel.actiongroups.main.common.utils.ActivityStarter;
 import ariel.actiongroups.main.common.utils.listutils.vh.GenericViewHolder;
-import ariel.actiongroups.main.leader.challenges.manager.view.ChallengeManagerActivity;
+import ariel.actiongroups.main.leader.challenges.manager.view.ChallengeEditorActivity;
 
 class CourseManagerFooter extends GenericViewHolder {
     private static final String TAG = CourseManagerFooter.class.getSimpleName();
@@ -18,7 +18,7 @@ class CourseManagerFooter extends GenericViewHolder {
         super(footer);
         Button addChallenge = (Button) footer.findViewById(R.id.addChallenge);
         Button saveCourse = (Button) footer.findViewById(R.id.saveCourse);
-        ActivityStarter.setStartActivityOnClickListener(addChallenge, context, ChallengeManagerActivity.class);
+        ActivityStarter.setStartActivityOnClickListener(addChallenge, context, ChallengeEditorActivity.class);
         ActivityStarter.setStartActivityOnClickListener(saveCourse, context, CourseDetailsActivity.class);
     }
 

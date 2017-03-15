@@ -31,8 +31,8 @@
         </activity>
 
         <!-- Other activities -->
-        <activity android:name=".main.common.challenges.challenge_navigator.view.ChallengeNavigationActivity" />
-        <activity android:name=".main.leader.challenges.manager.view.ChallengeManagerActivity" />
+        <activity android:name=".main.common.challenges.challengenavigator.view.ChallengeNavigationActivity" />
+        <activity android:name=".main.leader.challenges.manager.view.ChallengeEditorActivity" />
         <activity android:name=".main.common.groups.groupslist.view.GroupListActivity" />
         <activity android:name=".main.common.home_page.HomePage" />
         <activity android:name=".main.common.groups.groupdetails.GroupDetailsActivity" />
@@ -67,7 +67,9 @@
         <service
             android:name=".main.common.utils.services.ServiceExample"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
+
+        <activity android:name=".main.common.courses.states.view.GatherPaymentActivity"></activity>
     </application>
 
 </manifest>

@@ -11,15 +11,19 @@ import ariel.actiongroups.main.common.profiles.models.ActionGroupsEntity;
 public class Challenge extends ActionGroupsEntity{
 
     private List<ActionGroup> targetGroups;
+
+    private List<String> objectives;
     private String endTime;
     private String startTime;
     private String endDate;
     private String startDate;
+    private int positionInCourse;
 
     //Convenience Constructor
     public Challenge() {
         super("", "Run 3 times around your building", "Image");
-        super.setName("challenge name for challenge Id: " + super.getId()) ;
+        super.setName("Challenge Id: " + super.getId()) ;
+        this.positionInCourse = 1;
         this.targetGroups = new ArrayList<>();
         this.targetGroups.add(new ActionGroup());
         this.startDate = String.valueOf(LocalDateTime.now().toLocalDate());
@@ -28,19 +32,23 @@ public class Challenge extends ActionGroupsEntity{
         this.endTime = String.valueOf(LocalDateTime.now().toLocalTime());
     }
 
-    public Challenge(List<ActionGroup> targetGroups, String challengeName, String description, String endTime, String startTime, String endDate, String startDate) {
-        super(challengeName, description, "Image");
-        this.targetGroups = targetGroups;
+  /*  public Challenge(String challengeName, List<String> objectives, String explanation, String endTime, String startTime, String endDate, String startDate) {
+        super(challengeName, explanation, "Image");
         super.setName(challengeName);
+        super.setDescription(explanation);
+        this.objectives = objectives;
         this.endTime = endTime;
         this.startTime = startTime;
         this.endDate = endDate;
         this.startDate = startDate;
-    }
+    }*/
 
     //************Setters****************//
 
 
+    public void setObjectives(List<String> objectives) {
+        this.objectives = objectives;
+    }
 
     public void setEndTime(String endTime) {
         this.endTime = endTime;
@@ -62,11 +70,11 @@ public class Challenge extends ActionGroupsEntity{
         this.targetGroups = targetGroups;
     }
 
-    //*************Getters*******************//
-
-    public List<ActionGroup> getTargetGroups() {
-        return targetGroups;
+    public void setPositionInCourse(int positionInCourse) {
+        this.positionInCourse = positionInCourse;
     }
+
+    //*************Getters*******************//
 
     public String getEndTime() {
         return endTime;
@@ -84,4 +92,7 @@ public class Challenge extends ActionGroupsEntity{
         return startDate;
     }
 
+    public int getPositionInCourse() {
+        return positionInCourse;
+    }
 }

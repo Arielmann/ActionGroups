@@ -14,4 +14,8 @@
     <dimen name="static_vh_text_top_margin">14dp</dimen>
     <dimen name="static_vh_switch_Right_margin">19dp</dimen>
     <dimen name="element_min_margin_end">15dp</dimen>
+    <dimen name="challenge_explanation_tv_margin_Start">8dp</dimen>
+    <dimen name="challenge_position_number">25sp</dimen>
+    <dimen name="medium_size_text">22sp</dimen>
+    <dimen name="Challenge_Text_Size">26sp</dimen>
 </resources>
