@@ -10,6 +10,7 @@ import org.greenrobot.eventbus.Subscribe;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import ariel.actiongroups.R;
 import ariel.actiongroups.databinding.ActivityCourseManagerBinding;
@@ -85,9 +86,10 @@ public class CourseManagerActivity extends AppCompatActivity implements GenericR
     };
 
     private View.OnClickListener onSaveCourseClicked = new View.OnClickListener() {
+        String courseId  = UUID.randomUUID().toString();
         @Override
         public void onClick(View view) {
-            Course course = new Course(adapter.getHeader(), "This is get in shape course", ImageUtils.testImagePath, challenges, 0);
+            Course course = new Course(courseId, adapter.getHeader(), "This is get in shape course", ImageUtils.testImagePath, challenges, 0);
             EventBus.getDefault().postSticky(course);
             //There is no returned result, instead communicating
             // with OnChallengedChangedEvent but ActivityForResult it makes sure the caller stays alive

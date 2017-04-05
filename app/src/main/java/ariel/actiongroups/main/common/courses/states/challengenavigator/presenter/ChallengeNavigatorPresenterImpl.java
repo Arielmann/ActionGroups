@@ -1,7 +1,7 @@
-package ariel.actiongroups.main.common.challenges.challengenavigator.presenter;
+package ariel.actiongroups.main.common.courses.states.challengenavigator.presenter;
 
-import ariel.actiongroups.main.common.challenges.challengenavigator.model.ChallengeNavigatorModel;
-import ariel.actiongroups.main.common.challenges.challengenavigator.model.ChallengeNavigatorModelDelegations;
+import ariel.actiongroups.main.common.courses.states.challengenavigator.model.ChallengeNavigatorModel;
+import ariel.actiongroups.main.common.courses.states.challengenavigator.model.ChallengeNavigatorModelDelegations;
 import ariel.actiongroups.main.common.courses.Course;
 
 public class ChallengeNavigatorPresenterImpl implements ChallengeNavigatorPresenter {
@@ -16,8 +16,9 @@ public class ChallengeNavigatorPresenterImpl implements ChallengeNavigatorPresen
     public void updateChallengeData(Course course) {
         if (course.getCurrentChallenge() != null) {
             model.setChallenge(course.getCurrentChallenge());
+            model.setCourse(course);
         } else {
-            throw new RuntimeException("Current challenge is not available. app crashes");
+            throw new NullPointerException("Current challenge is null. app crashes");
         }
     }
 

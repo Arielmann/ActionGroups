@@ -6,14 +6,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ariel.actiongroups.main.common.challenges.Challenge;
-import ariel.actiongroups.main.common.challenges.challengenavigator.view.ChallengeNavigationActivity;
-import ariel.actiongroups.main.common.courses.states.view.GatherPaymentActivity;
+import ariel.actiongroups.main.common.courses.states.challengenavigator.view.ChallengeNavigationActivity;
+import ariel.actiongroups.main.common.courses.states.gatherpayment.view.GatherPaymentActivity;
 import ariel.actiongroups.main.common.groups.ActionGroup;
 import ariel.actiongroups.main.common.profiles.models.ActionGroupsEntity;
 
-public class Course extends ActionGroupsEntity {
+public class Course extends ActionGroupsEntity{
 
-
+    /*
+    * Course data structure management:
+    * Every course gets one unique id which all associated groups will access.
+    * Once a group registers a course it will create a copy of it's instance and save
+    * it in her courses map under the common course id.
+    * */
 
     public enum CourseState {
         GATHER_PAYMENT(GatherPaymentActivity.class),
@@ -36,15 +41,19 @@ public class Course extends ActionGroupsEntity {
     private @Nullable Challenge currentChallenge;
     private int currentChallengePosition;
 
-    public Course(String name, String description, String imagePath, List<Challenge> challenges, int currentChallengePosition) {
-        super(name, description, imagePath);
+    public Course(String id, String name, String description, String imagePath, List<Challenge> challenges, int currentChallengePosition) {
+        super(id, name, description, "30/12/1991");
         this.groups = new ArrayList<>(); //All courses starts with no associated groups
         this.challenges = challenges;
         this.currentChallenge = challenges.get(currentChallengePosition);
         this.currentChallengePosition = currentChallengePosition;
     }
 
-   public Course() { //Convenience constructor
+    public Course(Course course){ //Copy constructor
+        this(course.getId(), course.getName(), course.getDescription(), course.getImageLocalPath(), course.getChallenges(), course.getCurrentChallengePosition());
+    }
+
+ /*  public Course() { //Convenience constructor
         super("My course", "This is a professional course");
         this.groups = new ArrayList<>();
         this.challenges = new ArrayList<>();
@@ -52,7 +61,7 @@ public class Course extends ActionGroupsEntity {
         this.challenges.add(new Challenge());
         this.challenges.add(new Challenge());
         this.currentChallenge = challenges.get(0);
-    }
+    }*/
 
     public void setCourseStateActivity(CourseState courseState) {
         this.courseState = courseState;

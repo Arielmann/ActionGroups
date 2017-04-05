@@ -1,20 +1,23 @@
-package ariel.actiongroups.main.common.challenges.challengenavigator.model;
+package ariel.actiongroups.main.common.courses.states.challengenavigator.model;
 
 import java.util.List;
 
-import ariel.actiongroups.main.common.challenges.challengenavigator.tabs.chat.ChatItem;
 import ariel.actiongroups.main.common.challenges.Challenge;
-import ariel.actiongroups.main.common.profiles.models.User;
+import ariel.actiongroups.main.common.courses.Course;
+import ariel.actiongroups.main.common.courses.states.challengenavigator.tabs.chat.ChatItem;
 
-import static ariel.actiongroups.main.common.challenges.challengenavigator.model.ChallengeNavigatorModelDelegations.*;
+import static ariel.actiongroups.main.common.courses.states.challengenavigator.model.ChallengeNavigatorModelDelegations.AllModelsDelegate;
+import static ariel.actiongroups.main.common.courses.states.challengenavigator.model.ChallengeNavigatorModelDelegations.ChallengeInfoDelegate;
+import static ariel.actiongroups.main.common.courses.states.challengenavigator.model.ChallengeNavigatorModelDelegations.ChatDelegate;
+import static ariel.actiongroups.main.common.courses.states.challengenavigator.model.ChallengeNavigatorModelDelegations.ResultDelegate;
 
 public class ChallengeNavigatorModel implements ChallengeInfoDelegate, ChatDelegate, ResultDelegate, AllModelsDelegate {
     private static ChallengeNavigatorModel model = new ChallengeNavigatorModel();
 
     private Challenge challenge;
     private List<ChatItem> chatItems;
-    private List<User> users;
     private List<String> results;
+    private Course course;
 
     public static ChallengeNavigatorModel getInstance() {
         if(model == null){
@@ -29,6 +32,16 @@ public class ChallengeNavigatorModel implements ChallengeInfoDelegate, ChatDeleg
     @Override
     public List<String> getResults() {
         return results;
+    }
+
+    @Override
+    public void setCourse(Course course) {
+        this.course = course;
+    }
+
+    @Override
+    public Course getCourse() {
+        return course;
     }
 
     @Override

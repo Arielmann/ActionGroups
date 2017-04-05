@@ -10,12 +10,7 @@ import ariel.actiongroups.main.common.utils.imageutils.ImageUtils;
 
 public abstract class ActionGroupsEntity {
 
-    private String id;
-    private String name;
-    private String description;
-    private String creationDate;
-    private String imageLocalPath;
-    private String imageUrl;
+    private String id, name, description, creationDate, imageLocalPath, imageUrl;
     private Bitmap image = ImageUtils.defaultProfileImage;
     private boolean isSilenced = false;
 

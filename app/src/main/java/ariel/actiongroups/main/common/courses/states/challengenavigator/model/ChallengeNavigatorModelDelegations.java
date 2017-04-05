@@ -1,8 +1,9 @@
-package ariel.actiongroups.main.common.challenges.challengenavigator.model;
+package ariel.actiongroups.main.common.courses.states.challengenavigator.model;
 
 import java.util.List;
 
-import ariel.actiongroups.main.common.challenges.challengenavigator.tabs.chat.ChatItem;
+import ariel.actiongroups.main.common.courses.Course;
+import ariel.actiongroups.main.common.courses.states.challengenavigator.tabs.chat.ChatItem;
 import ariel.actiongroups.main.common.challenges.Challenge;
 
 public abstract class ChallengeNavigatorModelDelegations {
@@ -10,6 +11,7 @@ public abstract class ChallengeNavigatorModelDelegations {
     public interface ChallengeInfoDelegate {
         Challenge getChallenge();
         void setChallenge(Challenge challenge);
+        Course getCourse();
     }
 
     public interface ResultDelegate {
@@ -27,5 +29,6 @@ public abstract class ChallengeNavigatorModelDelegations {
         List<ChatItem> getChatItems();
         void setChatItems(List<ChatItem> chatItems);
         List<String> getResults();
+        void setCourse(Course course);
     }
 }

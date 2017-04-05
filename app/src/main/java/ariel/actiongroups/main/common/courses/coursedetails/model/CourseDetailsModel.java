@@ -1,7 +1,5 @@
 package ariel.actiongroups.main.common.courses.coursedetails.model;
 
-import android.util.Log;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,14 +17,6 @@ public class CourseDetailsModel {
         groups = new ArrayList<>();
     }
 
-    public void initDummyDataSet(){
-        for(int i=0; i < 3; i++){
-            ActionGroup group = new ActionGroup();
-            group.getCourses().put(course.getId(), course);
-            groups.add(group);
-        }
-    }
-
     public static CourseDetailsModel getInstance() {
         if(model == null) {
             model = new CourseDetailsModel();
@@ -36,7 +26,7 @@ public class CourseDetailsModel {
 
     public Course getCourse() {
         if(course == null){
-            Log.wtf(TAG, "setCourse() was probably not yet called. Allowing application crash");
+           throw new NullPointerException("Course is null. setCourse() was probably not yet called. Application crashes");
         }
         return course;
     }

@@ -1,4 +1,4 @@
-package ariel.actiongroups.main.common.challenges.challengenavigator.tabs.results;
+package ariel.actiongroups.main.common.courses.states.challengenavigator.tabs.results;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

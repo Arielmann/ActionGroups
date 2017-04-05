@@ -77,8 +77,9 @@ public class CourseDetailsActivity extends AppCompatActivity implements OnAction
     public void onActionGroupClicked(ActionGroup group) {
         EventBus.getDefault().postSticky(group);
         String courseId = presenter.getCourseId();
-        EventBus.getDefault().postSticky(group.getCourses().get(courseId)); //Put course in event bus
-        Class courseStateActivity = group.getCourses().get(courseId).getCourseStateActivity().getActivityClass();
+        Course groupCourse = group.getCourses().get(courseId);
+        EventBus.getDefault().postSticky(groupCourse); //Get this group's' course by its id
+        Class courseStateActivity = groupCourse.getCourseStateActivity().getActivityClass();
         ActivityStarter.startActivity(this, courseStateActivity);
     }
 

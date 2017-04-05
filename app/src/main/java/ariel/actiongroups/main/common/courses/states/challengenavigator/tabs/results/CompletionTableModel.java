@@ -1,4 +1,4 @@
-package ariel.actiongroups.main.common.challenges.challengenavigator.tabs.results;
+package ariel.actiongroups.main.common.courses.states.challengenavigator.tabs.results;
 
 import android.content.Context;
 import android.support.v7.widget.GridLayoutManager;

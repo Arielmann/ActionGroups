@@ -34,14 +34,25 @@ public class CourseDetailsPresenterImpl implements CourseDetailsPresenter {
     */
     @Override
     public void addCourseToGroupCourses(ActionGroup group) {
-        Course courseCopy = course;
+        Course courseCopy = new Course(course);
         group.getCourses().put(course.getId(), courseCopy);
+    }
+
+    private void initDummyDataSet(){
+        if(model.getGroups().size() == 0) {
+            for (int i = 0; i < 3; i++) {
+                ActionGroup group = new ActionGroup();
+                Course courseCopy = new Course(course); //put unique copy of this course for the group under the common course id
+                group.getCourses().put(courseCopy.getId(), courseCopy);
+                model.getGroups().add(group);
+            }
+        }
     }
 
     @Override
     public void updateModelData() {
         model.setCourse(course);
-        model.initDummyDataSet();
+        initDummyDataSet();
     }
 
     @Override

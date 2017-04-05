@@ -8,6 +8,7 @@ android {
         supportLibVersion = '25.2.1'  // variable that can be referenced to keep support libs consistent
     }
 
+    
     defaultConfig {
         applicationId "ariel.actiongroups"
         minSdkVersion 18
@@ -15,7 +16,9 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled = true
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -65,6 +68,8 @@ dependencies {
     compile 'com.jakewharton:butterknife:8.4.0'
     compile 'com.karumi:headerrecyclerview:1.1.0'
     compile 'biz.kasual:materialnumberpicker:1.2.1'
+    compile 'com.google.dagger:dagger:2.4'
+    annotationProcessor "com.google.dagger:dagger-compiler:2.4"
     //compile 'org.parceler:parceler-api:1.1.6'
     //annotationProcessor 'org.parceler:parceler:1.1.6'
 }

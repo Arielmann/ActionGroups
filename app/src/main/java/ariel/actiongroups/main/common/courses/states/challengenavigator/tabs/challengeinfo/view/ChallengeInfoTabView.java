@@ -1,4 +1,4 @@
-package ariel.actiongroups.main.common.challenges.challengenavigator.tabs.challengeinfo.view;
+package ariel.actiongroups.main.common.courses.states.challengenavigator.tabs.challengeinfo.view;
 
 import ariel.actiongroups.main.common.challenges.Challenge;
 

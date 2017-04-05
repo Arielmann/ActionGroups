@@ -32,6 +32,7 @@ public class CourseManagerPresenterImpl implements CourseManagerPresenter {
             Challenge challenge = new Challenge();
             challenge.setPositionInCourse(i);
             challenge.setName("Challenge " + i);
+            challenge.setDescription("Challenge " + i);
             challenges.add(challenge);
         }
     }

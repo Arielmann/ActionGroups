@@ -31,7 +31,7 @@
         </activity>
 
         <!-- Other activities -->
-        <activity android:name=".main.common.challenges.challengenavigator.view.ChallengeNavigationActivity" />
+        <activity android:name=".main.common.courses.states.challengenavigator.view.ChallengeNavigationActivity" />
         <activity android:name=".main.leader.challenges.manager.view.ChallengeEditorActivity" />
         <activity android:name=".main.common.groups.groupslist.view.GroupListActivity" />
         <activity android:name=".main.common.home_page.HomePage" />
@@ -69,7 +69,7 @@
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".main.common.courses.states.view.GatherPaymentActivity"></activity>
+        <activity android:name=".main.common.courses.states.gatherpayment.view.GatherPaymentActivity"></activity>
     </application>
 
 </manifest>

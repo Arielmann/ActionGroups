@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import ariel.actiongroups.R;
-import ariel.actiongroups.main.common.challenges.challengenavigator.tabs.chat.ChatItem;
+import ariel.actiongroups.main.common.courses.states.challengenavigator.tabs.chat.ChatItem;
 import ariel.actiongroups.main.common.groups.ActionGroup;
 import ariel.actiongroups.main.common.profiles.sharedprefrences.SharedPrefManager;
 import ariel.actiongroups.main.common.utils.listutils.vh.GenericViewHolder;

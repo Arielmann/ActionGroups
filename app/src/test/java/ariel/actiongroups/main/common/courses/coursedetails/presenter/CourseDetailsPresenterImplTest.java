@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import ariel.actiongroups.main.common.courses.Course;
 import ariel.actiongroups.main.common.courses.coursedetails.model.CourseDetailsModel;
 import ariel.actiongroups.main.common.groups.ActionGroup;
 import ariel.actiongroups.main.common.utils.listutils.vh.GenericRecyclerViewInterface;
@@ -17,7 +18,7 @@ public class CourseDetailsPresenterImplTest {
     @BeforeClass
     public static void setUp(){
         GenericRecyclerViewInterface iRecyclerView = mock(GenericRecyclerViewInterface.class);
-        presenter = new CourseDetailsPresenterImpl(iRecyclerView, course);
+        presenter = new CourseDetailsPresenterImpl(iRecyclerView, mock(Course.class));
     }
 
     @Test

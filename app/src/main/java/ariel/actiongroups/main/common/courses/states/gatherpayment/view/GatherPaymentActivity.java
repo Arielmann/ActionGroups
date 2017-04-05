@@ -1,4 +1,4 @@
-package ariel.actiongroups.main.common.courses.states.view;
+package ariel.actiongroups.main.common.courses.states.gatherpayment.view;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -25,7 +25,6 @@ public class GatherPaymentActivity extends AppCompatActivity {
         course = EventBus.getDefault().removeStickyEvent(Course.class);
         group = EventBus.getDefault().removeStickyEvent(ActionGroup.class);
         binding.startCourse.setOnClickListener(startCourse);
-
     }
 
     View.OnClickListener startCourse = new View.OnClickListener() {

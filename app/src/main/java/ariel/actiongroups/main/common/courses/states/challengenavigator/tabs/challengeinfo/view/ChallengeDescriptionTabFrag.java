@@ -1,4 +1,4 @@
-package ariel.actiongroups.main.common.challenges.challengenavigator.tabs.challengeinfo.view;
+package ariel.actiongroups.main.common.courses.states.challengenavigator.tabs.challengeinfo.view;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
@@ -11,15 +11,14 @@ import android.view.ViewGroup;
 import ariel.actiongroups.R;
 import ariel.actiongroups.databinding.FragChallengeTabBinding;
 import ariel.actiongroups.main.common.challenges.Challenge;
-import ariel.actiongroups.main.common.challenges.challengenavigator.tabs.challengeinfo.presenter.ChallengeInfoPresenter;
-import ariel.actiongroups.main.common.challenges.challengenavigator.tabs.challengeinfo.presenter.ChallengeInfoPresenterImpl;
-import ariel.actiongroups.main.common.challenges.challengenavigator.view.ChallengeNavigationActivity;
-import ariel.actiongroups.main.common.courses.coursedetails.model.CourseDetailsModel;
+import ariel.actiongroups.main.common.courses.states.challengenavigator.tabs.challengeinfo.presenter.ChallengeDescriptionPresenter;
+import ariel.actiongroups.main.common.courses.states.challengenavigator.tabs.challengeinfo.presenter.ChallengeInfoPresenterImpl;
+import ariel.actiongroups.main.common.courses.states.challengenavigator.view.ChallengeNavigationActivity;
 import ariel.actiongroups.main.common.utils.notifications.NotificationUtils;
 
-public class ChallengeInfoTabFrag extends Fragment implements ChallengeInfoTabView {
+public class ChallengeDescriptionTabFrag extends Fragment implements ChallengeInfoTabView {
 
-    private ChallengeInfoPresenter presenter;
+    private ChallengeDescriptionPresenter presenter;
     FragChallengeTabBinding binding;
 
     @Override
@@ -45,10 +44,10 @@ public class ChallengeInfoTabFrag extends Fragment implements ChallengeInfoTabVi
 
     View.OnClickListener onDoneButtonClicked = new View.OnClickListener() {
         @Override
-        public void onClick(View view) {
-            presenter.dummyUpdateChallengeData(CourseDetailsModel.getInstance().getCourse());
-            Intent goToChallengeNavigator = new Intent(getActivity(), ChallengeNavigationActivity.class);
-            NotificationUtils.displayNotificationOnScreen(getContext(), CourseDetailsModel.getInstance().getCourse(), goToChallengeNavigator, "Go to new Challenge");
+        public void onClick(View view) { //TODO: Mocked method. change it
+            presenter.dummyUpdateChallengeData(presenter.getCourse());
+            Intent dummyGoToChallengeNavigator = new Intent(getActivity(), ChallengeNavigationActivity.class);
+            NotificationUtils.displayNotificationOnScreen(getContext(), presenter.getCourse(), dummyGoToChallengeNavigator, "Go to new Challenge");
         }
     };
 }
