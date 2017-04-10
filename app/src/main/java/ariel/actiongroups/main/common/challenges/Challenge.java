@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ariel.actiongroups.main.common.groups.ActionGroup;
-import ariel.actiongroups.main.common.profiles.models.ActionGroupsEntity;
+import ariel.actiongroups.main.common.ActionGroupsEntity;
 
 public class Challenge extends ActionGroupsEntity{
 

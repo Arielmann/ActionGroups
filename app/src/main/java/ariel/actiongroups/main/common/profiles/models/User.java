@@ -2,6 +2,8 @@ package ariel.actiongroups.main.common.profiles.models;
 
 import java.io.Serializable;
 
+import ariel.actiongroups.main.common.ActionGroupsEntity;
+
 public class User extends ActionGroupsEntity implements Serializable {
 
     private String location;

@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import ariel.actiongroups.main.common.courses.Course;
-import ariel.actiongroups.main.common.profiles.models.ActionGroupsEntity;
+import ariel.actiongroups.main.common.ActionGroupsEntity;
 import ariel.actiongroups.main.common.profiles.models.Leader;
 import ariel.actiongroups.main.common.profiles.models.User;
 

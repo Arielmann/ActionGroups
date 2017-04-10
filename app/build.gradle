@@ -8,7 +8,6 @@ android {
         supportLibVersion = '25.2.1'  // variable that can be referenced to keep support libs consistent
     }
 
-    
     defaultConfig {
         applicationId "ariel.actiongroups"
         minSdkVersion 18

@@ -2,7 +2,7 @@ package ariel.actiongroups.main.common.utils.listutils.vh.vhcontrollers;
 
 import android.view.View;
 
-import ariel.actiongroups.main.common.profiles.models.ActionGroupsEntity;
+import ariel.actiongroups.main.common.ActionGroupsEntity;
 
 public abstract class SilenceNotificationsController implements View.OnClickListener {
 

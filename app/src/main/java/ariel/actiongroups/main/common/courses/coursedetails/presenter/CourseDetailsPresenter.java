@@ -10,5 +10,4 @@ public interface CourseDetailsPresenter {
     void addCourseToGroupCourses(ActionGroup group);
     void updateModelData();
     String getCourseId();
-    List<ActionGroup> getCourseGroups();
 }

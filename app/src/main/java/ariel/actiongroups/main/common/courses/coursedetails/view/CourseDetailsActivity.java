@@ -41,22 +41,25 @@ public class CourseDetailsActivity extends AppCompatActivity implements OnAction
     private static final String TAG = CourseDetailsActivity.class.getSimpleName();
     private CourseDetailsAdapter adapter;
     private CourseDetailsPresenter presenter;
+    private CourseDetailsModel model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         CompoRecyclerViewBinding binding = DataBindingUtil.setContentView(this, R.layout.compo_recycler_view);
+        model = CourseDetailsModel.getInstance();
         Course course = EventBus.getDefault().removeStickyEvent(Course.class);
+        model.setCourse(course);
+        adapter = new CourseDetailsAdapter(this, model.getGroups(), this, this); //activity is both context and interfaces passed to adapter
         presenter = new CourseDetailsPresenterImpl(adapter, course); //adapter provides GenericRecyclerViewInterface for this presenter
-        presenter.updateModelData();
         initCourseDetailsRecyclerView(binding);
+        presenter.updateModelData();
         super.onCreate(savedInstanceState);
         ImageUtils.initDefaultProfileImage(this); //TODO: remove. for debugging purposes only
     }
 
     private void initCourseDetailsRecyclerView(CompoRecyclerViewBinding binding) {
-        adapter = new CourseDetailsAdapter(this, presenter.getCourseGroups(), this, this); //activity is both context and interfaces passed to adapter
-        adapter.setHeader(CourseDetailsModel.getInstance().getCourse()); //Course data is passed to header
-        adapter.setItems(CourseDetailsModel.getInstance().getGroups());
+        adapter.setHeader(model.getCourse()); //Course data is passed to header
+        adapter.setItems(model.getGroups());
         binding.recyclerView.setAdapter(adapter);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
         binding.recyclerView.setHasFixedSize(true);

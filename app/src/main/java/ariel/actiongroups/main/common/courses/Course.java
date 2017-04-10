@@ -9,7 +9,7 @@ import ariel.actiongroups.main.common.challenges.Challenge;
 import ariel.actiongroups.main.common.courses.states.challengenavigator.view.ChallengeNavigationActivity;
 import ariel.actiongroups.main.common.courses.states.gatherpayment.view.GatherPaymentActivity;
 import ariel.actiongroups.main.common.groups.ActionGroup;
-import ariel.actiongroups.main.common.profiles.models.ActionGroupsEntity;
+import ariel.actiongroups.main.common.ActionGroupsEntity;
 
 public class Course extends ActionGroupsEntity{
 
@@ -100,3 +100,12 @@ public class Course extends ActionGroupsEntity{
         return challenges;
     }
 }
+
+
+
+/*
+* Android
+* Ios
+* Design patterns
+*
+* */

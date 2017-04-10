@@ -9,22 +9,21 @@ import ariel.actiongroups.main.common.utils.listutils.vh.GenericRecyclerViewInte
 
 public class CourseDetailsPresenterImpl implements CourseDetailsPresenter {
 
-    private final GenericRecyclerViewInterface recyclerView;
+    private final GenericRecyclerViewInterface iRecyclerView;
     private Course course;
     private CourseDetailsModel model;
 
-    public CourseDetailsPresenterImpl(GenericRecyclerViewInterface recyclerView, Course course) {
+    public CourseDetailsPresenterImpl(GenericRecyclerViewInterface iRecyclerView, Course course) {
         this.model = CourseDetailsModel.getInstance();
         this.course = course;
-        this.recyclerView = recyclerView;
-
+        this.iRecyclerView = iRecyclerView;
     }
 
     @Override
     public void addGroupToCourseGroupsList(ActionGroup group) {
         List<ActionGroup> dataSet = CourseDetailsModel.getInstance().getGroups();
         dataSet.add(group);
-        recyclerView.refreshAdapter();
+        iRecyclerView.refreshAdapter();
     }
 
     /*
@@ -38,8 +37,8 @@ public class CourseDetailsPresenterImpl implements CourseDetailsPresenter {
         group.getCourses().put(course.getId(), courseCopy);
     }
 
-    private void initDummyDataSet(){
-        if(model.getGroups().size() == 0) {
+    private void initDummyDataSet() {
+        if (model.getGroups().size() == 0) {
             for (int i = 0; i < 3; i++) {
                 ActionGroup group = new ActionGroup();
                 Course courseCopy = new Course(course); //put unique copy of this course for the group under the common course id
@@ -58,10 +57,5 @@ public class CourseDetailsPresenterImpl implements CourseDetailsPresenter {
     @Override
     public String getCourseId() {
         return model.getCourse().getId();
-    }
-
-    @Override
-    public List<ActionGroup> getCourseGroups() {
-        return model.getGroups();
     }
 }

@@ -6,7 +6,7 @@ import org.junit.Test;
 import org.junit.rules.TestName;
 import org.mockito.Mockito;
 
-import ariel.actiongroups.main.common.profiles.models.ActionGroupsEntity;
+import ariel.actiongroups.main.common.ActionGroupsEntity;
 
 import static org.junit.Assert.assertEquals;
 

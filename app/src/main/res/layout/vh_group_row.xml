@@ -35,15 +35,12 @@
             android:scaleType="centerCrop"
             app:civ_border_color="@color/md_white_1000"
             app:civ_border_width="1dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
          />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Addressed User"
+            android:text="Group Name"
             android:id="@+id/groupRowName"
             android:focusableInTouchMode="false"
             android:textAppearance="?android:attr/textAppearanceMedium"
@@ -57,10 +54,7 @@
             android:text="This is the last message"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:layout_gravity="left"
-            android:layout_below="@+id/groupRowImageView"
-            android:layout_toRightOf="@+id/groupRowImageView"
-            android:layout_toEndOf="@+id/groupRowImageView"
-            android:textColor="@color/md_grey_700" />
+            android:textColor="@color/md_grey_700"   />
     </LinearLayout>
 
 </RelativeLayout>

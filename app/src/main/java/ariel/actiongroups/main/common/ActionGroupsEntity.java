@@ -1,4 +1,4 @@
-package ariel.actiongroups.main.common.profiles.models;
+package ariel.actiongroups.main.common;
 
 import android.graphics.Bitmap;
 
