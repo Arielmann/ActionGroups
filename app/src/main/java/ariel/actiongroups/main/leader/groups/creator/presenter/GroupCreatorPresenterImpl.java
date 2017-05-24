@@ -2,8 +2,8 @@ package ariel.actiongroups.main.leader.groups.creator.presenter;
 
 import android.content.Context;
 
-import ariel.actiongroups.main.common.backend.ServerCommunicator;
-import ariel.actiongroups.main.common.backend.ServerDataProviderDelegations;
+import ariel.actiongroups.main.common.utils.backendutils.BackendlessHelper;
+import ariel.actiongroups.main.common.utils.backendutils.BackendlessHelperDelegations;
 import ariel.actiongroups.main.common.groups.ActionGroup;
 
 public class GroupCreatorPresenterImpl implements GroupCreatorPresenter{
@@ -21,7 +21,7 @@ public class GroupCreatorPresenterImpl implements GroupCreatorPresenter{
     }
 
     private void saveGroupToServer(Context context, ActionGroup group) {
-        ServerDataProviderDelegations.RegisterGroupDelegate groupSaver = ServerCommunicator.getInstance();
+        BackendlessHelperDelegations.RegisterGroupDelegate groupSaver = BackendlessHelper.getInstance();
         groupSaver.registerNewGroup(context, group);
         //TODO: remove hard coding for saving channel for each group
         groupSaver.registerToPushNotificationsCustomChannel(DEFAULT_CUSTOM_CHANNEL);
@@ -32,7 +32,7 @@ public class GroupCreatorPresenterImpl implements GroupCreatorPresenter{
 
    /* @Override
     public void saveGroupToServer(Context context, ActionGroup group) {
-        ServerDataProviderDelegations.RegisterGroupDelegate  groupSaver = ServerDataProvider.getInstance(context);
+        BackendlessHelperDelegations.RegisterGroupDelegate  groupSaver = ServerDataProvider.getInstance(context);
         groupSaver.registerNewGroup(context, group);
     }*/
 }

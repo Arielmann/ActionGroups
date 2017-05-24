@@ -1,18 +1,15 @@
 package ariel.actiongroups.main.common.appinit;
 
-import android.app.Activity;
-import android.content.res.Resources;
-
 import com.backendless.Backendless;
 
-import ariel.actiongroups.R;
+import ariel.actiongroups.main.common.app.ActionGroupsApplication;
+import ariel.actiongroups.main.common.resources.AppStrings;
 import ariel.actiongroups.main.common.utils.imageutils.ImageUtils;
 
 public class AppInit {
 
-    public static void InitApp(Activity activity){
-        Resources res = activity.getResources();
-        Backendless.initApp( activity, res.getString(R.string.backendless_app_id), res.getString(R.string.backendless_secret_key),  res.getString(R.string.app_version));
-        ImageUtils.initDefaultProfileImage(activity);
+    public static void InitApp(ActionGroupsApplication application){
+        Backendless.initApp( application, AppStrings.BACKENDLESS_APP_ID, AppStrings.BACKENDLESS_API_KEY);
+        ImageUtils.initDefaultProfileImage(application);
     }
 }

@@ -31,7 +31,7 @@ public class ExampleUnitTest {
     @Test
     public void mockEntity(){
         ActionGroupsEntity entity = Mockito.mock(ActionGroupsEntity.class);
-        Mockito.when(entity.getId()).thenReturn("333");
-        Assert.assertEquals("333", entity.getId());
+        Mockito.when(entity.getObjectId()).thenReturn("333");
+        Assert.assertEquals("333", entity.getObjectId());
     }
 }

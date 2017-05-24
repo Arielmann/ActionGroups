@@ -13,7 +13,7 @@ import org.junit.runner.RunWith;
 import java.util.concurrent.TimeoutException;
 
 import ariel.actiongroups.CustomServiceTestRule;
-import ariel.actiongroups.main.common.utils.services.ServiceExample;
+import ariel.actiongroups.main.common.utils.testservice.TestServiceExample;
 
 @RunWith(AndroidJUnit4.class)
 public class MyServiceTest {
@@ -24,13 +24,12 @@ public class MyServiceTest {
     @Test
     public void testService() throws TimeoutException {
         myServiceRule.startService(new Intent((InstrumentationRegistry.getTargetContext()),
-                ServiceExample.class));
+                TestServiceExample.class));
     }
 
     @Test
     public void testBoundService() throws TimeoutException {
-        IBinder binder = myServiceRule.bindService(new Intent(InstrumentationRegistry.getTargetContext(), ServiceExample.class));
-        ServiceExample service = ((ServiceExample.LocalBinder) binder).getService();
-
+        IBinder binder = myServiceRule.bindService(new Intent(InstrumentationRegistry.getTargetContext(), TestServiceExample.class));
+        TestServiceExample service = ((TestServiceExample.LocalBinder) binder).getService();
     }
 }

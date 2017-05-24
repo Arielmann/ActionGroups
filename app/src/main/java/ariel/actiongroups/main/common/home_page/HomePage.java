@@ -16,8 +16,6 @@ public class HomePage extends ViewPagerActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setupViewPager(super.getViewPager());
-        AppInit.InitApp(this);
-       //RegisterLeaderInServer.registerLeaderToBackendLessServer();
     }
 
     private void setupViewPager(ViewPager viewPager) {

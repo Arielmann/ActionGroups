@@ -1,17 +1,16 @@
-package ariel.actiongroups.main.common.utils.vhcontrollers;
+package ariel.actiongroups.main.common.utils.listutils.vh.vhcontrollers;
 
 import android.util.Log;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 
 import ariel.actiongroups.main.common.ActionGroupsEntity;
-import ariel.actiongroups.main.common.utils.listutils.vh.vhcontrollers.SilenceNotificationsController;
 
-public class SilenceEntityWithSwitchController extends SilenceNotificationsController implements CompoundButton.OnCheckedChangeListener {
+public class SilenceEntityWithSwitchVHController extends SilenceNotificationsVHController implements CompoundButton.OnCheckedChangeListener {
 
-    private static final String TAG = SilenceEntityWithSwitchController.class.getSimpleName();
+    private static final String TAG = SilenceEntityWithSwitchVHController.class.getSimpleName();
 
-    public SilenceEntityWithSwitchController(ActionGroupsEntity entity, Switch aSwitch) {
+    public SilenceEntityWithSwitchVHController(ActionGroupsEntity entity, Switch aSwitch) {
         super(entity);
         aSwitch.setOnCheckedChangeListener(this);
         aSwitch.setChecked(entity.isSilenced());

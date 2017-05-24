@@ -284,5 +284,6 @@
     <color name="windowBackground">#FFFFFF</color>
     <color name="navigationBarColor">#000000</color>
     <color name="hintColor">#939393</color>
+    <color name="course_Details_color">#000000</color>
 
 </resources>

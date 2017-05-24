@@ -11,7 +11,7 @@ public class ChallengeEditorModel {
     {
         if(model == null) {
             model = new ChallengeEditorModel();
-            model.challenge = new Challenge();
+            model.challenge = new Challenge(0);
         }
         return model;
     }

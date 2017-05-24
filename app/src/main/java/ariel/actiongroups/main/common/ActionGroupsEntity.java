@@ -10,12 +10,19 @@ import ariel.actiongroups.main.common.utils.imageutils.ImageUtils;
 
 public abstract class ActionGroupsEntity {
 
-    private String id, name, description, creationDate, imageLocalPath, imageUrl;
+    private String objectId;
+    private String name;
+    private String description;
+    private String creationDate;
+    private String imageLocalPath;
+
+    private String imageUrl;
     private Bitmap image = ImageUtils.defaultProfileImage;
     private boolean isSilenced = false;
 
+    //Called when first time created
     public ActionGroupsEntity(String name, String description) { //Convenience Constructor
-        this.id = UUID.randomUUID().toString();
+        this.objectId = UUID.randomUUID().toString();
         this.name = name;
         this.description = description;
         this.imageLocalPath = "Entity's Local Image Path";
@@ -23,20 +30,16 @@ public abstract class ActionGroupsEntity {
         this.creationDate = String.valueOf(LocalDateTime.now().toLocalDate());
     }
 
-    //Called when first time created
-    public ActionGroupsEntity(String name, String description, String imageLocalPath) {
-        this.id = UUID.randomUUID().toString();
-        this.name = name;
-        this.description = description;
-        this.creationDate = String.valueOf(LocalDateTime.now().toLocalDate());
-    }
-
-    //Called when loading from local database (with creation date)
-    public ActionGroupsEntity(String id, String name, String description, String creationDate) {
-        this.id = id;
+    //Called when loading from local OR remote database (with creation date)
+    public ActionGroupsEntity(String objectId, String name, String description, String creationDate) {
+        this.objectId = objectId;
         this.name = name;
         this.description = description;
         this.creationDate = creationDate;
+    }
+
+    public ActionGroupsEntity() {
+
     }
 
     void saveToDataBases() {
@@ -44,7 +47,7 @@ public abstract class ActionGroupsEntity {
 
     @Override
     public String toString() {
-        return "Id: " + id +
+        return "Entity Info:: Id: " + objectId +
                 " Name: " + name +
                 " Description: " + description +
                 " Creation Date: " + creationDate +
@@ -53,8 +56,8 @@ public abstract class ActionGroupsEntity {
     }
 
     //**Getters**//
-    public String getId() {
-        return id;
+    public String getObjectId() {
+        return objectId;
     }
 
     public String getName() {
@@ -76,6 +79,10 @@ public abstract class ActionGroupsEntity {
     public Bitmap getImage() {
         return image;
     }
+
+      public String getImageUrl() {
+          return imageUrl;
+      }
 
     //**Setters**//
     public void setImage(Bitmap entityImageBitmap) {

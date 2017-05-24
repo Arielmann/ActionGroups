@@ -29,12 +29,12 @@ public class CourseDetailsPresenterImpl implements CourseDetailsPresenter {
     /*
     Course reference was sent from CourseDetailsActivity. This
     object SHOULD NOT be mutated by it's associated groups.
-    therefore we create a copy in below method:
+    therefore we create a copy in this method below:
     */
     @Override
     public void addCourseToGroupCourses(ActionGroup group) {
         Course courseCopy = new Course(course);
-        group.getCourses().put(course.getId(), courseCopy);
+        group.getCourses().put(course.getObjectId(), courseCopy);
     }
 
     private void initDummyDataSet() {
@@ -42,7 +42,7 @@ public class CourseDetailsPresenterImpl implements CourseDetailsPresenter {
             for (int i = 0; i < 3; i++) {
                 ActionGroup group = new ActionGroup();
                 Course courseCopy = new Course(course); //put unique copy of this course for the group under the common course id
-                group.getCourses().put(courseCopy.getId(), courseCopy);
+                group.getCourses().put(courseCopy.getObjectId(), courseCopy);
                 model.getGroups().add(group);
             }
         }
@@ -56,6 +56,6 @@ public class CourseDetailsPresenterImpl implements CourseDetailsPresenter {
 
     @Override
     public String getCourseId() {
-        return model.getCourse().getId();
+        return model.getCourse().getObjectId();
     }
 }

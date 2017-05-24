@@ -1,4 +1,4 @@
-package ariel.actiongroups.main.common.backend;
+package ariel.actiongroups.main.common.utils.backendutils;
 
 import android.content.Context;
 import android.content.Intent;

@@ -20,5 +20,6 @@ public abstract class GenericViewHolder extends RecyclerView.ViewHolder{
     public int getTag() {
         return tag;
     }
+
 }
 

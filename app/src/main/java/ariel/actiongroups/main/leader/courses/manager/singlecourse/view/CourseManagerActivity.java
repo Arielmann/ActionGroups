@@ -4,9 +4,11 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Toast;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
+import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,10 +16,14 @@ import java.util.UUID;
 
 import ariel.actiongroups.R;
 import ariel.actiongroups.databinding.ActivityCourseManagerBinding;
+import ariel.actiongroups.main.common.app.ActionGroupsApplication;
 import ariel.actiongroups.main.common.challenges.Challenge;
 import ariel.actiongroups.main.common.courses.Course;
-import ariel.actiongroups.main.common.courses.coursedetails.view.CourseDetailsActivity;
+import ariel.actiongroups.main.common.courses.search.view.SearchCoursesActivity;
+import ariel.actiongroups.main.common.profiles.models.Leader;
 import ariel.actiongroups.main.common.utils.ActivityStarter;
+import ariel.actiongroups.main.common.utils.backendutils.BackendlessHelper;
+import ariel.actiongroups.main.common.utils.backendutils.searchutils.di.SearchComponent;
 import ariel.actiongroups.main.common.utils.imageutils.ImageUtils;
 import ariel.actiongroups.main.common.utils.listutils.gridview.GridViewLayoutWithHeaderAndFooter;
 import ariel.actiongroups.main.common.utils.listutils.gridview.SpanSizeLookUpForHeaderAndFooter;
@@ -29,7 +35,7 @@ import ariel.actiongroups.main.leader.courses.manager.singlecourse.model.CourseM
 import ariel.actiongroups.main.leader.courses.manager.singlecourse.presenter.CourseManagerPresenter;
 import ariel.actiongroups.main.leader.courses.manager.singlecourse.presenter.CourseManagerPresenterImpl;
 
-public class CourseManagerActivity extends AppCompatActivity implements GenericRecyclerViewInterface {
+public class CourseManagerActivity extends AppCompatActivity implements CourseManagerView {
 
     private CourseManagerPresenter presenter;
     private CourseManagerAdapter adapter;
@@ -39,7 +45,8 @@ public class CourseManagerActivity extends AppCompatActivity implements GenericR
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EventBus.getDefault().register(this);
-        presenter = new CourseManagerPresenterImpl(this); //passing adapter as view and presenter for better readability
+        SearchComponent searchComponent = ((ActionGroupsApplication) getApplication()).getSearchComponent();
+        presenter = new CourseManagerPresenterImpl(searchComponent, this); //passing adapter as view and presenter for better readability
         ActivityCourseManagerBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_course_manager);
         binding.saveCourse.setOnClickListener(onSaveCourseClicked);
         binding.addChallenge.setOnClickListener(onAddNewChallengeClicked);
@@ -76,7 +83,7 @@ public class CourseManagerActivity extends AppCompatActivity implements GenericR
     private View.OnClickListener onAddNewChallengeClicked = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Challenge challenge = new Challenge();
+            Challenge challenge = new Challenge(challenges.size());
             presenter.addCard(challenge);
             EventBus.getDefault().postSticky(challenge);
             //There is no returned result, instead communicating
@@ -86,14 +93,20 @@ public class CourseManagerActivity extends AppCompatActivity implements GenericR
     };
 
     private View.OnClickListener onSaveCourseClicked = new View.OnClickListener() {
-        String courseId  = UUID.randomUUID().toString();
+        String courseId = UUID.randomUUID().toString();
+
         @Override
         public void onClick(View view) {
-            Course course = new Course(courseId, adapter.getHeader(), "This is get in shape course", ImageUtils.testImagePath, challenges, 0);
+            Leader leader = new Leader();
+            Course course = new Course(courseId, adapter.getHeader(), leader, "This is get in shape course", ImageUtils.testImagePath, challenges, 0);
             EventBus.getDefault().postSticky(course);
-            //There is no returned result, instead communicating
-            // with OnChallengedChangedEvent but ActivityForResult it makes sure the caller stays alive
-            ActivityStarter.startActivity(view.getContext(), CourseDetailsActivity.class);
+
+            try {
+                presenter.saveCourseToDataBases(course);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            ActivityStarter.startActivity(view.getContext(), SearchCoursesActivity.class);
         }
     };
 
@@ -102,5 +115,9 @@ public class CourseManagerActivity extends AppCompatActivity implements GenericR
         adapter.notifyDataSetChanged();
     }
 
+    @Override
+    public void popNoChallengesCreatedError() {
+        Toast.makeText(this, "Oops, seems like your course as no challenges at all, please create at least 1 before saving it", Toast.LENGTH_LONG).show();
+    }
 }
 

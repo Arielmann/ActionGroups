@@ -40,7 +40,7 @@ public class CourseDetailsAdapter extends HeaderRecyclerViewAdapter<GenericViewH
 
     @Override
     public GenericViewHolder onCreateItemViewHolder(ViewGroup parent, int viewType) {
-        final View view = getLayoutInflater(parent).inflate(R.layout.vh_group_row, parent, false);
+        final View view = getLayoutInflater(parent).inflate(R.layout.vh_entity_row, parent, false);
         return new GroupRowViewHolder(context, view, dataSet, onGroupClicked);
     }
 

@@ -55,9 +55,9 @@ public class ChallengeNavigationActivity extends ViewPagerActivity {
 
     public void createViewPagerAdapter() {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new ResultsTabFrag(), AppStrings.RESULTS);
-        adapter.addFragment(new ChatTabFrag(), AppStrings.CHAT);
-        adapter.addFragment(new ChallengeDescriptionTabFrag(), AppStrings.CHALLENGE);
+        adapter.addFragment(new ResultsTabFrag(), AppStrings.UPPER_CASE_RESULTS);
+        adapter.addFragment(new ChatTabFrag(), AppStrings.UPPER_CASE_CHAT);
+        adapter.addFragment(new ChallengeDescriptionTabFrag(), AppStrings.UPPER_CASE_CHALLENGE);
         super.getViewPager().setAdapter(adapter);
     }
 }

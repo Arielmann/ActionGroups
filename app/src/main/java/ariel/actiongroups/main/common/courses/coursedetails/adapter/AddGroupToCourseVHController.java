@@ -1,14 +1,14 @@
-package ariel.actiongroups.main.common.utils.vhcontrollers;
+package ariel.actiongroups.main.common.courses.coursedetails.adapter;
 
 import android.view.View;
 
 import ariel.actiongroups.main.common.utils.listutils.vh.OnAddEntityVHClicked;
 
-public class AddGroupToCourseController implements View.OnClickListener {
+public class AddGroupToCourseVHController implements View.OnClickListener {
 
     private OnAddEntityVHClicked onAddGroupVHClicked;
 
-    public AddGroupToCourseController(OnAddEntityVHClicked onAddGroupVHClicked) {
+    public AddGroupToCourseVHController(OnAddEntityVHClicked onAddGroupVHClicked) {
         this.onAddGroupVHClicked = onAddGroupVHClicked;
     }
 

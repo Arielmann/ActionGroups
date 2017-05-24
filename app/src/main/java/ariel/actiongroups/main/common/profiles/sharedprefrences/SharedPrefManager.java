@@ -8,6 +8,7 @@ import android.os.AsyncTask;
 
 import java.util.HashMap;
 
+import ariel.actiongroups.main.common.profiles.models.Leader;
 import ariel.actiongroups.main.common.utils.imageutils.ImageUtils;
 
 public class SharedPrefManager {

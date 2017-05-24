@@ -28,7 +28,6 @@ public class GroupCreatorActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_group_creator);
-        AppInit.InitApp(this); //TODO: Not need to call it here. delete when feature is ready
         presenter = new GroupCreatorPresenterImpl();
         Button createGroup = (Button) findViewById(R.id.createGroupButton);
         createGroup.setOnClickListener(createGroupOnClick);

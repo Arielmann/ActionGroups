@@ -55,7 +55,7 @@ public class GroupListModel {
     }
 
     private void insertGroupRowToDataStructures(ActionGroup group){
-        groupsMap.put(group.getId(), group);
+        groupsMap.put(group.getObjectId(), group);
         dataSet.add(group);
     }
 

@@ -20,10 +20,9 @@ public class Challenge extends ActionGroupsEntity{
     private int positionInCourse;
 
     //Convenience Constructor
-    public Challenge() {
-        super("", "Run 3 times around your building", "Image");
-        super.setName("Challenge Id: " + super.getId()) ;
-        this.positionInCourse = 1;
+    public Challenge(int positionInCourse) {
+        super("Running Challenge", "Run 3 times around your building");
+        this.positionInCourse = positionInCourse;
         this.targetGroups = new ArrayList<>();
         this.targetGroups.add(new ActionGroup());
         this.startDate = String.valueOf(LocalDateTime.now().toLocalDate());

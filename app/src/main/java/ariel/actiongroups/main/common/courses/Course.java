@@ -5,13 +5,14 @@ import android.support.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
+import ariel.actiongroups.main.common.ActionGroupsEntity;
 import ariel.actiongroups.main.common.challenges.Challenge;
 import ariel.actiongroups.main.common.courses.states.challengenavigator.view.ChallengeNavigationActivity;
 import ariel.actiongroups.main.common.courses.states.gatherpayment.view.GatherPaymentActivity;
 import ariel.actiongroups.main.common.groups.ActionGroup;
-import ariel.actiongroups.main.common.ActionGroupsEntity;
+import ariel.actiongroups.main.common.profiles.models.Leader;
 
-public class Course extends ActionGroupsEntity{
+public class Course extends ActionGroupsEntity {
 
     /*
     * Course data structure management:
@@ -35,33 +36,47 @@ public class Course extends ActionGroupsEntity{
         }
     }
 
-    private List<ActionGroup> groups;
-    private List<Challenge> challenges;
-    private CourseState courseState = CourseState.GATHER_PAYMENT;
+    private Leader leader;
+    private @Nullable List<ActionGroup> groups;
+    private @Nullable List<Challenge> challenges;
+    private CourseState courseState;
     private @Nullable Challenge currentChallenge;
     private int currentChallengePosition;
+    private String state;
 
-    public Course(String id, String name, String description, String imagePath, List<Challenge> challenges, int currentChallengePosition) {
+    public Course(String id, String name, Leader leader, String description, String imagePath, List<Challenge> challenges, int currentChallengePosition) {
         super(id, name, description, "30/12/1991");
+        this.leader = leader;
         this.groups = new ArrayList<>(); //All courses starts with no associated groups
         this.challenges = challenges;
         this.currentChallenge = challenges.get(currentChallengePosition);
         this.currentChallengePosition = currentChallengePosition;
+        setImageUrl(imagePath);
+        setImageLocalPath(imagePath);
+        courseState = CourseState.GATHER_PAYMENT;
+        state = CourseState.GATHER_PAYMENT.name();
     }
 
-    public Course(Course course){ //Copy constructor
-        this(course.getId(), course.getName(), course.getDescription(), course.getImageLocalPath(), course.getChallenges(), course.getCurrentChallengePosition());
+    public Course(String objectId, String name, String description, String imagePath) {
+        super(objectId, name, description, "30/12/1991");
     }
 
- /*  public Course() { //Convenience constructor
-        super("My course", "This is a professional course");
+    public Course(Course course) { //Copy constructor
+        this(course.getObjectId(), course.getName(), course.getDescription(), course.getCreationDate());
+    }
+
+
+   public Course() { //Convenience constructor
+       super();
+     /*   super("My course", "This is a professional course");
         this.groups = new ArrayList<>();
         this.challenges = new ArrayList<>();
         this.challenges.add(new Challenge());
         this.challenges.add(new Challenge());
         this.challenges.add(new Challenge());
-        this.currentChallenge = challenges.get(0);
-    }*/
+        this.currentChallenge = challenges.get(0);*/
+    }
+
 
     public void setCourseStateActivity(CourseState courseState) {
         this.courseState = courseState;
@@ -98,6 +113,14 @@ public class Course extends ActionGroupsEntity{
 
     public List<Challenge> getChallenges() {
         return challenges;
+    }
+
+    public Leader getLeader() {
+        return leader;
+    }
+
+    public String getCourseStateName() {
+        return courseState.name();
     }
 }
 

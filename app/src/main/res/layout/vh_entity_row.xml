@@ -18,19 +18,10 @@
             android:layout_height="1dp"
             android:background="@color/md_grey_500" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/lastMessageDate"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Date"
-            android:layout_gravity="right"
-            android:textColor="@color/md_grey_700" />
-
         <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="75dp"
             android:layout_height="75dp"
-            android:id="@+id/groupRowImageView"
+            android:id="@+id/entityCilcleImageView"
             android:layout_gravity="start|center_horizontal"
             android:scaleType="centerCrop"
             app:civ_border_color="@color/md_white_1000"
@@ -41,14 +32,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Group Name"
-            android:id="@+id/groupRowName"
+            android:id="@+id/entityRowNameTV"
             android:focusableInTouchMode="false"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_gravity="start"
             android:textColor="#000000" />
 
         <TextView
-            android:id="@+id/lastTextMessage"
+            android:id="@+id/entityRowDescriptionTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="This is the last message"

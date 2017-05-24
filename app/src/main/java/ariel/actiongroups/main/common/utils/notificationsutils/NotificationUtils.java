@@ -36,7 +36,7 @@ public class NotificationUtils {
                 .setContentText(message)
                 .setContentIntent(pendingIntent)
                 .setStyle(inbox)
-                .setGroup(AppStrings.CHALLENGE)
+                .setGroup(AppStrings.UPPER_CASE_CHALLENGE)
                 .setGroupSummary(true)
                 .setAutoCancel(true)
                 .build();

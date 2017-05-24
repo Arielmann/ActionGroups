@@ -2,6 +2,7 @@ package ariel.actiongroups.main.common.groups.groupslist.view;
 
 import org.greenrobot.eventbus.EventBus;
 
+import ariel.actiongroups.main.common.courses.Course;
 import ariel.actiongroups.main.common.groups.ActionGroup;
 
 public class GroupListActivityForResult extends GenericGroupListActivity implements OnActionGroupClicked {

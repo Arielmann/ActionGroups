@@ -19,6 +19,7 @@ import java.util.List;
 
 import ariel.actiongroups.R;
 import ariel.actiongroups.databinding.FragChallengeManagerBinding;
+import ariel.actiongroups.main.common.app.ActionGroupsApplication;
 import ariel.actiongroups.main.common.challenges.Challenge;
 import ariel.actiongroups.main.leader.challenges.manager.events.OnChallengesEditedEvent;
 import ariel.actiongroups.main.leader.challenges.manager.models.ChallengeEditorModel;
@@ -45,7 +46,7 @@ public class ChallengeEditorFragment extends android.support.v4.app.Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         challenge = ChallengeEditorModel.getInstance().getChallenge(); //TODO: Create presenter
         binding = DataBindingUtil.inflate(inflater, R.layout.frag_challenge_manager, container, false);
-        presenter = new ChallengeManagerPresenterImpl();
+        presenter = new ChallengeManagerPresenterImpl(((ActionGroupsApplication) getActivity().getApplication()).getBlComponent());
         View creatorLayout = binding.getRoot();
         binding.doneButton.setOnClickListener(goToPreview);
         binding.changeNumber.setOnClickListener(openNumberPicker);

@@ -14,6 +14,7 @@ import ariel.actiongroups.R;
 import ariel.actiongroups.databinding.CompoRecyclerViewBinding;
 import ariel.actiongroups.main.common.courses.Course;
 import ariel.actiongroups.main.common.courses.coursedetails.adapter.CourseDetailsAdapter;
+import ariel.actiongroups.main.common.courses.coursedetails.di.DaggerCourseDetailsComponent;
 import ariel.actiongroups.main.common.courses.coursedetails.model.CourseDetailsModel;
 import ariel.actiongroups.main.common.courses.coursedetails.presenter.CourseDetailsPresenter;
 import ariel.actiongroups.main.common.courses.coursedetails.presenter.CourseDetailsPresenterImpl;
@@ -22,6 +23,7 @@ import ariel.actiongroups.main.common.groups.groupslist.view.GroupListActivityFo
 import ariel.actiongroups.main.common.groups.groupslist.view.OnActionGroupClicked;
 import ariel.actiongroups.main.common.utils.ActivityStarter;
 import ariel.actiongroups.main.common.utils.imageutils.ImageUtils;
+import ariel.actiongroups.main.common.courses.coursedetails.di.CourseDetailsComponent;
 import ariel.actiongroups.main.common.utils.listutils.vh.OnAddEntityVHClicked;
 
 public class CourseDetailsActivity extends AppCompatActivity implements OnActionGroupClicked, OnAddEntityVHClicked {
@@ -36,7 +38,7 @@ public class CourseDetailsActivity extends AppCompatActivity implements OnAction
     *
     * onGroupClicked interface is sent to the dynamic GroupViewHolders
     * in order to start a relevant group activity upon a user's click.
-    * */
+    */
 
     private static final String TAG = CourseDetailsActivity.class.getSimpleName();
     private CourseDetailsAdapter adapter;
@@ -45,10 +47,11 @@ public class CourseDetailsActivity extends AppCompatActivity implements OnAction
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        CompoRecyclerViewBinding binding = DataBindingUtil.setContentView(this, R.layout.compo_recycler_view);
-        model = CourseDetailsModel.getInstance();
         Course course = EventBus.getDefault().removeStickyEvent(Course.class);
+        CourseDetailsComponent courseDetailsComponent = DaggerCourseDetailsComponent.create();
+        model = courseDetailsComponent.injectModel();
         model.setCourse(course);
+        CompoRecyclerViewBinding binding = DataBindingUtil.setContentView(this, R.layout.compo_recycler_view);
         adapter = new CourseDetailsAdapter(this, model.getGroups(), this, this); //activity is both context and interfaces passed to adapter
         presenter = new CourseDetailsPresenterImpl(adapter, course); //adapter provides GenericRecyclerViewInterface for this presenter
         initCourseDetailsRecyclerView(binding);
@@ -77,6 +80,11 @@ public class CourseDetailsActivity extends AppCompatActivity implements OnAction
     }
 
     @Override
+    public void onAddEntityVHClicked() {
+        ActivityStarter.startActivityForResult(this, GroupListActivityForResult.class);
+    }
+
+    @Override
     public void onActionGroupClicked(ActionGroup group) {
         EventBus.getDefault().postSticky(group);
         String courseId = presenter.getCourseId();
@@ -84,10 +92,5 @@ public class CourseDetailsActivity extends AppCompatActivity implements OnAction
         EventBus.getDefault().postSticky(groupCourse); //Get this group's' course by its id
         Class courseStateActivity = groupCourse.getCourseStateActivity().getActivityClass();
         ActivityStarter.startActivity(this, courseStateActivity);
-    }
-
-    @Override
-    public void onAddEntityVHClicked() {
-        ActivityStarter.startActivityForResult(this, GroupListActivityForResult.class);
     }
 }

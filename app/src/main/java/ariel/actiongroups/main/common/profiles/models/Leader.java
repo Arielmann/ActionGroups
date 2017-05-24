@@ -5,14 +5,16 @@ public class Leader extends User {
     private String company;
     private String website;
 
-    public Leader(String id, String name, String company, String location, String profileImageUrl, String description, String website, String token) {
-        super(id, name, location, profileImageUrl, description, token);
+    public Leader(String id, String name, String company, String location, String profileImageUrl, String description, String website, String token, String creationDate) {
+        super(id, name, location, profileImageUrl, description, token, creationDate);
         this.company = company;
         this.website = website;
     }
 
     //Convenience Constructor from super class
-    public Leader(){}
+    public Leader(){
+
+    }
 
 
     //**Getters**//

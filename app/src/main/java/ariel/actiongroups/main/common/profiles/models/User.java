@@ -10,15 +10,15 @@ public class User extends ActionGroupsEntity implements Serializable {
     private String gcmToken = "el9hAVOFKos:APA91bFEeFnKCt9Rm-Bv7384Zo0SWCUCG21iG8BGuOztmpaexo9DYSMf9Ln2KTE7EPAx_fiW7bUPce8xS-_vzOHYsHYkyhLH5s7ehtOn2BBH3UFT6bixs6cyA-1_0qdlauEMr7vxz87p";
 
 
-    public User(String id, String name, String description, String location, String profileImageUrl, String token) {
-        super(id, name, description);
+    public User(String id, String name, String description, String location, String profileImageUrl, String token, String creationDate) {
+        super(id, name, description, creationDate);
         this.location = location;
         this.gcmToken = token;
     }
 
     //Convenience Constructor
     public User() {
-        super("User Name", "My name is Custom user");
+        super("Ariel Mann", "I am an actiongroups User");
         this.location = "Yigal Alon 46, Tel Aviv-Yafo";
     }
 

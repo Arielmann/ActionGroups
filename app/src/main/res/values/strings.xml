@@ -2,8 +2,6 @@
     <string name="app_name">ActionGroups</string>
     <string name="app_version">v1</string>
     <string name="challenge_object">ChallengeObject</string>
-    <string name="backendless_app_id">48B86DF4-1556-1B19-FFF8-3897BBA55F00</string>
-    <string name="backendless_secret_key">1346C6E8-E8B5-BA57-FF1A-CA43DB4D0D00</string>
     <string name="hot_groups">Hot Groups</string>
     <string name="my_groups">My Groups</string>
     <string name="groups">Groups</string>
@@ -13,4 +11,7 @@
     <string name="challenge">Challenges</string>
     <string name="description">description</string>
     <string name="leaders">Leaders</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

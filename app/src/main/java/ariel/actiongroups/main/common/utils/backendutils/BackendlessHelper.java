@@ -1,4 +1,4 @@
-package ariel.actiongroups.main.common.backend;
+package ariel.actiongroups.main.common.utils.backendutils;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -21,37 +21,31 @@ import ariel.actiongroups.R;
 import ariel.actiongroups.main.common.challenges.Challenge;
 import ariel.actiongroups.main.common.groups.ActionGroup;
 import ariel.actiongroups.main.common.profiles.models.User;
-import ariel.actiongroups.main.common.profiles.sharedprefrences.SharedPrefManager;
 import ariel.actiongroups.main.common.resources.AppStrings;
-import ariel.actiongroups.main.common.utils.networkutils.NetworkHelper;
 import ariel.actiongroups.main.common.utils.imageutils.ImageUtils;
 
-//AIzaSyAgxWka8IK74yM2nnloWmo-7tF4ysUMXDA - Server API key
-// 675632393175 - Sender ID
-
 //TODO: make abstract, remove singleton and Seperate to different classes
-public class ServerCommunicator implements ServerDataProviderDelegations.RegisterChallengeDelegate, ServerDataProviderDelegations.RegisterGroupDelegate, ServerDataProviderDelegations.RegisterUserDelegate, ServerDataProviderDelegations.RegisterLeaderDelegate, ServerDataProviderDelegations.FileUploadDelegate {
-    private static ServerCommunicator dataSaver;
-    private String TAG = ServerCommunicator.class.getName();
-    private String SENDER_ID = "675632393175";
+public class BackendlessHelper implements BackendlessHelperDelegations.RegisterChallengeDelegate, BackendlessHelperDelegations.RegisterGroupDelegate, BackendlessHelperDelegations.RegisterUserDelegate, BackendlessHelperDelegations.RegisterLeaderDelegate, BackendlessHelperDelegations.FileUploadDelegate {
+    private static BackendlessHelper backendlessHelper;
+    private String TAG = BackendlessHelper.class.getName();
 
-    public static ServerCommunicator getInstance() {
-        if (dataSaver == null) {
-            dataSaver = new ServerCommunicator();
+    public static BackendlessHelper getInstance() {
+        if (backendlessHelper == null) {
+            backendlessHelper = new BackendlessHelper();
         }
-        return dataSaver;
+        return backendlessHelper;
     }
 
-    private ServerCommunicator() {
+    private BackendlessHelper() {
     }
 
     @Override
     public void registerNewChallenge(Context context, Challenge challenge) {
         if(NetworkHelper.hasNetworkAccess(context)) {
-            String challengesTableName = AppStrings.CHALLENGES;
+            String challengesTableName = AppStrings.UPPER_CASE_CHALLENGES;
             Map<String, Object> challengeMap = new HashMap();
-            challengeMap.put(AppStrings.NAME, challenge.getName());
-            challengeMap.put(AppStrings.DESCRIPTION, challenge.getDescription());
+            challengeMap.put(AppStrings.UPPER_CASE_NAME, challenge.getName());
+            challengeMap.put(AppStrings.UPPER_CASE_DESCRIPTION, challenge.getDescription());
             saveMapToServer(challengesTableName, challengeMap);
         }else{
             Toast.makeText(context, NetworkHelper.NO_NETWORK_MSG, Toast.LENGTH_SHORT).show();
@@ -73,22 +67,16 @@ public class ServerCommunicator implements ServerDataProviderDelegations.Registe
 
     @Override
     public void registerToPushNotificationsDefaultChannel() {
-        Backendless.Messaging.registerDevice(SENDER_ID);
+        Backendless.Messaging.registerDevice(AppStrings.BACKENDLESS_SENDER_ID);
     }
 
     @Override
     public void registerToPushNotificationsCustomChannel(final String channel) {
         new Thread(new Runnable() {
             public void run() {
-                // synchronous backendless API call here:
-                Backendless.Messaging.registerDevice(SENDER_ID, channel);
-               // MessageStatus status = Backendless.Messaging.publish(channel, "I have registered to group channel");
+                Backendless.Messaging.registerDevice(AppStrings.BACKENDLESS_SENDER_ID, channel);
             }
         }).start();
-    }
-
-    private void registerDeviceToPushNotifications(){
-
     }
 
     @Override
@@ -109,14 +97,13 @@ public class ServerCommunicator implements ServerDataProviderDelegations.Registe
         Resources res = context.getResources();
         String leaderTableName = res.getString(R.string.leaders);
         Map<String, Object> leaderMap = new HashMap<>();
-        leaderMap.put(res.getString(R.string.name), SharedPrefManager.getInstance(context).getUserName());
-        leaderMap.put(res.getString(R.string.password), SharedPrefManager.getInstance(context).getUserPassword());
-        //leader.put(res.getString(R.string.email), SharedPrefManager.getInstance(context).getUserEmail());
+        //leaderMap.put(res.getString(R.string.name), SharedPrefManager.getInstance(context).getUserName());
+        //leaderMap.put(res.getString(R.string.password), SharedPrefManager.getInstance(context).getUserPassword());
         saveMapToServer(leaderTableName, leaderMap);
     }
 
 
-    private void saveMapToServer(String tableName, Map objectMap) {
+    public void saveMapToServer(String tableName, Map objectMap) {
         // save object asynchronously
         Backendless.Persistence.of(tableName).save(objectMap, new AsyncCallback<Map>() {
             public void handleResponse(Map response) {
@@ -146,7 +133,6 @@ public class ServerCommunicator implements ServerDataProviderDelegations.Registe
                     public void handleFault( BackendlessFault backendlessFault )
                     {
                         Log.e(TAG, "Image upload failed. Error: " + backendlessFault.toString());
-                        //Toast.makeText( UploadingActivity.this, backendlessFault.toString(), Toast.LENGTH_SHORT ).show();
                     }
                 });
     }

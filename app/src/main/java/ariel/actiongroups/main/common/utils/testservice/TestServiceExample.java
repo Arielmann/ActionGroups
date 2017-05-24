@@ -1,4 +1,4 @@
-package ariel.actiongroups.main.common.utils.services;
+package ariel.actiongroups.main.common.utils.testservice;
 
 import android.app.Service;
 import android.content.Intent;
@@ -6,10 +6,10 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
 
-public class ServiceExample extends Service {
-    private static final String TAG = ServiceExample.class.getSimpleName();
+public class TestServiceExample extends Service {
+    private static final String TAG = TestServiceExample.class.getSimpleName();
 
-    public ServiceExample() {
+    public TestServiceExample() {
     }
 
     @Override
@@ -31,8 +31,8 @@ public class ServiceExample extends Service {
     }
 
     public class LocalBinder extends Binder{
-        public ServiceExample getService(){
-            return ServiceExample.this;
+        public TestServiceExample getService(){
+            return TestServiceExample.this;
         }
     }
 

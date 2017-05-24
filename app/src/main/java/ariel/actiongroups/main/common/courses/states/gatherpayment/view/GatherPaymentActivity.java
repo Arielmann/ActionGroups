@@ -10,21 +10,19 @@ import org.greenrobot.eventbus.EventBus;
 import ariel.actiongroups.R;
 import ariel.actiongroups.databinding.ActivityGatherPaymentBinding;
 import ariel.actiongroups.main.common.courses.Course;
-import ariel.actiongroups.main.common.groups.ActionGroup;
 import ariel.actiongroups.main.common.utils.ActivityStarter;
+import ariel.actiongroups.main.common.utils.backendutils.BackendlessHelper;
 
 public class GatherPaymentActivity extends AppCompatActivity {
 
-    Course course;
-    ActionGroup group;
+    private Course course;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActivityGatherPaymentBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_gather_payment);
         course = EventBus.getDefault().removeStickyEvent(Course.class);
-        group = EventBus.getDefault().removeStickyEvent(ActionGroup.class);
-        binding.startCourse.setOnClickListener(startCourse);
+        binding.startCourseButton.setOnClickListener(startCourse);
     }
 
     View.OnClickListener startCourse = new View.OnClickListener() {
@@ -33,6 +31,7 @@ public class GatherPaymentActivity extends AppCompatActivity {
             course.setCourseStateActivity(Course.CourseState.CHALLENGE_NAVIGATION);
             EventBus.getDefault().postSticky(course);
             ActivityStarter.startActivity(v.getContext(), course.getCourseStateActivity().getActivityClass());
+            BackendlessHelper communicator = BackendlessHelper.getInstance();
         }
     };
 }

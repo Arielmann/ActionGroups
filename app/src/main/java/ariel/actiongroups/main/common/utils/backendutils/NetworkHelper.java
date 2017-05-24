@@ -1,4 +1,4 @@
-package ariel.actiongroups.main.common.utils.networkutils;
+package ariel.actiongroups.main.common.utils.backendutils;
 
 import android.content.Context;
 import android.net.ConnectivityManager;

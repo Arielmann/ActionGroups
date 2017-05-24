@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import java.io.Serializable;
 
+import ariel.actiongroups.main.common.profiles.models.Leader;
 import ariel.actiongroups.main.common.profiles.sharedprefrences.SharedPrefManager;
 import ariel.actiongroups.main.common.utils.imageutils.ImageUtils;
 

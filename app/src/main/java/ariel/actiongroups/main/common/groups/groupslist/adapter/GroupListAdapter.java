@@ -11,31 +11,27 @@ import java.util.List;
 import ariel.actiongroups.R;
 import ariel.actiongroups.main.common.groups.ActionGroup;
 import ariel.actiongroups.main.common.groups.groupslist.view.OnActionGroupClicked;
+import ariel.actiongroups.main.common.utils.listutils.vh.GenericRecyclerViewAdapter;
 import ariel.actiongroups.main.common.utils.listutils.vh.GenericRecyclerViewInterface;
 import ariel.actiongroups.main.common.utils.listutils.vh.GenericViewHolder;
 
-public class GroupListAdapter extends RecyclerView.Adapter<GenericViewHolder> implements GenericRecyclerViewInterface {
+public class GroupListAdapter extends GenericRecyclerViewAdapter implements GenericRecyclerViewInterface {
 
     private List<ActionGroup> dataSet;
     private Context context;
     private OnActionGroupClicked onGroupClicked;
 
     public GroupListAdapter(Context context, List<ActionGroup> dataSet, OnActionGroupClicked onGroupClicked) {
-        this.context = context;
+        super();
         this.dataSet = dataSet;
+        this.context = context;
         this.onGroupClicked = onGroupClicked;
     }
 
     @Override
     public GenericViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        final View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.vh_group_row, parent, false);
+        final View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.vh_entity_row, parent, false);
         return new GroupRowViewHolder(context, view, dataSet, onGroupClicked);
-    }
-
-    @Override
-    public void onBindViewHolder(GenericViewHolder holder, int position) {
-        holder.itemView.setOnClickListener((View.OnClickListener) holder);
-        holder.setUIDataOnView(position);
     }
 
     @Override
@@ -43,8 +39,5 @@ public class GroupListAdapter extends RecyclerView.Adapter<GenericViewHolder> im
         return dataSet.size();
     }
 
-    @Override
-    public void refreshAdapter() {
-        notifyDataSetChanged();
-    }
+
 }

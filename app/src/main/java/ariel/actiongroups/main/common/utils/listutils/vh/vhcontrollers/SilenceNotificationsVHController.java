@@ -4,15 +4,15 @@ import android.view.View;
 
 import ariel.actiongroups.main.common.ActionGroupsEntity;
 
-public abstract class SilenceNotificationsController implements View.OnClickListener {
+abstract class SilenceNotificationsVHController implements View.OnClickListener {
 
     private ActionGroupsEntity entity;
 
-    public SilenceNotificationsController(ActionGroupsEntity entity) {
+    SilenceNotificationsVHController(ActionGroupsEntity entity) {
         this.entity = entity;
     }
 
-    protected ActionGroupsEntity getEntity(){
+    ActionGroupsEntity getEntity(){
         return entity;
     }
 

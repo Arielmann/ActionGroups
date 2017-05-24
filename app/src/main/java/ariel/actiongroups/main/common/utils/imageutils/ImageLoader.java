@@ -6,10 +6,8 @@ import android.net.Uri;
 import java.util.concurrent.ExecutionException;
 
 import ariel.actiongroups.main.common.courses.states.challengenavigator.tabs.chat.ChatItem;
+import ariel.actiongroups.main.common.profiles.models.Leader;
 
-/**
- * Created by home on 6/25/2016.
- */
-public interface ImageLoader {
+interface ImageLoader {
     void onImageLoaded(String senderName, Bitmap scaledBitmap, ChatItem.ItemType itemType, Uri imageUri) throws ExecutionException, InterruptedException;
 }

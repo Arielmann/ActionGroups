@@ -3,10 +3,6 @@ package ariel.actiongroups.main.common.db_manager;
 import android.content.Context;
 import android.provider.BaseColumns;
 
-
-/**
- * Created by home on 8/30/2016.
- */
 public class DataBaseManager {
     private static DataBaseManager dataBase;
 

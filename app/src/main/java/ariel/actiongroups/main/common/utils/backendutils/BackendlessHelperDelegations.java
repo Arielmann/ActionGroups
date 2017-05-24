@@ -1,4 +1,4 @@
-package ariel.actiongroups.main.common.backend;
+package ariel.actiongroups.main.common.utils.backendutils;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -9,7 +9,7 @@ import ariel.actiongroups.main.common.challenges.Challenge;
 import ariel.actiongroups.main.common.groups.ActionGroup;
 import ariel.actiongroups.main.common.profiles.models.User;
 
-public abstract class ServerDataProviderDelegations {
+public abstract class BackendlessHelperDelegations {
 
     public interface RegisterChallengeDelegate {
         void registerNewChallenge(Context context, Challenge challenge);
