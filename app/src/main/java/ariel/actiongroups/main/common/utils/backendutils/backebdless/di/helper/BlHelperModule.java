@@ -1,13 +1,13 @@
-package ariel.actiongroups.main.common.utils.backendutils.backendlesshelperdi;
+package ariel.actiongroups.main.common.utils.backendutils.backebdless.di.helper;
 
 import javax.inject.Singleton;
 
-import ariel.actiongroups.main.common.utils.backendutils.BackendlessHelper;
+import ariel.actiongroups.main.common.utils.backendutils.backebdless.BackendlessHelper;
 import dagger.Module;
 import dagger.Provides;
 
 @Module
-class BackendlessModule {
+public class BlHelperModule {
 
     @Singleton
     @Provides

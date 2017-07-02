@@ -18,8 +18,8 @@ public class Course extends ActionGroupsEntity {
     * Course data structure management:
     * Every course gets one unique id which all associated groups will access.
     * Once a group registers a course it will create a copy of it's instance and save
-    * it in her courses map under the common course id.
-    * */
+    * it in its courses map under the common course id.
+    */
 
     public enum CourseState {
         GATHER_PAYMENT(GatherPaymentActivity.class),
@@ -123,12 +123,3 @@ public class Course extends ActionGroupsEntity {
         return courseState.name();
     }
 }
-
-
-
-/*
-* Android
-* Ios
-* Design patterns
-*
-* */

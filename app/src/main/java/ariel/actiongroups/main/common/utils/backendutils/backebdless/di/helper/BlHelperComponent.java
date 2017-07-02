@@ -1,12 +1,12 @@
-package ariel.actiongroups.main.common.utils.backendutils.backendlesshelperdi;
+package ariel.actiongroups.main.common.utils.backendutils.backebdless.di.helper;
 
 import javax.inject.Singleton;
 
 import ariel.actiongroups.main.leader.challenges.manager.presenter.ChallengeManagerPresenterImpl;
 import dagger.Component;
 
+@Component(modules={BlHelperModule.class})
 @Singleton
-@Component(modules={BackendlessModule.class})
-public interface BackendlessComponent {
+public interface BlHelperComponent {
     void inject(ChallengeManagerPresenterImpl challengeManagerPresenter);
 }

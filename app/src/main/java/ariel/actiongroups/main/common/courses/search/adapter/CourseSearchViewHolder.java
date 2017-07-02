@@ -12,13 +12,12 @@ import ariel.actiongroups.main.common.utils.listutils.vh.EntityViewHolder;
 
 public class CourseSearchViewHolder extends EntityViewHolder implements View.OnClickListener {
 
-
     private static final String TAG = CourseSearchViewHolder.class.getSimpleName();
 
     private final OnCourseClicked onCourseClicked;
     private final List<Course> dataSet;
 
-    CourseSearchViewHolder(Context context, View itemView, List dataSet, OnCourseClicked onCourseClicked) {
+    CourseSearchViewHolder(Context context, View itemView, List<Course> dataSet, OnCourseClicked onCourseClicked) {
         super(context, itemView);
         this.dataSet = dataSet;
         this.onCourseClicked = onCourseClicked;

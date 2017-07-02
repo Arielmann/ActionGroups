@@ -30,7 +30,7 @@ public class ChallengeEditorActivity extends ViewPagerActivity {
         setupViewPager(super.getViewPager());
         Challenge challenge = EventBus.getDefault().removeStickyEvent(Challenge.class);
         ChallengeEditorModel.getInstance().setChallenge(challenge);
-        presenter = new ChallengeManagerPresenterImpl(((ActionGroupsApplication) getApplication()).getBlComponent());
+        presenter = new ChallengeManagerPresenterImpl();
         Log.d(TAG, "Activity created");
     }
 

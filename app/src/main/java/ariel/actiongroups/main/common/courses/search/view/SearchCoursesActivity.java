@@ -24,6 +24,7 @@ import ariel.actiongroups.main.common.courses.search.presenter.CourseSearchViewP
 import ariel.actiongroups.main.common.courses.search.presenter.CourseSearchViewPresenterImpl;
 import ariel.actiongroups.main.common.utils.ActivityStarter;
 import ariel.actiongroups.main.common.utils.backendutils.searchutils.OnSearchViewClicked;
+import ariel.actiongroups.main.common.utils.backendutils.searchutils.di.SearchComponent;
 
 public class SearchCoursesActivity extends AppCompatActivity implements OnSearchViewClicked, OnCourseClicked, SearchCourseView{
 
@@ -33,7 +34,7 @@ public class SearchCoursesActivity extends AppCompatActivity implements OnSearch
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        presenter = new CourseSearchViewPresenterImpl(((ActionGroupsApplication) getApplication()).getSearchComponent(), this);
+        presenter = new CourseSearchViewPresenterImpl(((ActionGroupsApplication) getApplication()).getAppComponent(), this);
         adapter = new CourseSearchResultsAdapter(this, new ArrayList<Course>(), this);
         ActivitySearchCoursesBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_search_courses);
         RecyclerView recyclerView = binding.searchCourseResultsRecyclerView;

@@ -1,4 +1,4 @@
-package ariel.actiongroups.main.common.utils.backendutils;
+package ariel.actiongroups.main.common.utils.backendutils.backebdless;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -18,14 +18,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 import ariel.actiongroups.R;
+import ariel.actiongroups.main.common.ActionGroupsEntity;
 import ariel.actiongroups.main.common.challenges.Challenge;
 import ariel.actiongroups.main.common.groups.ActionGroup;
 import ariel.actiongroups.main.common.profiles.models.User;
 import ariel.actiongroups.main.common.resources.AppStrings;
+import ariel.actiongroups.main.common.utils.backendutils.NetworkHelper;
 import ariel.actiongroups.main.common.utils.imageutils.ImageUtils;
 
 //TODO: make abstract, remove singleton and Seperate to different classes
 public class BackendlessHelper implements BackendlessHelperDelegations.RegisterChallengeDelegate, BackendlessHelperDelegations.RegisterGroupDelegate, BackendlessHelperDelegations.RegisterUserDelegate, BackendlessHelperDelegations.RegisterLeaderDelegate, BackendlessHelperDelegations.FileUploadDelegate {
+
     private static BackendlessHelper backendlessHelper;
     private String TAG = BackendlessHelper.class.getName();
 
@@ -41,21 +44,21 @@ public class BackendlessHelper implements BackendlessHelperDelegations.RegisterC
 
     @Override
     public void registerNewChallenge(Context context, Challenge challenge) {
-        if(NetworkHelper.hasNetworkAccess(context)) {
+     //   if(NetworkHelper.hasNetworkAccess(context)) {
             String challengesTableName = AppStrings.UPPER_CASE_CHALLENGES;
-            Map<String, Object> challengeMap = new HashMap();
+            Map<String, Object> challengeMap = new HashMap<>();
             challengeMap.put(AppStrings.UPPER_CASE_NAME, challenge.getName());
             challengeMap.put(AppStrings.UPPER_CASE_DESCRIPTION, challenge.getDescription());
             saveMapToServer(challengesTableName, challengeMap);
-        }else{
+       /* }else{
             Toast.makeText(context, NetworkHelper.NO_NETWORK_MSG, Toast.LENGTH_SHORT).show();
-        }
+        }*/
     }
 
     @Override
     public void registerNewGroup(Context context, ActionGroup group) {
         Resources res = context.getResources();
-        Map<String, Object> groupMap = new HashMap();
+        Map<String, Object> groupMap = new HashMap<>();
         groupMap.put(res.getString(R.string.name), group.getName());
         groupMap.put(res.getString(R.string.description), group.getDescription());
         String groupsTableName = res.getString(R.string.groups);
@@ -80,11 +83,11 @@ public class BackendlessHelper implements BackendlessHelperDelegations.RegisterC
     }
 
     @Override
-    public void registerNewUser(BackendlessUser user) {
-        user.setEmail("arielmann2@gmail.com");
-        user.setPassword("1234567890");
+    public void registerNewUser(User user) { //Converting to BackendlessUser in order to allow native User class to keep inheriting ActionGroupEntity
+        BackendlessUser backendlessUser = new BackendlessUser();
+        backendlessUser.setProperty(AppStrings.NAME, user.getName());
 
-        Backendless.UserService.register(user, new BackendlessCallback<BackendlessUser>() {
+        Backendless.UserService.register(backendlessUser, new BackendlessCallback<BackendlessUser>() {
             @Override
             public void handleResponse(BackendlessUser backendlessUser) {
                 Log.i(TAG, backendlessUser.getEmail() + " successfully registered");
@@ -103,7 +106,7 @@ public class BackendlessHelper implements BackendlessHelperDelegations.RegisterC
     }
 
 
-    public void saveMapToServer(String tableName, Map objectMap) {
+    private void saveMapToServer(String tableName, Map objectMap) {
         // save object asynchronously
         Backendless.Persistence.of(tableName).save(objectMap, new AsyncCallback<Map>() {
             public void handleResponse(Map response) {
@@ -135,6 +138,13 @@ public class BackendlessHelper implements BackendlessHelperDelegations.RegisterC
                         Log.e(TAG, "Image upload failed. Error: " + backendlessFault.toString());
                     }
                 });
+    }
+
+    public Map<String,Object> convertEntityToBasicUploadMap(ActionGroupsEntity entity) {
+        Map<String, Object> entityMap = new HashMap<>();
+        entityMap.put(AppStrings.NAME, entity.getName());
+        entityMap.put(AppStrings.DESCRIPTION, entity.getDescription());
+        return entityMap;
     }
 }
 

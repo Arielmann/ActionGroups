@@ -1,10 +1,8 @@
 package ariel.actiongroups.main.common.profiles.models;
 
-import java.io.Serializable;
-
 import ariel.actiongroups.main.common.ActionGroupsEntity;
 
-public class User extends ActionGroupsEntity implements Serializable {
+public class User extends ActionGroupsEntity {
 
     private String location;
     private String gcmToken = "el9hAVOFKos:APA91bFEeFnKCt9Rm-Bv7384Zo0SWCUCG21iG8BGuOztmpaexo9DYSMf9Ln2KTE7EPAx_fiW7bUPce8xS-_vzOHYsHYkyhLH5s7ehtOn2BBH3UFT6bixs6cyA-1_0qdlauEMr7vxz87p";

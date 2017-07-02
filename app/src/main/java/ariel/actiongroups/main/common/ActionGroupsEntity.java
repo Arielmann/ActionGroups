@@ -38,9 +38,7 @@ public abstract class ActionGroupsEntity {
         this.creationDate = creationDate;
     }
 
-    public ActionGroupsEntity() {
-
-    }
+    public ActionGroupsEntity() {}
 
     void saveToDataBases() {
     }

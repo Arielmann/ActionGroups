@@ -8,9 +8,9 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import ariel.actiongroups.main.common.utils.backendutils.BackendlessHelper;
-import ariel.actiongroups.main.common.utils.backendutils.BackendlessHelperDelegations;
-import ariel.actiongroups.main.common.utils.backendutils.backendlesshelperdi.BackendlessComponent;
+import ariel.actiongroups.main.common.di.AppComponent;
+import ariel.actiongroups.main.common.utils.backendutils.backebdless.BackendlessHelper;
+import ariel.actiongroups.main.common.utils.backendutils.backebdless.BackendlessHelperDelegations;
 import ariel.actiongroups.main.common.challenges.Challenge;
 import ariel.actiongroups.main.leader.challenges.manager.events.OnChallengesEditedEvent;
 import ariel.actiongroups.main.leader.courses.manager.singlecourse.model.CourseManagerModel;
@@ -19,13 +19,10 @@ public class ChallengeManagerPresenterImpl implements ChallengeManagerPresenter 
 
     private static final String TAG = ChallengeManagerPresenterImpl.class.getName();
     private List<Challenge> challenges;
-    @Inject
-    BackendlessHelper serverCommunicator;
 
-    public ChallengeManagerPresenterImpl(BackendlessComponent serverComponent) {
+    public ChallengeManagerPresenterImpl() {
         CourseManagerModel courseManagerModel = CourseManagerModel.getInstance();
         challenges = courseManagerModel.getChallenges();
-        serverComponent.inject(this);
     }
 
     @Override
@@ -63,7 +60,6 @@ public class ChallengeManagerPresenterImpl implements ChallengeManagerPresenter 
 
     private void saveChallengeToServer(Context context, Challenge challenge) {
         BackendlessHelperDelegations.RegisterChallengeDelegate challengeSaver = BackendlessHelper.getInstance();
-        //serverCommunicator.registerNewChallenge(context, challenge);  //TODO: fix nullPointerException in injectModel method on class constructor
         challengeSaver.registerNewChallenge(context, challenge);
     }
 

@@ -14,6 +14,7 @@ import ariel.actiongroups.R;
 import ariel.actiongroups.databinding.CompoRecyclerViewBinding;
 import ariel.actiongroups.main.common.courses.Course;
 import ariel.actiongroups.main.common.courses.coursedetails.adapter.CourseDetailsAdapter;
+import ariel.actiongroups.main.common.courses.coursedetails.di.CourseDetailsComponent;
 import ariel.actiongroups.main.common.courses.coursedetails.di.DaggerCourseDetailsComponent;
 import ariel.actiongroups.main.common.courses.coursedetails.model.CourseDetailsModel;
 import ariel.actiongroups.main.common.courses.coursedetails.presenter.CourseDetailsPresenter;
@@ -23,7 +24,6 @@ import ariel.actiongroups.main.common.groups.groupslist.view.GroupListActivityFo
 import ariel.actiongroups.main.common.groups.groupslist.view.OnActionGroupClicked;
 import ariel.actiongroups.main.common.utils.ActivityStarter;
 import ariel.actiongroups.main.common.utils.imageutils.ImageUtils;
-import ariel.actiongroups.main.common.courses.coursedetails.di.CourseDetailsComponent;
 import ariel.actiongroups.main.common.utils.listutils.vh.OnAddEntityVHClicked;
 
 public class CourseDetailsActivity extends AppCompatActivity implements OnActionGroupClicked, OnAddEntityVHClicked {

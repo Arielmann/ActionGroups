@@ -14,4 +14,6 @@ public interface CourseManagerPresenter {
     void initDummyChallenges(List<Challenge> challenges);
     void setChallenges(List<Challenge> challenges);
     void saveCourseToDataBases(Course course) throws JSONException;
+
+    void onDestroy();
 }

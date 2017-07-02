@@ -4,7 +4,10 @@ public class AppStrings {
 
     public static final String ID = "id";
     public static final String NAME = "name";
+    public static final String EMAIL = "email";
+    public static final String PROFILE_IMAGE_URL = "profileImageUrl";
     public static final String STATE = "state";
+    public static final String LEADERS = "leaders";
     public static final String LEADER_NAME = "leaderName";
     public static final String DESCRIPTION = "description";
     public static final String IMAGE_URL = "imageUrl";
@@ -12,11 +15,14 @@ public class AppStrings {
     public static final String LEADER_ID = "leaderId";
     public static final String CREATION_DATE = "creationDate";
     public static final String CHALLENGES = "challenges";
-    public static final String GATHER_PAYMENT = "GATHER_PAYMENT";
-    public static final String CHALLENGE_NAVIGATION = "CHALLENGE_NAVIGATION";
+    public static final String MEMBERS = "members";
+
+    public static final String USC_CURRENT_CHALLENGE = "current_challenge";
+    public static final String USC_GATHER_PAYMENT = "gather_payment";
+    public static final String USC_CHALLENGE_NAVIGATION = "challenge_navigation";
 
     public static final String UPPER_CASE_NAME = "Name";
-    public static final String UPPER_CASE_DESCRIPTION = "description";
+    public static final String UPPER_CASE_DESCRIPTION = "Description";
     public static final String UPPER_CASE_CHALLENGES = "Challenges";
     public static final String UPPER_CASE_CHALLENGE = "Challenge";
     public static final String UPPER_CASE_CHAT = "Chat";
@@ -39,5 +45,10 @@ public class AppStrings {
     public static final String BACKENDLESS_CHALLENGES = "Backendless_Challenges";
     public static final String BACKENDLESS_LEADERS = "Backendless_Leaders";
 
+    public static final String FACEBOOK_APP_ID = "458809844465328";
+    public static final String FACEBOOK_CHORME_TABS_ID = "fb458809844465328";
+
+
+    public static final String EM_UPLOAD_FAILED = "Upload Failed";
 
 }

@@ -1,32 +1,39 @@
 package ariel.actiongroups.main.common.app;
 
 import android.app.Application;
-import android.support.multidex.MultiDexApplication;
+
+import com.backendless.BackendlessUser;
 
 import ariel.actiongroups.main.common.appinit.AppInit;
-import ariel.actiongroups.main.common.utils.backendutils.backendlesshelperdi.BackendlessComponent;
-import ariel.actiongroups.main.common.utils.backendutils.backendlesshelperdi.DaggerBackendlessComponent;
-import ariel.actiongroups.main.common.utils.backendutils.searchutils.di.DaggerSearchComponent;
-import ariel.actiongroups.main.common.utils.backendutils.searchutils.di.SearchComponent;
+import ariel.actiongroups.main.common.di.AppComponent;
+import ariel.actiongroups.main.common.di.AppModule;
+import ariel.actiongroups.main.common.di.DaggerAppComponent;
+import ariel.actiongroups.main.common.di.NetworkModule;
+import ariel.actiongroups.main.common.profiles.models.User;
+import ariel.actiongroups.main.common.utils.backendutils.backebdless.BackendlessHelper;
 
 public class ActionGroupsApplication extends Application {
 
-    private BackendlessComponent blComponent;
-    private SearchComponent searchComponent;
+    //private BlHelperComponent blHelperComponent;
+    //private CourseUploadServiceComponent courseUploadServiceComponent;
+    //private SearchComponent searchComponent;
+    private AppComponent appComponent;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        blComponent = DaggerBackendlessComponent.create();
-        searchComponent = DaggerSearchComponent.create();
+      //  blHelperComponent = DaggerBlHelperComponent.create();
+      //  courseUploadServiceComponent = DaggerCourseUploadServiceComponent.create();
+       // searchComponent = DaggerSearchComponent.create();
+        appComponent = DaggerAppComponent.builder().appModule(new AppModule(this))
+                .networkModule(new NetworkModule()).build();
         AppInit.InitApp(this);
+
+        BackendlessHelper helper = BackendlessHelper.getInstance();
+        helper.registerNewUser(new User());
     }
 
-    public BackendlessComponent getBlComponent() {
-        return blComponent;
-    }
-
-    public SearchComponent getSearchComponent() {
-        return searchComponent;
+    public AppComponent getAppComponent() {
+        return appComponent;
     }
 }

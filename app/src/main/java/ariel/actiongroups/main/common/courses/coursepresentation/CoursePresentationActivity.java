@@ -10,7 +10,6 @@ import org.greenrobot.eventbus.EventBus;
 import ariel.actiongroups.R;
 import ariel.actiongroups.databinding.ActivityCoursePresentationBinding;
 import ariel.actiongroups.main.common.courses.Course;
-import ariel.actiongroups.main.common.courses.states.challengenavigator.view.ChallengeNavigationActivity;
 import ariel.actiongroups.main.common.utils.ActivityStarter;
 
 public class CoursePresentationActivity extends AppCompatActivity {
@@ -24,7 +23,7 @@ public class CoursePresentationActivity extends AppCompatActivity {
         ActivityCoursePresentationBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_course_presentation);
         course = EventBus.getDefault().removeStickyEvent(Course.class);
         setDataInTV(course, binding);
-        binding.goToNextCourseStatActivityButton.setOnClickListener(onJoinCourseButtonClicked);
+        binding.goToNextCourseStateActivityButton.setOnClickListener(onJoinCourseButtonClicked);
     }
 
     private void setDataInTV(Course course, ActivityCoursePresentationBinding binding) {

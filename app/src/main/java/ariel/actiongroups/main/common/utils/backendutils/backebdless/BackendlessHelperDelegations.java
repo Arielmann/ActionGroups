@@ -1,4 +1,4 @@
-package ariel.actiongroups.main.common.utils.backendutils;
+package ariel.actiongroups.main.common.utils.backendutils.backebdless;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -22,7 +22,7 @@ public abstract class BackendlessHelperDelegations {
 
     public interface RegisterUserDelegate {
         void registerToPushNotificationsDefaultChannel();
-        void registerNewUser(BackendlessUser user);
+        void registerNewUser(User user);
     }
 
     public interface RegisterLeaderDelegate {

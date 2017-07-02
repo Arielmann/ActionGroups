@@ -46,7 +46,7 @@ public class ChallengeEditorFragment extends android.support.v4.app.Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         challenge = ChallengeEditorModel.getInstance().getChallenge(); //TODO: Create presenter
         binding = DataBindingUtil.inflate(inflater, R.layout.frag_challenge_manager, container, false);
-        presenter = new ChallengeManagerPresenterImpl(((ActionGroupsApplication) getActivity().getApplication()).getBlComponent());
+        presenter = new ChallengeManagerPresenterImpl();
         View creatorLayout = binding.getRoot();
         binding.doneButton.setOnClickListener(goToPreview);
         binding.changeNumber.setOnClickListener(openNumberPicker);

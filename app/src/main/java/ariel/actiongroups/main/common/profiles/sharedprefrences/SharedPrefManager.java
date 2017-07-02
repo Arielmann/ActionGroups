@@ -8,7 +8,7 @@ import android.os.AsyncTask;
 
 import java.util.HashMap;
 
-import ariel.actiongroups.main.common.profiles.models.Leader;
+import ariel.actiongroups.main.common.resources.AppStrings;
 import ariel.actiongroups.main.common.utils.imageutils.ImageUtils;
 
 public class SharedPrefManager {
@@ -30,11 +30,29 @@ public class SharedPrefManager {
     * these properties will be gettable throughout this class
     * */
 
+    public enum SharedPrefrencesProperty {
+        ID(AppStrings.ID),
+        NAME(AppStrings.NAME),
+        EMAIL(AppStrings.EMAIL),
+        PROFILE_IMAGE_PATH(AppStrings.PROFILE_IMAGE_URL);
+
+        private String propertyName;
+
+        private String getName(){
+            return propertyName;
+        };
+
+        SharedPrefrencesProperty(String propertyName) {
+            this.propertyName = propertyName;
+        }
+    }
+
     // private static ImageArray sharedPrefs = new ImageArray();
     private static SharedPrefManager instance;
     private SharedPreferences insideSharedPref;
     private int notificationsCounter;
     private Bitmap userImageBitmap = ImageUtils.defaultProfileImage;
+
 
     //creates the only instance
     private SharedPrefManager(SharedPreferences sharedPreferences) {
@@ -102,14 +120,14 @@ public class SharedPrefManager {
         this.userImageBitmap = userImageBitmap;
     }
 
-    public void saveStringInfoToSharedPreferences(final Context context, final String key, final String value) {
+    public void saveStringInfoToSharedPreferences(final SharedPrefrencesProperty property, final String value) {
         AsyncTask saveToSharedPref = new AsyncTask() {
 
             @Override
             protected Object doInBackground(Object... params) {
-                SharedPreferences.Editor editor = SharedPrefManager.getInstance(context).getSharedPrefs().edit()    //SharedPrefManager is a LOCAL class
-                        .putString(key, value);
-                editor.commit();
+                SharedPreferences.Editor editor = insideSharedPref.edit()    //SharedPrefManager is a LOCAL class
+                        .putString(property.getName(), value);
+                editor.apply();
                 return null;
             }
         };
@@ -117,14 +135,14 @@ public class SharedPrefManager {
     }
 
 
-    public void saveIntInfoToSharedPreferences(final Context context, final String key, final int value) {
+    public void saveIntInfoToSharedPreferences(final SharedPrefrencesProperty property, final int value) {
         AsyncTask saveToSharedPref = new AsyncTask() {
 
             @Override
             protected Object doInBackground(Object... params) {
-                SharedPreferences.Editor editor = SharedPrefManager.getInstance(context).getSharedPrefs().edit()    //SharedPrefManager is a LOCAL class
-                        .putInt(key, value);
-                editor.commit();
+                SharedPreferences.Editor editor = insideSharedPref.edit()    //SharedPrefManager is a LOCAL class
+                        .putInt(property.getName(), value);
+                editor.apply();
                 return null;
             }
         };
