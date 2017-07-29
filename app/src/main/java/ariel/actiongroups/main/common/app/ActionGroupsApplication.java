@@ -30,7 +30,7 @@ public class ActionGroupsApplication extends Application {
         AppInit.InitApp(this);
 
         BackendlessHelper helper = BackendlessHelper.getInstance();
-        helper.registerNewUser(new User());
+        //helper.registerNewUser(new User());
     }
 
     public AppComponent getAppComponent() {

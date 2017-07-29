@@ -147,11 +147,6 @@ public class CourseUploadService extends IntentService {
         }
     }
 
-    private void setRelationBetweenCourseAndChallenges(){
-
-    }
-
-
     private void uploadCourseToSearchEngine(Course course) throws JSONException {
       /*  coursesIndex.addObjectAsync(new JSONObject()
                 .put(AppStrings.ID, course.getObjectId())
