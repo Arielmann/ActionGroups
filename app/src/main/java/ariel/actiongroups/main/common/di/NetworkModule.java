@@ -4,6 +4,7 @@ import com.algolia.search.saas.Client;
 import com.algolia.search.saas.Index;
 import com.backendless.Backendless;
 import com.backendless.IDataStore;
+import com.backendless.persistence.DataQueryBuilder;
 import com.facebook.CallbackManager;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -13,7 +14,9 @@ import java.util.Map;
 import javax.inject.Named;
 import javax.inject.Singleton;
 
+import ariel.actiongroups.main.common.challenges.Challenge;
 import ariel.actiongroups.main.common.courses.Course;
+import ariel.actiongroups.main.common.groups.ActionGroup;
 import ariel.actiongroups.main.common.resources.AppStrings;
 import ariel.actiongroups.main.common.utils.backendutils.NetworkHelper;
 import ariel.actiongroups.main.common.utils.backendutils.backebdless.BackendlessHelper;
@@ -37,32 +40,36 @@ public class NetworkModule {
 
     @Singleton
     @Provides
-    @Named(AppStrings.BACKENDLESS_COURSES)
-    IDataStore<Course> provideCourseStorageObjectBased() {
+    @Named(AppStrings.BACKENDLESS_TABLE_COURSE)
+    IDataStore<Course> provideCourseStorage() {
         return Backendless.Data.of(Course.class);
     }
 
-
     @Singleton
     @Provides
-    @Named(AppStrings.BACKENDLESS_COURSES)
-    IDataStore<Map> provideCourseStorageMapBased() {
-        return Backendless.Data.of(AppStrings.BACKENDLESS_COURSES);
-    }
-
-
-    @Singleton
-    @Provides
-    @Named(AppStrings.BACKENDLESS_CHALLENGES)
-    IDataStore<Map> provideChallngesStorage() {
-        return Backendless.Data.of(AppStrings.BACKENDLESS_CHALLENGES);
+    @Named(AppStrings.BACKENDLESS_TABLE_ACTION_GROUPS)
+    IDataStore<ActionGroup> provideActionGroups() {
+        return Backendless.Data.of(ActionGroup.class);
     }
 
     @Singleton
     @Provides
-    @Named(AppStrings.BACKENDLESS_LEADERS)
+    @Named(AppStrings.BACKENDLESS_TABLE_CHALLENGES)
+    IDataStore<Challenge> provideChallngesStorage() {
+        return Backendless.Data.of(Challenge.class);
+    }
+
+    @Singleton
+    @Provides
+    @Named(AppStrings.BACKENDLESS_TABLE_LEADERS)
     IDataStore<Map> provideLeadersStorage() {
-        return Backendless.Data.of(AppStrings.BACKENDLESS_LEADERS);
+        return Backendless.Data.of(AppStrings.BACKENDLESS_TABLE_LEADERS);
+    }
+
+    @Singleton
+    @Provides
+    DataQueryBuilder provideDataQueryBuilder() {
+        return DataQueryBuilder.create();
     }
 
     @Singleton

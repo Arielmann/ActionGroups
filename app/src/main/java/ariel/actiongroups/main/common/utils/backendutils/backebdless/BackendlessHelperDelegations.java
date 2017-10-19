@@ -3,11 +3,9 @@ package ariel.actiongroups.main.common.utils.backendutils.backebdless;
 import android.content.Context;
 import android.graphics.Bitmap;
 
-import com.backendless.BackendlessUser;
-
 import ariel.actiongroups.main.common.challenges.Challenge;
 import ariel.actiongroups.main.common.groups.ActionGroup;
-import ariel.actiongroups.main.common.profiles.models.User;
+import ariel.actiongroups.main.common.users.models.User;
 
 public abstract class BackendlessHelperDelegations {
 

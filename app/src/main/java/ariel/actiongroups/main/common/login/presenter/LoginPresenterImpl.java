@@ -8,7 +8,7 @@ import com.backendless.exceptions.BackendlessFault;
 import javax.inject.Inject;
 
 import ariel.actiongroups.main.common.di.AppComponent;
-import ariel.actiongroups.main.common.profiles.sharedprefrences.SharedPrefManager;
+import ariel.actiongroups.main.common.users.sharedprefrences.SharedPrefManager;
 import ariel.actiongroups.main.common.resources.AppStrings;
 
 public class LoginPresenterImpl implements LoginPresenter {

@@ -12,6 +12,8 @@ import java.util.List;
 import ariel.actiongroups.R;
 import ariel.actiongroups.main.common.courses.Course;
 import ariel.actiongroups.main.common.groups.ActionGroup;
+import ariel.actiongroups.main.common.utils.ActivityStarter;
+import ariel.actiongroups.main.common.utils.listutils.ListPresentable;
 import ariel.actiongroups.main.common.utils.listutils.vh.OnAddEntityVHClicked;
 import ariel.actiongroups.main.common.groups.groupslist.adapter.GroupRowViewHolder;
 import ariel.actiongroups.main.common.groups.groupslist.view.OnActionGroupClicked;

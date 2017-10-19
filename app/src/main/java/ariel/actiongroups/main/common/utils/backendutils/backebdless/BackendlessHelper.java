@@ -5,7 +5,6 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.backendless.Backendless;
 import com.backendless.BackendlessUser;
@@ -18,12 +17,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 import ariel.actiongroups.R;
-import ariel.actiongroups.main.common.ActionGroupsEntity;
 import ariel.actiongroups.main.common.challenges.Challenge;
 import ariel.actiongroups.main.common.groups.ActionGroup;
-import ariel.actiongroups.main.common.profiles.models.User;
 import ariel.actiongroups.main.common.resources.AppStrings;
-import ariel.actiongroups.main.common.utils.backendutils.NetworkHelper;
+import ariel.actiongroups.main.common.users.models.User;
 import ariel.actiongroups.main.common.utils.imageutils.ImageUtils;
 
 //TODO: make abstract, remove singleton and Seperate to different classes
@@ -61,7 +58,7 @@ public class BackendlessHelper implements BackendlessHelperDelegations.RegisterC
         Map<String, Object> groupMap = new HashMap<>();
         groupMap.put(res.getString(R.string.name), group.getName());
         groupMap.put(res.getString(R.string.description), group.getDescription());
-        String groupsTableName = res.getString(R.string.groups);
+        String groupsTableName = AppStrings.BACKENDLESS_TABLE_ACTION_GROUPS;
         saveMapToServer(groupsTableName, groupMap);
         Bitmap image = BitmapFactory.decodeResource(context.getResources(),
                 R.drawable.female_icon);
@@ -140,11 +137,5 @@ public class BackendlessHelper implements BackendlessHelperDelegations.RegisterC
                 });
     }
 
-    public Map<String,Object> convertEntityToBasicUploadMap(ActionGroupsEntity entity) {
-        Map<String, Object> entityMap = new HashMap<>();
-        entityMap.put(AppStrings.NAME, entity.getName());
-        entityMap.put(AppStrings.DESCRIPTION, entity.getDescription());
-        return entityMap;
-    }
 }
 

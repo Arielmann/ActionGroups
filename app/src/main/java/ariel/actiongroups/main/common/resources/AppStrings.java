@@ -16,8 +16,18 @@ public class AppStrings {
     public static final String CREATION_DATE = "creationDate";
     public static final String CHALLENGES = "challenges";
     public static final String MEMBERS = "members";
+    public static final String CURRENT_CHALLENGE = "currentChallenge";
+    public static final String COURSE = "course";
+    private static final String GROUPS = "groups";
 
-    public static final String USC_CURRENT_CHALLENGE = "current_challenge";
+    //Relations
+    public static final String CHALLANGES_COURSE_RELATION = AppStrings.CHALLENGES + ":" + AppStrings.BACKENDLESS_TABLE_COURSE + ":n";
+    public static final String USER_COURSE_RELATION = AppStrings.MEMBERS + ":" + AppStrings.BACKENDLESS_TABLE_COURSE + ":n";
+    public static final String LEADER_COURSE_RELATION = AppStrings.LEADERS  + ":" + AppStrings.BACKENDLESS_TABLE_COURSE + ":n";
+    public static final String GROUP_COURSE_RELATION = AppStrings.GROUPS + ":" + AppStrings.BACKENDLESS_TABLE_COURSE + ":n";
+    public static final String CURRENT_CHALLENGE_COURSE_RELATION = AppStrings.CURRENT_CHALLENGE + ":" + AppStrings.BACKENDLESS_TABLE_COURSE + ":1";
+    public static final String USER_GROUP_RELATION = AppStrings.MEMBERS + ":" + AppStrings.BACKENDLESS_TABLE_ACTION_GROUPS + ":n";
+
     public static final String USC_GATHER_PAYMENT = "gather_payment";
     public static final String USC_CHALLENGE_NAVIGATION = "challenge_navigation";
 
@@ -41,14 +51,14 @@ public class AppStrings {
     public static final String BACKENDLESS_APP_ID = "D0308F31-C627-5E5C-FF98-8F45E1B51200";
     public static final String BACKENDLESS_API_KEY = "1346C6E8-E8B5-BA57-FF1A-CA43DB4D0D00";
     public static final String BACKENDLESS_SENDER_ID = "675632393175";
-    public static final String BACKENDLESS_COURSES = "Backendless_Courses";
-    public static final String BACKENDLESS_CHALLENGES = "Backendless_Challenges";
-    public static final String BACKENDLESS_LEADERS = "Backendless_Leaders";
+    public static final String BACKENDLESS_TABLE_COURSE = "Course";
+    public static final String BACKENDLESS_TABLE_ACTION_GROUPS = "ActionGroup";
+    public static final String BACKENDLESS_TABLE_CHALLENGES = "Backendless_Challenges";
+    public static final String BACKENDLESS_TABLE_LEADERS = "Backendless_Leaders";
 
     public static final String FACEBOOK_APP_ID = "458809844465328";
     public static final String FACEBOOK_CHORME_TABS_ID = "fb458809844465328";
 
 
     public static final String EM_UPLOAD_FAILED = "Upload Failed";
-
 }

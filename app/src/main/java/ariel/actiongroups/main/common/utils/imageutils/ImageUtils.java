@@ -15,6 +15,7 @@ import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.squareup.picasso.Picasso;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -24,7 +25,7 @@ import java.util.concurrent.ExecutionException;
 import ariel.actiongroups.R;
 import ariel.actiongroups.main.common.courses.states.challengenavigator.tabs.chat.ChatItem;
 import ariel.actiongroups.main.common.groups.ActionGroup;
-import ariel.actiongroups.main.common.profiles.sharedprefrences.SharedPrefManager;
+import ariel.actiongroups.main.common.users.sharedprefrences.SharedPrefManager;
 import ariel.actiongroups.main.common.utils.listutils.vh.GenericViewHolder;
 
 public class ImageUtils {

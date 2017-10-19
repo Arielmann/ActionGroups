@@ -14,8 +14,6 @@ import ariel.actiongroups.R;
 import ariel.actiongroups.databinding.CompoRecyclerViewBinding;
 import ariel.actiongroups.main.common.courses.Course;
 import ariel.actiongroups.main.common.courses.coursedetails.adapter.CourseDetailsAdapter;
-import ariel.actiongroups.main.common.courses.coursedetails.di.CourseDetailsComponent;
-import ariel.actiongroups.main.common.courses.coursedetails.di.DaggerCourseDetailsComponent;
 import ariel.actiongroups.main.common.courses.coursedetails.model.CourseDetailsModel;
 import ariel.actiongroups.main.common.courses.coursedetails.presenter.CourseDetailsPresenter;
 import ariel.actiongroups.main.common.courses.coursedetails.presenter.CourseDetailsPresenterImpl;
@@ -48,8 +46,7 @@ public class CourseDetailsActivity extends AppCompatActivity implements OnAction
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Course course = EventBus.getDefault().removeStickyEvent(Course.class);
-        CourseDetailsComponent courseDetailsComponent = DaggerCourseDetailsComponent.create();
-        model = courseDetailsComponent.injectModel();
+        model = CourseDetailsModel.getInstance(); //TODO: Use Dependency Injection
         model.setCourse(course);
         CompoRecyclerViewBinding binding = DataBindingUtil.setContentView(this, R.layout.compo_recycler_view);
         adapter = new CourseDetailsAdapter(this, model.getGroups(), this, this); //activity is both context and interfaces passed to adapter
@@ -90,6 +87,7 @@ public class CourseDetailsActivity extends AppCompatActivity implements OnAction
         String courseId = presenter.getCourseId();
         Course groupCourse = group.getCourses().get(courseId);
         EventBus.getDefault().postSticky(groupCourse); //Get this group's' course by its id
+        EventBus.getDefault().postSticky(group);
         Class courseStateActivity = groupCourse.getCourseStateActivity().getActivityClass();
         ActivityStarter.startActivity(this, courseStateActivity);
     }

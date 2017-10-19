@@ -6,7 +6,7 @@ import org.junit.Test;
 import org.junit.rules.TestName;
 import org.mockito.Mockito;
 
-import ariel.actiongroups.main.common.ActionGroupsEntity;
+import ariel.actiongroups.main.common.users.models.User;
 
 import static org.junit.Assert.assertEquals;
 
@@ -29,9 +29,9 @@ public class ExampleUnitTest {
     }
 
     @Test
-    public void mockEntity(){
-        ActionGroupsEntity entity = Mockito.mock(ActionGroupsEntity.class);
-        Mockito.when(entity.getObjectId()).thenReturn("333");
-        Assert.assertEquals("333", entity.getObjectId());
+    public void mockUser(){
+        User user = Mockito.mock(User.class);
+        Mockito.when(user.getObjectId()).thenReturn("333");
+        Assert.assertEquals("333", user.getObjectId());
     }
 }

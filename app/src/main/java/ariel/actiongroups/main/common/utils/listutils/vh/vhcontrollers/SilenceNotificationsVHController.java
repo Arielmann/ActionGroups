@@ -2,22 +2,22 @@ package ariel.actiongroups.main.common.utils.listutils.vh.vhcontrollers;
 
 import android.view.View;
 
-import ariel.actiongroups.main.common.ActionGroupsEntity;
+import ariel.actiongroups.main.common.utils.listutils.ListPresentable;
 
 abstract class SilenceNotificationsVHController implements View.OnClickListener {
 
-    private ActionGroupsEntity entity;
+    private ListPresentable data;
 
-    SilenceNotificationsVHController(ActionGroupsEntity entity) {
-        this.entity = entity;
+    SilenceNotificationsVHController(ListPresentable data) {
+        this.data = data;
     }
 
-    ActionGroupsEntity getEntity(){
-        return entity;
+    ListPresentable getData(){
+        return data;
     }
 
     @Override
     public void onClick(View view) {
-        entity.setSilenced(!entity.isSilenced());
+        data.setSilenced(!data.isSilenced());
     }
 }

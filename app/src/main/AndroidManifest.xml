@@ -25,20 +25,24 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>"/>
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+        "/>
 
         <!-- -Main activity -->
-        <activity android:name=".main.leader.courses.manager.singlecourse.view.CourseManagerActivity"
+        <activity
+            android:name=".main.leader.courses.creator.singlecourse.view.CourseDesignerActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="@string/fb_login_protocol_scheme" />
 
+                <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
 
@@ -82,15 +86,16 @@
 
         <activity android:name=".main.common.courses.states.gatherpayment.view.GatherPaymentActivity" />
         <activity android:name=".main.common.courses.search.view.SearchCoursesActivity" />
-        <activity android:name=".main.common.courses.coursepresentation.CoursePresentationActivity" />
+        <activity android:name=".main.common.courses.courselandpage.CourseLandPageActivity" />
 
         <service
-            android:name=".main.leader.courses.manager.singlecourse.services.CourseUploadService"
+            android:name=".main.leader.courses.creator.singlecourse.services.CourseUploadService"
             android:exported="false" />
+        <service
+            android:name=".main.common.courses.states.gatherpayment.services.RegisterGroupToCourseService"
+            android:exported="false" />
+
+        <activity android:name=".main.leader.dashboard.view.DashBoardActivity"></activity>
     </application>
 
 </manifest>
-
-<!--w8kalUVRqreMNvD/+lyVIBsnBrQ=-->
-<!--lWeBknoD5jFekXiq589Wb00Z57I=-->
-<!--2jmj7l5rSw0yVB/vlWAYkk/YBwk=-->

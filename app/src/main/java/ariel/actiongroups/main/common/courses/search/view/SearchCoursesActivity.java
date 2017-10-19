@@ -17,14 +17,12 @@ import ariel.actiongroups.databinding.ActivitySearchCoursesBinding;
 import ariel.actiongroups.main.common.app.ActionGroupsApplication;
 import ariel.actiongroups.main.common.courses.Course;
 import ariel.actiongroups.main.common.courses.OnCourseClicked;
-import ariel.actiongroups.main.common.courses.coursedetails.view.CourseDetailsActivity;
-import ariel.actiongroups.main.common.courses.coursepresentation.CoursePresentationActivity;
+import ariel.actiongroups.main.common.courses.courselandpage.CourseLandPageActivity;
 import ariel.actiongroups.main.common.courses.search.adapter.CourseSearchResultsAdapter;
 import ariel.actiongroups.main.common.courses.search.presenter.CourseSearchViewPresenter;
 import ariel.actiongroups.main.common.courses.search.presenter.CourseSearchViewPresenterImpl;
 import ariel.actiongroups.main.common.utils.ActivityStarter;
 import ariel.actiongroups.main.common.utils.backendutils.searchutils.OnSearchViewClicked;
-import ariel.actiongroups.main.common.utils.backendutils.searchutils.di.SearchComponent;
 
 public class SearchCoursesActivity extends AppCompatActivity implements OnSearchViewClicked, OnCourseClicked, SearchCourseView{
 
@@ -67,6 +65,6 @@ public class SearchCoursesActivity extends AppCompatActivity implements OnSearch
     @Override
     public void onCourseClicked(Course course) {
         EventBus.getDefault().postSticky(course);
-        ActivityStarter.startActivity(this, CoursePresentationActivity.class);
+        ActivityStarter.startActivity(this, CourseLandPageActivity.class);
     }
 }

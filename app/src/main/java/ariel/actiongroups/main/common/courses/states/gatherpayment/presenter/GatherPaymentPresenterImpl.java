@@ -7,31 +7,40 @@ import android.widget.Toast;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
-import ariel.actiongroups.main.common.courses.states.gatherpayment.services.RegisterUseToCourseService;
+import ariel.actiongroups.main.common.courses.Course;
+import ariel.actiongroups.main.common.courses.states.gatherpayment.services.RegisterGroupToCourseService;
 import ariel.actiongroups.main.common.courses.states.gatherpayment.view.GatherPaymentView;
-import ariel.actiongroups.main.leader.courses.manager.singlecourse.events.OnCourseUploadFailure;
-import ariel.actiongroups.main.leader.courses.manager.singlecourse.events.OnCourseUploadSuccess;
+import ariel.actiongroups.main.common.di.AppComponent;
+import ariel.actiongroups.main.common.groups.ActionGroup;
+import ariel.actiongroups.main.leader.courses.creator.singlecourse.events.OnCourseUploadFailure;
+import ariel.actiongroups.main.leader.courses.creator.singlecourse.events.OnCourseUploadSuccess;
 
 public class GatherPaymentPresenterImpl implements GatherPaymentPresenter {
 
     GatherPaymentView view;
 
-    public GatherPaymentPresenterImpl(GatherPaymentView view) {
-        this.view = view;
+    public GatherPaymentPresenterImpl(AppComponent component) {
         EventBus.getDefault().register(this);
     }
 
     @Override
-    public void registerUserToCourseInServer(Context context) {
-        context.startService(new Intent(context, RegisterUseToCourseService.class));
+    public void registerGroupToCourseInServer(Context context, Course course, ActionGroup group) {
+        EventBus.getDefault().postSticky(course);
+        EventBus.getDefault().postSticky(group);
+        context.startService(new Intent(context, RegisterGroupToCourseService.class));
     }
 
-    @Subscribe //Thrown from RegisterUserToCourseService upon succeful upload
+    @Override
+    public void setView(GatherPaymentView view) {
+        this.view = view;
+    }
+
+    @Subscribe //Thrown from RegisterUserToGroupService upon succeful upload
     public void onCourseUploadedSucess(OnCourseUploadSuccess event) {
         view.goToNextScreen();
     }
 
-    @Subscribe //Thrown from RegisterUserToCourseService upon succeful upload
+    @Subscribe //Thrown from RegisterUserToGroupService upon succeful upload
     public void onCourseUploadedFailure(OnCourseUploadFailure event) {
         Toast.makeText(view.getContext(), event.getErrorMessage(), Toast.LENGTH_LONG).show();
     }

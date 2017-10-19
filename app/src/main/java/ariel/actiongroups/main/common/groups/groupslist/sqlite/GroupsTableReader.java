@@ -8,9 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import ariel.actiongroups.main.common.db_manager.DataBaseManager;
 import ariel.actiongroups.main.common.groups.ActionGroup;
 
-/**
- * Created by home on 7/26/2016.
- */
+
 public class GroupsTableReader extends SQLiteOpenHelper {
 
     /*
@@ -47,7 +45,7 @@ public class GroupsTableReader extends SQLiteOpenHelper {
 
     // Contacts table name
     private static final String CONTACTED_STYLISTS_TABLE = DataBaseManager.FeedEntry.GROUPS_TABLE;
-    private static final String CHAT_ITEMS_TABLE = DataBaseManager.FeedEntry.CHAT_ITEMS_TABLE;
+    private static final String CHAT_ITEMS_TABLE = DataBaseManager.FeedEntry.MESSAGES_TABLE;
 
     // Contacts Table Columns names
 
@@ -124,7 +122,7 @@ public class GroupsTableReader extends SQLiteOpenHelper {
                     lastMessage = createMessageTextOrFilePath(lastChatItem);
                 } else {
                     String selectMessagesQuery = "SELECT sender_name,text_message,file_path,message_date " +
-                            "FROM " + CHAT_ITEMS_TABLE +
+                            "FROM " + MESSAGES_TABLE +
                             " WHERE conversation_name = '" + name + "' ORDER BY message_date DESC LIMIT 1";
                     Cursor messagesCursor = db.rawQuery(selectMessagesQuery, null);
                     if (messagesCursor.moveToFirst()) {

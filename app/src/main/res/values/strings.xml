@@ -4,7 +4,7 @@
     <string name="challenge_object">ChallengeObject</string>
     <string name="hot_groups">Hot Groups</string>
     <string name="my_groups">My Groups</string>
-    <string name="groups">Groups</string>
+    <string name="groups">ActionGroup</string>
     <string name="name">name</string>
     <string name="email">email</string>
     <string name="password">password</string>

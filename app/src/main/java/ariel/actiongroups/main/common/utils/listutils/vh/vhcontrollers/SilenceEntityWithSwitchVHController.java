@@ -4,21 +4,21 @@ import android.util.Log;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 
-import ariel.actiongroups.main.common.ActionGroupsEntity;
+import ariel.actiongroups.main.common.utils.listutils.ListPresentable;
 
 public class SilenceEntityWithSwitchVHController extends SilenceNotificationsVHController implements CompoundButton.OnCheckedChangeListener {
 
     private static final String TAG = SilenceEntityWithSwitchVHController.class.getSimpleName();
 
-    public SilenceEntityWithSwitchVHController(ActionGroupsEntity entity, Switch aSwitch) {
-        super(entity);
+    public SilenceEntityWithSwitchVHController(ListPresentable data, Switch aSwitch) {
+        super(data);
         aSwitch.setOnCheckedChangeListener(this);
-        aSwitch.setChecked(entity.isSilenced());
+        aSwitch.setChecked(data.isSilenced());
     }
 
     @Override
     public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-        getEntity().setSilenced(b);
-        Log.d(TAG, "Switch check changed. " + getEntity().getName() + "'s silence notifications mode is set to: "  + getEntity().isSilenced());
+        getData().setSilenced(b);
+        Log.d(TAG, "Switch check changed. " + getData().getName() + "'s silence notifications mode is set to: "  + getData().isSilenced());
     }
 }

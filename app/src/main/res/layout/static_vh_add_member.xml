@@ -32,7 +32,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="@dimen/static_vh_text_left_margin"
-        android:text="Members"
+        android:text="Group Members"
         android:textColor="@color/md_green_600"
         android:textSize="13sp" />
 
@@ -43,7 +43,7 @@
         android:layout_alignBottom="@+id/boundaryLine"
         android:layout_marginLeft="@dimen/static_vh_text_left_margin"
         android:layout_marginStart="10dp"
-        android:text="Add Member..."
+        android:text="Add Group..."
         android:textColor="@color/md_black_1000" />
 
 </RelativeLayout>

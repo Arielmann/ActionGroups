@@ -17,22 +17,22 @@ public class BlStoragesModule {
 
     @Singleton
     @Provides
-    @Named(AppStrings.BACKENDLESS_COURSES)
+    @Named(AppStrings.BACKENDLESS_TABLE_COURSE)
     IDataStore<Map> provideCourseStorage() {
-        return Backendless.Data.of(AppStrings.BACKENDLESS_COURSES);
+        return Backendless.Data.of(AppStrings.BACKENDLESS_TABLE_COURSE);
     }
 
     @Singleton
     @Provides
-    @Named(AppStrings.BACKENDLESS_CHALLENGES)
+    @Named(AppStrings.BACKENDLESS_TABLE_CHALLENGES)
     IDataStore<Map> provideChallngesStorage() {
-        return Backendless.Data.of(AppStrings.BACKENDLESS_CHALLENGES);
+        return Backendless.Data.of(AppStrings.BACKENDLESS_TABLE_CHALLENGES);
     }
 
     @Singleton
     @Provides
-    @Named(AppStrings.BACKENDLESS_LEADERS)
+    @Named(AppStrings.BACKENDLESS_TABLE_LEADERS)
     IDataStore<Map> provideLeadersStorage() {
-        return Backendless.Data.of(AppStrings.BACKENDLESS_LEADERS);
+        return Backendless.Data.of(AppStrings.BACKENDLESS_TABLE_LEADERS);
     }
 }

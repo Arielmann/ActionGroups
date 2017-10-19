@@ -1,11 +1,8 @@
 package ariel.actiongroups.main.common.utils.backendutils;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-
-import ariel.actiongroups.main.common.profiles.sharedprefrences.SharedPrefManager;
 
 public class NetworkHelper {
 

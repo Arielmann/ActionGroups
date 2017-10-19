@@ -1,5 +1,6 @@
 package ariel.actiongroups.main.leader.groups.creator.view;
 
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -9,30 +10,33 @@ import android.widget.TextView;
 
 import org.greenrobot.eventbus.EventBus;
 
-import java.util.UUID;
+import javax.inject.Inject;
 
 import ariel.actiongroups.R;
-import ariel.actiongroups.main.common.appinit.AppInit;
+import ariel.actiongroups.databinding.ActivityGroupCreatorBinding;
+import ariel.actiongroups.main.common.courses.search.view.SearchCoursesActivity;
 import ariel.actiongroups.main.common.groups.ActionGroup;
-import ariel.actiongroups.main.common.groups.groupslist.view.GroupListActivity;
+import ariel.actiongroups.main.common.resources.AppStrings;
 import ariel.actiongroups.main.common.utils.ActivityStarter;
+import ariel.actiongroups.main.common.utils.datamanager.DataManager;
 import ariel.actiongroups.main.leader.groups.creator.presenter.GroupCreatorPresenter;
-import ariel.actiongroups.main.leader.groups.creator.presenter.GroupCreatorPresenterImpl;
 
 public class GroupCreatorActivity extends AppCompatActivity {
 
-    private static final String TAG = GroupCreatorActivity.class.getName();
+    @Inject
     GroupCreatorPresenter presenter;
+
+    private static final String TAG = GroupCreatorActivity.class.getName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_group_creator);
-        presenter = new GroupCreatorPresenterImpl();
-        Button createGroup = (Button) findViewById(R.id.createGroupButton);
+
+        ActivityGroupCreatorBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_group_creator);
+        Button createGroup = binding.createGroupButton;
         createGroup.setOnClickListener(createGroupOnClick);
-        TextView codeTV = (TextView) findViewById(R.id.groupCodeTV);
-        String groupCode = "Leader Name /" + UUID.randomUUID().toString(); //TODO: compare code with all other codes of specific leader to prevent cloning
+        TextView codeTV = binding.groupCodeTV;
+        String groupCode = "Leader Name /" + DataManager.getInstance().getUser().getProperty(AppStrings.NAME); //TODO: compare code with all other codes of specific leader to prevent cloning
         codeTV.setText(groupCode);
         Log.d(TAG, TAG + " created");
     }
@@ -43,7 +47,7 @@ public class GroupCreatorActivity extends AppCompatActivity {
             ActionGroup group = new ActionGroup();
             EventBus.getDefault().postSticky(group);
             presenter.saveGroupToDataBases(view.getContext(), group);
-            ActivityStarter.startActivity(view.getContext(), GroupListActivity.class);
+            ActivityStarter.startActivity(view.getContext(), SearchCoursesActivity.class);
         }
     };
 

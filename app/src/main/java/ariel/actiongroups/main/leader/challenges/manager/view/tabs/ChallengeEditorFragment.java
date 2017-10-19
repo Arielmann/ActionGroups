@@ -19,19 +19,18 @@ import java.util.List;
 
 import ariel.actiongroups.R;
 import ariel.actiongroups.databinding.FragChallengeManagerBinding;
-import ariel.actiongroups.main.common.app.ActionGroupsApplication;
 import ariel.actiongroups.main.common.challenges.Challenge;
 import ariel.actiongroups.main.leader.challenges.manager.events.OnChallengesEditedEvent;
 import ariel.actiongroups.main.leader.challenges.manager.models.ChallengeEditorModel;
 import ariel.actiongroups.main.leader.challenges.manager.presenter.ChallengeManagerPresenter;
 import ariel.actiongroups.main.leader.challenges.manager.presenter.ChallengeManagerPresenterImpl;
-import ariel.actiongroups.main.leader.courses.manager.singlecourse.model.CourseManagerModel;
+import ariel.actiongroups.main.leader.courses.creator.singlecourse.model.CourseDesignerModel;
 import biz.kasual.materialnumberpicker.MaterialNumberPicker;
 
 public class ChallengeEditorFragment extends android.support.v4.app.Fragment {
 
     public static final String TAG = ChallengeEditorFragment.class.getName();
-    private List<Challenge> challenges = CourseManagerModel.getInstance().getChallenges();
+    private List<Challenge> challenges = CourseDesignerModel.getInstance().getChallenges();
     private FragChallengeManagerBinding binding;
     private ChallengeManagerPresenter presenter;
     private Challenge challenge;

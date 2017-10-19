@@ -1,7 +1,5 @@
 package ariel.actiongroups.main.common.courses.coursedetails.presenter;
 
-import java.util.List;
-
 import ariel.actiongroups.main.common.groups.ActionGroup;
 
 public interface CourseDetailsPresenter {

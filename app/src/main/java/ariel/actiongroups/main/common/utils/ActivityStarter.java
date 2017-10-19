@@ -17,7 +17,6 @@ public class ActivityStarter implements View.OnClickListener {
     private Intent starter;
     private String dialogMessage;
 
-
     //Simply go to screen on button click
     private ActivityStarter(Context context, Class screen) {
         this.context = context;

@@ -2,6 +2,8 @@ package ariel.actiongroups.main.leader.groups.creator.presenter;
 
 import android.content.Context;
 
+import ariel.actiongroups.main.common.app.ActionGroupsApplication;
+import ariel.actiongroups.main.common.di.AppComponent;
 import ariel.actiongroups.main.common.utils.backendutils.backebdless.BackendlessHelper;
 import ariel.actiongroups.main.common.utils.backendutils.backebdless.BackendlessHelperDelegations;
 import ariel.actiongroups.main.common.groups.ActionGroup;
@@ -9,6 +11,10 @@ import ariel.actiongroups.main.common.groups.ActionGroup;
 public class GroupCreatorPresenterImpl implements GroupCreatorPresenter{
 
     private static final String DEFAULT_CUSTOM_CHANNEL = "Default custom channel";
+
+    public GroupCreatorPresenterImpl(AppComponent component) {
+        component.inject(this);
+    }
 
     @Override
     public void saveGroupToDataBases(Context context, ActionGroup group) {

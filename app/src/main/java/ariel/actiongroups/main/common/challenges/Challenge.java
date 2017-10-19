@@ -1,14 +1,28 @@
 package ariel.actiongroups.main.common.challenges;
 
+import android.graphics.Bitmap;
+import android.os.Parcelable;
+
 import org.joda.time.LocalDateTime;
+import org.parceler.Parcel;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import ariel.actiongroups.main.common.groups.ActionGroup;
-import ariel.actiongroups.main.common.ActionGroupsEntity;
+import ariel.actiongroups.main.common.utils.imageutils.ImageUtils;
 
-public class Challenge extends ActionGroupsEntity{
+public class Challenge  {
+
+    private String objectId;
+    private String name;
+    private String description;
+    private String creationDate;
+    private String challengeImageLocalPath;
+
+    private String challengeImageUrl;
+    private Bitmap challengeImage = ImageUtils.defaultProfileImage;
+    private boolean isSilenced = false;
 
     private List<ActionGroup> targetGroups;
 
@@ -21,7 +35,8 @@ public class Challenge extends ActionGroupsEntity{
 
     //Convenience Constructor
     public Challenge(int positionInCourse) {
-        super("Running Challenge", "Run 3 times around your building");
+        this.name = "Challenge Name";
+        this.description = "Challenge Description";
         this.positionInCourse = positionInCourse;
         this.targetGroups = new ArrayList<>();
         this.targetGroups.add(new ActionGroup());
@@ -30,6 +45,8 @@ public class Challenge extends ActionGroupsEntity{
         this.startTime = String.valueOf(LocalDateTime.now().toLocalTime());
         this.endTime = String.valueOf(LocalDateTime.now().toLocalTime());
     }
+
+    public Challenge(){}
 
   /*  public Challenge(String challengeName, List<String> objectives, String explanation, String endTime, String startTime, String endDate, String startDate) {
         super(challengeName, explanation, "Image");
@@ -45,8 +62,20 @@ public class Challenge extends ActionGroupsEntity{
     //************Setters****************//
 
 
+    public void setObjectId(String objectId) {
+        this.objectId = objectId;
+    }
+
     public void setObjectives(List<String> objectives) {
         this.objectives = objectives;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public void setEndTime(String endTime) {
@@ -75,6 +104,43 @@ public class Challenge extends ActionGroupsEntity{
 
     //*************Getters*******************//
 
+
+    public String getObjectId() {
+        return objectId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getChallengeImageLocalPath() {
+        return challengeImageLocalPath;
+    }
+
+    public String getChallengeImageUrl() {
+        return challengeImageUrl;
+    }
+
+    public Bitmap getChallengeImage() {
+        return challengeImage;
+    }
+
+    public boolean isSilenced() {
+        return isSilenced;
+    }
+
+    public List<ActionGroup> getTargetGroups() {
+        return targetGroups;
+    }
+
+    public List<String> getObjectives() {
+        return objectives;
+    }
+
     public String getEndTime() {
         return endTime;
     }
@@ -94,4 +160,5 @@ public class Challenge extends ActionGroupsEntity{
     public int getPositionInCourse() {
         return positionInCourse;
     }
+
 }

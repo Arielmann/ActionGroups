@@ -3,7 +3,7 @@ package ariel.actiongroups.main.common.di;
 import javax.inject.Singleton;
 
 import ariel.actiongroups.main.common.app.ActionGroupsApplication;
-import ariel.actiongroups.main.common.profiles.sharedprefrences.SharedPrefManager;
+import ariel.actiongroups.main.common.users.sharedprefrences.SharedPrefManager;
 import dagger.Module;
 import dagger.Provides;
 

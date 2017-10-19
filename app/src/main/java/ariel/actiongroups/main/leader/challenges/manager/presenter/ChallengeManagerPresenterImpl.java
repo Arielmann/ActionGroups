@@ -6,14 +6,11 @@ import org.greenrobot.eventbus.EventBus;
 
 import java.util.List;
 
-import javax.inject.Inject;
-
-import ariel.actiongroups.main.common.di.AppComponent;
 import ariel.actiongroups.main.common.utils.backendutils.backebdless.BackendlessHelper;
 import ariel.actiongroups.main.common.utils.backendutils.backebdless.BackendlessHelperDelegations;
 import ariel.actiongroups.main.common.challenges.Challenge;
 import ariel.actiongroups.main.leader.challenges.manager.events.OnChallengesEditedEvent;
-import ariel.actiongroups.main.leader.courses.manager.singlecourse.model.CourseManagerModel;
+import ariel.actiongroups.main.leader.courses.creator.singlecourse.model.CourseDesignerModel;
 
 public class ChallengeManagerPresenterImpl implements ChallengeManagerPresenter {
 
@@ -21,7 +18,7 @@ public class ChallengeManagerPresenterImpl implements ChallengeManagerPresenter 
     private List<Challenge> challenges;
 
     public ChallengeManagerPresenterImpl() {
-        CourseManagerModel courseManagerModel = CourseManagerModel.getInstance();
+        CourseDesignerModel courseManagerModel = CourseDesignerModel.getInstance();
         challenges = courseManagerModel.getChallenges();
     }
 
