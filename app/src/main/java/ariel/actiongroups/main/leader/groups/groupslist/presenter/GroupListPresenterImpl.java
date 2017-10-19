@@ -1,4 +1,4 @@
-package ariel.actiongroups.main.common.groups.groupslist.presenter;
+package ariel.actiongroups.main.leader.groups.groupslist.presenter;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import ariel.actiongroups.main.common.groups.ActionGroup;
-import ariel.actiongroups.main.common.groups.groupslist.events.OnGroupRowsLoadedEvent;
-import ariel.actiongroups.main.common.groups.groupslist.model.GroupListModel;
+import ariel.actiongroups.main.leader.groups.ActionGroup;
+import ariel.actiongroups.main.leader.groups.groupslist.events.OnGroupRowsLoadedEvent;
+import ariel.actiongroups.main.leader.groups.groupslist.model.GroupListModel;
 import ariel.actiongroups.main.common.utils.listutils.vh.GenericRecyclerViewInterface;
 
 public class GroupListPresenterImpl implements GroupListPresenter {

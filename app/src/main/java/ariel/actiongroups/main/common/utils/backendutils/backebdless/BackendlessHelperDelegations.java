@@ -3,14 +3,13 @@ package ariel.actiongroups.main.common.utils.backendutils.backebdless;
 import android.content.Context;
 import android.graphics.Bitmap;
 
-import ariel.actiongroups.main.common.challenges.Challenge;
-import ariel.actiongroups.main.common.groups.ActionGroup;
-import ariel.actiongroups.main.common.users.models.User;
+import ariel.actiongroups.main.common.challenges.User;
+import ariel.actiongroups.main.leader.groups.ActionGroup;
 
 public abstract class BackendlessHelperDelegations {
 
     public interface RegisterChallengeDelegate {
-        void registerNewChallenge(Context context, Challenge challenge);
+        void registerNewChallenge(Context context, User challenge);
     }
 
     public interface RegisterGroupDelegate {
@@ -20,11 +19,11 @@ public abstract class BackendlessHelperDelegations {
 
     public interface RegisterUserDelegate {
         void registerToPushNotificationsDefaultChannel();
-        void registerNewUser(User user);
+        void registerNewUser(ariel.actiongroups.main.common.users.models.User user);
     }
 
     public interface RegisterLeaderDelegate {
-        void registerNewLeader(Context context, User leader);
+        void registerNewLeader(Context context, ariel.actiongroups.main.common.users.models.User leader);
     }
 
     public interface RegisterObjectDelegate {

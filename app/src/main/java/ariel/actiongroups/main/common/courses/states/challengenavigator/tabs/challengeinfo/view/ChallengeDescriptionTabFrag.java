@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 import ariel.actiongroups.R;
 import ariel.actiongroups.databinding.FragChallengeTabBinding;
-import ariel.actiongroups.main.common.challenges.Challenge;
+import ariel.actiongroups.main.common.challenges.User;
 import ariel.actiongroups.main.common.courses.states.challengenavigator.tabs.challengeinfo.presenter.ChallengeDescriptionPresenter;
 import ariel.actiongroups.main.common.courses.states.challengenavigator.tabs.challengeinfo.presenter.ChallengeInfoPresenterImpl;
 import ariel.actiongroups.main.common.courses.states.challengenavigator.view.ChallengeNavigationActivity;
@@ -37,7 +37,7 @@ public class ChallengeDescriptionTabFrag extends Fragment implements ChallengeIn
     }
 
     @Override
-    public void setChallengeDataInViews(Challenge challenge) {
+    public void setChallengeDataInViews(User challenge) {
         binding.challengeDescriptionTV.setText(challenge.getDescription());
     }
 
@@ -46,7 +46,7 @@ public class ChallengeDescriptionTabFrag extends Fragment implements ChallengeIn
         public void onClick(View view) { //TODO: Mocked method. change it
             presenter.dummyUpdateChallengeData(presenter.getCourse());
             Intent dummyGoToChallengeNavigator = new Intent(getActivity(), ChallengeNavigationActivity.class);
-           // NotificationUtils.displayNotificationOnScreen(getContext(), presenter.getCourse(), dummyGoToChallengeNavigator, "Go to new Challenge");
+           // NotificationUtils.displayNotificationOnScreen(getContext(), presenter.getCourse(), dummyGoToChallengeNavigator, "Go to new User");
         }
     };
 }

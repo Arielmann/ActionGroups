@@ -32,7 +32,7 @@
 
         <!-- -Main activity -->
         <activity
-            android:name=".main.leader.courses.creator.singlecourse.view.CourseDesignerActivity"
+            android:name=".main.leader.dashboard.view.DashBoardActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -49,11 +49,19 @@
         <!-- Other activities -->
         <activity android:name=".main.common.courses.states.challengenavigator.view.ChallengeNavigationActivity" />
         <activity android:name=".main.leader.challenges.manager.view.ChallengeEditorActivity" />
-        <activity android:name=".main.common.groups.groupslist.view.GroupListActivity" />
+        <activity android:name=".main.leader.groups.groupslist.view.GroupListActivity" />
         <activity android:name=".main.common.home_page.HomePage" />
-        <activity android:name=".main.common.groups.groupdetails.GroupDetailsActivity" />
+        <activity android:name=".main.leader.groups.groupdetails.GroupDetailsActivity" />
         <activity android:name=".main.leader.groups.creator.view.GroupCreatorActivity" />
         <activity android:name=".main.common.utils.viewpagerutils.ViewPagerActivity" />
+        <activity android:name=".main.leader.courses.creator.singlecourse.view.CourseDesignerActivity" />
+        <activity android:name=".main.common.courses.coursedetails.view.CourseDetailsActivity" />
+        <activity android:name=".main.common.courses.allcoursesoverview.view.AllCoursesOverviewActivity" />
+        <activity android:name=".main.leader.groups.groupslist.view.GenericGroupListActivity" />
+        <activity android:name=".main.leader.groups.groupslist.view.GroupListActivityForResult" />
+        <activity android:name=".main.common.courses.states.gatherpayment.view.GatherPaymentActivity" />
+        <activity android:name=".main.common.courses.search.view.SearchCoursesActivity" />
+        <activity android:name=".main.common.courses.courselandpage.CourseLandPageActivity" />
 
         <receiver
             android:name=".main.common.utils.backendutils.PushNotificationReceiver"
@@ -74,28 +82,29 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".main.common.courses.allcoursesoverview.view.AllCoursesOverviewActivity" />
-        <activity android:name=".main.common.courses.coursedetails.view.CourseDetailsActivity" />
-        <activity android:name=".main.common.groups.groupslist.view.GenericGroupListActivity" />
-        <activity android:name=".main.common.groups.groupslist.view.GroupListActivityForResult" />
 
         <service
             android:name=".main.common.utils.testservice.TestServiceExample"
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".main.common.courses.states.gatherpayment.view.GatherPaymentActivity" />
-        <activity android:name=".main.common.courses.search.view.SearchCoursesActivity" />
-        <activity android:name=".main.common.courses.courselandpage.CourseLandPageActivity" />
 
         <service
             android:name=".main.leader.courses.creator.singlecourse.services.CourseUploadService"
             android:exported="false" />
+
         <service
-            android:name=".main.common.courses.states.gatherpayment.services.RegisterGroupToCourseService"
+            android:name=".main.leader.groups.services.RegisterGroupToCourseService"
             android:exported="false" />
 
-        <activity android:name=".main.leader.dashboard.view.DashBoardActivity"></activity>
+        <service
+            android:name=".main.leader.groups.services.RegisterUserToGroupService"
+            android:exported="false" />
+
+        <service
+            android:name=".main.leader.groups.services.GroupUploadService"
+            android:exported="false" />
+
     </application>
 
 </manifest>

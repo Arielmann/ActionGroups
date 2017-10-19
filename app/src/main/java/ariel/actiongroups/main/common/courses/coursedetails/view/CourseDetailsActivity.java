@@ -17,9 +17,9 @@ import ariel.actiongroups.main.common.courses.coursedetails.adapter.CourseDetail
 import ariel.actiongroups.main.common.courses.coursedetails.model.CourseDetailsModel;
 import ariel.actiongroups.main.common.courses.coursedetails.presenter.CourseDetailsPresenter;
 import ariel.actiongroups.main.common.courses.coursedetails.presenter.CourseDetailsPresenterImpl;
-import ariel.actiongroups.main.common.groups.ActionGroup;
-import ariel.actiongroups.main.common.groups.groupslist.view.GroupListActivityForResult;
-import ariel.actiongroups.main.common.groups.groupslist.view.OnActionGroupClicked;
+import ariel.actiongroups.main.leader.groups.ActionGroup;
+import ariel.actiongroups.main.leader.groups.groupslist.view.GroupListActivityForResult;
+import ariel.actiongroups.main.leader.groups.groupslist.view.OnActionGroupClicked;
 import ariel.actiongroups.main.common.utils.ActivityStarter;
 import ariel.actiongroups.main.common.utils.imageutils.ImageUtils;
 import ariel.actiongroups.main.common.utils.listutils.vh.OnAddEntityVHClicked;
@@ -53,6 +53,9 @@ public class CourseDetailsActivity extends AppCompatActivity implements OnAction
         presenter = new CourseDetailsPresenterImpl(adapter, course); //adapter provides GenericRecyclerViewInterface for this presenter
         initCourseDetailsRecyclerView(binding);
         presenter.updateModelData();
+        for (ActionGroup group: model.getGroups()) {
+            presenter.addCourseToGroupCourses(group);
+        }
         super.onCreate(savedInstanceState);
         ImageUtils.initDefaultProfileImage(this); //TODO: remove. for debugging purposes only
     }

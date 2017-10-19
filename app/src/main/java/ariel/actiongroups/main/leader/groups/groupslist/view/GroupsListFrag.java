@@ -1,4 +1,4 @@
-package ariel.actiongroups.main.common.groups.groupslist.view;
+package ariel.actiongroups.main.leader.groups.groupslist.view;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -16,11 +16,11 @@ import org.greenrobot.eventbus.Subscribe;
 import java.util.List;
 
 import ariel.actiongroups.R;
-import ariel.actiongroups.main.common.groups.groupslist.adapter.GroupListAdapter;
-import ariel.actiongroups.main.common.groups.groupslist.events.OnGroupRowsLoadedEvent;
-import ariel.actiongroups.main.common.groups.groupslist.model.GroupListModel;
-import ariel.actiongroups.main.common.groups.groupslist.presenter.GroupListPresenter;
-import ariel.actiongroups.main.common.groups.groupslist.presenter.GroupListPresenterImpl;
+import ariel.actiongroups.main.leader.groups.groupslist.adapter.GroupListAdapter;
+import ariel.actiongroups.main.leader.groups.groupslist.events.OnGroupRowsLoadedEvent;
+import ariel.actiongroups.main.leader.groups.groupslist.model.GroupListModel;
+import ariel.actiongroups.main.leader.groups.groupslist.presenter.GroupListPresenter;
+import ariel.actiongroups.main.leader.groups.groupslist.presenter.GroupListPresenterImpl;
 import ariel.actiongroups.main.common.utils.listutils.vh.GenericRecyclerViewInterface;
 
 public class GroupsListFrag extends Fragment implements GenericRecyclerViewInterface{

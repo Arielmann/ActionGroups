@@ -1,10 +1,8 @@
-package ariel.actiongroups.main.common.groups;
+package ariel.actiongroups.main.leader.groups;
 
 import android.graphics.Bitmap;
-import android.os.Parcelable;
 
 import org.joda.time.LocalDateTime;
-import org.parceler.Parcel;
 
 import java.util.ArrayList;
 import java.util.HashMap;

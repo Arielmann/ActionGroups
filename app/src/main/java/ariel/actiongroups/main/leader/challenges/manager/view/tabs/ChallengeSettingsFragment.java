@@ -17,7 +17,7 @@ import java.util.Calendar;
 
 import ariel.actiongroups.R;
 import ariel.actiongroups.databinding.FragChallengeCreatorSettingsBinding;
-import ariel.actiongroups.main.common.challenges.Challenge;
+import ariel.actiongroups.main.common.challenges.User;
 import ariel.actiongroups.main.leader.challenges.manager.models.ChallengeEditorModel;
 
 public class ChallengeSettingsFragment extends Fragment {
@@ -25,7 +25,7 @@ public class ChallengeSettingsFragment extends Fragment {
     private static final String TAG = ChallengeSettingsFragment.class.getSimpleName();
 
     private FragChallengeCreatorSettingsBinding binding;
-    private Challenge currentChallenge;
+    private User currentChallenge;
 
 
     @Override
@@ -59,7 +59,7 @@ public class ChallengeSettingsFragment extends Fragment {
             onChangeChallengeTime.onClick(null);
             String challengeTimeString = "Start time: " + day + "/" + (month + 1) + "/" + year;
             binding.challengeDateTV.setText(challengeTimeString);
-            Log.d(TAG, "Challenge " + challengeTimeString);
+            Log.d(TAG, "User " + challengeTimeString);
         }
     };
 
@@ -74,7 +74,7 @@ public class ChallengeSettingsFragment extends Fragment {
     TimePickerDialog.OnTimeSetListener timeSetListener = new TimePickerDialog.OnTimeSetListener() {
         public void onTimeSet(TimePicker view, int hour, int minute) {
             binding.challengeTimeTV.setText("" + hour + ":" + "" + minute);
-            Log.d(TAG, "Challenge time is set for " + hour + ":" + "" + minute);
+            Log.d(TAG, "User time is set for " + hour + ":" + "" + minute);
         }
     };
 }

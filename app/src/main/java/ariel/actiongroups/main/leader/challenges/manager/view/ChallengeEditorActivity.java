@@ -8,8 +8,7 @@ import net.danlew.android.joda.JodaTimeAndroid;
 
 import org.greenrobot.eventbus.EventBus;
 
-import ariel.actiongroups.main.common.app.ActionGroupsApplication;
-import ariel.actiongroups.main.common.challenges.Challenge;
+import ariel.actiongroups.main.common.challenges.User;
 import ariel.actiongroups.main.common.resources.AppStrings;
 import ariel.actiongroups.main.common.utils.viewpagerutils.ViewPagerActivity;
 import ariel.actiongroups.main.common.utils.viewpagerutils.ViewPagerAdapter;
@@ -28,7 +27,7 @@ public class ChallengeEditorActivity extends ViewPagerActivity {
         super.onCreate(savedInstanceState);
         JodaTimeAndroid.init(this);
         setupViewPager(super.getViewPager());
-        Challenge challenge = EventBus.getDefault().removeStickyEvent(Challenge.class);
+        User challenge = EventBus.getDefault().removeStickyEvent(User.class);
         ChallengeEditorModel.getInstance().setChallenge(challenge);
         presenter = new ChallengeManagerPresenterImpl();
         Log.d(TAG, "Activity created");

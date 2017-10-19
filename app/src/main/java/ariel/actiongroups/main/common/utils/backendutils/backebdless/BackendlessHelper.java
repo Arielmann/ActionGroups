@@ -17,10 +17,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import ariel.actiongroups.R;
-import ariel.actiongroups.main.common.challenges.Challenge;
-import ariel.actiongroups.main.common.groups.ActionGroup;
+import ariel.actiongroups.main.common.challenges.User;
+import ariel.actiongroups.main.leader.groups.ActionGroup;
 import ariel.actiongroups.main.common.resources.AppStrings;
-import ariel.actiongroups.main.common.users.models.User;
 import ariel.actiongroups.main.common.utils.imageutils.ImageUtils;
 
 //TODO: make abstract, remove singleton and Seperate to different classes
@@ -40,7 +39,7 @@ public class BackendlessHelper implements BackendlessHelperDelegations.RegisterC
     }
 
     @Override
-    public void registerNewChallenge(Context context, Challenge challenge) {
+    public void registerNewChallenge(Context context, User challenge) {
      //   if(NetworkHelper.hasNetworkAccess(context)) {
             String challengesTableName = AppStrings.UPPER_CASE_CHALLENGES;
             Map<String, Object> challengeMap = new HashMap<>();
@@ -80,7 +79,7 @@ public class BackendlessHelper implements BackendlessHelperDelegations.RegisterC
     }
 
     @Override
-    public void registerNewUser(User user) { //Converting to BackendlessUser in order to allow native User class to keep inheriting ActionGroupEntity
+    public void registerNewUser(ariel.actiongroups.main.common.users.models.User user) { //Converting to BackendlessUser in order to allow native User class to keep inheriting ActionGroupEntity
         BackendlessUser backendlessUser = new BackendlessUser();
         backendlessUser.setProperty(AppStrings.NAME, user.getName());
 
@@ -93,7 +92,7 @@ public class BackendlessHelper implements BackendlessHelperDelegations.RegisterC
     }
 
     @Override
-    public void registerNewLeader(Context context, User leader) {
+    public void registerNewLeader(Context context, ariel.actiongroups.main.common.users.models.User leader) {
         Resources res = context.getResources();
         String leaderTableName = res.getString(R.string.leaders);
         Map<String, Object> leaderMap = new HashMap<>();

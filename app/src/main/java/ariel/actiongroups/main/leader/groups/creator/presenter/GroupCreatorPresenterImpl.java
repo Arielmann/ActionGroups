@@ -2,11 +2,10 @@ package ariel.actiongroups.main.leader.groups.creator.presenter;
 
 import android.content.Context;
 
-import ariel.actiongroups.main.common.app.ActionGroupsApplication;
 import ariel.actiongroups.main.common.di.AppComponent;
 import ariel.actiongroups.main.common.utils.backendutils.backebdless.BackendlessHelper;
 import ariel.actiongroups.main.common.utils.backendutils.backebdless.BackendlessHelperDelegations;
-import ariel.actiongroups.main.common.groups.ActionGroup;
+import ariel.actiongroups.main.leader.groups.ActionGroup;
 
 public class GroupCreatorPresenterImpl implements GroupCreatorPresenter{
 

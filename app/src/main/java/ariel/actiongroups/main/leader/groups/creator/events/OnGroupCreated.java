@@ -2,7 +2,7 @@ package ariel.actiongroups.main.leader.groups.creator.events;
 
 import android.content.Context;
 
-import ariel.actiongroups.main.common.groups.ActionGroup;
+import ariel.actiongroups.main.leader.groups.ActionGroup;
 
 public class OnGroupCreated {
 

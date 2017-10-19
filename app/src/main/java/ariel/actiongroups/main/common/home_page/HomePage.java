@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 
 import ariel.actiongroups.R;
-import ariel.actiongroups.main.common.groups.groupslist.view.GroupsListFrag;
+import ariel.actiongroups.main.leader.groups.groupslist.view.GroupsListFrag;
 import ariel.actiongroups.main.common.utils.viewpagerutils.ViewPagerActivity;
 import ariel.actiongroups.main.common.utils.viewpagerutils.ViewPagerAdapter;
 

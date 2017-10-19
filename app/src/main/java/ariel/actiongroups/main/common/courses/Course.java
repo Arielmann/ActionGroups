@@ -1,17 +1,15 @@
 package ariel.actiongroups.main.common.courses;
 
 import android.graphics.Bitmap;
-import android.os.Parcel;
-import android.os.Parcelable;
 import android.support.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import ariel.actiongroups.main.common.challenges.Challenge;
+import ariel.actiongroups.main.common.challenges.User;
 import ariel.actiongroups.main.common.courses.states.challengenavigator.view.ChallengeNavigationActivity;
 import ariel.actiongroups.main.common.courses.states.gatherpayment.view.GatherPaymentActivity;
-import ariel.actiongroups.main.common.groups.ActionGroup;
+import ariel.actiongroups.main.leader.groups.ActionGroup;
 import ariel.actiongroups.main.common.users.models.Leader;
 import ariel.actiongroups.main.common.utils.imageutils.ImageUtils;
 import ariel.actiongroups.main.common.utils.listutils.ListPresentable;
@@ -61,16 +59,17 @@ public class Course implements ListPresentable {
 
     private @Nullable List<ActionGroup> groups;
 
-    private @Nullable List<Challenge> challenges;
+    private @Nullable List<User> challenges;
 
     private CourseState state;
 
-    private @Nullable Challenge currentChallenge;
+    private @Nullable
+    User currentChallenge;
 
     private int currentChallengePosition;
 
 
-    public Course(String name, Leader leader, String description, String imagePath, @Nullable List<Challenge> challenges, int currentChallengePosition) {
+    public Course(String name, Leader leader, String description, String imagePath, @Nullable List<User> challenges, int currentChallengePosition) {
         this.name = name;
         this.description = description;
         this.leader = leader;
@@ -129,7 +128,7 @@ public class Course implements ListPresentable {
         this.state = courseState;
     }
 
-    public void setChallenges(List<Challenge> challenges) {
+    public void setChallenges(List<User> challenges) {
         this.challenges = challenges;
     }
 
@@ -138,7 +137,7 @@ public class Course implements ListPresentable {
         return groups;
     }
 
-    public void setCurrentChallenge(@Nullable Challenge currentChallenge) {
+    public void setCurrentChallenge(@Nullable User currentChallenge) {
         this.currentChallenge = currentChallenge;
     }
 
@@ -172,7 +171,7 @@ public class Course implements ListPresentable {
     }
 
     @Nullable
-    public Challenge getCurrentChallenge() {
+    public User getCurrentChallenge() {
         return currentChallenge;
     }
 
@@ -184,7 +183,7 @@ public class Course implements ListPresentable {
         return currentChallengePosition;
     }
 
-    public List<Challenge> getChallenges() {
+    public List<User> getChallenges() {
         return challenges;
     }
 

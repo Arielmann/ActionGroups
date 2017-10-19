@@ -1,6 +1,6 @@
 package ariel.actiongroups.main.common.courses.states.challengenavigator.tabs.challengeinfo.presenter;
 
-import ariel.actiongroups.main.common.challenges.Challenge;
+import ariel.actiongroups.main.common.challenges.User;
 import ariel.actiongroups.main.common.courses.Course;
 import ariel.actiongroups.main.common.courses.states.challengenavigator.model.ChallengeNavigatorModel;
 import ariel.actiongroups.main.common.courses.states.challengenavigator.model.ChallengeNavigatorModelDelegations;
@@ -27,7 +27,7 @@ public class ChallengeInfoPresenterImpl implements ChallengeDescriptionPresenter
     @Override
     public void dummyUpdateChallengeData(Course course) {
         int nextChallengePosition = course.getCurrentChallengePosition() + 1;
-        Challenge nextChallenge = course.getChallenges().get(nextChallengePosition);
+        User nextChallenge = course.getChallenges().get(nextChallengePosition);
         course.setCurrentChallenge(nextChallenge);
         course.setCurrentChallengePosition(nextChallengePosition);
         model.setChallenge(course.getCurrentChallenge());

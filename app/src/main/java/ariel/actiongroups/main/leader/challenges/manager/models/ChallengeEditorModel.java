@@ -1,28 +1,28 @@
 package ariel.actiongroups.main.leader.challenges.manager.models;
 
-import ariel.actiongroups.main.common.challenges.Challenge;
+import ariel.actiongroups.main.common.challenges.User;
 
 public class ChallengeEditorModel {
 
     private static ChallengeEditorModel model;
-    private Challenge challenge;
+    private User challenge;
 
     public static ChallengeEditorModel getInstance()
     {
         if(model == null) {
             model = new ChallengeEditorModel();
-            model.challenge = new Challenge(0);
+            model.challenge = new User(0);
         }
         return model;
     }
 
     private ChallengeEditorModel(){}
 
-    public Challenge getChallenge() {
+    public User getChallenge() {
         return challenge;
     }
 
-    public void setChallenge(Challenge challenge) {
+    public void setChallenge(User challenge) {
         this.challenge = challenge;
     }
 }

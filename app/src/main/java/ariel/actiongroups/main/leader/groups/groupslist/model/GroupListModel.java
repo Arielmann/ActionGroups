@@ -1,4 +1,4 @@
-package ariel.actiongroups.main.common.groups.groupslist.model;
+package ariel.actiongroups.main.leader.groups.groupslist.model;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -7,8 +7,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import ariel.actiongroups.main.common.groups.ActionGroup;
-import ariel.actiongroups.main.common.groups.groupslist.events.OnGroupRowsLoadedEvent;
+import ariel.actiongroups.main.leader.groups.ActionGroup;
+import ariel.actiongroups.main.leader.groups.groupslist.events.OnGroupRowsLoadedEvent;
 
 public class GroupListModel {
 

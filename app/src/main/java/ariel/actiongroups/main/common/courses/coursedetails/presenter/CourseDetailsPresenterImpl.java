@@ -4,7 +4,7 @@ import java.util.List;
 
 import ariel.actiongroups.main.common.courses.Course;
 import ariel.actiongroups.main.common.courses.coursedetails.model.CourseDetailsModel;
-import ariel.actiongroups.main.common.groups.ActionGroup;
+import ariel.actiongroups.main.leader.groups.ActionGroup;
 import ariel.actiongroups.main.common.utils.listutils.vh.GenericRecyclerViewInterface;
 
 public class CourseDetailsPresenterImpl implements CourseDetailsPresenter {

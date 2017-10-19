@@ -10,13 +10,13 @@ import com.karumi.headerrecyclerview.HeaderRecyclerViewAdapter;
 import java.util.List;
 
 import ariel.actiongroups.R;
-import ariel.actiongroups.main.common.challenges.Challenge;
+import ariel.actiongroups.main.common.challenges.User;
 import ariel.actiongroups.main.common.utils.listutils.vh.GenericViewHolder;
 import ariel.actiongroups.main.leader.courses.creator.singlecourse.model.CourseDesignerModel;
 
-public class CourseDesignerAdapter extends HeaderRecyclerViewAdapter<GenericViewHolder, String, Challenge, String> {
+public class CourseDesignerAdapter extends HeaderRecyclerViewAdapter<GenericViewHolder, String, User, String> {
 
-    private List<Challenge> dataSet;
+    private List<User> dataSet;
     private Context context;
 
     public CourseDesignerAdapter(Context context) {
@@ -53,7 +53,7 @@ public class CourseDesignerAdapter extends HeaderRecyclerViewAdapter<GenericView
         return dataSet.size();
     }
 
-    public void remove(Challenge challenge) {
+    public void remove(User challenge) {
         dataSet.remove(challenge);
     }
 

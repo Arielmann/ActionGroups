@@ -2,11 +2,11 @@ package ariel.actiongroups.main.leader.challenges.manager.presenter;
 
 import android.content.Context;
 
-import ariel.actiongroups.main.common.challenges.Challenge;
+import ariel.actiongroups.main.common.challenges.User;
 
 public interface ChallengeManagerPresenter {
 
-    void saveChallengeDataBases(Context context, Challenge challenge);
+    void saveChallengeDataBases(Context context, User challenge);
 
     void addObjectiveToChallenge();
 
@@ -14,5 +14,5 @@ public interface ChallengeManagerPresenter {
 
     void changeChallengePositionInArray(int oldPosition, int newPosition);
 
-    //void saveChallengeDataBases(Context context, Challenge challenge);
+    //void saveChallengeDataBases(Context context, User challenge);
 }

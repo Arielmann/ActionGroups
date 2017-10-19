@@ -8,12 +8,12 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 import ariel.actiongroups.main.common.courses.Course;
-import ariel.actiongroups.main.common.courses.states.gatherpayment.services.RegisterGroupToCourseService;
 import ariel.actiongroups.main.common.courses.states.gatherpayment.view.GatherPaymentView;
 import ariel.actiongroups.main.common.di.AppComponent;
-import ariel.actiongroups.main.common.groups.ActionGroup;
+import ariel.actiongroups.main.leader.groups.ActionGroup;
 import ariel.actiongroups.main.leader.courses.creator.singlecourse.events.OnCourseUploadFailure;
 import ariel.actiongroups.main.leader.courses.creator.singlecourse.events.OnCourseUploadSuccess;
+import ariel.actiongroups.main.leader.groups.services.RegisterGroupToCourseService;
 
 public class GatherPaymentPresenterImpl implements GatherPaymentPresenter {
 

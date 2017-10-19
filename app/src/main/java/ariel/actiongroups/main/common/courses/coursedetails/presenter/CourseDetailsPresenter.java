@@ -1,6 +1,6 @@
 package ariel.actiongroups.main.common.courses.coursedetails.presenter;
 
-import ariel.actiongroups.main.common.groups.ActionGroup;
+import ariel.actiongroups.main.leader.groups.ActionGroup;
 
 public interface CourseDetailsPresenter {
 

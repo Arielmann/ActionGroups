@@ -15,7 +15,7 @@ import javax.inject.Inject;
 import ariel.actiongroups.R;
 import ariel.actiongroups.databinding.ActivityGroupCreatorBinding;
 import ariel.actiongroups.main.common.courses.search.view.SearchCoursesActivity;
-import ariel.actiongroups.main.common.groups.ActionGroup;
+import ariel.actiongroups.main.leader.groups.ActionGroup;
 import ariel.actiongroups.main.common.resources.AppStrings;
 import ariel.actiongroups.main.common.utils.ActivityStarter;
 import ariel.actiongroups.main.common.utils.datamanager.DataManager;

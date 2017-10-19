@@ -1,4 +1,4 @@
-package ariel.actiongroups.main.common.groups.groupslist.sqlite;
+package ariel.actiongroups.main.leader.groups.groupslist.sqlite;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import ariel.actiongroups.main.common.db_manager.DataBaseManager;
-import ariel.actiongroups.main.common.groups.ActionGroup;
+import ariel.actiongroups.main.leader.groups.ActionGroup;
 
 
 public class GroupsTableReader extends SQLiteOpenHelper {

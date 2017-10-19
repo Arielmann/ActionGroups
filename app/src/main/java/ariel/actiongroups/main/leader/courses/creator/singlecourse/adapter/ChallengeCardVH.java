@@ -9,7 +9,7 @@ import org.greenrobot.eventbus.EventBus;
 import java.util.List;
 
 import ariel.actiongroups.R;
-import ariel.actiongroups.main.common.challenges.Challenge;
+import ariel.actiongroups.main.common.challenges.User;
 import ariel.actiongroups.main.common.utils.ActivityStarter;
 import ariel.actiongroups.main.common.utils.listutils.vh.GenericViewHolder;
 import ariel.actiongroups.main.leader.challenges.manager.view.ChallengeEditorActivity;
@@ -18,10 +18,10 @@ class ChallengeCardVH extends GenericViewHolder implements View.OnClickListener{
 
     private final TextView challengeNumberTV;
     private final TextView challengeDescriptionTV;
-    private List<Challenge> dataSet;
+    private List<User> dataSet;
     private Context context;
 
-    ChallengeCardVH(Context context, View itemView, List<Challenge> dataSet) {
+    ChallengeCardVH(Context context, View itemView, List<User> dataSet) {
         super(itemView);
         this.context = context;
         this.dataSet = dataSet;

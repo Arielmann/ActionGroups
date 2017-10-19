@@ -1,4 +1,4 @@
-package ariel.actiongroups.main.common.groups.groupslist.sqlite;
+package ariel.actiongroups.main.leader.groups.groupslist.sqlite;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.os.AsyncTask;
 
 import ariel.actiongroups.main.common.db_manager.DataBaseManager;
-import ariel.actiongroups.main.common.groups.ActionGroup;
+import ariel.actiongroups.main.leader.groups.ActionGroup;
 
 /**
  * Created by home on 7/26/2016.

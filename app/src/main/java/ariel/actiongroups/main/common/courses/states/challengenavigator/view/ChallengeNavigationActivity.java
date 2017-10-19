@@ -13,8 +13,8 @@ import ariel.actiongroups.main.common.courses.states.challengenavigator.tabs.cha
 import ariel.actiongroups.main.common.courses.states.challengenavigator.tabs.chat.ChatTabFrag;
 import ariel.actiongroups.main.common.courses.states.challengenavigator.tabs.results.ResultsTabFrag;
 import ariel.actiongroups.main.common.courses.Course;
-import ariel.actiongroups.main.common.groups.ActionGroup;
-import ariel.actiongroups.main.common.groups.groupdetails.GroupDetailsActivity;
+import ariel.actiongroups.main.leader.groups.ActionGroup;
+import ariel.actiongroups.main.leader.groups.groupdetails.GroupDetailsActivity;
 import ariel.actiongroups.main.common.resources.AppStrings;
 import ariel.actiongroups.main.common.utils.ActivityStarter;
 import ariel.actiongroups.main.common.utils.viewpagerutils.ViewPagerActivity;

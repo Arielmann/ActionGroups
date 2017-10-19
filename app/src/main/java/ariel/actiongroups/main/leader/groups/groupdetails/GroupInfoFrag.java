@@ -1,4 +1,4 @@
-package ariel.actiongroups.main.common.groups.groupdetails;
+package ariel.actiongroups.main.leader.groups.groupdetails;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

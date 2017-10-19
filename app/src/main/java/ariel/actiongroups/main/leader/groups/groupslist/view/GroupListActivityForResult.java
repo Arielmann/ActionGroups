@@ -1,9 +1,8 @@
-package ariel.actiongroups.main.common.groups.groupslist.view;
+package ariel.actiongroups.main.leader.groups.groupslist.view;
 
 import org.greenrobot.eventbus.EventBus;
 
-import ariel.actiongroups.main.common.courses.Course;
-import ariel.actiongroups.main.common.groups.ActionGroup;
+import ariel.actiongroups.main.leader.groups.ActionGroup;
 
 public class GroupListActivityForResult extends GenericGroupListActivity implements OnActionGroupClicked {
 

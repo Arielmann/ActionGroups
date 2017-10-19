@@ -1,5 +1,5 @@
 /*
-package ariel.actiongroups.main.common.groups.groupslist.model;
+package ariel.actiongroups.main.leader.groups.groupslist.model;
 
 import android.graphics.Bitmap;
 

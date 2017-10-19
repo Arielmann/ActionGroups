@@ -2,7 +2,7 @@ package ariel.actiongroups.main.common.courses.states.challengenavigator.model;
 
 import java.util.List;
 
-import ariel.actiongroups.main.common.challenges.Challenge;
+import ariel.actiongroups.main.common.challenges.User;
 import ariel.actiongroups.main.common.courses.Course;
 import ariel.actiongroups.main.common.courses.states.challengenavigator.tabs.chat.ChatItem;
 
@@ -14,7 +14,7 @@ import static ariel.actiongroups.main.common.courses.states.challengenavigator.m
 public class ChallengeNavigatorModel implements ChallengeInfoDelegate, ChatDelegate, ResultDelegate, AllModelsDelegate {
     private static ChallengeNavigatorModel model = new ChallengeNavigatorModel();
 
-    private Challenge challenge;
+    private User challenge;
     private List<ChatItem> chatItems;
     private List<String> results;
     private Course course;
@@ -45,12 +45,12 @@ public class ChallengeNavigatorModel implements ChallengeInfoDelegate, ChatDeleg
     }
 
     @Override
-    public Challenge getChallenge() {
+    public User getChallenge() {
         return challenge;
     }
 
     @Override
-    public void setChallenge(Challenge challenge) {
+    public void setChallenge(User challenge) {
         this.challenge = challenge;
     }
 

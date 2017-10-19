@@ -1,4 +1,4 @@
-package ariel.actiongroups.main.common.groups.groupslist.events;
+package ariel.actiongroups.main.leader.groups.groupslist.events;
 
 import java.util.List;
 

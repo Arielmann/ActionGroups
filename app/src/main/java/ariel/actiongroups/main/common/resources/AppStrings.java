@@ -24,6 +24,7 @@ public class AppStrings {
     public static final String CHALLANGES_COURSE_RELATION = AppStrings.CHALLENGES + ":" + AppStrings.BACKENDLESS_TABLE_COURSE + ":n";
     public static final String USER_COURSE_RELATION = AppStrings.MEMBERS + ":" + AppStrings.BACKENDLESS_TABLE_COURSE + ":n";
     public static final String LEADER_COURSE_RELATION = AppStrings.LEADERS  + ":" + AppStrings.BACKENDLESS_TABLE_COURSE + ":n";
+    public static final String LEADER_ACTION_GROUP_RELATION = AppStrings.LEADERS  + ":" + AppStrings.BACKENDLESS_TABLE_ACTION_GROUPS + ":n";
     public static final String GROUP_COURSE_RELATION = AppStrings.GROUPS + ":" + AppStrings.BACKENDLESS_TABLE_COURSE + ":n";
     public static final String CURRENT_CHALLENGE_COURSE_RELATION = AppStrings.CURRENT_CHALLENGE + ":" + AppStrings.BACKENDLESS_TABLE_COURSE + ":1";
     public static final String USER_GROUP_RELATION = AppStrings.MEMBERS + ":" + AppStrings.BACKENDLESS_TABLE_ACTION_GROUPS + ":n";
@@ -34,7 +35,7 @@ public class AppStrings {
     public static final String UPPER_CASE_NAME = "Name";
     public static final String UPPER_CASE_DESCRIPTION = "Description";
     public static final String UPPER_CASE_CHALLENGES = "Challenges";
-    public static final String UPPER_CASE_CHALLENGE = "Challenge";
+    public static final String UPPER_CASE_CHALLENGE = "User";
     public static final String UPPER_CASE_CHAT = "Chat";
     public static final String UPPER_CASE_RESULTS = "Results";
     public static final String UPPER_CASE_SETTINGS = "Settings";

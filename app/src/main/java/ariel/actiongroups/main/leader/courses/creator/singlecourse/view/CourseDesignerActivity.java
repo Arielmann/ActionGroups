@@ -1,7 +1,6 @@
 package ariel.actiongroups.main.leader.courses.creator.singlecourse.view;
 
 import android.content.Context;
-import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -18,7 +17,7 @@ import java.util.List;
 import ariel.actiongroups.R;
 import ariel.actiongroups.databinding.ActivityCourseManagerBinding;
 import ariel.actiongroups.main.common.app.ActionGroupsApplication;
-import ariel.actiongroups.main.common.challenges.Challenge;
+import ariel.actiongroups.main.common.challenges.User;
 import ariel.actiongroups.main.common.courses.Course;
 import ariel.actiongroups.main.common.courses.coursedetails.view.CourseDetailsActivity;
 import ariel.actiongroups.main.common.di.AppComponent;
@@ -38,7 +37,7 @@ public class CourseDesignerActivity extends AppCompatActivity implements CourseD
 
     private CourseDesignerPresenter presenter;
     private CourseDesignerAdapter adapter;
-    private List<Challenge> challenges = new ArrayList<>();
+    private List<User> challenges = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,7 +83,7 @@ public class CourseDesignerActivity extends AppCompatActivity implements CourseD
     private View.OnClickListener onAddNewChallengeClicked = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Challenge challenge = new Challenge(challenges.size());
+            User challenge = new User(challenges.size());
             presenter.addCard(challenge);
             EventBus.getDefault().postSticky(challenge);
             //There is no returned result, instead communicating

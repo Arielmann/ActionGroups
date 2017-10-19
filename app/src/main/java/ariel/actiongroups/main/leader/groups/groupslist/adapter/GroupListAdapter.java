@@ -1,7 +1,6 @@
-package ariel.actiongroups.main.common.groups.groupslist.adapter;
+package ariel.actiongroups.main.leader.groups.groupslist.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,8 +8,8 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import ariel.actiongroups.R;
-import ariel.actiongroups.main.common.groups.ActionGroup;
-import ariel.actiongroups.main.common.groups.groupslist.view.OnActionGroupClicked;
+import ariel.actiongroups.main.leader.groups.ActionGroup;
+import ariel.actiongroups.main.leader.groups.groupslist.view.OnActionGroupClicked;
 import ariel.actiongroups.main.common.utils.listutils.vh.GenericRecyclerViewAdapter;
 import ariel.actiongroups.main.common.utils.listutils.vh.GenericRecyclerViewInterface;
 import ariel.actiongroups.main.common.utils.listutils.vh.GenericViewHolder;

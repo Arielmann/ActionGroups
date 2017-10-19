@@ -1,7 +1,7 @@
 package ariel.actiongroups.main.common.courses.states.challengenavigator.tabs.challengeinfo.view;
 
-import ariel.actiongroups.main.common.challenges.Challenge;
+import ariel.actiongroups.main.common.challenges.User;
 
 public interface ChallengeInfoTabView {
-    void setChallengeDataInViews(Challenge challenge);
+    void setChallengeDataInViews(User challenge);
 }

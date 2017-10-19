@@ -3,12 +3,12 @@ package ariel.actiongroups.main.leader.courses.creator.singlecourse.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import ariel.actiongroups.main.common.challenges.Challenge;
+import ariel.actiongroups.main.common.challenges.User;
 
 public class CourseDesignerModel {
 
     private static CourseDesignerModel model;
-    private List<Challenge> challenges;
+    private List<User> challenges;
 
     public static CourseDesignerModel getInstance()
     {
@@ -22,11 +22,11 @@ public class CourseDesignerModel {
         challenges = new ArrayList<>();
     }
 
-    public List<Challenge> getChallenges() {
+    public List<User> getChallenges() {
         return challenges;
     }
 
-    public void setChallenges(List<Challenge> challenges) {
+    public void setChallenges(List<User> challenges) {
         this.challenges = challenges;
     }
 }

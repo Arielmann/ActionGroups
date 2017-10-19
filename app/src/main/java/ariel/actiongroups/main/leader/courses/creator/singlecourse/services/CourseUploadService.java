@@ -5,17 +5,13 @@ import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
-import com.algolia.search.saas.Index;
-import com.backendless.Backendless;
 import com.backendless.IDataStore;
 import com.backendless.async.callback.AsyncCallback;
 import com.backendless.exceptions.BackendlessFault;
 
 import org.greenrobot.eventbus.EventBus;
-import org.json.JSONException;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -23,7 +19,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import ariel.actiongroups.main.common.app.ActionGroupsApplication;
-import ariel.actiongroups.main.common.challenges.Challenge;
+import ariel.actiongroups.main.common.challenges.User;
 import ariel.actiongroups.main.common.courses.Course;
 import ariel.actiongroups.main.common.di.AppComponent;
 import ariel.actiongroups.main.common.resources.AppStrings;
@@ -34,16 +30,12 @@ import ariel.actiongroups.main.leader.courses.creator.singlecourse.events.OnCour
 public class CourseUploadService extends IntentService {
 
     @Inject
-    @Named(AppStrings.ALGOLIA_COURSES_TABLE_NAME)
-    Index coursesIndex;
-
-    @Inject
     @Named(AppStrings.BACKENDLESS_TABLE_COURSE)
     IDataStore<Course> coursesStorage;
 
     @Inject
     @Named(AppStrings.BACKENDLESS_TABLE_CHALLENGES)
-    IDataStore<Challenge> challengesStorage;
+    IDataStore<User> challengesStorage;
 
     @Inject
     @Named(AppStrings.BACKENDLESS_TABLE_LEADERS)
@@ -99,20 +91,20 @@ public class CourseUploadService extends IntentService {
        coursesStorage.setRelation(partialInitiallizedCourse, AppStrings.LEADER_COURSE_RELATION, leaderInArrayList);
     }
 
-    private void setRelationBetweenCourseAndCurrentChallenge(final Course partialInitiallizedCourse, Challenge challange){
-        List<Challenge> challengeInArrayList = new ArrayList<>();
+    private void setRelationBetweenCourseAndCurrentChallenge(final Course partialInitiallizedCourse, User challange){
+        List<User> challengeInArrayList = new ArrayList<>();
         challengeInArrayList.add(challange);
         coursesStorage.setRelation(partialInitiallizedCourse, AppStrings.CURRENT_CHALLENGE_COURSE_RELATION, challengeInArrayList);
     }
 
     private void uploadCourseChallengesToServer(final Course partialInitilizedCourse, final Course course) {
-        final List<Challenge> challangeInArrayList = new ArrayList<>();
+        final List<User> challangeInArrayList = new ArrayList<>();
 
-        for (Challenge challenge : course.getChallenges()) {
-            challengesStorage.save(challenge, new AsyncCallback<Challenge>() {
+        for (User challenge : course.getChallenges()) {
+            challengesStorage.save(challenge, new AsyncCallback<User>() {
 
                 @Override
-                public void handleResponse(Challenge response) {
+                public void handleResponse(User response) {
                     challangeInArrayList.add(response);
                     if (course.getChallenges().size() == challangeInArrayList.size()) {
                         //PRODUCES NULL POINTER EXCEPTION  - coursesStorage.setRelation(partialInitilizedCourse, AppStrings.USC_CURRENT_CHALLENGE + ":" + AppStrings.BACKENDLESS_TABLE_COURSE + ":1", savedChallengesMap);
@@ -136,22 +128,10 @@ public class CourseUploadService extends IntentService {
 
                 @Override
                 public void handleFault(BackendlessFault fault) {
-                    Log.e(TAG, "Challenge was not uploaded in course named " + course.getName() + ". Reason:" + fault.getMessage());
+                    Log.e(TAG, "User was not uploaded in course named " + course.getName() + ". Reason:" + fault.getMessage());
                     EventBus.getDefault().post(new OnCourseUploadFailure(fault.getMessage()));
                 }
             });
         }
     }
-/*
-    private void uploadCourseToSearchEngine(Course course) throws JSONException {
-      *//*  coursesIndex.addObjectAsync(new JSONObject()
-                .put(AppStrings.ID, course.getObjectId())
-                .put(AppStrings.NAME, course.getName())
-                .put(AppStrings.LEADER_NAME, course.getLeader().getName())
-                .put(AppStrings.LEADER_ID, course.getLeader().getObjectId())
-                .put(AppStrings.DESCRIPTION, course.getDescription())
-                .put(AppStrings.IMAGE_URL, ImageUtils.testImagePath)
-                .put(AppStrings.CREATION_DATE, course.getCreationDate()), null);*//*
-        EventBus.getDefault().post(new OnCourseUploadSuccess()); //Todo: check for upload success
-    }*/
 }

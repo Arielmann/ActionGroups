@@ -7,7 +7,7 @@ import android.util.Log;
 import java.util.concurrent.ExecutionException;
 
 import ariel.actiongroups.main.common.courses.states.challengenavigator.tabs.chat.ChatItem;
-import ariel.actiongroups.main.common.groups.ActionGroup;
+import ariel.actiongroups.main.leader.groups.ActionGroup;
 
 abstract class PicassoLoadedBitmapHandler {
 

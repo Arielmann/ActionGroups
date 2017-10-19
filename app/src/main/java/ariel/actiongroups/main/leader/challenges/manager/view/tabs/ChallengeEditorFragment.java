@@ -19,7 +19,7 @@ import java.util.List;
 
 import ariel.actiongroups.R;
 import ariel.actiongroups.databinding.FragChallengeManagerBinding;
-import ariel.actiongroups.main.common.challenges.Challenge;
+import ariel.actiongroups.main.common.challenges.User;
 import ariel.actiongroups.main.leader.challenges.manager.events.OnChallengesEditedEvent;
 import ariel.actiongroups.main.leader.challenges.manager.models.ChallengeEditorModel;
 import ariel.actiongroups.main.leader.challenges.manager.presenter.ChallengeManagerPresenter;
@@ -30,10 +30,10 @@ import biz.kasual.materialnumberpicker.MaterialNumberPicker;
 public class ChallengeEditorFragment extends android.support.v4.app.Fragment {
 
     public static final String TAG = ChallengeEditorFragment.class.getName();
-    private List<Challenge> challenges = CourseDesignerModel.getInstance().getChallenges();
+    private List<User> challenges = CourseDesignerModel.getInstance().getChallenges();
     private FragChallengeManagerBinding binding;
     private ChallengeManagerPresenter presenter;
-    private Challenge challenge;
+    private User challenge;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -55,7 +55,7 @@ public class ChallengeEditorFragment extends android.support.v4.app.Fragment {
     View.OnClickListener goToPreview = new View.OnClickListener() {
         @Override
         public void onClick(View view) { //TODO: maybe crate preview activity prior to saving
-            Challenge challenge = modifyCurrentChallengeFromInput();
+            User challenge = modifyCurrentChallengeFromInput();
             presenter.saveChallengeDataBases(getContext(), challenge);
             EventBus.getDefault().post(new OnChallengesEditedEvent());
             getActivity().finish();
@@ -70,7 +70,7 @@ public class ChallengeEditorFragment extends android.support.v4.app.Fragment {
         }
     };
 
-    private Challenge modifyCurrentChallengeFromInput() {
+    private User modifyCurrentChallengeFromInput() {
         challenge.setName(binding.name.getText().toString());
         challenge.setDescription(binding.explanation.getText().toString());
         List<String> objectives = new ArrayList<>();
@@ -101,7 +101,7 @@ public class ChallengeEditorFragment extends android.support.v4.app.Fragment {
                 .setPositiveButton(getString(android.R.string.ok), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Snackbar.make(binding.fragChallengeManagerLayout, "Challenge's position " + numberPicker.getValue(), Snackbar.LENGTH_SHORT).show();
+                        Snackbar.make(binding.fragChallengeManagerLayout, "User's position " + numberPicker.getValue(), Snackbar.LENGTH_SHORT).show();
                         binding.challengeNumberIntTV.setText(String.valueOf(numberPicker.getValue()));
                         presenter.changeChallengePositionInArray(challenges.indexOf(ChallengeEditorModel.getInstance().getChallenge()), numberPicker.getValue());
                     }

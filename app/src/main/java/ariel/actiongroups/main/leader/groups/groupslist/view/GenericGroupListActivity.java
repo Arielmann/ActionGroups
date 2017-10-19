@@ -1,4 +1,4 @@
-package ariel.actiongroups.main.common.groups.groupslist.view;
+package ariel.actiongroups.main.leader.groups.groupslist.view;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -13,11 +13,11 @@ import java.util.List;
 
 import ariel.actiongroups.R;
 import ariel.actiongroups.databinding.CompoRecyclerViewBinding;
-import ariel.actiongroups.main.common.groups.groupslist.adapter.GroupListAdapter;
-import ariel.actiongroups.main.common.groups.groupslist.events.OnGroupRowsLoadedEvent;
-import ariel.actiongroups.main.common.groups.groupslist.model.GroupListModel;
-import ariel.actiongroups.main.common.groups.groupslist.presenter.GroupListPresenter;
-import ariel.actiongroups.main.common.groups.groupslist.presenter.GroupListPresenterImpl;
+import ariel.actiongroups.main.leader.groups.groupslist.adapter.GroupListAdapter;
+import ariel.actiongroups.main.leader.groups.groupslist.events.OnGroupRowsLoadedEvent;
+import ariel.actiongroups.main.leader.groups.groupslist.model.GroupListModel;
+import ariel.actiongroups.main.leader.groups.groupslist.presenter.GroupListPresenter;
+import ariel.actiongroups.main.leader.groups.groupslist.presenter.GroupListPresenterImpl;
 import ariel.actiongroups.main.common.utils.listutils.vh.GenericRecyclerViewInterface;
 
 public abstract class GenericGroupListActivity extends AppCompatActivity implements GenericRecyclerViewInterface {

@@ -4,15 +4,15 @@ import org.json.JSONException;
 
 import java.util.List;
 
-import ariel.actiongroups.main.common.challenges.Challenge;
+import ariel.actiongroups.main.common.challenges.User;
 import ariel.actiongroups.main.common.courses.Course;
 
 public interface CourseDesignerPresenter {
 
-    void removeCard(Challenge challenge);
-    void addCard(Challenge challenge);
-    void initDummyChallenges(List<Challenge> challenges);
-    void setChallenges(List<Challenge> challenges);
+    void removeCard(User challenge);
+    void addCard(User challenge);
+    void initDummyChallenges(List<User> challenges);
+    void setChallenges(List<User> challenges);
     void saveCourseToDataBases(Course course) throws JSONException;
 
     void onDestroy();

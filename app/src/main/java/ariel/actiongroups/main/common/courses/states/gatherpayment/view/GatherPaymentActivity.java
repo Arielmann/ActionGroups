@@ -16,7 +16,7 @@ import ariel.actiongroups.main.common.app.ActionGroupsApplication;
 import ariel.actiongroups.main.common.courses.Course;
 import ariel.actiongroups.main.common.courses.states.gatherpayment.presenter.GatherPaymentPresenter;
 import ariel.actiongroups.main.common.di.AppComponent;
-import ariel.actiongroups.main.common.groups.ActionGroup;
+import ariel.actiongroups.main.leader.groups.ActionGroup;
 import ariel.actiongroups.main.common.utils.ActivityStarter;
 
 public class GatherPaymentActivity extends AppCompatActivity implements GatherPaymentView {

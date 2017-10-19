@@ -1,27 +1,21 @@
 package ariel.actiongroups.main.leader.courses.creator.singlecourse.presenter;
 
 import android.content.Intent;
-import android.os.Parcelable;
 import android.widget.Toast;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.json.JSONException;
-import org.parceler.Parcels;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 
-import ariel.actiongroups.main.common.challenges.Challenge;
+import ariel.actiongroups.main.common.challenges.User;
 import ariel.actiongroups.main.common.courses.Course;
-import ariel.actiongroups.main.common.courses.coursedetails.view.CourseDetailsActivity;
 import ariel.actiongroups.main.common.courses.search.presenter.CourseSearchViewPresenterImpl;
 import ariel.actiongroups.main.common.di.AppComponent;
-import ariel.actiongroups.main.common.resources.AppStrings;
 import ariel.actiongroups.main.common.utils.backendutils.NetworkHelper;
-import ariel.actiongroups.main.common.utils.imageutils.ImageUtils;
 import ariel.actiongroups.main.leader.courses.creator.singlecourse.events.OnCourseUploadFailure;
 import ariel.actiongroups.main.leader.courses.creator.singlecourse.events.OnCourseUploadSuccess;
 import ariel.actiongroups.main.leader.courses.creator.singlecourse.model.CourseDesignerModel;
@@ -44,29 +38,29 @@ public class CourseDesignerPresenterImpl implements CourseDesignerPresenter {
     }
 
     @Override
-    public void removeCard(Challenge challenge) {
+    public void removeCard(User challenge) {
         view.refreshAdapter();
     }
 
     @Override
-    public void addCard(Challenge challenge) {
-        List<Challenge> dataSet = CourseDesignerModel.getInstance().getChallenges();
+    public void addCard(User challenge) {
+        List<User> dataSet = CourseDesignerModel.getInstance().getChallenges();
         dataSet.add(challenge);
         view.refreshAdapter();
     }
 
     @Override
-    public void initDummyChallenges(List<Challenge> challenges) {
+    public void initDummyChallenges(List<User> challenges) {
         for (int i = 0; i < 10; i++) {
-            Challenge challenge = new Challenge(i);
-            challenge.setName("Challenge " + i);
-            challenge.setDescription("Challenge " + i);
+            User challenge = new User(i);
+            challenge.setName("User " + i);
+            challenge.setDescription("User " + i);
             challenges.add(challenge);
         }
     }
 
     @Override
-    public void setChallenges(List<Challenge> challenges) {
+    public void setChallenges(List<User> challenges) {
         CourseDesignerModel.getInstance().setChallenges(challenges);
     }
 

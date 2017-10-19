@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import ariel.actiongroups.main.common.courses.Course;
 import ariel.actiongroups.main.common.courses.coursedetails.model.CourseDetailsModel;
-import ariel.actiongroups.main.common.groups.ActionGroup;
+import ariel.actiongroups.main.leader.groups.ActionGroup;
 import ariel.actiongroups.main.common.utils.listutils.vh.GenericRecyclerViewInterface;
 
 import static org.mockito.Mockito.mock;

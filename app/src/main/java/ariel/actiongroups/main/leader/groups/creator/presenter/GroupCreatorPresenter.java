@@ -2,7 +2,7 @@ package ariel.actiongroups.main.leader.groups.creator.presenter;
 
 import android.content.Context;
 
-import ariel.actiongroups.main.common.groups.ActionGroup;
+import ariel.actiongroups.main.leader.groups.ActionGroup;
 
 public interface GroupCreatorPresenter {
 

@@ -1,4 +1,4 @@
-package ariel.actiongroups.main.common.groups.groupdetails;
+package ariel.actiongroups.main.leader.groups.groupdetails;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -8,7 +8,7 @@ import org.greenrobot.eventbus.EventBus;
 
 import ariel.actiongroups.R;
 import ariel.actiongroups.databinding.ActivityGroupInfoScreenBinding;
-import ariel.actiongroups.main.common.groups.ActionGroup;
+import ariel.actiongroups.main.leader.groups.ActionGroup;
 import ariel.actiongroups.main.common.utils.ActivityStarter;
 import ariel.actiongroups.main.leader.challenges.manager.view.ChallengeEditorActivity;
 

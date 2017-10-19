@@ -1,10 +1,9 @@
-package ariel.actiongroups.main.common.groups.groupslist.view;
+package ariel.actiongroups.main.leader.groups.groupslist.view;
 
 import android.os.Bundle;
 
 import ariel.actiongroups.R;
-import ariel.actiongroups.main.common.courses.Course;
-import ariel.actiongroups.main.common.groups.ActionGroup;
+import ariel.actiongroups.main.leader.groups.ActionGroup;
 
 public class GroupListActivity extends GenericGroupListActivity implements OnActionGroupClicked {
 

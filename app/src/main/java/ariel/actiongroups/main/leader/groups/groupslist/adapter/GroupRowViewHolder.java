@@ -1,18 +1,14 @@
-package ariel.actiongroups.main.common.groups.groupslist.adapter;
+package ariel.actiongroups.main.leader.groups.groupslist.adapter;
 
 import android.content.Context;
 import android.util.Log;
 import android.view.View;
 
-import com.sromku.simple.storage.SimpleStorage;
-import com.sromku.simple.storage.Storage;
-
-import java.io.File;
 import java.util.List;
 
 import ariel.actiongroups.R;
-import ariel.actiongroups.main.common.groups.ActionGroup;
-import ariel.actiongroups.main.common.groups.groupslist.view.OnActionGroupClicked;
+import ariel.actiongroups.main.leader.groups.ActionGroup;
+import ariel.actiongroups.main.leader.groups.groupslist.view.OnActionGroupClicked;
 import ariel.actiongroups.main.common.utils.listutils.vh.EntityViewHolder;
 
 public class GroupRowViewHolder extends EntityViewHolder implements View.OnClickListener {

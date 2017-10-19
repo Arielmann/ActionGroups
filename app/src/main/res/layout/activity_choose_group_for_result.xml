@@ -8,6 +8,6 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="ariel.actiongroups.main.common.groups.groupslist.view.GroupListActivityForResult">
+    tools:context=".main.leader.groups.groupslist.view.GroupListActivityForResult">
 
 </RelativeLayout>

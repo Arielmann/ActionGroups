@@ -1,18 +1,16 @@
 package ariel.actiongroups.main.common.challenges;
 
 import android.graphics.Bitmap;
-import android.os.Parcelable;
 
 import org.joda.time.LocalDateTime;
-import org.parceler.Parcel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import ariel.actiongroups.main.common.groups.ActionGroup;
+import ariel.actiongroups.main.leader.groups.ActionGroup;
 import ariel.actiongroups.main.common.utils.imageutils.ImageUtils;
 
-public class Challenge  {
+public class User {
 
     private String objectId;
     private String name;
@@ -34,9 +32,9 @@ public class Challenge  {
     private int positionInCourse;
 
     //Convenience Constructor
-    public Challenge(int positionInCourse) {
-        this.name = "Challenge Name";
-        this.description = "Challenge Description";
+    public User(int positionInCourse) {
+        this.name = "User Name";
+        this.description = "User Description";
         this.positionInCourse = positionInCourse;
         this.targetGroups = new ArrayList<>();
         this.targetGroups.add(new ActionGroup());
@@ -46,9 +44,9 @@ public class Challenge  {
         this.endTime = String.valueOf(LocalDateTime.now().toLocalTime());
     }
 
-    public Challenge(){}
+    public User(){}
 
-  /*  public Challenge(String challengeName, List<String> objectives, String explanation, String endTime, String startTime, String endDate, String startDate) {
+  /*  public User(String challengeName, List<String> objectives, String explanation, String endTime, String startTime, String endDate, String startDate) {
         super(challengeName, explanation, "Image");
         super.setName(challengeName);
         super.setDescription(explanation);

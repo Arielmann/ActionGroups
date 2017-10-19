@@ -10,23 +10,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.backendless.persistence.DataQueryBuilder;
-
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 import java.util.List;
 
 import ariel.actiongroups.R;
-import ariel.actiongroups.main.common.groups.groupslist.adapter.GroupListAdapter;
-import ariel.actiongroups.main.common.groups.groupslist.events.OnGroupRowsLoadedEvent;
-import ariel.actiongroups.main.common.groups.groupslist.model.GroupListModel;
-import ariel.actiongroups.main.common.groups.groupslist.presenter.GroupListPresenter;
-import ariel.actiongroups.main.common.groups.groupslist.presenter.GroupListPresenterImpl;
-import ariel.actiongroups.main.common.groups.groupslist.view.OnActionGroupClicked;
-import ariel.actiongroups.main.common.utils.datamanager.DataManager;
-import ariel.actiongroups.main.common.utils.listutils.ListPresentable;
-import ariel.actiongroups.main.common.utils.listutils.recyclerview.RecyclerViewWithHeaderFooterAdapter;
+import ariel.actiongroups.main.leader.groups.groupslist.adapter.GroupListAdapter;
+import ariel.actiongroups.main.leader.groups.groupslist.events.OnGroupRowsLoadedEvent;
+import ariel.actiongroups.main.leader.groups.groupslist.model.GroupListModel;
+import ariel.actiongroups.main.leader.groups.groupslist.presenter.GroupListPresenter;
+import ariel.actiongroups.main.leader.groups.groupslist.presenter.GroupListPresenterImpl;
 import ariel.actiongroups.main.common.utils.listutils.recyclerview.ViewHoldersFactory;
 import ariel.actiongroups.main.common.utils.listutils.vh.GenericRecyclerViewInterface;
 import ariel.actiongroups.main.common.utils.listutils.vh.GenericViewHolder;
@@ -36,7 +30,7 @@ public class CourseListFrag extends Fragment implements GenericRecyclerViewInter
 
         private TextView noGroupsMessage;
         GroupListAdapter adapter;
-        private String TAG = ariel.actiongroups.main.common.groups.groupslist.view.GroupsListFrag.class.getSimpleName();
+        private String TAG = ariel.actiongroups.main.leader.groups.groupslist.view.GroupsListFrag.class.getSimpleName();
 
         @Override
         public void onCreate(@Nullable Bundle savedInstanceState) {
